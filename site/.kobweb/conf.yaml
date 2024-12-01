@@ -1,0 +1,14 @@
+site:
+  title: "Portfolio Kobweb"
+
+server:
+  files:
+    dev:
+      contentRoot: "build/processedResources/js/main/public"
+      script: "build/kotlin-webpack/js/developmentExecutable/meet.js"
+      api: "build/libs/meet.jar"
+    prod:
+      script: "build/kotlin-webpack/js/productionExecutable/meet.js"
+      siteRoot: ".kobweb/site"
+
+  port: 8080
