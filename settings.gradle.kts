@@ -5,7 +5,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "Porfolio-Kobweb"
+rootProject.name = "Portfolio-Kobweb"
 
 include(":site")
 
