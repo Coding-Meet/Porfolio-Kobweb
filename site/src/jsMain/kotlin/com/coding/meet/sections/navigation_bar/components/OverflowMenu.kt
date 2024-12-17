@@ -1,33 +1,76 @@
 package com.coding.meet.sections.navigation_bar.components
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import com.coding.meet.models.Section
 import com.coding.meet.sections.navigation_bar.styles.NavigationItemStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
-import com.varabyte.kobweb.compose.css.*
+import com.varabyte.kobweb.compose.css.Cursor
+import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.Overflow
+import com.varabyte.kobweb.compose.css.ScrollBehavior
+import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.css.Transition
+import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Color.Companion.argb
-import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
+import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
+import com.varabyte.kobweb.compose.ui.modifiers.cursor
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
+import com.varabyte.kobweb.compose.ui.modifiers.fontSize
+import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
+import com.varabyte.kobweb.compose.ui.modifiers.height
+import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.onClick
+import com.varabyte.kobweb.compose.ui.modifiers.opacity
+import com.varabyte.kobweb.compose.ui.modifiers.overflow
+import com.varabyte.kobweb.compose.ui.modifiers.padding
+import com.varabyte.kobweb.compose.ui.modifiers.position
+import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
+import com.varabyte.kobweb.compose.ui.modifiers.size
+import com.varabyte.kobweb.compose.ui.modifiers.textDecorationLine
+import com.varabyte.kobweb.compose.ui.modifiers.transition
+import com.varabyte.kobweb.compose.ui.modifiers.translateX
+import com.varabyte.kobweb.compose.ui.modifiers.width
+import com.varabyte.kobweb.compose.ui.modifiers.zIndex
 import com.varabyte.kobweb.navigation.OpenLinkStrategy
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.icons.CloseIcon
 import com.varabyte.kobweb.silk.components.navigation.Link
-import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
+import kotlinx.browser.window
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.Position
+import org.jetbrains.compose.web.css.ms
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.vh
+import org.jetbrains.compose.web.dom.Text
 
 @Composable
-fun OverflowMenu(onMenuClosed: () -> Unit) {
+fun OverflowMenu(
+    selectedSectionId : String,
+    onSelectSectionId: (String) -> Unit,
+    onMenuClosed: () -> Unit) {
     val scope = rememberCoroutineScope()
     val breakpoint = rememberBreakpoint()
     var translateX by remember { mutableStateOf((-100).percent) }
@@ -67,7 +110,9 @@ fun OverflowMenu(onMenuClosed: () -> Unit) {
         Column(
             modifier = Modifier
                 .fillMaxHeight()
-                .padding(all = 25.px)
+                .padding(
+                    top= 20.px, bottom = 5.px, leftRight = 15.px
+                )
                 .width(if (breakpoint < Breakpoint.MD) 50.percent else 25.percent)
                 .overflow(Overflow.Auto)
                 .scrollBehavior(ScrollBehavior.Smooth)
@@ -86,7 +131,7 @@ fun OverflowMenu(onMenuClosed: () -> Unit) {
                 )
         ) {
             Row(
-                modifier = Modifier.fillMaxWidth().margin(bottom = 25.px),
+                modifier = Modifier.fillMaxWidth().margin(bottom = 5.px),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 CloseIcon(
@@ -114,6 +159,7 @@ fun OverflowMenu(onMenuClosed: () -> Unit) {
             Section.entries.forEach { section ->
                 Link(
                     modifier = NavigationItemStyle.toModifier()
+                        .padding(leftRight = 20.px, topBottom = 5.px)
                         .margin(bottom = 10.px)
                         .fontFamily(Res.Font.FONT_FAMILY_REGULAR)
                         .fontSize(16.px)
@@ -121,6 +167,7 @@ fun OverflowMenu(onMenuClosed: () -> Unit) {
                         .textDecorationLine(TextDecorationLine.None)
                         .onClick {
                             scope.launch {
+                                onSelectSectionId(section.path)
                                 translateX = (-100).percent
                                 opacity = 0.percent
                                 delay(500)
@@ -128,9 +175,34 @@ fun OverflowMenu(onMenuClosed: () -> Unit) {
                             }
                         },
                     path = section.path,
-                    text = section.title,
                     openInternalLinksStrategy = OpenLinkStrategy.IN_PLACE
-                )
+                ){
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(section.title)
+                        Box(
+                            modifier = Modifier
+                                .size(10.px)
+                                .backgroundColor(
+                                    if (selectedSectionId == section.path) {
+                                        CustomColor(
+                                            lightColor = Theme.Primary,
+                                            darkColor = Theme.Primary
+                                        )
+                                    } else {
+                                        CustomColor(
+                                            lightColor = Theme.LightGray,
+                                            darkColor = Theme.DarkGray
+                                        )
+                                    }
+                                )
+                                .borderRadius(r = 20.px)
+                        )
+                    }
+                }
             }
         }
     }

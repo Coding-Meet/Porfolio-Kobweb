@@ -15,7 +15,11 @@ val NavigationItemStyle = CssStyle {
     base {
         Modifier
             .styleModifier {
-                property("--bs-link-color", Theme.Secondary.color)
+                property("--bs-link-color", customColor(
+                    colorMode = colorMode,
+                    lightColor = Theme.Black,
+                    darkColor = Theme.White
+                ))
             }
             .color(
                 color = customColor(
@@ -35,10 +39,5 @@ val NavigationItemStyle = CssStyle {
     }
     hover {
         Modifier
-            .styleModifier {
-                property("--bs-link-hover-color", Theme.Primary.color)
-            }
-            .color(Theme.Primary.color)
     }
 }
-

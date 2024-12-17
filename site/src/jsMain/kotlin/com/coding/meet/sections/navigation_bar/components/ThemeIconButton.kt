@@ -28,7 +28,7 @@ fun ThemeIconButton(
                 darkColor = Theme.DarkGray
             )
         ),
-        tooltipText = Res.Strings.Toggle_COLOR_MODE,
+        tooltipText = Res.Strings.TOGGLE_COLOR_MODE,
         onClick = {
             onClick()
         },

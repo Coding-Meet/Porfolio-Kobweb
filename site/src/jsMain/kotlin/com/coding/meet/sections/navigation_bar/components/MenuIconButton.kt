@@ -3,7 +3,6 @@ package com.coding.meet.sections.navigation_bar.components
 import androidx.compose.runtime.Composable
 import com.coding.meet.components.PrimaryIconButton
 import com.coding.meet.util.CustomColor
-import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
@@ -21,7 +20,6 @@ fun MenuIconButton(onMenuClicked: () -> Unit) {
                 darkColor = Theme.DarkGray
             )
         ),
-        tooltipText = Res.Strings.Toggle_COLOR_MODE,
         onClick = {
             onMenuClicked()
         },

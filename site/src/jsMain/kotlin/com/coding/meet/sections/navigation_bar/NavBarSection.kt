@@ -7,38 +7,43 @@ import com.coding.meet.sections.navigation_bar.components.MenuIconButton
 import com.coding.meet.sections.navigation_bar.components.MyLogo
 import com.coding.meet.sections.navigation_bar.components.NavMenu
 import com.coding.meet.sections.navigation_bar.components.ThemeIconButton
+import com.coding.meet.sections.navigation_bar.styles.NavHeaderStyle
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
-import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.padding
+import com.varabyte.kobweb.silk.defer.Deferred
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import org.jetbrains.compose.web.css.px
 
 @Composable
-fun NavBarSection(onMenuClicked: () -> Unit) {
+fun NavBarSection(
+    selectedSectionId : String,
+    onSelectSectionId: (String) -> Unit,
+    onMenuClicked: () -> Unit) {
     var colorMode by ColorMode.currentState
 
     val breakpoint = rememberBreakpoint()
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(all = 15.px),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        if (breakpoint <= Breakpoint.MD) {
-            MenuIconButton(onMenuClicked)
+
+    Deferred {
+        Row(
+            modifier = NavHeaderStyle.toModifier(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            if (breakpoint <= Breakpoint.MD) {
+                MenuIconButton(onMenuClicked)
+            }
+            MyLogo()
+            if (breakpoint > Breakpoint.MD) {
+                NavMenu(selectedSectionId){
+                    onSelectSectionId(it)
+                }
+            }
+            ThemeIconButton(onClick = {
+                colorMode = colorMode.opposite
+            })
         }
-        MyLogo()
-        if (breakpoint > Breakpoint.MD) {
-            NavMenu()
-        }
-        ThemeIconButton(onClick = {
-            colorMode = colorMode.opposite
-        })
     }
 }

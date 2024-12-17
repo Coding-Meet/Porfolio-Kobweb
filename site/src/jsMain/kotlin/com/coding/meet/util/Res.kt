@@ -8,7 +8,7 @@ object Res {
     }
 
     object Strings {
-        const val Toggle_COLOR_MODE = "Toggle Color Mode"
+        const val TOGGLE_COLOR_MODE = "Toggle Color Mode"
     }
 
     object Icon {
