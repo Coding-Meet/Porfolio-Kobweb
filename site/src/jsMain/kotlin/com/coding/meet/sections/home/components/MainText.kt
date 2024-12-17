@@ -1,8 +1,7 @@
-package com.coding.meet.sections.home
+package com.coding.meet.sections.home.components
 
 import androidx.compose.runtime.Composable
 import com.coding.meet.components.SocialBar
-import com.coding.meet.models.Section
 import com.coding.meet.sections.home.styles.MainButtonStyle
 import com.coding.meet.sections.home.styles.MainImageStyle
 import com.coding.meet.sections.home.styles.upDownAnim
@@ -10,7 +9,6 @@ import com.coding.meet.sections.home.styles.zoomIn
 import com.coding.meet.util.Constants.LOREM_IPSUM_SHORTEST
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
-import com.coding.meet.util.Res.Dimens.SECTION_WIDTH
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.AnimationIterationCount
 import com.varabyte.kobweb.compose.css.BoxSizing
@@ -33,32 +31,25 @@ import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontStyle
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.height
-import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.textDecorationLine
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
-import com.varabyte.kobweb.silk.components.layout.SimpleGrid
-import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
-import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import org.jetbrains.compose.web.css.AnimationDirection
 import org.jetbrains.compose.web.css.AnimationTimingFunction
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.LineStyle
-import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.s
@@ -66,27 +57,6 @@ import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
 
-@Composable
-fun HomeSection() {
-    val breakpoint = rememberBreakpoint()
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .maxWidth(SECTION_WIDTH.px)
-            .id(Section.HOME.id)
-            .padding(top = 6.cssRem),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        SimpleGrid(
-            modifier = Modifier.fillMaxWidth(90.percent),
-            numColumns = numColumns(base = 1, md = 2)
-        ) {
-            MainText(breakpoint = breakpoint)
-            MainImage()
-        }
-    }
-}
 
 @Composable
 fun MainText(breakpoint: Breakpoint) {
@@ -178,36 +148,5 @@ fun MainText(breakpoint: Breakpoint) {
                 )
             }
         }
-    }
-}
-
-@Composable
-fun MainImage() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Image(
-            modifier = MainImageStyle.toModifier().size(90.percent)
-                .animation(
-                    zoomIn.toAnimation(
-                        duration = 1.s,
-                        timingFunction = AnimationTimingFunction.Ease,
-                        iterationCount = AnimationIterationCount.of(1)
-                    ),
-                    upDownAnim.toAnimation(
-                        duration = 3.s,
-                        direction = AnimationDirection.Alternate,
-                        iterationCount = AnimationIterationCount.Infinite
-                    )
-                )
-                .display(DisplayStyle.Block)
-                .borderRadius(100.percent)
-                .boxSizing(BoxSizing.BorderBox)
-                .border(5.px, LineStyle.Solid,  Theme.Primary.color),
-            src = Res.Image.profile,
-            alt = "Main Image",
-        )
     }
 }

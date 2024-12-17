@@ -25,9 +25,9 @@ fun DefaultPageLayout(
 ) {
     var menuOpened by remember { mutableStateOf(false) }
     var selectedSectionId by remember { mutableStateOf(Section.HOME.path) }
-    LaunchedEffect(window.location.hash) {
-        if (window.location.hash.trim().isNotEmpty()) {
-            selectedSectionId = window.location.hash
+    LaunchedEffect(window.location) {
+        if (window.location.pathname.trim().isNotEmpty()) {
+            selectedSectionId = window.location.pathname
         }
     }
     Box(modifier = Modifier.fillMaxSize()) {
