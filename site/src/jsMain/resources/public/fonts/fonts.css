@@ -1,9 +1,2 @@
-@font-face {
-  font-family: 'ComicNeueRegular';
-  src: url('/fonts/comic_neue_regular.ttf');
-}
-
-@font-face {
-    font-family: 'ComicNeueBold';
-    src: url('/fonts/comic_neue_bold.ttf')
-}
+@import url("https://fonts.googleapis.com/css?family=Space Mono");
+@import url("https://fonts.googleapis.com/css?family=Poppins");
