@@ -7,4 +7,5 @@ data class Article(
     val link: String,
     val categories: List<String>,
     val pubDate: String,
+    val readTime: String
 )

@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import com.coding.meet.common.image_slider_with_dot.ImageSliderWithDot
 import com.coding.meet.models.Project
+import com.coding.meet.screens.projects.styles.AngledGradientButtonStyle
 import com.coding.meet.screens.projects.styles.ProjectStyle
-import com.coding.meet.screens.projects.styles.ReadMeBtnStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.Cursor
@@ -16,7 +16,6 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
@@ -27,7 +26,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.flexWrap
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
-import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
@@ -37,6 +35,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.fa.FaGithub
 import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.border
@@ -60,15 +59,8 @@ fun ProjectCard(
     val colorMode by ColorMode.currentState
 
     Column(
-        modifier = ProjectStyle.toModifier().backgroundColor(
-            CustomColor(
-                lightColor = Theme.LightCardBackGroundColor,
-                darkColor = Theme.DarkCardBackGroundColor
-            )
-        ).border(
-            color = colorMode.toPalette().border, style = LineStyle.Solid, width = 2.px
-        ).margin(10.px).padding(10.px),
-        verticalArrangement = Arrangement.Center,
+        modifier = ProjectStyle.toModifier().margin(10.px).padding(10.px),
+        verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if (project.imageUrls.isNotEmpty()) {
@@ -121,16 +113,13 @@ fun ProjectCard(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
-                attrs = ReadMeBtnStyle.toModifier().height(50.px).border(width = 0.px)
-                    .borderRadius(r = 5.px).backgroundColor(Theme.Primary.color).color(Colors.White)
-                    .cursor(Cursor.Pointer).onClick {
+                attrs = AngledGradientButtonStyle.toAttrs {
+                    onClick {
                         onClick()
-                    }.toAttrs()
+                    }
+                }
             ) {
                 SpanText(
-                    modifier = Modifier.color(
-                        Theme.LightFontColor.color,
-                    ).fontSize(1.0.cssRem).fontWeight(FontWeight.Bold),
                     text = "Read More",
                 )
             }
@@ -152,3 +141,4 @@ fun ProjectCard(
         }
     }
 }
+
