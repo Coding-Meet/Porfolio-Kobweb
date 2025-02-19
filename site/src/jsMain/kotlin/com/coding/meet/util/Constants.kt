@@ -223,8 +223,8 @@ object Constants {
         Article(
             title = "Automate Android Feature Creation with Gradle",
             shortDescription = "Learn how to automate Android feature creation using Gradle scripting.",
-            thumbnail = "https://cdn-images-1.medium.com/max/1024/1*uSl5aXXimCMVBQUsv26QDw.png",
-            link = "https://proandroiddev.com/automate-android-feature-creation-with-gradle-cfd51373e167",
+            thumbnail = "articles/template-to-feature.png",
+            link = "https://medium.com/@meet26/automate-android-feature-creation-with-gradle-cfd51373e167",
             categories = listOf("Android", "Gradle", "Automation"),
             pubDate = "Dec 10, 2024",
             readTime = "7 min read"
@@ -232,8 +232,8 @@ object Constants {
         Article(
             title = "Part 2: Automating Reverse Feature to Template Transformation in Gradle",
             shortDescription = "Learn how to automate Android template creation using Gradle scripting.",
-            thumbnail = "https://cdn-images-1.medium.com/max/1024/1*Fn6uQiYmqYKg3VMhuDifwg.jpeg",
-            link = "https://proandroiddev.com/part-2-automating-reverse-feature-to-template-transformation-in-gradle-3973880bb6ff",
+            thumbnail = "articles/feature-to-template.png",
+            link = "https://medium.com/@meet26/part-2-automating-reverse-feature-to-template-transformation-in-gradle-3973880bb6ff",
             categories = listOf("Android", "Gradle", "Automation","Android Studio"),
             pubDate = "Feb 18, 2025",
             readTime = "7 min read"
@@ -241,8 +241,8 @@ object Constants {
         Article(
             title = "Full Guide: How to Form Validation With Jetpack Compose in Kotlin",
             shortDescription = "A complete guide to implementing form validation in Jetpack Compose.",
-            thumbnail = "https://cdn-images-1.medium.com/max/1024/1*fkUvzK7YR0kTSWSwydY9XA.png",
-            link = "https://proandroiddev.com/full-guide-how-to-form-validation-with-jetpack-compose-01e0464ae884",
+            thumbnail = "articles/form-validation-jetpack-compose.png",
+            link = "https://medium.com/@meet26/full-guide-how-to-form-validation-with-jetpack-compose-01e0464ae884",
             categories = listOf("Jetpack Compose", "Validation", "Kotlin"),
             pubDate = "Oct 1, 2024",
             readTime = "16 min read"
@@ -250,8 +250,8 @@ object Constants {
         Article(
             title = "Bottom Navigation Bar for compact screens & Navigation Rail for larger screens in Compose Multiplatform",
             shortDescription = "A guide on implementing bottom navigation for compact screens and navigation rail for larger screens.",
-            thumbnail = "https://cdn-images-1.medium.com/max/1024/1*riGHyX0ggxbceM7Uo-y9rA.png",
-            link = "https://proandroiddev.com/how-to-integrate-bottom-navigation-bar-for-compact-screens-and-a-navigation-rail-for-larger-screens-c7dc3baab0e7",
+            thumbnail = "articles/bottom-navigation-bar-cmp.png",
+            link = "https://medium.com/@meet26/how-to-integrate-bottom-navigation-bar-for-compact-screens-and-a-navigation-rail-for-larger-screens-c7dc3baab0e7",
             categories = listOf("Android", "Navigation", "UI Design"),
             pubDate = "Sep 20, 2024",
             readTime = "10 min read"
@@ -259,8 +259,8 @@ object Constants {
         Article(
             title = "How to Integrate ViewModel in Kotlin Multiplatform with Koin",
             shortDescription = "Learn how to use ViewModel in Kotlin Multiplatform projects with Koin.",
-            thumbnail = "https://cdn-images-1.medium.com/max/1024/1*cZ7ByLSeo7R4iJBUkADNbA.png",
-            link = "https://proandroiddev.com/how-to-integrate-viewmodel-in-kotlin-multiplatform-with-koin-1a1134530215",
+            thumbnail = "articles/viewmodel-kmp.png",
+            link = "https://medium.com/@meet26/how-to-integrate-viewmodel-in-kotlin-multiplatform-with-koin-1a1134530215",
             categories = listOf("Kotlin Multiplatform", "ViewModel", "Dependency Injection"),
             pubDate = "Sep 11, 2024",
             readTime = "5 min read"
