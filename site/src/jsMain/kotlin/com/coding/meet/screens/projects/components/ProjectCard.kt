@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import com.coding.meet.common.image_slider_with_dot.ImageSliderWithDot
 import com.coding.meet.models.Project
-import com.coding.meet.screens.projects.styles.AngledGradientButtonStyle
 import com.coding.meet.screens.projects.styles.ProjectStyle
+import com.coding.meet.screens.projects.styles.ReadMoreButtonStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.Cursor
@@ -113,7 +113,7 @@ fun ProjectCard(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
-                attrs = AngledGradientButtonStyle.toAttrs {
+                attrs = ReadMoreButtonStyle.toAttrs {
                     onClick {
                         onClick()
                     }
