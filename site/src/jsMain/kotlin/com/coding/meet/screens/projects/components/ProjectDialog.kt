@@ -4,12 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import com.coding.meet.common.image_slider_with_dot.ImageSliderWithDot
 import com.coding.meet.models.Project
+import com.coding.meet.screens.projects.styles.ReadMoreButtonStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.TextAlign
+import com.varabyte.kobweb.compose.css.Visibility
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.ColumnScope
@@ -34,6 +36,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.overflow
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
+import com.varabyte.kobweb.compose.ui.modifiers.visibility
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.CloseIcon
@@ -41,6 +44,7 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaGithub
 import com.varabyte.kobweb.silk.components.icons.fa.FaGooglePlay
 import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.border
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
@@ -52,6 +56,7 @@ import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Hr
 import org.jetbrains.compose.web.dom.Iframe
@@ -62,7 +67,10 @@ import org.jetbrains.compose.web.dom.Ul
 @Composable
 fun ColumnScope.ProjectDialog(
     project: Project,
-    onDismiss: () -> Unit
+    isNextPreviousBtnShow: Boolean = false,
+    onDismiss: () -> Unit,
+    onNext: () -> Unit,
+    onPrevious: () -> Unit
 ) {
     val colorMode by ColorMode.currentState
 
@@ -83,13 +91,16 @@ fun ColumnScope.ProjectDialog(
                 Row(
                     modifier = Modifier.fillMaxWidth().padding(topBottom = 5.px),
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(5.px,Alignment.CenterHorizontally),
+                    horizontalArrangement = Arrangement.spacedBy(
+                        5.px,
+                        Alignment.CenterHorizontally
+                    ),
                 ) {
                     if (project.appStoreUrl != null) {
                         FaGooglePlay(
                             size = IconSize.XXL,
                             modifier = Modifier.cursor(Cursor.Pointer).onClick {
-                                window.open(project.appStoreUrl)
+                                window.open(project.appStoreUrl!!)
                             })
 
                     }
@@ -241,6 +252,41 @@ fun ColumnScope.ProjectDialog(
                     attr("referrerpolicy", "strict-origin-when-cross-origin")
                 }
         )
+        Hr(
+            attrs = Modifier.fillMaxWidth().border(
+                color = colorMode.toPalette().border, style = LineStyle.Solid, width = 2.px
+            ).toAttrs()
+        )
+    }
+    if (isNextPreviousBtnShow) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(10.px, Alignment.CenterHorizontally)
+        ) {
+            Button(
+                attrs = ReadMoreButtonStyle.toAttrs {
+                    onClick {
+                        onPrevious()
+                    }
+                }
+            ) {
+                SpanText(
+                    text = "Previous",
+                )
+            }
+            Button(
+                attrs = ReadMoreButtonStyle.toAttrs {
+                    onClick {
+                        onNext()
+                    }
+                }
+            ) {
+                SpanText(
+                    text = "Next",
+                )
+            }
+        }
     }
 }
 

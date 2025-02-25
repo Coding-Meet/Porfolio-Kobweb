@@ -21,7 +21,6 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.padding
-import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
@@ -48,6 +47,7 @@ fun ProjectPage() {
             var isShowDialog by remember { mutableStateOf(false) }
             val dialogId by remember { mutableStateOf("currentProjectDialog") }
             var openProject by remember { mutableStateOf<Project?>(null) }
+            var currentProjectIndex by remember { mutableStateOf<Int?>(null) }
 
             LaunchedEffect(Unit) {
                 window.addEventListener("click", {
@@ -56,6 +56,7 @@ fun ProjectPage() {
                     if (it.target == modal) {
                         isShowDialog = !isShowDialog
                         openProject = null
+                        currentProjectIndex = null
                     }
                 })
             }
@@ -80,20 +81,43 @@ fun ProjectPage() {
                     ),
                     dialogId = dialogId,
                 ) {
-                   ProjectDialog(project = currentProject, onDismiss = {
-                       isShowDialog = false
-                       openProject = null
-                   })
+                    ProjectDialog(
+                        project = currentProject,
+                        onDismiss = {
+                            isShowDialog = false
+                            openProject = null
+                        }, onPrevious = {
+                            if (currentProjectIndex != null) {
+                                if (currentProjectIndex!! > 0) {
+                                    currentProjectIndex = currentProjectIndex!! - 1
+                                    openProject = Constants.projects[currentProjectIndex!!]
+                                }
+                            }
+
+                        }, onNext = {
+                            if (currentProjectIndex != null) {
+                                if (currentProjectIndex!! < Constants.projects.size - 1) {
+                                    currentProjectIndex = currentProjectIndex!! + 1
+                                    openProject = Constants.projects[currentProjectIndex!!]
+                                }
+                            }
+
+                        }
+                    )
                 }
             }
             SimpleGrid(
                 numColumns = numColumns(base = 1, sm = 1, md = 2, lg = 3),
                 modifier = Modifier.fillMaxWidth()
-                    .padding(topBottom = 10.px, leftRight = if (breakpoint > Breakpoint.SM) 10.px else 0.px)
+                    .padding(
+                        topBottom = 10.px,
+                        leftRight = if (breakpoint > Breakpoint.SM) 10.px else 0.px
+                    )
             ) {
-                Constants.projects.forEach { project ->
+                Constants.projects.forEachIndexed { index, project ->
                     ProjectCard(project) {
                         openProject = project
+                        currentProjectIndex = index
                         isShowDialog = true
                     }
                 }
