@@ -20,6 +20,7 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Color.Companion.argb
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
+import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
@@ -51,7 +52,7 @@ import org.jetbrains.compose.web.css.vh
 
 @Composable
 fun MobileSideMenu(
-    selectedSectionId : String,
+    selectedSectionId: String,
     onMenuClosed: () -> Unit
 ) {
 
@@ -64,7 +65,7 @@ fun MobileSideMenu(
     LaunchedEffect(breakpoint) {
         translateX = 0.percent
         opacity = 100.percent
-        if(breakpoint > Breakpoint.MD) {
+        if (breakpoint > Breakpoint.MD) {
             scope.launch {
                 translateX = (-100).percent
                 opacity = 0.percent
@@ -89,7 +90,14 @@ fun MobileSideMenu(
                     timingFunction = null,
                     delay = null
                 )
-            )
+            ).onClick {
+                scope.launch {
+                    translateX = (-100).percent
+                    opacity = 0.percent
+                    delay(500)
+                    onMenuClosed()
+                }
+            }
     ) {
         Column(
             modifier = Modifier
@@ -97,10 +105,13 @@ fun MobileSideMenu(
                 .width(if (breakpoint < Breakpoint.MD) 50.percent else 25.percent)
                 .overflow(Overflow.Auto)
                 .scrollBehavior(ScrollBehavior.Smooth)
-                .backgroundColor(CustomColor(
-                    lightColor = Theme.White,
-                    darkColor = Theme.DarkGray
-                ))
+                .backgroundColor(
+                    CustomColor(
+                        lightColor = Theme.White,
+                        darkColor = Theme.DarkGray
+                    )
+                )
+                .borderRadius(topRight = 20.px, bottomRight = 20.px)
                 .translateX(tx = translateX)
                 .transition(
                     Transition.of(
@@ -113,9 +124,7 @@ fun MobileSideMenu(
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth()
-                    .padding(
-                        leftRight = 15.px
-                    ),
+                    .padding(20.px),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 CloseIcon(
