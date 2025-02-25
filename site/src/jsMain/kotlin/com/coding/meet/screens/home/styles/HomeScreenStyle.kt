@@ -4,14 +4,12 @@ package com.coding.meet.screens.home.styles
 import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.scale
-import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.modifiers.translateY
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.animation.Keyframes
-import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.selectors.hover
 import org.jetbrains.compose.web.ExperimentalComposeWebApi
 import org.jetbrains.compose.web.css.filter
@@ -42,7 +40,6 @@ val MainButtonStyle = CssStyle {
 val HomeProfileImageStyle = CssStyle {
     base {
         Modifier
-            .size(250.px)
             .styleModifier {
                 filter { grayscale(100.percent) }
             }
@@ -54,9 +51,6 @@ val HomeProfileImageStyle = CssStyle {
                     delay = null
                 )
             )
-    }
-    Breakpoint.SM {
-        Modifier.size(200.px)
     }
     hover {
         Modifier.styleModifier {
@@ -76,5 +70,10 @@ val upDownAnim = Keyframes {
     }
     50.percent {
         Modifier.translateY(20.px)
+    }
+}
+val SocialImageStyle = CssStyle {
+    hover {
+        Modifier.scale(1.2)
     }
 }

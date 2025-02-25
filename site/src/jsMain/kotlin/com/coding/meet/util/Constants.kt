@@ -4,13 +4,14 @@ import com.coding.meet.models.Article
 import com.coding.meet.models.FAQ
 import com.coding.meet.models.Project
 import com.coding.meet.models.Service
+import com.coding.meet.models.Social
 
 object Constants {
     const val WEBSITE_NAME = "Coding Meet"
     const val WEBSITE = "https://codingmeet.com/"
 
-    const val LOREM_IPSUM_SHORTEST =
-        "Hello, I'm Meet! I'm an Android developer with 2+ years of experience in Kotlin, Java, Jetpack Compose, and Kotlin Multiplatform. I specialize in Material Theme 3, Ads Integration, API Integration, MVVM, Firebase and ROOM. I've helped 200+ developers on Instagram, LinkedIn, and Telegram, and answered 50+ questions on Stack Overflow. I hold a Bachelor's degree in Computer Engineering and run a YouTube channel, Coding Meet, where I share Android development tutorials. Let's work together to bring your project to life!"
+    const val BIO =
+        "Hello! I’m Meet, an Android developer passionate about building apps with Kotlin, Java, KMP, and Jetpack Compose. Through my YouTube channel, GitHub projects, and this website, I share tutorials, source code, and practical guides to help developers improve their skills. I also offer custom Android development services, including app creation, bug fixing, and SDK updates. Let’s simplify Android development together! \uD83D\uDE80"
 
     private const val GITHUB_USER_NAME = "Coding-Meet"
 
@@ -45,7 +46,13 @@ object Constants {
                 "Local Data Storage: Room for databases, DataStore for key-value storage.",
                 "Build Configuration: Managed centrally with BuildKonfig."
             ),
-            technologies = listOf("Kotlin Multiplatform", "Jetpack Compose", "MVVM", "REST API", "Database"),
+            technologies = listOf(
+                "Kotlin Multiplatform",
+                "Jetpack Compose",
+                "MVVM",
+                "REST API",
+                "Database"
+            ),
             libraries = listOf(
                 "BuildKonfig", "Ktor", "Kermit", "Room", "DataStore", "Jetpack Compose Navigation",
                 "kotlinx.coroutines", "Common ViewModel", "kotlinx.serialization"
@@ -73,7 +80,7 @@ object Constants {
             imageUrls = listOf(
                 "project_1.png", "project_1.png"
             ),
-            platform =listOf( "Android", "iOS", "Windows", "macOS", "Linux", "Web"),
+            platform = listOf("Android", "iOS", "Windows", "macOS", "Linux", "Web"),
             stargazersCount = 79
         ),
         Project(
@@ -98,7 +105,7 @@ object Constants {
             imageUrls = listOf(
                 "project_1.png", "project_1.png", "project_1.png", "project_1.png"
             ),
-            platform =listOf("Android"),
+            platform = listOf("Android"),
             features = listOf("Code generation", "Pattern customization"),
         ),
         Project(
@@ -217,7 +224,7 @@ object Constants {
             shortDescription = "Learn how to automate Android template creation using Gradle scripting.",
             thumbnail = "articles/feature-to-template.png",
             link = "https://medium.com/@meet26/part-2-automating-reverse-feature-to-template-transformation-in-gradle-3973880bb6ff",
-            categories = listOf("Android", "Gradle", "Automation","Android Studio"),
+            categories = listOf("Android", "Gradle", "Automation", "Android Studio"),
             pubDate = "Feb 18, 2025",
             readTime = "7 min read"
         ),
@@ -249,7 +256,12 @@ object Constants {
             readTime = "5 min read"
         )
     )
-
+    val animatedTexts = listOf(
+        "Meet",
+        "Native Android Developer",
+        "Kotlin Multiplatform Developer",
+        "IOT Developer"
+    )
     val services = listOf(
         Service(
             title = "\uD83D\uDCF1 Build a New Android App",
@@ -377,6 +389,62 @@ object Constants {
             question = "How long does it take to complete a project?",
             answer = "The timeline depends on the complexity of the project. Simple fixes take a few hours, while full app development may take weeks or months."
         )
+    )
+
+    val socials = listOf(
+        Social(
+            title = "Youtube",
+            link = "https://youtube.com/@codingmeet26?si=_2Mu6ozuCdYuqihA",
+            lightImage = "social/youtube.svg"
+        ),
+        Social(
+            title = "GitHub",
+            link = "https://github.com/Coding-Meet",
+            lightImage = "social/github.svg",
+            darkImage = "social/github_dark_mode.svg"
+        ),
+        Social(
+            title = "Gmail",
+            link = "mailto:",
+            lightImage = "social/mail.svg"
+        ),
+        Social(
+            title = "Medium",
+            link = "https://www.medium.com/@meet26",
+            lightImage = "social/medium.svg",
+            darkImage = "social/medium_dark_mode.svg"
+        ),
+        Social(
+            title = "Stack Overflow",
+            link = "https://stackoverflow.com/users/13082664/meet",
+            lightImage = "social/stack_overflow.svg"
+        ),
+        Social(
+            title = "LinkedIn",
+            link = "https://www.linkedin.com/in/coding-meet",
+            lightImage = "social/linkedin.svg"
+        ),
+        Social(
+            title = "Instagram",
+            link = "https://www.instagram.com/codingmeet26/",
+            lightImage = "social/instagram.svg"
+        ),
+        Social(
+            title = "Twitter",
+            link = "https://www.twitter.com/CodingMeet",
+            lightImage = "social/twitter.svg"
+        ),
+        Social(
+            title = "Telegram",
+            link = "https://www.telegram.me/Meetb26",
+            lightImage = "social/telegram.svg"
+        ),
+        Social(
+            title = "Buy Me Coffee",
+            link = "https://www.buymeacoffee.com/CodingMeet",
+            lightImage = "social/buy_me_coffee.svg",
+            darkImage = "social/buy_me_coffee_dark_mode.svg"
+        ),
     )
 
 
