@@ -1,7 +1,9 @@
 package com.coding.meet.util
 
 import com.coding.meet.models.Article
+import com.coding.meet.models.FAQ
 import com.coding.meet.models.Project
+import com.coding.meet.models.Service
 
 object Constants {
     const val WEBSITE_NAME = "Coding Meet"
@@ -245,6 +247,135 @@ object Constants {
             categories = listOf("Kotlin Multiplatform", "ViewModel", "Dependency Injection"),
             pubDate = "Sep 11, 2024",
             readTime = "5 min read"
+        )
+    )
+
+    val services = listOf(
+        Service(
+            title = "\uD83D\uDCF1 Build a New Android App",
+            description = "Want to create your own Android app? I can build it for you!",
+            features = listOf(
+                "Develop using Kotlin, Java, Jetpack Compose, and Kotlin Multiplatform",
+                "Implement Coroutines, Koin, Dagger Hilt, Retrofit, and Room for efficient architecture",
+                "Design UI with XML and Jetpack Compose",
+                "Integrate third-party REST APIs seamlessly",
+                "Use Navigation Components for smooth app flow",
+                "Follow MVVM / Clean Architecture for maintainable code",
+                "Optimize image loading with Glide and Coin",
+                "Implement Firebase Crashlytics and Google Analytics for monitoring and insights",
+                "Utilize Google APIs like Maps and Sign-In",
+                "Enable Google Play In-App Updates for seamless user experience",
+                "Integrate Firebase Realtime Database, Firestore, and Push Notifications"
+            ),
+            imageUrls = listOf(
+                "services/build_android_app.png"
+            ),
+        ),
+        Service(
+            title = "\uD83D\uDD27 Fix Bugs & Improve Your App",
+            description = "Is your app crashing or running slow? I will fix it!",
+            features = listOf(
+                "Resolve UI and layout issues for a better user experience",
+                "Optimize app performance to run smoothly",
+                "Fix code errors and bugs efficiently",
+                "Resolve version update errors and compatibility issues",
+                "Debug and fix Android SDK and Gradle problems",
+                "Upgrade SDK and API level to meet the latest standards",
+                "Identify and fix app crashes for a stable experience",
+                "Troubleshoot and resolve specific bugs",
+                "Fix importing issues in Android Studio",
+                "Debug Jetpack Compose UI issues",
+                "Resolve Signup/Login authentication problems",
+                "Fix Firebase integration issues (Firestore, Realtime Database, Notifications)",
+                "Debug Android Studio SDK-related problems"
+            ),
+            imageUrls = listOf(
+                "services/fix_bug.png"
+            ),
+        ),
+        Service(
+            title = "\uD83D\uDE80 Update Your Android App (SDK & Gradle)",
+            description = "Need to update your app for the latest Android version?",
+            features = listOf(
+                "Update target SDK to Android 14 (API level 35) with necessary code adjustments",
+                "Fix Gradle and dependency issues",
+                "Upgrade SDK and API levels for better performance and security",
+                "Debug and resolve Android app bugs",
+                "Fix version update errors and compatibility issues",
+                "Resolve Android SDK-related errors",
+                "Identify and fix app crashes and runtime errors",
+                "Fix specific bugs affecting app performance",
+                "Troubleshoot APK issues and build problems",
+                "Resolve errors when uploading to the Play Store"
+            ),
+            imageUrls = listOf(
+                "services/update_android_app.png"
+            ),
+        ),
+        Service(
+            title = "\uD83E\uDD16 Add AI Chatbot to Your App (Google Gemini & GPT-4)",
+            description = "Want to add an AI chatbot? I can integrate Google Gemini AI for smart responses!",
+            features = listOf(
+                "Welcome Screen for a friendly start",
+                "Chat Screen with AI-powered conversations using GPT-4 & Gemini API",
+                "Internet Connectivity Check to ensure the app stays online",
+                "Clipboard Manager for easy message copying",
+                "Text Selection for copying and sharing text seamlessly",
+                "Popup Menus for enhanced message interaction",
+                "Room Database to store chat history locally",
+                "Robot Interaction: Insert, view, update, and delete robot characters",
+                "Text-to-Speech (TTS) & Voice-to-Text (VTT) support for accessibility",
+                "API Key Security with encrypted SharedPreferences"
+            ),
+            imageUrls = listOf(
+                "services/chatbot.png"
+            ),
+        )
+    )
+    val faqs = listOf(
+        FAQ(
+            question = "What technologies do you use for Android app development?",
+            answer = "I use Kotlin, Java, Jetpack Compose, and Kotlin Multiplatform, along with MVVM, Clean Architecture, and various Android libraries."
+        ),
+        FAQ(
+            question = "Can you fix bugs in my existing Android app?",
+            answer = "Yes, I can debug and fix issues related to UI, crashes, Gradle, SDK updates, and general app performance."
+        ),
+        FAQ(
+            question = "Is source code required to fix bugs in the app?",
+            answer = "Yes, source code is required to diagnose and fix bugs in your application."
+        ),
+        FAQ(
+            question = "Can you upgrade my app to the latest Android version?",
+            answer = "Yes, I can update your app’s target SDK to Android 14 (API level 35) and make necessary code adjustments for compatibility."
+        ),
+        FAQ(
+            question = "Is source code required to update the app?",
+            answer = "Yes, source code is required to update the SDK and fix any compatibility issues in your application."
+        ),
+        FAQ(
+            question = "Do you provide AI chatbot integration?",
+            answer = "Yes, I can integrate AI-powered chatbots using Google Gemini API and GPT-3 for intelligent conversations."
+        ),
+        FAQ(
+            question = "Do you provide Play Store upload support?",
+            answer = "Yes, I can fix Play Store upload issues, including APK problems and version compatibility errors."
+        ),
+        FAQ(
+            question = "Can you integrate Firebase services into my app?",
+            answer = "Yes, I can integrate Firebase services such as Realtime Database, Firestore, Authentication, Push Notifications, and Crashlytics."
+        ),
+        FAQ(
+            question = "Do you work with third-party APIs?",
+            answer = "Yes, I can integrate third-party REST APIs to enhance your app’s functionality."
+        ),
+        FAQ(
+            question = "What do you need to get started?",
+            answer = "I need access to your app’s source code, preferably through a Git repository, along with the project requirements."
+        ),
+        FAQ(
+            question = "How long does it take to complete a project?",
+            answer = "The timeline depends on the complexity of the project. Simple fixes take a few hours, while full app development may take weeks or months."
         )
     )
 
