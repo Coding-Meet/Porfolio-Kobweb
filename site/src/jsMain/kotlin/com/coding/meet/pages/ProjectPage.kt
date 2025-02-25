@@ -60,14 +60,16 @@ fun ProjectPage() {
                 })
             }
             LaunchedEffect(isShowDialog) {
+                val model = window.document.getElementById(dialogId)
+                val modal = model?.asDynamic()
+                val body = window.document.body?.asDynamic()
+
                 if (isShowDialog) {
-                    val model = window.document.getElementById(dialogId)
-                    val modal = model?.asDynamic()
                     modal?.style?.display = "block"
+                    body?.style?.setProperty("overflow", "hidden") // Disable scrolling
                 } else {
-                    val model = window.document.getElementById(dialogId)
-                    val modal = model?.asDynamic()
                     modal?.style?.display = "none"
+                    body?.style?.removeProperty("overflow") // Restore default scrolling
                 }
             }
 
