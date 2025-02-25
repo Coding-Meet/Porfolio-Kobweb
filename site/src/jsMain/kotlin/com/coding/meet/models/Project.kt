@@ -2,15 +2,16 @@ package com.coding.meet.models
 
 data class Project(
     val title: String,
-    val description: String,
-    val technologies: List<String>,
+    val shortDescription: String,
+    val longDescription:String,
+    val appStoreUrl: String? = null,
     val githubUrl: String? = null,
-    val imageUrls: List<String> = arrayListOf(),
-    val platform: String,
-    val startDate: String,
-    val endDate: String,
+    val stargazersCount: Int = 0,
+    val youtubeVideoLink : String? = null,
     val features: List<String> = arrayListOf(),
-    val category: String? = null,
+    val technologies: List<String> = arrayListOf(),
+    val libraries: List<String> = arrayListOf(),
+    val imageUrls: List<String> = arrayListOf(),
+    val platform: List<String> = arrayListOf(),
     val topics: List<String> = arrayListOf(),
-    val stargazersCount: Int = 0
 )

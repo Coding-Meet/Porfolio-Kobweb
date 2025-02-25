@@ -1,7 +1,9 @@
 package com.coding.meet.screens.projects.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import com.coding.meet.common.image_slider_with_dot.ImageSliderWithDot
 import com.coding.meet.models.Project
 import com.coding.meet.screens.projects.styles.ProjectStyle
@@ -33,6 +35,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.fa.FaGithub
+import com.varabyte.kobweb.silk.components.icons.fa.FaGooglePlay
 import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toAttrs
@@ -76,28 +79,44 @@ fun ProjectCard(
             )
         }
         SpanText(
-            text = project.title, modifier = Modifier.fillMaxWidth().color(
+            text = project.title,
+            modifier = Modifier.fillMaxWidth().padding(leftRight = 10.px).color(
                 CustomColor(
                     lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor
                 )
             ).fontSize(1.5.cssRem).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
         )
         SpanText(
-            text = project.description, modifier = Modifier.fillMaxWidth().margin(top = 5.px).color(
+            text = project.shortDescription,
+            modifier = Modifier.fillMaxWidth().padding(top = 5.px, leftRight = 10.px).color(
                 CustomColor(
                     lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor
                 )
-            ).fontSize(0.95.cssRem).textAlign(TextAlign.Center)
+            ).fontSize(1.cssRem).textAlign(TextAlign.Center)
         )
         Div(
-            attrs = Modifier.fillMaxWidth().display(DisplayStyle.Flex).flexWrap(FlexWrap.Wrap)
+            attrs = Modifier.fillMaxWidth().display(value = DisplayStyle.Flex)
+                .flexWrap(FlexWrap.Wrap)
                 .margin(top = 5.px).justifyContent(JustifyContent.Center).toAttrs()
         ) {
-            project.platform.split(",").forEach {
+            val platform by remember {
+                derivedStateOf {
+                    if (project.platform.size <= 2) {
+                        project.platform.toMutableList().also {
+                            it.addAll(project.libraries.take(5))
+                        }
+                    } else {
+                        project.platform.toMutableList()
+                    }
+                }
+            }
+
+            platform.forEach {
                 SpanText(
-                    text = it.trim(),
+                    text = it,
                     modifier = Modifier.color(Theme.LightFontColor.color)
-                        .backgroundColor(Theme.LightBackGroundColor.color).borderRadius(20.percent)
+                        .backgroundColor(Theme.LightBackGroundColor.color)
+                        .borderRadius(20.percent)
                         .padding(leftRight = 20.px).margin(5.px)
                 )
             }
@@ -123,7 +142,15 @@ fun ProjectCard(
                     text = "Read More",
                 )
             }
-            if (project.githubUrl?.isNotEmpty() == true) {
+            if (project.appStoreUrl != null) {
+                FaGooglePlay(
+                    size = IconSize.XXL,
+                    modifier = Modifier.cursor(Cursor.Pointer).onClick {
+                        window.open(project.appStoreUrl)
+                    })
+
+            }
+            if (project.githubUrl != null) {
                 FaGithub(size = IconSize.XXL, modifier = Modifier.cursor(Cursor.Pointer).onClick {
                     window.open(project.githubUrl)
                 })
@@ -134,7 +161,7 @@ fun ProjectCard(
                                 lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor
                             )
                         ).fontSize(1.0.cssRem).fontWeight(FontWeight.Bold),
-                        text = project.stargazersCount.toString(),
+                        text = project.stargazersCount.toString() + " stars",
                     )
                 }
             }

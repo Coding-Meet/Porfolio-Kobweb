@@ -9,10 +9,8 @@ import com.varabyte.kobweb.compose.css.BoxShadow
 import com.varabyte.kobweb.compose.css.CSSPosition
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.TextTransform
-import com.varabyte.kobweb.compose.css.TouchAction
 import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.css.TransitionTimingFunction
-import com.varabyte.kobweb.compose.css.UserSelect
 import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
@@ -27,17 +25,11 @@ import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
-import com.varabyte.kobweb.compose.ui.modifiers.left
 import com.varabyte.kobweb.compose.ui.modifiers.letterSpacing
 import com.varabyte.kobweb.compose.ui.modifiers.padding
-import com.varabyte.kobweb.compose.ui.modifiers.position
 import com.varabyte.kobweb.compose.ui.modifiers.textTransform
-import com.varabyte.kobweb.compose.ui.modifiers.top
-import com.varabyte.kobweb.compose.ui.modifiers.touchAction
 import com.varabyte.kobweb.compose.ui.modifiers.transform
 import com.varabyte.kobweb.compose.ui.modifiers.transition
-import com.varabyte.kobweb.compose.ui.modifiers.userSelect
-import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.plus
@@ -81,13 +73,15 @@ val ProjectStyle = CssStyle {
 
     (Breakpoint.MD + hover) {
         Modifier
-            .border(3.px, LineStyle.Solid,colorMode.toPalette().border)
+            .border(3.px, LineStyle.Solid, colorMode.toPalette().border)
             .padding(0.25.em, 0.5.em)
             .boxShadow(
-                BoxShadow.of(1.px,
+                BoxShadow.of(
+                    1.px,
                     1.px,
                     0.px,
-                    0.px),
+                    0.px
+                ),
                 BoxShadow.of(
                     2.px,
                     2.px,
@@ -123,7 +117,7 @@ val ProjectStyle = CssStyle {
 }
 
 val ReadMoreButtonStyle = CssStyle {
-    val backgroundColor =  customColor(
+    val backgroundColor = customColor(
         colorMode = colorMode,
         lightColor = Theme.LightFontColor,
         darkColor = Theme.DarkFontColor
@@ -136,8 +130,8 @@ val ReadMoreButtonStyle = CssStyle {
     base {
         Modifier
             .backgroundSize(BackgroundSize.of(220.percent))
-            .boxShadow(0.px, 0.2.em, 0.3.em,null, rgba(0, 0, 0, 0.15f))
-            .color( backgroundColor)
+            .boxShadow(0.px, 0.2.em, 0.3.em, null, rgba(0, 0, 0, 0.15f))
+            .color(backgroundColor)
             .backgroundColor(Colors.Transparent)
             .backgroundPosition(BackgroundPosition.of(CSSPosition(100.percent)))
             .border(3.px, LineStyle.Solid, backgroundColor)
@@ -161,7 +155,7 @@ val ReadMoreButtonStyle = CssStyle {
     hover {
         Modifier
             .transform { translateY((-2).px) }
-            .boxShadow(0.px, 0.px, 0.3.em,null, rgba(0, 0, 0, 0.25f))
+            .boxShadow(0.px, 0.px, 0.3.em, null, rgba(0, 0, 0, 0.25f))
             .backgroundPosition(BackgroundPosition.of(CSSPosition(0.px)))
             .color(textColor)
     }

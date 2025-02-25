@@ -85,7 +85,6 @@ fun DesktopMenu(
                         darkColor = Theme.DarkGray
                     )
                 ),
-                tooltipText = Res.Strings.TOGGLE_COLOR_MODE,
                 onClick = {
                     colorMode = colorMode.opposite
                 },

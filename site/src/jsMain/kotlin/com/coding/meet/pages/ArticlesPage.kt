@@ -18,7 +18,6 @@ import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
-import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
 @Page(articlesPath)
@@ -39,8 +38,8 @@ fun ArticlesPage() {
 
             SimpleGrid(
                 numColumns = numColumns(base = 1, sm = 1, md = 2, lg = 3),
-                modifier = Modifier.fillMaxWidth(if (breakpoint > Breakpoint.SM) 90.percent else 100.percent)
-                    .padding(topBottom = 10.px)
+                modifier = Modifier.fillMaxWidth()
+                    .padding(topBottom = 10.px, leftRight = if (breakpoint > Breakpoint.SM) 10.px else 0.px)
             ) {
                 articles.forEach { article ->
                     ArticleCard(article)
