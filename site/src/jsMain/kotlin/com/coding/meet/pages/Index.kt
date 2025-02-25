@@ -3,7 +3,7 @@ package com.coding.meet.pages
 import androidx.compose.runtime.Composable
 import com.coding.meet.common.page_layout.PageLayout
 import com.coding.meet.models.Section
-import com.coding.meet.screens.home.components.HomeScreen
+import com.coding.meet.screens.home.about_me.components.AboutMeSection
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -23,7 +23,7 @@ fun HomePage() {
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            HomeScreen()
+            AboutMeSection()
         }
     }
 }

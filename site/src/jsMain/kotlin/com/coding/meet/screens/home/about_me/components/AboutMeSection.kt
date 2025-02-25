@@ -1,4 +1,4 @@
-package com.coding.meet.screens.home.components
+package com.coding.meet.screens.home.about_me.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -6,16 +6,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.coding.meet.screens.home.styles.HomeProfileImageStyle
-import com.coding.meet.screens.home.styles.SocialImageStyle
+import com.coding.meet.screens.home.about_me.styles.ProfileImageStyle
 import com.coding.meet.util.Constants
 import com.coding.meet.util.Constants.animatedTexts
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
-import com.coding.meet.util.customColor
 import com.varabyte.kobweb.compose.css.BoxSizing
-import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -24,21 +21,14 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
-import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
 import com.varabyte.kobweb.compose.ui.modifiers.boxSizing
 import com.varabyte.kobweb.compose.ui.modifiers.color
-import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.flexWrap
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
-import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
-import com.varabyte.kobweb.compose.ui.modifiers.margin
-import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
-import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
@@ -46,26 +36,17 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
-import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import com.varabyte.kobweb.silk.theme.colors.palette.border
-import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
-import kotlinx.browser.window
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.web.css.DisplayStyle
-import org.jetbrains.compose.web.css.FlexWrap
-import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.dom.Div
-import org.jetbrains.compose.web.dom.Img
 
 
 @Composable
-fun HomeScreen() {
+fun AboutMeSection() {
     val breakpoint = rememberBreakpoint()
-    val colorMode by ColorMode.currentState
 
 
     SimpleGrid(
@@ -82,7 +63,7 @@ fun HomeScreen() {
         ) {
 
             Image(
-                modifier = HomeProfileImageStyle.toModifier()
+                modifier = ProfileImageStyle.toModifier()
                     .fillMaxWidth(80.percent)
                     .fillMaxHeight(90.percent)
                     .display(DisplayStyle.Block)
@@ -137,41 +118,7 @@ fun HomeScreen() {
                 text = Constants.BIO,
                 modifier = Modifier.padding(topBottom = 10.px)
             )
-            Div(
-                attrs = Modifier.fillMaxWidth().display(value = DisplayStyle.Flex)
-                    .flexWrap(FlexWrap.Wrap)
-                    .margin(top = 5.px).justifyContent(JustifyContent.Center).backgroundColor(
-                        customColor(
-                            colorMode = colorMode,
-                            lightColor = Theme.LightCardBackGroundColor,
-                            darkColor = Theme.DarkCardBackGroundColor
-                        )
-                    )
-                    .borderRadius(10.px)
-                    .border(
-                        color = colorMode.toPalette().border, style = LineStyle.Solid, width = 1.px
-                    )
-                    .boxShadow(0.px, 0.px, 0.px, 0.px).toAttrs()
-            ) {
-                Constants.socials.forEach { social ->
-                    Img(
-                        src = when (colorMode) {
-                            ColorMode.LIGHT -> {
-                                social.lightImage
-                            }
-
-                            ColorMode.DARK -> {
-                                social.darkImage ?: social.lightImage
-                            }
-                        },
-                        alt = social.title,
-                        attrs = SocialImageStyle.toModifier().padding(leftRight = 10.px)
-                            .margin(5.px).cursor(Cursor.Pointer).onClick {
-                            window.open(social.link)
-                        }.toAttrs()
-                    )
-                }
-            }
+            SocialBar()
         }
     }
 }

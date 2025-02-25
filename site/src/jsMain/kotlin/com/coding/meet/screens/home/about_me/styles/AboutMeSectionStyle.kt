@@ -1,4 +1,4 @@
-package com.coding.meet.screens.home.styles
+package com.coding.meet.screens.home.about_me.styles
 
 
 import com.varabyte.kobweb.compose.css.Transition
@@ -37,7 +37,7 @@ val MainButtonStyle = CssStyle {
 }
 
 @OptIn(ExperimentalComposeWebApi::class)
-val HomeProfileImageStyle = CssStyle {
+val ProfileImageStyle = CssStyle {
     base {
         Modifier
             .styleModifier {
