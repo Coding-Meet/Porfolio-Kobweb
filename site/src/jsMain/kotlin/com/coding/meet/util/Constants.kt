@@ -6,6 +6,7 @@ import com.coding.meet.models.FAQ
 import com.coding.meet.models.Project
 import com.coding.meet.models.Service
 import com.coding.meet.models.Social
+import com.coding.meet.models.Testimonial
 
 object Constants {
     const val WEBSITE_NAME = "Coding Meet"
@@ -62,7 +63,7 @@ object Constants {
             ),
             githubUrl = "https://github.com/Coding-Meet/News-KMP-App",
             imageUrls = listOf(
-                "project_1.png", "project_1.png", "project_1.png"
+                "project_1.png", "services/build_android_app.png", "services/build_app.png"
             ),
             platform = listOf("Android", "iOS", "Windows", "macOS", "Linux"),
             youtubeVideoLink = "https://www.youtube.com/embed/Dq1jcsVQmtY",
@@ -317,7 +318,183 @@ object Constants {
             description = "A four-month internship on Android app development with Kotlin where I worked on a live project about health and fitness."
         )
     )
-
+    val allReviewLink = "https://www.linkedin.com/search/results/content/?fromMember=%5B%22ACoAAELhKTgBk47IQWndyTP9JMkjqUet17RKdVU%22%5D&keywords=fiverr&origin=FACETED_SEARCH&sid=bU5"
+    val testimonials = listOf(
+        Testimonial(
+            review = "I've worked with Meet before so when I wanted to get my app upgraded, I reached out to him again. Despite it being a Sunday, Meet upgraded my sdk version, and fixed a bug in a very short time. Will come to him again for any Android needs. :)",
+            rating = 5.0,
+            country = "United States",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "Everything was done very quickly, and the improvements made were remarkable. He also included detailed documentation and shared valuable recommendations. For these reasons and more, I've chosen Meet as my favorite developer. I highly recommend their services.",
+            rating = 5.0,
+            country = "Mexico",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "Completed the work very quickly, did the work as promised and in very less time. good work",
+            rating = 5.0,
+            country = "India",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "he provided a very good service and I really like it fast and easy",
+            rating = 4.3,
+            country = "Nigeria",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "great work",
+            rating = 5.0,
+            country = "United States",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "work is great",
+            rating = 4.7,
+            country = "United States",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "did great and fast job. definitely working with him again",
+            rating = 5.0,
+            country = "Morocco",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "Quick responsiveness",
+            rating = 5.0,
+            country = "Myanmar [Burma]",
+            serviceName = "AI_WORK",
+        ),
+        Testimonial(
+            review = "Very fantastic work done. will surely work again in future",
+            rating = 5.0,
+            country = "India",
+            serviceName = "FIX_BUG_IMPROVE_APP",
+        ),
+        Testimonial(
+            review = "He does a very good job, he understands what you ask him, he is very kind and understanding, very detailed in all the work, a professional result and in addition to that he attends to you very quickly, I recommend him, a very good person.",
+            rating = 5.0,
+            country = "Bolivia",
+            serviceName = "FIX_BUG_IMPROVE_APP",
+        ),
+        Testimonial(
+            review = "Meet's is one of the best freelancers I've had the opportunity to work with. His work is of very high quality. He knows how to listen to feedback and has excellent communication skills. I highly recommend his services!",
+            rating = 5.0,
+            country = "Bolivia",
+            serviceName = "FIX_BUG_IMPROVE_APP",
+        ),
+        Testimonial(
+            review = "I was surprised by the speed and experience that meet has. For this and more I have chosen meet as my favorite developer. I highly recommend it.",
+            rating = 5.0,
+            country = "Mexico",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "Very good app Developer 👍 Fix all Bugs form my app Thanks for all things 🙏",
+            rating = 5.0,
+            country = "Pakistan",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "I liked working with him. Great professional. Very fast delivery time",
+            rating = 5.0,
+            country = "Spain",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "Very happy with the delivery! I had a very old app and not a lot of developers can do update it perfectly. Meet is a very good and did it in a short span of time. I'll hire him again if I need anything else!",
+            rating = 5.0,
+            country = "United States",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "Once again, everything is fine, excellent work.",
+            rating = 5.0,
+            country = "Spain",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "I always work with him because he understands very well what I want. He gives me a lot of confidence.",
+            rating = 5.0,
+            country = "Spain",
+            serviceName = "AI_WORK",
+        ),
+        Testimonial(
+            review = "Gave me code thumbs up 5 star",
+            rating = 5.0,
+            country = "United States",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "I have worked on several projects with him and I think he is the best.",
+            rating = 5.0,
+            country = "Spain",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "Communication was good he answered very quickly. I sent him my code and he told me how long it takes and that he knows how to solve the problem. He sent me the solved code and it worked. I highly recommend him!",
+            rating = 5.0,
+            country = "Germany",
+            serviceName = "FIX_BUG_IMPROVE_APP",
+        ),
+        Testimonial(
+            review = "He is a great professional. and it is the second time that he worked with him and it was super good.",
+            rating = 5.0,
+            country = "Spain",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "el mejor, super genio. un gusto trabajar con el.",
+            rating = 5.0,
+            country = "Spain",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "I had a problem with the OpenAi api request to generate Images with the Api. He helped me to fix the problem. Very good and clear communication and he delivered the edited code very fast. Very impressed of him.",
+            rating = 5.0,
+            country = "Germany",
+            serviceName = "FIX_BUG_IMPROVE_APP",
+        ),
+        Testimonial(
+            review = "Meet is the best, I highly recommend him!",
+            rating = 5.0,
+            country = "United States",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "Very satisfied with the work received.",
+            rating = 5.0,
+            country = "Cyprus",
+            serviceName = "FIX_BUG_IMPROVE_APP",
+        ),
+        Testimonial(
+            review = "Developer replied very fast, delivered all changes on time and his work was exceptional. He's very skilled and very very friendly. Our communication was excellent and he has very good skills with android development, java, git and more. I am very satisfied! He is highly recommended!",
+            rating = 5.0,
+            country = "Greece",
+            serviceName = "FIX_BUG_IMPROVE_APP",
+        ),
+        Testimonial(
+            review = "Very responsive and very good communication. Did the work very quickly and fully to the scope. Would recommend 100%.",
+            rating = 5.0,
+            country = "Cyprus",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        ),
+        Testimonial(
+            review = "fast delivery",
+            rating = 5.0,
+            country = "Philippines",
+            serviceName = "BUILD_NEW_ANDROID_APP",
+        ),
+        Testimonial(
+            review = "Professional communication, fast delivery ! THX",
+            rating = 5.0,
+            country = "United Arab Emirates",
+            serviceName = "UPDATE_SDK_OR_GRADLE",
+        )
+    ).shuffled()
     val services = listOf(
         Service(
             title = "\uD83D\uDCF1 Build a New Android App",
