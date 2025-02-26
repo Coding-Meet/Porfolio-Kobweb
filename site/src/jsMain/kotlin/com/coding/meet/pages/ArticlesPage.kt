@@ -24,7 +24,7 @@ import org.jetbrains.compose.web.css.px
 @Composable
 fun ArticlesPage() {
     PageLayout(
-        title = Section.Articles.title
+        title = Section.ARTICLES.title
     ) {
 
         val breakpoint = rememberBreakpoint()

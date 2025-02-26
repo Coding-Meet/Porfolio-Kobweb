@@ -262,21 +262,14 @@ object Constants {
     )
     val animatedTexts = listOf(
         "Meet",
+        "Freelancer",
         "Native Android Developer",
+        "Content Creator",
         "Kotlin Multiplatform Developer",
+        "Blogger",
         "IOT Developer"
     )
     val experiences = listOf(
-        Experience(
-            title = "✍️ Content Writer",
-            company = "📝 Medium",
-            type = "Full-time",
-            startDate = "Sep 2024",
-            endDate = "Present",
-            duration = "6 mos",
-            location = "🌍 India · Remote",
-            description = "In Medium, I upload content on Android, Jetpack Compose, Kotlin Multiplatform & Compose Multiplatform."
-        ),
         Experience(
             title = "📱 Android Developer",
             company = "💼 Fiverr",
@@ -288,7 +281,7 @@ object Constants {
             description = "I've successfully collaborated with over 20 clients worldwide, delivering projects valued at over $3,000. I'm proud to have consistently earned ⭐⭐⭐⭐⭐ reviews from all of my clients, reflecting my commitment to quality."
         ),
         Experience(
-            title = "🎥 Video Creator",
+            title = "🎥 Content Creator",
             company = "▶️ YouTube",
             type = "Part-time",
             startDate = "Apr 2023",
@@ -296,6 +289,16 @@ object Constants {
             duration = "1 yr 11 mos",
             location = "🌍 India · Remote",
             description = "Welcome to Coding Meet, your go-to channel for learning Android programming! My channel is designed to provide you with the latest tutorials, tips, and tricks for building Android apps using Kotlin and Java."
+        ),
+        Experience(
+            title = "✍️ Blogger",
+            company = "📝 Medium",
+            type = "Full-time",
+            startDate = "Sep 2024",
+            endDate = "Present",
+            duration = "6 mos",
+            location = "🌍 India · Remote",
+            description = "In Medium, I upload content on Android, Jetpack Compose, Kotlin Multiplatform & Compose Multiplatform."
         ),
         Experience(
             title = "🛠️ Android Development Intern",
