@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import com.coding.meet.common.page_layout.PageLayout
 import com.coding.meet.models.Section
 import com.coding.meet.screens.home.about_me.components.AboutMeSection
+import com.coding.meet.screens.home.experience.components.ExperiencesSection
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -24,6 +25,7 @@ fun HomePage() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             AboutMeSection()
+            ExperiencesSection()
         }
     }
 }

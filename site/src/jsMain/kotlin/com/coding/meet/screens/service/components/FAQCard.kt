@@ -6,7 +6,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.coding.meet.models.FAQ
-import com.coding.meet.screens.articles.styles.ArticleStyle
 import com.coding.meet.screens.service.styles.faqCardStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Theme
@@ -30,7 +29,6 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaAngleUp
 import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toModifier
-import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 
@@ -38,7 +36,6 @@ import org.jetbrains.compose.web.css.px
 fun FAQCard(
     faq: FAQ
 ) {
-    val colorMode by ColorMode.currentState
 
     var isAnswer by remember { mutableStateOf(false) }
 

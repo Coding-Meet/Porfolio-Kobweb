@@ -25,6 +25,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.boxSizing
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
@@ -47,11 +48,30 @@ import org.jetbrains.compose.web.css.px
 @Composable
 fun AboutMeSection() {
     val breakpoint = rememberBreakpoint()
+    var currentText by remember { mutableStateOf("") }
+    var textIndex by remember { mutableStateOf(0) }
+    var charIndex by remember { mutableStateOf(0) }
 
+    // Typing animation logic
+    LaunchedEffect(textIndex, charIndex) {
+        while (true) {
+            delay(100) // Adjust speed of typing
+
+            if (charIndex < animatedTexts[textIndex].length) {
+                currentText = animatedTexts[textIndex].substring(0, charIndex + 1)
+                charIndex++
+            } else {
+                delay(1000) // Wait before changing text
+                charIndex = 0
+                textIndex = (textIndex + 1) % animatedTexts.size
+                currentText = ""
+            }
+        }
+    }
 
     SimpleGrid(
         numColumns = numColumns(base = 1, sm = 1, md = 2),
-        modifier = Modifier.fillMaxWidth(if (breakpoint > Breakpoint.SM) 80.percent else 100.percent)
+        modifier = Modifier.fillMaxSize()
             .padding(
                 topBottom = 10.px,
             )
@@ -74,29 +94,8 @@ fun AboutMeSection() {
                 alt = "Main Image",
             )
         }
-
-        var currentText by remember { mutableStateOf("") }
-        var textIndex by remember { mutableStateOf(0) }
-        var charIndex by remember { mutableStateOf(0) }
-
-        // Typing animation logic
-        LaunchedEffect(textIndex, charIndex) {
-            while (true) {
-                delay(100) // Adjust speed of typing
-
-                if (charIndex < animatedTexts[textIndex].length) {
-                    currentText = animatedTexts[textIndex].substring(0, charIndex + 1)
-                    charIndex++
-                } else {
-                    delay(1000) // Wait before changing text
-                    charIndex = 0
-                    textIndex = (textIndex + 1) % animatedTexts.size
-                    currentText = ""
-                }
-            }
-        }
         Column(
-            modifier = Modifier.padding(leftRight = 10.px),
+            modifier = Modifier.fillMaxWidth(if (breakpoint > Breakpoint.SM) 90.percent else 100.percent).padding(leftRight = 10.px),
             verticalArrangement = Arrangement.Center
         ) {
             SpanText(

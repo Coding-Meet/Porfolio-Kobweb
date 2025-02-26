@@ -1,6 +1,7 @@
 package com.coding.meet.util
 
 import com.coding.meet.models.Article
+import com.coding.meet.models.Experience
 import com.coding.meet.models.FAQ
 import com.coding.meet.models.Project
 import com.coding.meet.models.Service
@@ -12,6 +13,8 @@ object Constants {
 
     const val BIO =
         "Hello! I’m Meet, an Android developer passionate about building apps with Kotlin, Java, KMP, and Jetpack Compose. Through my YouTube channel, GitHub projects, and this website, I share tutorials, source code, and practical guides to help developers improve their skills. I also offer custom Android development services, including app creation, bug fixing, and SDK updates. Let’s simplify Android development together! \uD83D\uDE80"
+
+    const val EMAIL_ID = "meetb2602@gmail.com"
 
     private const val GITHUB_USER_NAME = "Coding-Meet"
 
@@ -262,6 +265,58 @@ object Constants {
         "Kotlin Multiplatform Developer",
         "IOT Developer"
     )
+    val experiences = listOf(
+        Experience(
+            title = "Content Writer",
+            company = "Medium",
+            type = "Full-time",
+            startDate = "Sep 2024",
+            endDate = "Present",
+            duration = "6 mos",
+            location = "India · Remote",
+            description = "In Medium, I upload content on Android, Jetpack Compose, Kotlin Multiplatform & Compose Multiplatform."
+        ),
+        Experience(
+            title = "Android Developer",
+            company = "Fiverr",
+            type = "Freelance",
+            startDate = "Jun 2023",
+            endDate = "Present",
+            duration = "1 yr 9 mos",
+            location = "Remote",
+            description = "I've successfully collaborated with over 20 clients worldwide, delivering projects valued at over $3,000. I'm proud to have consistently earned 5-star reviews from all of my clients, reflecting my commitment to quality."
+        ),
+        Experience(
+            title = "Video Creator",
+            company = "YouTube",
+            type = "Part-time",
+            startDate = "Apr 2023",
+            endDate = "Present",
+            duration = "1 yr 11 mos",
+            location = "India · Remote",
+            description = "Welcome to Coding Meet, your go-to channel for learning Android programming! My channel is designed to provide you with the latest tutorials, tips, and tricks for building Android apps using Kotlin and Java."
+        ),
+        Experience(
+            title = "Android Development Intern",
+            company = "Private Tech Company",
+            type = "Internship",
+            startDate = "Dec 2022",
+            endDate = "Jun 2023",
+            duration = "7 mos",
+            location = "Surat, Gujarat, India · On-site",
+            description = "A six-month internship on Android app development with Kotlin language where I worked on multiple projects like Multifactor Authenticator app, Trivia app, Daily Affirmation app, Truth & Dare app, and Never Have I Ever app."
+        ),
+        Experience(
+            title = "Android Development Intern",
+            company = "Private Tech Company",
+            type = "Internship",
+            startDate = "May 2022",
+            endDate = "Aug 2022",
+            duration = "4 mos",
+            location = "Surat, Gujarat, India",
+            description = "A four-month internship on Android app development with Kotlin where I worked on a live project about health and fitness."
+        )
+    )
     val services = listOf(
         Service(
             title = "\uD83D\uDCF1 Build a New Android App",
@@ -405,7 +460,7 @@ object Constants {
         ),
         Social(
             title = "Gmail",
-            link = "mailto:",
+            link = "mailto:$EMAIL_ID",
             lightImage = "social/mail.svg"
         ),
         Social(
