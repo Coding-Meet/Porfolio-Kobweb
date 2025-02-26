@@ -55,7 +55,7 @@ fun ExperienceCard(
 
         // Duration
         SpanText(
-            text = "${experience.startDate} - ${experience.endDate ?: "Present"} • ${experience.duration}",
+            text = "⏳ ${experience.duration} (${experience.startDate} - ${experience.endDate ?: "Present"})",
             modifier = Modifier.color(
                 CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor)
             ).fontSize(0.9.cssRem)
@@ -70,14 +70,12 @@ fun ExperienceCard(
         )
 
         // Description
-        if (experience.description.isNotEmpty()) {
-            SpanText(
-                text = experience.description,
-                modifier = Modifier.margin(top = 10.px).color(
-                    CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor)
-                ).fontSize(0.95.cssRem)
-            )
-        }
+        SpanText(
+            text = experience.description,
+            modifier = Modifier.margin(top = 10.px).color(
+                CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor)
+            ).fontSize(0.95.cssRem)
+        )
     }
 }
 

@@ -99,7 +99,7 @@ fun AboutMeSection() {
             verticalArrangement = Arrangement.Center
         ) {
             SpanText(
-                text = "HI THERE,",
+                text = "HI THERE \uD83D\uDC4B,",
                 modifier = Modifier.color(Theme.LightFontColor.color)
                     .backgroundColor(Theme.LightBackGroundColor.color)
                     .borderRadius(20.percent).fontSize(1.cssRem).fontWeight(FontWeight.Bold)
