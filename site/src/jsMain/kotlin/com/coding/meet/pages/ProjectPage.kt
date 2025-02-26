@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.coding.meet.common.components.custom_dialog.CustomDialog
+import com.coding.meet.common.components.footer.Footer
 import com.coding.meet.common.page_layout.PageLayout
 import com.coding.meet.models.Project
 import com.coding.meet.models.Section
@@ -122,6 +123,7 @@ fun ProjectPage() {
                     }
                 }
             }
+            Footer()
         }
     }
 }

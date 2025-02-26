@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import com.coding.meet.common.image_slider_with_dot.ImageSliderWithDot
 import com.coding.meet.models.Service
+import com.coding.meet.models.contactMePath
 import com.coding.meet.screens.projects.styles.ReadMoreButtonStyle
 import com.coding.meet.screens.service.styles.ServiceCardStyle
 import com.coding.meet.util.CustomColor
@@ -24,6 +25,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
@@ -106,15 +108,14 @@ fun ServiceCard(
             horizontalArrangement = Arrangement.spacedBy(10.px, Alignment.CenterHorizontally),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Button(
-                attrs = ReadMoreButtonStyle.toAttrs {
-                    onClick {
-                    }
+            Link(path = contactMePath) {
+                Button(
+                    attrs = ReadMoreButtonStyle.toAttrs()
+                ) {
+                    SpanText(
+                        text = "Contact Me",
+                    )
                 }
-            ) {
-                SpanText(
-                    text = "Contact Me",
-                )
             }
         }
     }

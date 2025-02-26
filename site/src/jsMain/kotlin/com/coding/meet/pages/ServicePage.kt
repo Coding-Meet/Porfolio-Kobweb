@@ -1,6 +1,7 @@
 package com.coding.meet.pages
 
 import androidx.compose.runtime.Composable
+import com.coding.meet.common.components.footer.Footer
 import com.coding.meet.common.page_layout.PageLayout
 import com.coding.meet.models.Section
 import com.coding.meet.models.servicePath
@@ -108,6 +109,7 @@ fun ServiceSection() {
                     FAQCard(faq)
                 }
             }
+            Footer()
         }
     }
 }

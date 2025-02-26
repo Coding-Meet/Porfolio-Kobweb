@@ -68,7 +68,7 @@ fun TestimonialSection() {
     Row(
         modifier = Modifier.fillMaxWidth(
             if (breakpoint > Breakpoint.MD) 70.percent else 90.percent
-        ).padding(topBottom = 5.px, leftRight = 20.px),
+        ).padding(topBottom = 10.px, leftRight = 20.px),
         horizontalArrangement = Arrangement.spacedBy(10.px, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically
     ) {

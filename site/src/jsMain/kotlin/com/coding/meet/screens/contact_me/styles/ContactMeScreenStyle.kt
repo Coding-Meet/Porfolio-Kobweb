@@ -17,9 +17,10 @@ import com.varabyte.kobweb.compose.ui.modifiers.opacity
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.theme.colors.palette.border
+import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.css.s
 
 
@@ -33,7 +34,7 @@ val formStyle = CssStyle {
                 darkColor = Theme.DarkCardBackGroundColor
             )
         )
-        .border(1.px, LineStyle.Solid, rgba(255, 255, 255, 0.5))
+        .border(color = colorMode.toPalette().border, style = LineStyle.Solid, width = 1.px)
         .borderRadius(20.px)
         .color(
             customColor(
