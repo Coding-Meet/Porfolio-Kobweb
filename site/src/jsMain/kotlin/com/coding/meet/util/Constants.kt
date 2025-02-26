@@ -63,7 +63,7 @@ object Constants {
             ),
             githubUrl = "https://github.com/Coding-Meet/News-KMP-App",
             imageUrls = listOf(
-                "project_1.png", "services/build_android_app.png", "services/build_app.png"
+                "project/News-KMP-App.png"
             ),
             platform = listOf("Android", "iOS", "Windows", "macOS", "Linux"),
             youtubeVideoLink = "https://www.youtube.com/embed/Dq1jcsVQmtY",
@@ -82,9 +82,10 @@ object Constants {
             ),
             githubUrl = "https://github.com/Coding-Meet/Gemini-AI-KMP-App",
             imageUrls = listOf(
-                "project_1.png", "project_1.png"
+                "project/Gemini-AI-KMP-App.png"
             ),
             platform = listOf("Android", "iOS", "Windows", "macOS", "Linux", "Web"),
+            youtubeVideoLink = "https://www.youtube.com/embed/YhWhR6IVs_Y",
             stargazersCount = 80
         ),
         Project(
@@ -94,13 +95,15 @@ object Constants {
             technologies = listOf("Jetpack Compose Desktop", "Kotlin"),
             githubUrl = "https://github.com/Coding-Meet/String-Translator-Desktop-App",
             imageUrls = listOf(
-                "project_1.png"
+                "project/String_Translator_Desktop_App.png"
             ),
             platform = listOf("Desktop"),
             features = listOf("Batch translation", "Localization optimization"),
+            youtubeVideoLink = "https://www.youtube.com/embed/EDbxJkgJDf8",
             stargazersCount = 13
         ),
         Project(
+
             title = "Custom LCD Pattern Generator",
             shortDescription = "An Android app that generates Arduino C code for given patterns, available on the Play Store with over 1,000 downloads.",
             longDescription = "An Android app that generates Arduino C code for given patterns, available on the Play Store with over 1,000 downloads.",
