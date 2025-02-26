@@ -27,3 +27,4 @@ kotlin-js-store
 
 # Kotlin ignores
 .kotlin
+.firebase
