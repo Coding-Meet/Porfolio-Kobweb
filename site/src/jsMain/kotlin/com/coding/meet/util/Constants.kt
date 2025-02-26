@@ -85,30 +85,28 @@ object Constants {
                 "project_1.png", "project_1.png"
             ),
             platform = listOf("Android", "iOS", "Windows", "macOS", "Linux", "Web"),
-            stargazersCount = 79
+            stargazersCount = 80
         ),
         Project(
             title = "String Translator Desktop App",
             shortDescription = "A Jetpack Compose desktop application for translating multiple strings into various languages.",
             longDescription = "A Jetpack Compose desktop application for translating multiple strings into various languages.",
             technologies = listOf("Jetpack Compose Desktop", "Kotlin"),
-            githubUrl = "https://github.com/your-repo/string-translator",
+            githubUrl = "https://github.com/Coding-Meet/String-Translator-Desktop-App",
             imageUrls = listOf(
                 "project_1.png"
             ),
             platform = listOf("Desktop"),
             features = listOf("Batch translation", "Localization optimization"),
-            stargazersCount = 12
+            stargazersCount = 13
         ),
         Project(
             title = "Custom LCD Pattern Generator",
             shortDescription = "An Android app that generates Arduino C code for given patterns, available on the Play Store with over 1,000 downloads.",
             longDescription = "An Android app that generates Arduino C code for given patterns, available on the Play Store with over 1,000 downloads.",
             technologies = listOf("Kotlin", "Arduino C"),
-            githubUrl = "https://github.com/your-repo/lcd-pattern-generator",
-            imageUrls = listOf(
-                "project_1.png", "project_1.png", "project_1.png", "project_1.png"
-            ),
+            githubUrl = null,
+            imageUrls = listOf(),
             platform = listOf("Android"),
             features = listOf("Code generation", "Pattern customization"),
         ),
@@ -137,7 +135,7 @@ object Constants {
             shortDescription = "Automates content rewriting, saving time spent on manual tasks.",
             longDescription = "Automates content rewriting, saving time spent on manual tasks.",
             technologies = listOf("Python", "Web Scraping"),
-            githubUrl = "https://github.com/your-repo/quillbot-scraper",
+            githubUrl = null,
             imageUrls = listOf(),
             platform = listOf("Desktop"),
             features = listOf("Content automation", "Web scraping"),
@@ -147,7 +145,7 @@ object Constants {
             shortDescription = "Enhances online security by generating unique, time-based verification codes.",
             longDescription = "Enhances online security by generating unique, time-based verification codes.",
             technologies = listOf("Android", "Kotlin"),
-            githubUrl = "https://github.com/your-repo/authenticator-app",
+            githubUrl = null,
             imageUrls = listOf(),
             platform = listOf("Android"),
             features = listOf("Time-based codes", "Secure storage"),
