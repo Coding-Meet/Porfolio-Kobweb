@@ -10,7 +10,6 @@ import com.coding.meet.models.Testimonial
 
 object Constants {
     const val WEBSITE_NAME = "Coding Meet"
-    const val WEBSITE = "https://codingmeet.com/"
 
     const val BIO =
         "Hello! I’m Meet, an Android developer passionate about building apps with Kotlin, Java, KMP, and Jetpack Compose. Through my YouTube channel, GitHub projects, and this website, I share tutorials, source code, and practical guides to help developers improve their skills. I also offer custom Android development services, including app creation, bug fixing, and SDK updates. Let’s simplify Android development together! \uD83D\uDE80"
@@ -277,9 +276,8 @@ object Constants {
             type = "Freelance",
             startDate = "Jun 2023",
             endDate = "Present",
-            duration = "1 yr 9 mos",
             location = "🌍 Remote",
-            description = "I've successfully collaborated with over 20 clients worldwide, delivering projects valued at over $3,000. I'm proud to have consistently earned ⭐⭐⭐⭐⭐ reviews from all of my clients, reflecting my commitment to quality."
+            description = "Collaborated with 30+ clients globally, delivering high-quality Android applications worth over $4,000. Maintained a 100% ⭐⭐⭐⭐⭐ rating, demonstrating expertise in Kotlin, Jetpack Compose, and modern Android development practices."
         ),
         Experience(
             title = "🎥 Content Creator",
@@ -287,9 +285,8 @@ object Constants {
             type = "Part-time",
             startDate = "Apr 2023",
             endDate = "Present",
-            duration = "1 yr 11 mos",
             location = "🌍 India · Remote",
-            description = "Welcome to Coding Meet, your go-to channel for learning Android programming! My channel is designed to provide you with the latest tutorials, tips, and tricks for building Android apps using Kotlin and Java."
+            description = "Founder of Coding Meet, a YouTube channel dedicated to Android development. Created 400+ videos covering Kotlin, Jetpack Compose, Compose Multiplatform and best practices, helping thousands of developers improve their skills."
         ),
         Experience(
             title = "✍️ Blogger",
@@ -297,9 +294,8 @@ object Constants {
             type = "Full-time",
             startDate = "Sep 2024",
             endDate = "Present",
-            duration = "6 mos",
             location = "🌍 India · Remote",
-            description = "In Medium, I upload content on Android, Jetpack Compose, Kotlin Multiplatform & Compose Multiplatform."
+            description = "Publishing in-depth articles on Android development, Jetpack Compose, Kotlin Multiplatform, and Compose Multiplatform, sharing insights and best practices with a growing tech audience."
         ),
         Experience(
             title = "🛠️ Android Development Intern",
@@ -309,7 +305,7 @@ object Constants {
             endDate = "Jun 2023",
             duration = "7 mos",
             location = "📍 Surat, Gujarat, India · On-site",
-            description = "A six-month internship on Android app development with Kotlin language where I worked on multiple projects like Multifactor Authenticator app, Trivia app, Daily Affirmation app, Truth & Dare app, and Never Have I Ever app."
+            description = "Worked on multiple Android projects, including a Multifactor Authenticator app, Trivia app, Daily Affirmation app, and party games like Truth & Dare and Never Have I Ever, gaining hands-on experience in Kotlin development."
         ),
         Experience(
             title = "🛠️ Android Development Intern",
@@ -319,10 +315,12 @@ object Constants {
             endDate = "Aug 2022",
             duration = "4 mos",
             location = "📍 Surat, Gujarat, India",
-            description = "A four-month internship on Android app development with Kotlin where I worked on a live project about health and fitness."
+            description = "Contributed to a live health and fitness app project, enhancing Android development skills with Kotlin and practical exposure to real-world app development."
         )
     )
-    val allReviewLink = "https://www.linkedin.com/search/results/content/?fromMember=%5B%22ACoAAELhKTgBk47IQWndyTP9JMkjqUet17RKdVU%22%5D&keywords=fiverr&origin=FACETED_SEARCH&sid=bU5"
+
+    const val seeAllReviewLink = "https://www.linkedin.com/search/results/content/?fromMember=%5B%22ACoAAELhKTgBk47IQWndyTP9JMkjqUet17RKdVU%22%5D&keywords=fiverr&origin=FACETED_SEARCH&sid=bU5"
+
     val testimonials = listOf(
         Testimonial(
             review = "I've worked with Meet before so when I wanted to get my app upgraded, I reached out to him again. Despite it being a Sunday, Meet upgraded my sdk version, and fixed a bug in a very short time. Will come to him again for any Android needs. :)",
@@ -499,6 +497,7 @@ object Constants {
             serviceName = "UPDATE_SDK_OR_GRADLE",
         )
     ).shuffled()
+
     val services = listOf(
         Service(
             title = "\uD83D\uDCF1 Build a New Android App",

@@ -5,8 +5,8 @@ data class Experience(
     val company: String,
     val type: String,
     val startDate: String,
-    val endDate: String?,
-    val duration: String,
+    val endDate: String? = null,
+    val duration: String? = null,
     val location: String,
     val description: String
 )

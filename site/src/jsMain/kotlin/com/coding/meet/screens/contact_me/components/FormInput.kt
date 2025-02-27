@@ -5,9 +5,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.coding.meet.common.image_slider_with_dot.MainButtonStyle
 import com.coding.meet.screens.contact_me.styles.formStyle
-import com.coding.meet.screens.projects.styles.ReadMoreButtonStyle
 import com.coding.meet.util.Constants
+import com.coding.meet.util.Res
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -75,7 +76,7 @@ fun FormInput() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
-                attrs = ReadMoreButtonStyle.toAttrs {
+                attrs = MainButtonStyle.toAttrs {
                     onClick {
                         val finalSubject = subject.ifBlank { "No Subject" }
                         val finalName =  firstName + lastName
@@ -93,7 +94,7 @@ fun FormInput() {
                     }
                 }
             ) {
-                SpanText(text = "Send Message")
+                SpanText(text = Res.Strings.SEND_MESSAGE)
             }
         }
     }

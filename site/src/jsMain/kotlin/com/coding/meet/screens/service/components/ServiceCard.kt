@@ -3,11 +3,12 @@ package com.coding.meet.screens.service.components
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import com.coding.meet.common.image_slider_with_dot.ImageSliderWithDot
+import com.coding.meet.common.image_slider_with_dot.MainButtonStyle
 import com.coding.meet.models.Service
 import com.coding.meet.models.contactMePath
-import com.coding.meet.screens.projects.styles.ReadMoreButtonStyle
 import com.coding.meet.screens.service.styles.ServiceCardStyle
 import com.coding.meet.util.CustomColor
+import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -110,10 +111,10 @@ fun ServiceCard(
         ) {
             Link(path = contactMePath) {
                 Button(
-                    attrs = ReadMoreButtonStyle.toAttrs()
+                    attrs = MainButtonStyle.toAttrs()
                 ) {
                     SpanText(
-                        text = "Contact Me",
+                        text = Res.Strings.CONTACT_ME,
                     )
                 }
             }

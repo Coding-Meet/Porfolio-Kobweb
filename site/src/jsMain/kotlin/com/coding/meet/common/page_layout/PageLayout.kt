@@ -41,7 +41,7 @@ fun PageLayout(
         }
     }
     LaunchedEffect(title) {
-        document.title = "${Constants.WEBSITE_NAME} - $title"
+        document.title = "${Constants.WEBSITE_NAME} - $title - My Portfolio"
     }
     Div(
         attrs = Modifier

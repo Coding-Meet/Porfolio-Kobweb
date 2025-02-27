@@ -1,9 +1,10 @@
 package com.coding.meet.screens.home.testimonial.components
 
 import androidx.compose.runtime.Composable
-import com.coding.meet.screens.projects.styles.ReadMoreButtonStyle
+import com.coding.meet.common.image_slider_with_dot.MainButtonStyle
 import com.coding.meet.util.Constants
 import com.coding.meet.util.CustomColor
+import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -15,7 +16,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
-import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
@@ -73,14 +73,14 @@ fun TestimonialSection() {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Button(
-            attrs = ReadMoreButtonStyle.toAttrs {
+            attrs = MainButtonStyle.toAttrs {
                 onClick {
-                    window.open(Constants.allReviewLink)
+                    window.open(Constants.seeAllReviewLink)
                 }
             }
         ) {
             SpanText(
-                text = "Many More",
+                text = Res.Strings.SEE_ALL_REVIEW,
             )
         }
     }

@@ -90,7 +90,7 @@ fun AboutMeSection() {
                     .borderRadius(50.percent)
                     .boxSizing(BoxSizing.BorderBox)
                     .border(5.px, LineStyle.Solid, Theme.Primary.color),
-                src = Res.Image.profile,
+                src = Res.Image.PROFILE,
                 alt = "Main Image",
             )
         }

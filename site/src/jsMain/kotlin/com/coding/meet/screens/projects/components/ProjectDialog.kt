@@ -3,8 +3,8 @@ package com.coding.meet.screens.projects.components
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import com.coding.meet.common.image_slider_with_dot.ImageSliderWithDot
+import com.coding.meet.common.image_slider_with_dot.MainButtonStyle
 import com.coding.meet.models.Project
-import com.coding.meet.screens.projects.styles.ReadMoreButtonStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.Cursor
@@ -87,7 +87,7 @@ fun ColumnScope.ProjectDialog(
             )
             if (project.githubUrl != null || project.appStoreUrl != null) {
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(topBottom = 5.px),
+                    modifier = Modifier.fillMaxWidth().padding(topBottom = 10.px),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(
                         5.px,
@@ -100,7 +100,6 @@ fun ColumnScope.ProjectDialog(
                             modifier = Modifier.cursor(Cursor.Pointer).onClick {
                                 window.open(project.appStoreUrl)
                             })
-
                     }
                     if (project.githubUrl != null) {
                         FaGithub(
@@ -174,7 +173,11 @@ fun ColumnScope.ProjectDialog(
                 ) {
                     SpanText(
                         text = it,
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth().color(
+                            CustomColor(
+                                lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor
+                            )
+                        )
                     )
                 }
             }
@@ -263,7 +266,7 @@ fun ColumnScope.ProjectDialog(
             horizontalArrangement = Arrangement.spacedBy(10.px, Alignment.CenterHorizontally)
         ) {
             Button(
-                attrs = ReadMoreButtonStyle.toAttrs {
+                attrs = MainButtonStyle.toAttrs {
                     onClick {
                         onPrevious()
                     }
@@ -274,7 +277,7 @@ fun ColumnScope.ProjectDialog(
                 )
             }
             Button(
-                attrs = ReadMoreButtonStyle.toAttrs {
+                attrs = MainButtonStyle.toAttrs {
                     onClick {
                         onNext()
                     }

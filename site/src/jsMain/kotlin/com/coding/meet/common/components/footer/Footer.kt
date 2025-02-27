@@ -3,6 +3,7 @@ package com.coding.meet.common.components.footer
 import androidx.compose.runtime.Composable
 import com.coding.meet.screens.home.about_me.components.SocialBar
 import com.coding.meet.util.CustomColor
+import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -75,7 +76,7 @@ private fun Copyright() {
                     lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor
                 )
             ).fontSize(1.cssRem).fontWeight(FontWeight.Bold),
-        text = "Copyright ©\uFE0F 2025, Meet"
+        text = Res.Strings.COPYRIGHT_TEXT
     )
 }
 
@@ -89,11 +90,11 @@ private fun PoweredByKobweb() {
                         lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor
                     )
                 ).fontSize(1.cssRem).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center),
-            text = "Powered by"
+            text = Res.Strings.POWERED_BY
         )
         Link(path = "https://kobweb.varabyte.com/") {
             Image(
-                src = "kobweb.png",
+                src = Res.Image.KOBWEB_LOGO,
                 modifier = Modifier
                     .display(DisplayStyle.Flex)
                     .height(1.25.cssRem)

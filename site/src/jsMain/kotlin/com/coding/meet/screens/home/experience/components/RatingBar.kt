@@ -1,6 +1,7 @@
 package com.coding.meet.screens.home.experience.components
 
 import androidx.compose.runtime.Composable
+import com.coding.meet.util.Res
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -20,7 +21,7 @@ fun RatingBar(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .margin(right = if (it != 4) 2.px else 0.px)
                     .size(30.px),
-                src = "star_icon.svg",
+                src = Res.Image.STAR_ICON,
                 alt = "Star Icon"
             )
         }

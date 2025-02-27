@@ -108,7 +108,7 @@ fun MobileSideMenu(
                 .backgroundColor(
                     CustomColor(
                         lightColor = Theme.White,
-                        darkColor = Theme.DarkGray
+                        darkColor = Theme.DarkCardBackGroundColor
                     )
                 )
                 .borderRadius(topRight = 20.px, bottomRight = 20.px)

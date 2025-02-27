@@ -6,6 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
 import com.coding.meet.util.customColor
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -102,7 +103,7 @@ fun ImageSliderWithDot(
                     }
                 }
             ) {
-                Text("<")
+                Text(Res.Strings.PREVIOUS)
             }
 
             Button(
@@ -113,7 +114,7 @@ fun ImageSliderWithDot(
                     }
                 }
             ) {
-                Text(">")
+                Text(Res.Strings.NEXT)
             }
         }
     }

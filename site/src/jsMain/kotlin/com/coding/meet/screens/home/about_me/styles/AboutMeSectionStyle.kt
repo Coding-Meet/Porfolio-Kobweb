@@ -6,7 +6,6 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.scale
 import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.modifiers.translateY
-import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.animation.Keyframes
@@ -18,23 +17,6 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
 
-val MainButtonStyle = CssStyle {
-    base {
-        Modifier
-            .width(100.px)
-            .transition(
-                Transition.of(
-                    property = "width",
-                    duration = 200.ms,
-                    timingFunction = null,
-                    delay = null
-                )
-            )
-    }
-    hover {
-        Modifier.width(120.px)
-    }
-}
 
 @OptIn(ExperimentalComposeWebApi::class)
 val ProfileImageStyle = CssStyle {

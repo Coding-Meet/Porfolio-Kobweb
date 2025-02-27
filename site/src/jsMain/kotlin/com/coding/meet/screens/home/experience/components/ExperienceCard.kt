@@ -55,7 +55,10 @@ fun ExperienceCard(
 
         // Duration
         SpanText(
-            text = "⏳ ${experience.duration} (${experience.startDate} - ${experience.endDate ?: "Present"})",
+            text =if (experience.endDate == "Present")
+                "⏳ ${experience.startDate} - ${experience.endDate}"
+            else
+                "⏳ ${experience.duration} (${experience.startDate} - ${experience.endDate})",
             modifier = Modifier.color(
                 CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor)
             ).fontSize(0.9.cssRem)

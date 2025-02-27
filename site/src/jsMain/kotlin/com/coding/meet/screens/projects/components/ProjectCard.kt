@@ -5,10 +5,11 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import com.coding.meet.common.image_slider_with_dot.ImageSliderWithDot
+import com.coding.meet.common.image_slider_with_dot.MainButtonStyle
 import com.coding.meet.models.Project
 import com.coding.meet.screens.projects.styles.ProjectStyle
-import com.coding.meet.screens.projects.styles.ReadMoreButtonStyle
 import com.coding.meet.util.CustomColor
+import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
@@ -132,14 +133,14 @@ fun ProjectCard(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
-                attrs = ReadMoreButtonStyle.toAttrs {
+                attrs = MainButtonStyle.toAttrs {
                     onClick {
                         onClick()
                     }
                 }
             ) {
                 SpanText(
-                    text = "Read More",
+                    text = Res.Strings.READ_MORE,
                 )
             }
             if (project.appStoreUrl != null) {
