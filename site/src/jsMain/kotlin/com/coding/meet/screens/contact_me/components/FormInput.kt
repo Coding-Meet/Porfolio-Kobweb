@@ -15,6 +15,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
@@ -43,7 +44,7 @@ fun FormInput() {
     ) {
         SimpleGrid(
             numColumns = numColumns(base = 1, sm = 1, md = 2, lg = 2, xl = 2),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().gap(10.px)
         ) {
             Input(InputType.Text) {
                 id("first-name")
@@ -58,11 +59,11 @@ fun FormInput() {
             }
         }
 
-            Input(InputType.Text) {
-                id("subject")
-                placeholder("Subject")
-                onInput { event -> subject = event.value }
-            }
+        Input(InputType.Text) {
+            id("subject")
+            placeholder("Subject")
+            onInput { event -> subject = event.value }
+        }
 
         TextArea {
             id("message")
@@ -79,7 +80,7 @@ fun FormInput() {
                 attrs = MainButtonStyle.toAttrs {
                     onClick {
                         val finalSubject = subject.ifBlank { "No Subject" }
-                        val finalName =  firstName + lastName
+                        val finalName = firstName + lastName
 
                         val body = """
                             ${finalName.ifNotBlank { "Name: $finalName" }}

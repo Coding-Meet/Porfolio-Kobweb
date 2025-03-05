@@ -34,7 +34,7 @@ val experienceCardStyle = CssStyle {
             )
             .borderRadius(12.px) // Slightly rounded corners
             .border(
-                color = colorMode.toPalette().border, style = LineStyle.Solid, width = 1.px
+                color = colorMode.toPalette().border, style = LineStyle.Solid, width = 3.px
             )
             .boxShadow(0.px, 4.px, 10.px, null,rgba(0, 0, 0, 0.1)) // Soft shadow effect
             .transition(

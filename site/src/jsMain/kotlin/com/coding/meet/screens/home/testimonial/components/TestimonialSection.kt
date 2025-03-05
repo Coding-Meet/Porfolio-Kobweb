@@ -1,6 +1,12 @@
 package com.coding.meet.screens.home.testimonial.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import com.coding.meet.common.components.custom_dialog.CustomDialog
 import com.coding.meet.common.image_slider_with_dot.MainButtonStyle
 import com.coding.meet.util.Constants
 import com.coding.meet.util.CustomColor
@@ -33,6 +39,42 @@ import org.jetbrains.compose.web.dom.Button
 @Composable
 fun TestimonialSection() {
     val breakpoint = rememberBreakpoint()
+    var isShowDialog by remember { mutableStateOf(false) }
+    val dialogId by remember { mutableStateOf("testimonialDialog") }
+
+    LaunchedEffect(Unit) {
+        window.addEventListener("click", {
+            val model = window.document.getElementById(dialogId)
+            val modal = model?.asDynamic()
+            if (it.target == modal) {
+                isShowDialog = !isShowDialog
+            }
+        })
+    }
+    LaunchedEffect(isShowDialog) {
+        val model = window.document.getElementById(dialogId)
+        val modal = model?.asDynamic()
+        val body = window.document.body?.asDynamic()
+
+        if (isShowDialog) {
+            modal?.style?.display = "block"
+            body?.style?.setProperty("overflow", "hidden") // Disable scrolling
+        } else {
+            modal?.style?.display = "none"
+            body?.style?.removeProperty("overflow") // Restore default scrolling
+        }
+    }
+
+    CustomDialog(
+        modifier = Modifier.fillMaxWidth(
+            if (breakpoint > Breakpoint.MD) 60.percent else 90.percent
+        ),
+        dialogId = dialogId,
+    ) {
+        TestimonialDialog {
+            isShowDialog = false
+        }
+    }
 
     SpanText(
         text = "\uD83C\uDF1F Testimonial",
@@ -75,7 +117,7 @@ fun TestimonialSection() {
         Button(
             attrs = MainButtonStyle.toAttrs {
                 onClick {
-                    window.open(Constants.seeAllReviewLink)
+                    isShowDialog = true
                 }
             }
         ) {
