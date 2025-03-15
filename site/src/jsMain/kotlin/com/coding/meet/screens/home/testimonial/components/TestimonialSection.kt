@@ -100,7 +100,7 @@ fun TestimonialSection() {
         numColumns = numColumns(base = 1, sm = 1, md = 3),
         modifier = Modifier.fillMaxWidth(
             if (breakpoint > Breakpoint.MD) 70.percent else 90.percent
-        ).padding(topBottom = 10.px)
+        ).padding(top = 10.px)
     ) {
         Constants.testimonials.take(6).forEach { testimonial ->
             TestimonialCard(testimonial)
@@ -110,7 +110,7 @@ fun TestimonialSection() {
     Row(
         modifier = Modifier.fillMaxWidth(
             if (breakpoint > Breakpoint.MD) 70.percent else 90.percent
-        ).padding(topBottom = 10.px, leftRight = 20.px),
+        ).padding(topBottom = 20.px, leftRight = 20.px),
         horizontalArrangement = Arrangement.spacedBy(10.px, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically
     ) {
