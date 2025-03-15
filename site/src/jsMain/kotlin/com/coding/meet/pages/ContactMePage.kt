@@ -6,6 +6,7 @@ import com.coding.meet.common.page_layout.PageLayout
 import com.coding.meet.models.Section
 import com.coding.meet.models.contactMePath
 import com.coding.meet.screens.contact_me.components.FormInput
+import com.coding.meet.common.page_layout.fadeInUpPageAnimation
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.FontWeight
@@ -14,6 +15,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.animation
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
@@ -23,11 +25,14 @@ import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import org.jetbrains.compose.web.css.AnimationTimingFunction
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.s
 
 
 @Page(contactMePath)
@@ -40,7 +45,13 @@ fun ContactMePage() {
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                .animation(
+                    fadeInUpPageAnimation.toAnimation(
+                        duration = 1.s,
+                        timingFunction = AnimationTimingFunction.EaseOut
+                    )
+                ),
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

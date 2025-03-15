@@ -14,6 +14,10 @@ object Constants {
     const val BIO =
         "Hello! I’m Meet, an Android developer passionate about building apps with Kotlin, Java, KMP, and Jetpack Compose. Through my YouTube channel, GitHub projects, and this website, I share tutorials, source code, and practical guides to help developers improve their skills. I also offer custom Android development services, including app creation, bug fixing, and SDK updates. Let’s simplify Android development together! \uD83D\uDE80"
 
+    const val NAMASTE_TEXT = "Namaste 🙏"
+
+    const val WELCOME_TEXT  = "Welcome to my portfolio website"
+
     const val EMAIL_ID = "meetb2602@gmail.com"
 
     private const val GITHUB_USER_NAME = "Coding-Meet"

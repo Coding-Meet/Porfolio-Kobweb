@@ -5,6 +5,7 @@ import com.coding.meet.common.components.footer.Footer
 import com.coding.meet.common.page_layout.PageLayout
 import com.coding.meet.models.Section
 import com.coding.meet.models.servicePath
+import com.coding.meet.common.page_layout.fadeInUpPageAnimation
 import com.coding.meet.screens.service.components.FAQCard
 import com.coding.meet.screens.service.components.ServiceCard
 import com.coding.meet.util.Constants
@@ -16,6 +17,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.animation
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
@@ -27,11 +29,14 @@ import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import org.jetbrains.compose.web.css.AnimationTimingFunction
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.s
 
 @Page(servicePath)
 @Composable
@@ -42,7 +47,13 @@ fun ServiceSection() {
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                .animation(
+                    fadeInUpPageAnimation.toAnimation(
+                        duration = 1.s,
+                        timingFunction = AnimationTimingFunction.EaseOut
+                    )
+                ),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
