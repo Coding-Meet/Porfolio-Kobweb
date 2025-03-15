@@ -1,6 +1,10 @@
 package com.coding.meet
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import com.coding.meet.util.Res
 import com.coding.meet.util.Res.Font.FONT_FAMILY_REGULAR
 import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
 import com.varabyte.kobweb.compose.ui.modifiers.minHeight
@@ -15,12 +19,20 @@ import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.style.common.SmoothColorStyle
 import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.theme.colors.ColorMode
+import kotlinx.browser.localStorage
 import org.jetbrains.compose.web.css.vh
 
 
 @App
 @Composable
 fun AppEntry(content: @Composable () -> Unit) {
+    var colorMode by ColorMode.currentState
+
+    LaunchedEffect(colorMode) {
+        val savedTheme = localStorage.getItem(Res.Strings.SAVED_THEME) ?: ColorMode.LIGHT.name
+        colorMode = ColorMode.valueOf(savedTheme)
+    }
     SilkApp {
         Surface(SmoothColorStyle.toModifier().minHeight(100.vh).fontFamily(FONT_FAMILY_REGULAR)) {
             content()

@@ -16,6 +16,7 @@ object Res {
         const val SEE_ALL_REVIEW = "See All Reviews"
         const val READ_MORE = "Read More"
         const val CONTACT_ME = "Contact Me"
+        const val SAVED_THEME = "theme"
     }
 
 

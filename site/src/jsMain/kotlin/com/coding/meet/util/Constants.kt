@@ -32,33 +32,43 @@ object Constants {
     val projects = mutableListOf(
         Project(
             title = "News Kotlin Multiplatform App",
-            shortDescription = "A Kotlin Compose Multiplatform (KMP) project providing a consistent news reading experience across multiple platforms.",
-            longDescription = "The News KMP App leverages Kotlin Multiplatform and Jetpack Compose to provide a consistent news reading experience across multiple platforms. It offers features like top news headlines, detailed articles, personalized search, and offline reading, all with a shared UI and robust architecture.",
+            shortDescription = "A Kotlin Compose Multiplatform news app for Android, iOS, Windows, macOS, and Linux.",
+            longDescription = "The News KMP App is a Kotlin Compose Multiplatform (KMP) project that aims to provide a consistent news reading experience across multiple platforms, including Android, iOS, Windows, macOS, and Linux. This project leverages Kotlin's multiplatform capabilities to share code and logic while using Compose for UI, ensuring a seamless and native experience on each platform.",
             features = listOf(
-                "Explore Top News: Stay updated with the latest headlines.",
-                "Read Detailed Content: Access in-depth articles.",
-                "Personalized Search: Find news tailored to your interests.",
-                "Save for Later: Bookmark articles for offline reading.",
-                "Cross-Platform Support: Works on Android, iOS, Windows, macOS, and Linux.",
-                "Declarative UI: Built with Jetpack Compose for a shared UI experience.",
-                "Material Design 3: Ensures a modern and consistent look.",
-                "Type-Safe Navigation: Utilizes Jetpack Compose Navigation.",
-                "MVVM Architecture: Implements ViewModel for better data management.",
-                "Robust Networking: Uses Ktor for efficient API communication.",
-                "Efficient Image Loading: Integrates Coil for fast image caching.",
-                "Local Data Storage: Room for databases, DataStore for key-value storage.",
-                "Build Configuration: Managed centrally with BuildKonfig."
+                "Explore Top News Headlines: Stay updated with the day's top news stories effortlessly.",
+                "Read Detailed Content: Dive deeper into your favorite news articles for comprehensive insights.",
+                "Personalized Search: Easily find news articles tailored to your interests.",
+                "Save for Later: Bookmark articles to read offline and enjoy uninterrupted reading pleasure.",
+                "Cross-Platform Support: Seamless operation on Android, iOS, Windows, macOS, and Linux.",
+                "Declarative UI with Jetpack Compose: Shared UI components across Android and desktop.",
+                "Material Design and Material Design 3 support.",
+                "Type-Safe Navigation using Jetpack Compose Navigation.",
+                "MVVM Architecture with ViewModel for UI-related data.",
+                "Robust Networking with Ktor for HTTP client-server communication.",
+                "Efficient Image Loading using Coil.",
+                "Local Data Storage with Room for all platforms.",
+                "Key-value pair storage using DataStore.",
+                "Build Configuration Management with BuildKonfig."
             ),
             technologies = listOf(
-                "Kotlin Multiplatform",
+                "Kotlin",
                 "Jetpack Compose",
-                "MVVM",
-                "REST API",
-                "Database"
+                "Kotlin Multiplatform",
+                "MVVM Architecture",
+                "Room Database",
+                "DataStore",
+                "Ktor"
             ),
             libraries = listOf(
-                "BuildKonfig", "Ktor", "Kermit", "Room", "DataStore", "Jetpack Compose Navigation",
-                "kotlinx.coroutines", "Common ViewModel", "kotlinx.serialization"
+                "BuildKonfig",
+                "Ktor",
+                "Kermit",
+                "Room",
+                "DataStore",
+                "Navigation",
+                "kotlinx.coroutines",
+                "Common ViewModel",
+                "kotlinx.serialization"
             ),
             githubUrl = "https://github.com/Coding-Meet/News-KMP-App",
             imageUrls = listOf(
@@ -66,18 +76,42 @@ object Constants {
             ),
             platform = listOf("Android", "iOS", "Windows", "macOS", "Linux"),
             youtubeVideoLink = "https://www.youtube.com/embed/Dq1jcsVQmtY",
+            topics = listOf("News", "Kotlin Multiplatform", "Jetpack Compose", "Networking", "Local Storage", "MVVM Architecture"),
             stargazersCount = 121
         ),
         Project(
-            title = "Gemini AI Kotlin Multiplatform App",
-            shortDescription = "A conversational app for retrieving information from text and images with group-wise chat storage.",
-            longDescription = "A conversational app for retrieving information from text and images with group-wise chat storage.",
+            title = "Gemini AI Kotlin Multiplatform App - Chat with Gemini AI 💬✨",
+            shortDescription = "A KMP app enabling AI-powered conversations across Android, iOS, Desktop, and Web.",
+            longDescription = "The Gemini AI KMP App is a Kotlin Compose Multiplatform project designed to target Android, iOS, Windows, macOS, Linux, and Web platforms. It is an application by Gemini AI where you can retrieve information from text and images in a conversational format. Additionally, it allows storing chats group-wise using SQLDelight and KStore, and facilitates changing the Gemini API key.",
+            features = listOf(
+                "Engage in conversations from any device, including smartphones, tablets, desktops, and web browsers",
+                "Retrieve information from text and images in a conversational format.",
+                "Store chats group-wise using SQLDelight and KStore.",
+                "Facilitating changing the Gemini API key.",
+                "Simple Clean UI with Animations"
+            ),
             technologies = listOf(
-                "Kotlin Multiplatform",
-                "Compose Multiplatform",
+                "Kotlin",
+                "Clean Architecture",
+                "Jetpack Compose for UI development",
+                "Koin for Dependency Injection",
                 "SQLDelight",
                 "KStore",
-                "Gemini API"
+                "Generative AI"
+            ),
+            libraries = listOf(
+                "BuildKonfig",
+                "Koin",
+                "Ktor",
+                "Kermit",
+                "ViewModel",
+                "Compose Multiplatform File Picker",
+                "Multiplatform Settings",
+                "SQLDelight",
+                "KStore",
+                "kotlinx.coroutines",
+                "kotlinx.serialization",
+                "kotlinx.datetime"
             ),
             githubUrl = "https://github.com/Coding-Meet/Gemini-AI-KMP-App",
             imageUrls = listOf(
@@ -85,42 +119,101 @@ object Constants {
             ),
             platform = listOf("Android", "iOS", "Windows", "macOS", "Linux", "Web"),
             youtubeVideoLink = "https://www.youtube.com/embed/YhWhR6IVs_Y",
+            topics = listOf("AI", "Kotlin Multiplatform", "Jetpack Compose", "Chatbot", "SQLDelight", "KStore"),
             stargazersCount = 80
         ),
         Project(
             title = "String Translator Desktop App",
-            shortDescription = "A Jetpack Compose desktop application for translating multiple strings into various languages.",
-            longDescription = "A Jetpack Compose desktop application for translating multiple strings into various languages.",
-            technologies = listOf("Jetpack Compose Desktop", "Kotlin"),
+            shortDescription = "A Jetpack Compose desktop app for translating multiple strings effortlessly.",
+            longDescription = "String Translator Desktop App is a powerful desktop application built with Jetpack Compose, aiming to streamline the translation of strings for developers. It empowers users to seamlessly translate multiple strings into various languages, thereby optimizing the localization process.",
             githubUrl = "https://github.com/Coding-Meet/String-Translator-Desktop-App",
             imageUrls = listOf(
                 "project/String_Translator_Desktop_App.png"
             ),
-            platform = listOf("Desktop"),
-            features = listOf("Batch translation", "Localization optimization"),
+            features = listOf(
+                "Bulk Translation: Translate multiple strings at once to target languages.",
+                "Language Selection: Choose from a variety of supported languages for translation.",
+                "Jetpack Compose UI: Enjoy an intuitive and visually appealing interface built with Jetpack Compose.",
+                "Translation with Google Translate: Effortlessly translate your text using Google Translate without the need for an API key.",
+                "Export to XML Format: Export translated strings to XML for seamless integration into your projects."
+            ),
+            technologies = listOf(
+                "Kotlin",
+                "Jetpack Compose Desktop",
+                "Web Scraping"
+            ),
+            libraries = listOf(
+                "Jetpack Compose",
+                "Json",
+                "Compose Multiplatform"
+            ),
+            platform = listOf("Windows", "macOS", "Linux"),
+            topics = listOf("Translation", "Localization", "Jetpack Compose Desktop", "Web Scraping"),
             youtubeVideoLink = "https://www.youtube.com/embed/EDbxJkgJDf8",
             stargazersCount = 13
         ),
         Project(
-
             title = "Custom LCD Pattern Generator",
-            shortDescription = "An Android app that generates Arduino C code for given patterns, available on the Play Store with over 1,000 downloads.",
-            longDescription = "An Android app that generates Arduino C code for given patterns, available on the Play Store with over 1,000 downloads.",
-            technologies = listOf("Kotlin", "Arduino C"),
+            shortDescription = "An Android app that generates Arduino C code for custom LCD patterns.",
+            longDescription = "Custom LCD Pattern Generator is an Android application that allows users to create custom patterns for LCD screens and automatically generates Arduino C code for the given input pattern. It supports 16x2 and 20x4 LCD screens, enabling users to design single-character patterns effortlessly. The app features an intuitive UI, automatic code generation, and options to copy, share, and save patterns in .txt and .ino formats. Live on Play Store with 1K+ downloads.",
             githubUrl = null,
+            appStoreUrl = "https://play.google.com/store/apps/details?id=com.Custom_LCD_Pattern_Generator&pcampaignid=web_share",
             imageUrls = listOf(),
             platform = listOf("Android"),
-            features = listOf("Code generation", "Pattern customization"),
+            features = listOf(
+                "Create patterns for 16x2 LCD screens.",
+                "Create patterns for 20x4 LCD screens.",
+                "Create a pattern for a single character.",
+                "Easily create any pattern with a user-friendly UI.",
+                "Automatically generate code for input patterns.",
+                "Easily copy code and share.",
+                "Save files in .txt and .ino formats."
+            ),
+            topics = listOf("LCD Pattern Generator", "Embedded Systems", "Code Generation", "Arduino","Android App"),
+            technologies = listOf(
+                "Kotlin",
+                "XML",
+                "Arduino C",
+                "Android SDK"
+            ),
+            libraries = listOf(
+                "Gson",
+                "Google Play In-App Review",
+                "Firebase Crashlytics",
+                "Firebase Analytics",
+                "AndroidX SplashScreen"
+            ),
         ),
         Project(
             title = "Home Automation System",
-            shortDescription = "A system to control electronic devices in your home using an Android app.",
-            longDescription = "A system to control electronic devices in your home using an Android app.",
-            technologies = listOf("IoT", "Android", "Kotlin"),
+            shortDescription = "Arduino-based real-time home automation system for remote control of appliances via a mobile app.",
+            longDescription = "This project presents an Arduino-based real-time home automation system that allows users to remotely control and monitor home appliances like fans, lights, etc., using a mobile application. The system stores real-time data on the cloud, providing access from anywhere. The implementation integrates NodeMCU ESP8266 Wi-Fi Module, relay module, and IR receiver for communication and control. The Android application facilitates authentication, device control, and appliance state monitoring.",
+            features = listOf(
+                "Remote appliance control via mobile app",
+                "Wi-Fi-based real-time control",
+                "Appliance state monitoring and restoration",
+                "User authentication for security",
+                "Temperature monitoring",
+                "Fan speed control",
+                "IR sensor-based device control"
+            ),
+            technologies = listOf(
+                "IoT", "Android", "Kotlin",
+                "Arduino",
+                "NodeMCU ESP8266",
+                "Firebase (Realtime Database)",
+                "Wi-Fi Communication"
+            ),
+            libraries = listOf(
+                "Arduino IDE 2.0",
+                "ESP8266WiFi Library",
+                "Firebase Database KTX"
+            ),
             githubUrl = null,
+            youtubeVideoLink = "https://user-images.githubusercontent.com/71074485/203806866-debcef11-a8d1-4f91-99f3-f76b0423aba3.mp4",
             imageUrls = listOf(),
             platform = listOf("Android"),
-            features = listOf("Remote control", "Device scheduling"),
+            topics = listOf("Home Automation", "IoT", "Arduino", "Smart Home")
         ),
         Project(
             title = "Electric Vehicle",
@@ -509,7 +602,7 @@ object Constants {
                 "Integrate third-party REST APIs seamlessly",
                 "Use Navigation Components for smooth app flow",
                 "Follow MVVM / Clean Architecture for maintainable code",
-                "Optimize image loading with Glide and Coin",
+                "Optimize image loading with Glide and Coil",
                 "Implement Firebase Crashlytics and Google Analytics for monitoring and insights",
                 "Utilize Google APIs like Maps and Sign-In",
                 "Enable Google Play In-App Updates for seamless user experience",

@@ -25,6 +25,7 @@ import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
+import kotlinx.browser.localStorage
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
@@ -87,6 +88,7 @@ fun DesktopMenu(
                 ),
                 onClick = {
                     colorMode = colorMode.opposite
+                    localStorage.setItem(Res.Strings.SAVED_THEME, colorMode.name)
                 },
             ) {
                 when (colorMode) {
