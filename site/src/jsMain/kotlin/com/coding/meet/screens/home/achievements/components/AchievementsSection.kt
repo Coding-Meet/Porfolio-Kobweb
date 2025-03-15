@@ -36,7 +36,7 @@ fun AchievementsSection() {
     )
 
     SpanText(
-        text = "From creating content and building projects to engaging with the developer community — these achievements reflect my dedication and passion for growth! ✨",
+        text = "From content creation to community engagement — these achievements showcase my dedication & passion! ✨",
         modifier = Modifier.fillMaxWidth(
             if (breakpoint > Breakpoint.MD) 70.percent else 90.percent
 
