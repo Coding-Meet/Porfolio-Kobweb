@@ -8,6 +8,7 @@ import com.coding.meet.screens.home.about_me.components.AboutMeSection
 import com.coding.meet.screens.home.experience.components.ExperiencesSection
 import com.coding.meet.screens.home.testimonial.components.TestimonialSection
 import com.coding.meet.common.page_layout.fadeInUpPageAnimation
+import com.coding.meet.screens.home.achievements.components.AchievementsSection
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -38,6 +39,7 @@ fun HomePage() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             AboutMeSection()
+            AchievementsSection()
             ExperiencesSection()
             TestimonialSection()
             Footer()
