@@ -17,7 +17,6 @@ import com.varabyte.kobweb.core.init.InitKobwebContext
 import com.varabyte.kobweb.navigation.OpenLinkStrategy
 import com.varabyte.kobweb.navigation.UpdateHistoryMode
 import com.varabyte.kobweb.silk.SilkApp
-import com.varabyte.kobweb.silk.components.icons.fa.FaIndianRupeeSign
 import com.varabyte.kobweb.silk.components.layout.Surface
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
