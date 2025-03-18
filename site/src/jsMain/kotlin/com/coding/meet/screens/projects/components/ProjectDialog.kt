@@ -87,7 +87,7 @@ fun ColumnScope.ProjectDialog(
             )
             if (project.githubUrl != null || project.appStoreUrl != null) {
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(topBottom = 10.px),
+                    modifier = Modifier.fillMaxWidth().padding(topBottom = 20.px),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(
                         5.px,

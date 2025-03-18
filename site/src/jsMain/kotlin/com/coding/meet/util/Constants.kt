@@ -78,7 +78,14 @@ object Constants {
             ),
             githubUrl = "https://github.com/Coding-Meet/News-KMP-App",
             imageUrls = listOf(
-                "project/News-KMP-App.png"
+                "project/news_kmp_app/news_app_banner.png",
+                "project/news_kmp_app/news_app_img_1.png",
+                "project/news_kmp_app/news_app_img_2.png",
+                "project/news_kmp_app/news_app_img_3.png",
+                "project/news_kmp_app/news_app_img_4.png",
+                "project/news_kmp_app/news_app_img_5.png",
+                "project/news_kmp_app/news_app_img_6.png",
+                "project/news_kmp_app/news_app_img_7.png",
             ),
             platform = listOf("Android", "iOS", "Windows", "macOS", "Linux"),
             youtubeVideoLink = "https://www.youtube.com/embed/Dq1jcsVQmtY",
@@ -128,7 +135,10 @@ object Constants {
             ),
             githubUrl = "https://github.com/Coding-Meet/Gemini-AI-KMP-App",
             imageUrls = listOf(
-                "project/Gemini-AI-KMP-App.png"
+                "project/gemini_ai_kmp_app/gemini_app_banner.png",
+                "project/gemini_ai_kmp_app/gemini_app_img_1.png",
+                "project/gemini_ai_kmp_app/gemini_app_img_2.png",
+                "project/gemini_ai_kmp_app/gemini_app_img_3.png"
             ),
             platform = listOf("Android", "iOS", "Windows", "macOS", "Linux", "Web"),
             youtubeVideoLink = "https://www.youtube.com/embed/YhWhR6IVs_Y",
@@ -148,7 +158,9 @@ object Constants {
             longDescription = "String Translator Desktop App is a powerful desktop application built with Jetpack Compose, aiming to streamline the translation of strings for developers. It empowers users to seamlessly translate multiple strings into various languages, thereby optimizing the localization process.",
             githubUrl = "https://github.com/Coding-Meet/String-Translator-Desktop-App",
             imageUrls = listOf(
-                "project/String_Translator_Desktop_App.png"
+                "project/string_translator_desktop_app/string_translator_desktop_app_banner.png",
+                "project/string_translator_desktop_app/string_translator_desktop_app_img_1.png",
+                "project/string_translator_desktop_app/string_translator_desktop_app_img_2.png"
             ),
             features = listOf(
                 "Bulk Translation: Translate multiple strings at once to target languages.",
@@ -183,8 +195,6 @@ object Constants {
             longDescription = "Custom LCD Pattern Generator is an Android application that allows users to create custom patterns for LCD screens and automatically generates Arduino C code for the given input pattern. It supports 16x2 and 20x4 LCD screens, enabling users to design single-character patterns effortlessly. The app features an intuitive UI, automatic code generation, and options to copy, share, and save patterns in .txt and .ino formats. Live on Play Store with 1K+ downloads.",
             githubUrl = null,
             appStoreUrl = "https://play.google.com/store/apps/details?id=com.Custom_LCD_Pattern_Generator&pcampaignid=web_share",
-            imageUrls = listOf(),
-            platform = listOf("Android"),
             features = listOf(
                 "Create patterns for 16x2 LCD screens.",
                 "Create patterns for 20x4 LCD screens.",
@@ -209,12 +219,69 @@ object Constants {
             ),
             libraries = listOf(
                 "Gson",
+                "Material Design",
                 "Google Play In-App Review",
                 "Firebase Crashlytics",
                 "Firebase Analytics",
                 "AndroidX SplashScreen"
             ),
+            imageUrls = listOf(
+                "project/custom_lcd_app/custom_lcd_app_banner.png",
+                "project/custom_lcd_app/custom_lcd_app_img_1.png",
+                "project/custom_lcd_app/custom_lcd_app_img_2.png"
+            ),
+            platform = listOf("Android"),
         ),
+        Project(
+            title = "Third Eye - AI Assistant App for Blind People",
+            shortDescription = "An AI-powered Android app designed to assist blind people with voice commands, image descriptions, and text extraction.",
+            longDescription = "Third Eye is an innovative Android application that leverages Gemini AI to enhance accessibility for blind individuals. It offers features like custom prompts, image-to-text conversion, and detailed image descriptions to support daily tasks through voice commands and AI-powered insights.",
+            githubUrl = "https://github.com/Coding-Meet/Third-Eye",
+            stargazersCount = 3,
+            youtubeVideoLink = "https://www.youtube.com/embed/cRTjUSgXhKY",
+            features = listOf(
+                "Custom Prompt for text-based queries and instructions",
+                "Custom Prompt with Image for context-aware AI responses",
+                "Image Description feature to generate detailed descriptions of uploaded images",
+                "Image to Text functionality for extracting text from images",
+                "User-friendly interface powered by Jetpack Compose",
+                "Seamless navigation with Jetpack Navigation",
+                "CameraX integration for image capture",
+                "Lightweight and efficient with Koin for Dependency Injection"
+            ),
+            technologies = listOf(
+                "Kotlin",
+                "Jetpack Compose",
+                "Gemini API",
+                "CameraX",
+                "Koin",
+                "Markdown"
+            ),
+            libraries = listOf(
+                "Gemini API",
+                "Splash API",
+                "Lifecycle and ViewModel",
+                "Jetpack Navigation",
+                "Koin",
+                "CameraX",
+                "Markdown"
+            ),
+            imageUrls = listOf(
+                "project/third_eye/third_eye_banner.png",
+                "project/third_eye/third_eye_img_1.png",
+                "project/third_eye/third_eye_img_2.png",
+                "project/third_eye/third_eye_img_3.png",
+            ),
+            platform = listOf("Android"),
+            topics = listOf(
+                "Accessibility",
+                "AI Assistant",
+                "Image Processing",
+                "Voice Commands",
+                "Jetpack Compose"
+            )
+        ),
+
         Project(
             title = "Home Automation System",
             shortDescription = "Arduino-based real-time home automation system for remote control of appliances via a mobile app.",
@@ -236,105 +303,439 @@ object Constants {
                 "Wi-Fi Communication"
             ),
             libraries = listOf(
+                "Material Design",
                 "Arduino IDE 2.0",
                 "ESP8266WiFi Library",
                 "Firebase Database KTX"
             ),
             githubUrl = null,
             youtubeVideoLink = "https://user-images.githubusercontent.com/71074485/203806866-debcef11-a8d1-4f91-99f3-f76b0423aba3.mp4",
-            imageUrls = listOf(),
+            imageUrls = listOf(
+                "project/home_automation_app/home_automation_app_banner_1.png",
+                "project/home_automation_app/home_automation_app_banner_2.png",
+                "project/home_automation_app/home_automation_app_banner_3.png",
+                "project/home_automation_app/home_automation_app_img_1.png",
+                "project/home_automation_app/home_automation_app_img_2.png",
+            ),
             platform = listOf("Android"),
             topics = listOf("Home Automation", "IoT", "Arduino", "Smart Home")
         ),
         Project(
             title = "Electric Vehicle",
-            shortDescription = "Coded systems for electric vehicles using Arduino C.",
-            longDescription = "Coded systems for electric vehicles using Arduino C.",
-            technologies = listOf("Arduino C", "IoT"),
-            githubUrl = null,
-            imageUrls = listOf(),
-            platform = listOf("Embedded Systems"),
-            features = listOf("Motor control", "Battery monitoring"),
+            shortDescription = "An electric vehicle powered by a 3-phase induction motor using SPWM control via Arduino.",
+            longDescription = "This project demonstrates an electric vehicle powered by a 3-phase induction motor controlled using the Sinusoidal Pulse Width Modulation (SPWM) technique. The Arduino microcontroller efficiently manages the motor's speed and direction through precise pulse control, ensuring optimal performance. The system is designed for improved energy efficiency, reduced harmonic distortion, and enhanced motor control for electric vehicle applications.",
+            features = listOf(
+                "3-phase induction motor control using SPWM",
+                "Efficient motor speed and direction management",
+                "Improved energy efficiency and reduced harmonic distortion",
+                "Arduino-based control system for precise operation"
+            ),
+            technologies = listOf(
+                "Arduino",
+                "SPWM Technique",
+                "3-Phase Induction Motor",
+                "Power Electronics",
+                "C++ (Arduino IDE)"
+            ),
+            libraries = listOf("Wire.h", "LiquidCrystal.h", "PWM Control Library"),
+            imageUrls = listOf(
+                "project/electric_vehicle/electric_vehicle_img_1.png",
+            ),
+            platform = listOf("Arduino"),
+            topics = listOf("IoT", "Automation", "Electric Vehicles", "Motor Control")
         ),
         Project(
-            title = "Quillbot Web Scraping",
-            shortDescription = "Automates content rewriting, saving time spent on manual tasks.",
-            longDescription = "Automates content rewriting, saving time spent on manual tasks.",
-            technologies = listOf("Python", "Web Scraping"),
-            githubUrl = null,
-            imageUrls = listOf(),
-            platform = listOf("Desktop"),
-            features = listOf("Content automation", "Web scraping"),
+            title = "Quillbot Web Scraper",
+            shortDescription = "Automates content rewriting using Selenium and Apache POI.",
+            longDescription = "The Quillbot Web Scraper is an automation tool designed to streamline content rewriting tasks. It leverages Selenium WebDriver to interact with Quillbot's web interface and Apache POI to read and write content in Excel sheets. The tool efficiently handles large text by dynamically splitting content, automates text submission, and retrieves the rewritten content for seamless workflow integration.",
+            technologies = listOf("Kotlin", "Selenium", "Apache POI", "ChromeDriver"),
+            libraries = listOf("Selenium WebDriver", "Apache POI"),
+            imageUrls = listOf(
+                "project/quill_bot_web/quill_bot_web_banner.png",
+            ),
+            platform = listOf("Web"),
+            features = listOf(
+                "Excel Integration with Apache POI for reading and writing content",
+                "Selenium Web Automation for text input, rephrasing, and copying results",
+                "Dynamic Content Splitting for handling large text efficiently",
+                "Clipboard Management for capturing and saving rewritten text",
+                "Execution Time Tracking with detailed logs"
+            )
+        ),
+        Project(
+            title = "ChatGPT Android App",
+            shortDescription = "An AI-powered chat application with text, image generation, and voice interaction features.",
+            longDescription = "This ChatGPT app leverages AI for an engaging chat experience, offering text-based conversations, image generation, and voice interaction features. Built using MVVM architecture, the app ensures secure API key management, local storage for chat history, and enhanced user controls for a seamless experience.",
+            features = listOf(
+                "Text input for generating AI-powered images",
+                "Image size customization (256x256, 512x512, 1024x1024)",
+                "Generated images displayed in a RecyclerView",
+                "Full-screen image view with download option",
+                "OpenAI API integration using Retrofit",
+                "Secure API key management with encrypted SharedPreferences",
+                "Clipboard Manager for copying text",
+                "Share Intents for easy message sharing",
+                "Text-to-Speech (TTS) for audio playback of messages",
+                "Voice-to-Text (VTT) for sending messages via voice input",
+                "Local chat history storage using Room database",
+                "Popup menus for message actions (copy, share, delete)",
+                "Robot management functionality for enhanced interactions",
+                "MVVM architecture for improved data management",
+                "Resource sealed class for standardized loading, success, and error handling"
+            ),
+            technologies = listOf("Kotlin", "Android Studio", "Retrofit", "Room Database"),
+            libraries = listOf(
+                "Retrofit",
+                "Room Database",
+                "Material Design Components",
+                "Text-to-Speech (TTS)",
+                "Voice-to-Text (VTT)",
+                "Encrypted SharedPreferences"
+            ),
+            imageUrls = listOf(
+                "project/chatgpt_app/chatgpt_app_img_1.png",
+                "project/chatgpt_app/chatgpt_app_img_2.png",
+            ),
+            platform = listOf("Android"),
+            topics = listOf(
+                "AI Integration",
+                "Chat Application",
+                "Image Generation",
+                "Voice Interaction",
+                "MVVM Architecture"
+            )
         ),
         Project(
             title = "Multi-Factor Authenticator App",
-            shortDescription = "Enhances online security by generating unique, time-based verification codes.",
-            longDescription = "Enhances online security by generating unique, time-based verification codes.",
-            technologies = listOf("Android", "Kotlin"),
+            shortDescription = "A secure Android app that generates time-based verification codes for enhanced online account security.",
+            longDescription = "An authenticator app is an Android application designed to provide an additional layer of security to online accounts. The app generates a unique, time-based code that is used to verify the user's identity when logging into an account. This code is typically valid for a short period of time, typically 30 seconds, and is generated using a secret key shared between the authenticator app and the online account. Authenticator apps are commonly used to provide two-factor authentication (2FA) to online accounts, which requires users to provide both a password and a verification code generated by the authenticator app. This makes it much more difficult for hackers to gain access to the user's account.",
             githubUrl = null,
-            imageUrls = listOf(),
+            features = listOf(
+                "Generates secure time-based codes",
+                "Provides 2FA support",
+                "Ensures user identity verification",
+                "Easy integration with online accounts"
+            ),
+            technologies = listOf("Kotlin", "Android Studio", "XML"),
+            libraries = listOf(
+                "Material Design",
+                "Commons Codec",
+                "ZXing",
+                "Gson",
+                "Lottie",
+                "Glide"
+            ),
+            imageUrls = listOf(
+                "project/multi_factor_authenticator_app/multi_factor_authenticator_app_img_1.png",
+                "project/multi_factor_authenticator_app/multi_factor_authenticator_app_img_2.png",
+            ),
             platform = listOf("Android"),
-            features = listOf("Time-based codes", "Secure storage"),
+            topics = listOf("Security", "Two-Factor Authentication", "Privacy")
         ),
         Project(
-            title = "Daily Affirmation",
-            shortDescription = "Provides daily affirmations and inspiring quotes with a wallpaper feature.",
-            longDescription = "Provides daily affirmations and inspiring quotes with a wallpaper feature.",
-            technologies = listOf("Android", "Kotlin"),
-            githubUrl = null,
-            imageUrls = listOf(),
+            title = "Daily Affirmation App",
+            shortDescription = "An app providing daily affirmations, positive quotes, and customizable wallpapers for personal growth.",
+            longDescription = "Daily Affirmation with Wallpaper is a mobile application designed to provide daily affirmations and positive quotes to users, combined with a wallpaper feature that displays beautiful and inspiring images. The app aims to help users start their day on a positive note, increase their self-confidence, and improve their overall well-being.",
+            features = listOf(
+                "Displays a new daily affirmation",
+                "Allows custom affirmation creation",
+                "Offers various affirmation categories like self-love, success, and health",
+                "Customizable wallpaper with affirmation quotes",
+                "Offline mode for accessing affirmations without internet",
+                "Dynamic lock screen quotes that change on unlock"
+            ),
+            technologies = listOf("Kotlin", "Android Studio", "XML"),
+            libraries = listOf(
+                "Glide",
+                "Lottie",
+                "Volley",
+                "Material Design",
+                "PRDownloader",
+                "uCrop",
+                "Play Services Ads",
+                "Core SplashScreen",
+                "MultiWaveHeader"
+            ),
+            imageUrls = listOf(
+                "project/daily_affirmations_app/daily_affirmations_app_img_1.png",
+                "project/daily_affirmations_app/daily_affirmations_app_img_2.png",
+                "project/daily_affirmations_app/daily_affirmations_app_img_3.png",
+                "project/daily_affirmations_app/daily_affirmations_app_img_4.png",
+            ),
             platform = listOf("Android"),
-            features = listOf("Daily quotes", "Wallpaper customization"),
+            topics = listOf("Motivation", "Well-being", "Productivity")
+        ),
+        Project(
+            title = "Document Scanner App",
+            shortDescription = "A powerful document scanning and management tool with PDF creation, storage, and sharing features.",
+            longDescription = "The Document Scanner app streamlines document capture, management, and organization using Google Doc ML Kit, Room database, and Jetpack Compose. With features like PDF creation, renaming, deletion, and sharing, this app offers a user-friendly experience with both light and dark mode support.",
+            youtubeVideoLink = "https://www.youtube.com/embed/cfEbZJDpeZ0",
+            features = listOf(
+                "Document scanning with Google Doc ML Kit",
+                "PDF creation and storage with Room database",
+                "Options to rename, delete, and share documents",
+                "MVVM architecture for improved data management",
+                "Sealed class Resource for handling loading, success, and error states",
+                "Jetpack Compose UI for a modern and intuitive interface",
+                "Light and dark mode support with Shared Preferences"
+            ),
+            technologies = listOf("Kotlin", "Android Studio", "Jetpack Compose", "Room Database"),
+            libraries = listOf(
+                "Google Doc ML Kit",
+                "Room Database",
+                "Material Design Components",
+                "Jetpack Compose",
+                "Shared Preferences"
+            ),
+            imageUrls = listOf(
+                "project/doc_scanner_app/doc_scanner_app_img_1.png",
+            ),
+            platform = listOf("Android"),
+            topics = listOf(
+                "Document Scanning",
+                "PDF Creation",
+                "Data Management",
+                "MVVM Architecture",
+                "Jetpack Compose"
+            )
         ),
         Project(
             title = "Math Workout - Brain Exercise",
-            shortDescription = "Offers a variety of math challenges for brain training.",
-            longDescription = "Offers a variety of math challenges for brain training.",
-            technologies = listOf("Android", "Kotlin"),
-            githubUrl = null,
-            imageUrls = listOf(),
+            shortDescription = "A fun and engaging math game designed to improve your math skills and keep your brain sharp.",
+            longDescription = "Looking to improve your math skills and keep your brain sharp? Look no further than Math Workout - Math Games! Our free app offers a fun and engaging way to train your brain and challenge yourself with a variety of math categories, including addition, subtraction, multiplication, division, square root, cube root, and more. But don't worry, this isn't your typical boring math class. Our game is designed to be both entertaining and educational, so you can enjoy yourself while improving your math abilities. Plus, with categories like 'Find Missing' and 'Guess The Sign,' you'll never get bored!",
+            appStoreUrl = "https://play.google.com/store/apps/details?id=com.math.workout",
+            features = listOf(
+                "Multiple math categories including addition, subtraction, and more",
+                "Fun and educational gameplay",
+                "Interactive categories like 'Find Missing' and 'Guess The Sign'",
+                "Engaging visuals and smooth animations",
+                "Supports Firebase Crashlytics and Analytics"
+            ),
+            technologies = listOf("Kotlin", "Android Studio", "XML"),
+            libraries = listOf(
+                "Material Design",
+                "MultiWaveHeader",
+                "CircularProgressBar",
+                "YPWaveView",
+                "Firebase Crashlytics",
+                "Firebase Analytics",
+                "Play Core App Update",
+                "Play Core Review",
+                "Core SplashScreen"
+            ),
+            imageUrls = listOf(
+                "project/math_workout_app/math_workout_app_banner.png",
+                "project/math_workout_app/math_workout_app_img_1.png",
+                "project/math_workout_app/math_workout_app_img_2.png",
+                "project/math_workout_app/math_workout_app_img_3.png",
+                "project/math_workout_app/math_workout_app_img_4.png",
+            ),
             platform = listOf("Android"),
-            features = listOf("Math puzzles", "Brain training"),
+            topics = listOf("Math", "Education", "Brain Training")
         ),
         Project(
-            title = "Trivia App",
-            shortDescription = "Enables users to answer questions across various categories and difficulty levels.",
-            longDescription = "Enables users to answer questions across various categories and difficulty levels.",
-            technologies = listOf("Android", "Kotlin"),
-            githubUrl = null,
-            imageUrls = listOf(),
+            title = "Bluetooth Arduino Communication Android App",
+            shortDescription = "An Android app that establishes communication with Arduino devices via Bluetooth HC05/HC06 modules.",
+            longDescription = "This Android application enables seamless Bluetooth communication with Arduino hardware, allowing users to send commands and receive real-time data. The app offers an intuitive interface for controlling devices, monitoring sensor data, and supporting various IoT and automation use cases.",
+            youtubeVideoLink = "https://www.youtube.com/embed/cOfPIwNZwQY",
+            features = listOf(
+                "Bluetooth connectivity with HC05/HC06 modules",
+                "Command transmission for controlling Arduino devices",
+                "Real-time data monitoring from sensors and peripherals",
+                "User-friendly interface with intuitive controls",
+            ),
+            technologies = listOf("Kotlin", "Android Studio", "Arduino"),
+            libraries = listOf(
+                "Bluetooth API",
+                "Material Design Components"
+            ),
+            imageUrls = listOf(
+                "project/bluetooth_control_app/bluetooth_app_banner.png",
+                "project/bluetooth_control_app/bluetooth_app_img_1.png",
+                "project/bluetooth_control_app/bluetooth_app_img_2.png",
+                "project/bluetooth_control_app/bluetooth_app_img_3.png",
+            ),
             platform = listOf("Android"),
-            features = listOf("Category-wise trivia", "Difficulty levels"),
+            topics = listOf("Bluetooth Communication", "Arduino", "IoT", "Home Automation")
+        ),
+        Project(
+            title = "Truth Or Dare App",
+            shortDescription = "A fun and interactive Truth or Dare game featuring thousands of questions and dares in multiple languages.",
+            longDescription = "The Truth or Dare app offers a fun way to connect with friends, family, or your partner through engaging questions and dares. With six exciting levels — Classic, Naughty Couple, Extreme, Funny Party, Kids, and Hilarious — the app keeps the fun going for everyone. Available in multiple languages, it’s perfect for house parties, dates, or family gatherings.",
+            features = listOf(
+                "6 levels: Classic, Naughty Couple, Extreme, Funny Party, Kids, and Hilarious",
+                "Thousands of original questions and dares",
+                "Multi-language support: English, Japanese, Chinese, Spanish, German, French, Portuguese, Italian, Arabic, Russian, Korean, Sinhala, Hindi, Indonesian, Catalan",
+                "Player name setup for group play",
+                "Sound on/off feature for better customization",
+                "Frequently updated with fresh content",
+                "Perfect for parties, dates, and family fun"
+            ),
+            technologies = listOf("Kotlin", "Android Studio", "XML", "Multilingual Support"),
+            libraries = listOf(
+                "Material Design",
+                "Glide",
+                "Card Stack View",
+                "Volley",
+                "Lottie",
+                "RecyclerView",
+                "Google Play Services Ads",
+                "AndroidX Core Splash Screen"
+            ),
+            imageUrls = listOf(
+                "project/truth_and_dare/truth_and_dare_img_1.png",
+                "project/truth_and_dare/truth_and_dare_img_2.png",
+                "project/truth_and_dare/truth_and_dare_img_3.png"
+            ),
+            platform = listOf("Android"),
+            topics = listOf(
+                "Entertainment",
+                "Party Game",
+                "Multiplayer",
+                "Fun & Games",
+                "Jetpack Compose"
+            )
         ),
         Project(
             title = "MeetMyShow",
-            shortDescription = "An online movie ticket booking app developed in Kotlin.",
-            longDescription = "An online movie ticket booking app developed in Kotlin.",
-            technologies = listOf("Android", "Kotlin"),
-            githubUrl = null,
-            imageUrls = listOf(),
+            shortDescription = "An online movie ticket booking app for booking movie tickets, viewing schedules, and selecting seats with ease.",
+            longDescription = "The 'Online Movie Ticket Booking System' is designed for multiplex theaters, enabling users to book tickets 24/7 from anywhere. Customers can explore running movies, view schedules, and access service details. The app streamlines the traditional ticket booking process by eliminating the need to visit theaters and stand in queues. It features user registration, login, movie searches, seat selection, and secure payment options. Admins can monitor booked and canceled tickets. With a user-friendly interface, this app simplifies movie ticket booking for both customers and theater owners.",
+            features = listOf(
+                "User registration and login",
+                "View all running movies and their details",
+                "Search for movies easily",
+                "Theater and seat selection",
+                "Secure payment integration with Razorpay",
+                "Invoice generation and receipt saving",
+                "Firebase integration for database, Firestore, and storage"
+            ),
+            technologies = listOf("Kotlin", "Android Studio", "XML", "Firebase"),
+            libraries = listOf(
+                "Material Design",
+                "ConstraintLayout",
+                "Firebase Firestore",
+                "Firebase Storage",
+                "Glide",
+                "Firebase Realtime Database",
+                "Firebase Authentication",
+                "Legacy Support",
+                "Lifecycle (LiveData, ViewModel)",
+                "Navigation Component",
+                "Razorpay Checkout"
+            ),
+            imageUrls = listOf(
+                "project/meet_my_show_app/meet_my_show_img_1.png",
+                "project/meet_my_show_app/meet_my_show_img_2.png",
+                "project/meet_my_show_app/meet_my_show_img_3.png",
+                "project/meet_my_show_app/meet_my_show_img_4.png"
+            ),
             platform = listOf("Android"),
-            features = listOf("Movie listings", "Ticket booking"),
+            topics = listOf("Entertainment", "Booking System", "Movie Ticketing")
+        ),
+        Project(
+            title = "Dual Axis Solar Tracking System",
+            shortDescription = "An automated solar tracking system that maximizes solar energy efficiency through light sensors and motor control.",
+            longDescription = "The Dual Axis Solar Tracking System is designed to improve solar energy efficiency by automatically aligning solar panels towards the sun. Using light sensors and motor control, the system tracks the sun's position in both horizontal and vertical directions. The system also displays the generated power on an LCD screen, ensuring optimal performance and efficient energy utilization for small appliances.",
+            features = listOf(
+                "Automatic solar panel rotation in both horizontal and vertical directions",
+                "Light sensors for accurate sun tracking",
+                "Displays real-time temperature and power generation on an LCD screen",
+                "Efficiently manages solar energy for small appliances"
+            ),
+            technologies = listOf(
+                "Arduino",
+                "LDR Sensors",
+                "Motors",
+                "Relay",
+                "LCD Display",
+                "C++ (Arduino IDE)"
+            ),
+            libraries = listOf("Wire.h", "LiquidCrystal.h"),
+            imageUrls = listOf(
+                "project/dual_axis_solar_tracking_system/dual_axis_solar_tracker_img_1.png"
+            ),
+            platform = listOf("Arduino"),
+            topics = listOf("IoT", "Automation", "Renewable Energy", "Smart Agriculture")
+        ),
+        Project(
+            title = "Smart Irrigation System",
+            shortDescription = "An automated irrigation system for efficient water management using sensors and relay control.",
+            longDescription = "The Smart Irrigation System automates the watering process for plants by monitoring soil moisture levels and environmental conditions. It uses a DHT11 sensor to measure temperature and humidity, a soil moisture sensor to detect soil conditions, and a relay to control the water pump. An LCD display shows real-time data to provide instant insights, ensuring efficient water usage and reduced manual effort.",
+            features = listOf(
+                "Automatic pump control based on soil moisture levels",
+                "Real-time display of temperature and humidity",
+                "LCD screen for data visualization",
+                "Prevents water wastage by activating the pump only when necessary"
+            ),
+            technologies = listOf(
+                "Arduino",
+                "DHT11",
+                "Soil Moisture Sensor",
+                "Relay",
+                "LCD Display",
+                "C++ (Arduino IDE)"
+            ),
+            libraries = listOf("Wire.h", "LiquidCrystal_I2C.h", "DHT.h"),
+            imageUrls = listOf(
+                "project/smart_irrigation_system/smart_irrigation_system_banner.png",
+                "project/smart_irrigation_system/smart_irrigation_system_img_1.png",
+            ),
+            platform = listOf("Arduino"),
+            topics = listOf("IoT", "Automation", "Smart Agriculture", "Environmental Monitoring")
         ),
         Project(
             title = "Android Addict",
             shortDescription = "A React-based website providing Android component code for developers.",
-            longDescription = "A React-based website providing Android component code for developers.",
-            technologies = listOf("React", "JavaScript"),
-            githubUrl = null,
-            imageUrls = listOf(),
+            longDescription = "Android Addict is a React-based website designed to help Android developers by providing ready-to-use Android component code. It serves as a valuable resource for developers seeking efficient solutions and code snippets to improve their Android projects.",
+            githubUrl = "https://meetdev26.github.io/android-addict/#/",
+            features = listOf(
+                "Collection of Android component code",
+                "User-friendly interface for easy navigation",
+                "Code snippets for common Android features",
+            ),
+            technologies = listOf("React", "JavaScript", "CSS", "HTML"),
+            libraries = listOf(
+                "React",
+                "React Router",
+                "Material UI"
+            ),
+            imageUrls = listOf(
+                "project/android_addict_website/android_addict_website_banner.png"
+            ),
             platform = listOf("Web"),
-            features = listOf("Code snippets", "Component guides"),
+            topics = listOf("Android Development", "Web Development", "Code Snippets")
         ),
         Project(
-            title = "Gamers Arena",
-            shortDescription = "An app for hosting and joining gaming tournaments and events.",
-            longDescription = "An app for hosting and joining gaming tournaments and events.",
-            technologies = listOf("Android", "Kotlin"),
-            githubUrl = null,
-            imageUrls = listOf(),
+            title = "Gamer's Arena",
+            shortDescription = "An Android app for hosting and joining gaming tournaments with chat and profile management features.",
+            longDescription = "Gamer's Arena is a feature-rich Android application that allows admins to organize gaming tournaments, set schedules, prizes, and declare winners. Users can join tournaments, view participant details, chat with other players, and manage their profiles. The app aims to provide a genuine and transparent platform for gamers to showcase their skills and win rewards.",
+            features = listOf(
+                "Admin can create and manage tournaments",
+                "Users can join tournaments and view details",
+                "Chat functionality for player interaction",
+                "Profile management for both users and admins",
+                "Room ID and password management for secure entry",
+                "Tournament result declaration by admins"
+            ),
+            technologies = listOf("Kotlin", "Android Studio", "XML"),
+            libraries = listOf(
+                "Firebase Firestore",
+                "Firebase Authentication",
+                "Firebase Database",
+                "Firebase Storage",
+                "Glide",
+                "Material Design Components"
+            ),
+            imageUrls = listOf(
+                "project/gamers_arena_app/gamers_area_img_1.png",
+                "project/gamers_arena_app/gamers_area_img_2.png",
+                "project/gamers_arena_app/gamers_area_img_3.png",
+                "project/gamers_arena_app/gamers_area_img_4.png",
+                "project/gamers_arena_app/gamers_area_img_5.png",
+                "project/gamers_arena_app/gamers_area_img_6.png",
+            ),
             platform = listOf("Android"),
-            features = listOf("Tournament management", "Event participation"),
+            topics = listOf("Gaming", "Tournament Management", "Chat System")
         )
     )
     val articles = listOf(
