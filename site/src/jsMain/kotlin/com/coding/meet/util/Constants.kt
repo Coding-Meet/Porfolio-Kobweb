@@ -5,6 +5,7 @@ import com.coding.meet.models.Article
 import com.coding.meet.models.Experience
 import com.coding.meet.models.FAQ
 import com.coding.meet.models.Project
+import com.coding.meet.models.ProjectCategory
 import com.coding.meet.models.Service
 import com.coding.meet.models.Skill
 import com.coding.meet.models.Social
@@ -39,22 +40,22 @@ object Constants {
         Project(
             title = "News Kotlin Multiplatform App",
             shortDescription = "A Kotlin Compose Multiplatform news app for Android, iOS, Windows, macOS, and Linux.",
-            longDescription = "The News KMP App is a Kotlin Compose Multiplatform (KMP) project that aims to provide a consistent news reading experience across multiple platforms, including Android, iOS, Windows, macOS, and Linux. This project leverages Kotlin's multiplatform capabilities to share code and logic while using Compose for UI, ensuring a seamless and native experience on each platform.",
+            longDescription = "The News KMP App is a Kotlin Compose Multiplatform (KMP) project designed to deliver a consistent news reading experience across multiple platforms, including Android, iOS, Windows, macOS, and Linux. This project leverages Kotlin's multiplatform capabilities to share code and logic while using Compose for UI, ensuring a seamless and native experience on each platform.",
             features = listOf(
-                "Explore Top News Headlines: Stay updated with the day's top news stories effortlessly.",
-                "Read Detailed Content: Dive deeper into your favorite news articles for comprehensive insights.",
-                "Personalized Search: Easily find news articles tailored to your interests.",
-                "Save for Later: Bookmark articles to read offline and enjoy uninterrupted reading pleasure.",
-                "Cross-Platform Support: Seamless operation on Android, iOS, Windows, macOS, and Linux.",
-                "Declarative UI with Jetpack Compose: Shared UI components across Android and desktop.",
+                "Stay updated with the day's top headlines.",
+                "Get in-depth insights into your favorite news articles.",
+                "Find news articles tailored to your interests.",
+                "Bookmark articles for offline reading.",
+                "Seamless operation on Android, iOS, Windows, macOS, and Linux.",
+                "Declarative UI with Jetpack Compose for shared components.",
                 "Material Design and Material Design 3 support.",
-                "Type-Safe Navigation using Jetpack Compose Navigation.",
+                "Type-safe navigation using Jetpack Compose Navigation.",
                 "MVVM Architecture with ViewModel for UI-related data.",
-                "Robust Networking with Ktor for HTTP client-server communication.",
-                "Efficient Image Loading using Coil.",
-                "Local Data Storage with Room for all platforms.",
+                "Robust networking with Ktor for HTTP client-server communication.",
+                "Efficient image loading using Coil.",
+                "Local data storage with Room for all platforms.",
                 "Key-value pair storage using DataStore.",
-                "Build Configuration Management with BuildKonfig."
+                "Build configuration management with BuildKonfig."
             ),
             technologies = listOf(
                 "Kotlin",
@@ -97,18 +98,19 @@ object Constants {
                 "Local Storage",
                 "MVVM Architecture"
             ),
-            stargazersCount = 121
+            stargazersCount = 121,
+            categories = listOf(ProjectCategory.ANDROID,ProjectCategory.KMP)
         ),
         Project(
             title = "Gemini AI Kotlin Multiplatform App - Chat with Gemini AI 💬✨",
             shortDescription = "A KMP app enabling AI-powered conversations across Android, iOS, Desktop, and Web.",
-            longDescription = "The Gemini AI KMP App is a Kotlin Compose Multiplatform project designed to target Android, iOS, Windows, macOS, Linux, and Web platforms. It is an application by Gemini AI where you can retrieve information from text and images in a conversational format. Additionally, it allows storing chats group-wise using SQLDelight and KStore, and facilitates changing the Gemini API key.",
+            longDescription = "The Gemini AI KMP App is a Kotlin Compose Multiplatform project designed to target Android, iOS, Windows, macOS, Linux, and Web platforms. This application allows users to extract information from text and images in a conversational format. Additionally, it enables chat storage using SQLDelight and KStore, and facilitates changing the Gemini API key.",
             features = listOf(
-                "Engage in conversations from any device, including smartphones, tablets, desktops, and web browsers",
-                "Retrieve information from text and images in a conversational format.",
+                "Engage in conversations from any device, including smartphones, tablets, desktops, and web browsers.",
+                "Extract information from text and images in a conversational format.",
                 "Store chats group-wise using SQLDelight and KStore.",
-                "Facilitating changing the Gemini API key.",
-                "Simple Clean UI with Animations"
+                "Easily change the Gemini API key.",
+                "Clean and simple UI with animations."
             ),
             technologies = listOf(
                 "Kotlin",
@@ -150,7 +152,8 @@ object Constants {
                 "SQLDelight",
                 "KStore"
             ),
-            stargazersCount = 80
+            stargazersCount = 80,
+            categories = listOf(ProjectCategory.ANDROID,ProjectCategory.KMP,ProjectCategory.WEB)
         ),
         Project(
             title = "String Translator Desktop App",
@@ -187,7 +190,8 @@ object Constants {
                 "Web Scraping"
             ),
             youtubeVideoLink = "https://www.youtube.com/embed/EDbxJkgJDf8",
-            stargazersCount = 13
+            stargazersCount = 13,
+            categories = listOf(ProjectCategory.KMP)
         ),
         Project(
             title = "Custom LCD Pattern Generator",
@@ -231,6 +235,7 @@ object Constants {
                 "project/custom_lcd_app/custom_lcd_app_img_2.png"
             ),
             platform = listOf("Android"),
+            categories = listOf(ProjectCategory.ANDROID,ProjectCategory.IOT)
         ),
         Project(
             title = "Third Eye - AI Assistant App for Blind People",
@@ -279,7 +284,8 @@ object Constants {
                 "Image Processing",
                 "Voice Commands",
                 "Jetpack Compose"
-            )
+            ),
+            categories = listOf(ProjectCategory.ANDROID)
         ),
 
         Project(
@@ -318,7 +324,8 @@ object Constants {
                 "project/home_automation_app/home_automation_app_img_2.png",
             ),
             platform = listOf("Android"),
-            topics = listOf("Home Automation", "IoT", "Arduino", "Smart Home")
+            topics = listOf("Home Automation", "IoT", "Arduino", "Smart Home"),
+            categories = listOf(ProjectCategory.ANDROID,ProjectCategory.IOT)
         ),
         Project(
             title = "Electric Vehicle",
@@ -342,7 +349,8 @@ object Constants {
                 "project/electric_vehicle/electric_vehicle_img_1.png",
             ),
             platform = listOf("Arduino"),
-            topics = listOf("IoT", "Automation", "Electric Vehicles", "Motor Control")
+            topics = listOf("IoT", "Automation", "Electric Vehicles", "Motor Control"),
+            categories = listOf(ProjectCategory.IOT)
         ),
         Project(
             title = "Quillbot Web Scraper",
@@ -360,7 +368,8 @@ object Constants {
                 "Dynamic Content Splitting for handling large text efficiently",
                 "Clipboard Management for capturing and saving rewritten text",
                 "Execution Time Tracking with detailed logs"
-            )
+            ),
+            categories = listOf(ProjectCategory.WEB)
         ),
         Project(
             title = "ChatGPT Android App",
@@ -403,7 +412,8 @@ object Constants {
                 "Image Generation",
                 "Voice Interaction",
                 "MVVM Architecture"
-            )
+            ),
+            categories = listOf(ProjectCategory.ANDROID)
         ),
         Project(
             title = "Multi-Factor Authenticator App",
@@ -430,7 +440,8 @@ object Constants {
                 "project/multi_factor_authenticator_app/multi_factor_authenticator_app_img_2.png",
             ),
             platform = listOf("Android"),
-            topics = listOf("Security", "Two-Factor Authentication", "Privacy")
+            topics = listOf("Security", "Two-Factor Authentication", "Privacy"),
+            categories = listOf(ProjectCategory.ANDROID)
         ),
         Project(
             title = "Daily Affirmation App",
@@ -463,7 +474,8 @@ object Constants {
                 "project/daily_affirmations_app/daily_affirmations_app_img_4.png",
             ),
             platform = listOf("Android"),
-            topics = listOf("Motivation", "Well-being", "Productivity")
+            topics = listOf("Motivation", "Well-being", "Productivity"),
+            categories = listOf(ProjectCategory.ANDROID)
         ),
         Project(
             title = "Document Scanner App",
@@ -497,7 +509,8 @@ object Constants {
                 "Data Management",
                 "MVVM Architecture",
                 "Jetpack Compose"
-            )
+            ),
+            categories = listOf(ProjectCategory.ANDROID)
         ),
         Project(
             title = "Math Workout - Brain Exercise",
@@ -531,7 +544,8 @@ object Constants {
                 "project/math_workout_app/math_workout_app_img_4.png",
             ),
             platform = listOf("Android"),
-            topics = listOf("Math", "Education", "Brain Training")
+            topics = listOf("Math", "Education", "Brain Training"),
+            categories = listOf(ProjectCategory.ANDROID)
         ),
         Project(
             title = "Bluetooth Arduino Communication Android App",
@@ -556,7 +570,8 @@ object Constants {
                 "project/bluetooth_control_app/bluetooth_app_img_3.png",
             ),
             platform = listOf("Android"),
-            topics = listOf("Bluetooth Communication", "Arduino", "IoT", "Home Automation")
+            topics = listOf("Bluetooth Communication", "Arduino", "IoT", "Home Automation"),
+            categories = listOf(ProjectCategory.ANDROID,ProjectCategory.IOT)
         ),
         Project(
             title = "Truth Or Dare App",
@@ -594,7 +609,8 @@ object Constants {
                 "Multiplayer",
                 "Fun & Games",
                 "Jetpack Compose"
-            )
+            ),
+            categories = listOf(ProjectCategory.ANDROID)
         ),
         Project(
             title = "MeetMyShow",
@@ -630,7 +646,8 @@ object Constants {
                 "project/meet_my_show_app/meet_my_show_img_4.png"
             ),
             platform = listOf("Android"),
-            topics = listOf("Entertainment", "Booking System", "Movie Ticketing")
+            topics = listOf("Entertainment", "Booking System", "Movie Ticketing"),
+            categories = listOf(ProjectCategory.ANDROID)
         ),
         Project(
             title = "Dual Axis Solar Tracking System",
@@ -655,7 +672,8 @@ object Constants {
                 "project/dual_axis_solar_tracking_system/dual_axis_solar_tracker_img_1.png"
             ),
             platform = listOf("Arduino"),
-            topics = listOf("IoT", "Automation", "Renewable Energy", "Smart Agriculture")
+            topics = listOf("IoT", "Automation", "Renewable Energy", "Smart Agriculture"),
+            categories = listOf(ProjectCategory.IOT)
         ),
         Project(
             title = "Smart Irrigation System",
@@ -681,7 +699,8 @@ object Constants {
                 "project/smart_irrigation_system/smart_irrigation_system_img_1.png",
             ),
             platform = listOf("Arduino"),
-            topics = listOf("IoT", "Automation", "Smart Agriculture", "Environmental Monitoring")
+            topics = listOf("IoT", "Automation", "Smart Agriculture", "Environmental Monitoring"),
+            categories = listOf(ProjectCategory.IOT)
         ),
         Project(
             title = "Android Addict",
@@ -703,7 +722,8 @@ object Constants {
                 "project/android_addict_website/android_addict_website_banner.png"
             ),
             platform = listOf("Web"),
-            topics = listOf("Android Development", "Web Development", "Code Snippets")
+            topics = listOf("Android Development", "Web Development", "Code Snippets"),
+            categories = listOf(ProjectCategory.WEB,ProjectCategory.ANDROID)
         ),
         Project(
             title = "Gamer's Arena",
@@ -735,7 +755,8 @@ object Constants {
                 "project/gamers_arena_app/gamers_area_img_6.png",
             ),
             platform = listOf("Android"),
-            topics = listOf("Gaming", "Tournament Management", "Chat System")
+            topics = listOf("Gaming", "Tournament Management", "Chat System"),
+            categories = listOf(ProjectCategory.ANDROID)
         )
     )
     val articles = listOf(

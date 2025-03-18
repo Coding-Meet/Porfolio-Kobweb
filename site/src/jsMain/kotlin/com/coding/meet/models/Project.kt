@@ -4,6 +4,7 @@ data class Project(
     val title: String,
     val shortDescription: String,
     val longDescription:String,
+    val categories: List<ProjectCategory>,
     val appStoreUrl: String? = null,
     val githubUrl: String? = null,
     val stargazersCount: Int = 0,
