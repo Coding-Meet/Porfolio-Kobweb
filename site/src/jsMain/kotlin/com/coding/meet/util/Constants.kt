@@ -330,11 +330,9 @@ object Constants {
         Project(
             title = "Electric Vehicle",
             shortDescription = "An electric vehicle powered by a 3-phase induction motor using SPWM control via Arduino.",
-            longDescription = "This project demonstrates an electric vehicle powered by a 3-phase induction motor controlled using the Sinusoidal Pulse Width Modulation (SPWM) technique. The Arduino microcontroller efficiently manages the motor's speed and direction through precise pulse control, ensuring optimal performance. The system is designed for improved energy efficiency, reduced harmonic distortion, and enhanced motor control for electric vehicle applications.",
+            longDescription = "This project demonstrates an electric vehicle powered by a 3-phase induction motor controlled using the Sinusoidal Pulse Width Modulation (SPWM) technique. The Arduino microcontroller efficiently manages the motor's speed and direction through precise pulse control, ensuring optimal performance. The system is designed for improved energy efficiency and enhanced motor control for electric vehicle applications.",
             features = listOf(
                 "3-phase induction motor control using SPWM",
-                "Efficient motor speed and direction management",
-                "Improved energy efficiency and reduced harmonic distortion",
                 "Arduino-based control system for precise operation"
             ),
             technologies = listOf(

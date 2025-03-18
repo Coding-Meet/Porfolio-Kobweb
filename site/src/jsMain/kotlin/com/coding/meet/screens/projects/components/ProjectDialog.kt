@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import com.coding.meet.common.image_slider_with_dot.ImageSliderWithDot
 import com.coding.meet.common.image_slider_with_dot.MainButtonStyle
 import com.coding.meet.models.Project
+import com.coding.meet.models.ProjectCategory
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.Cursor
@@ -65,6 +66,7 @@ import org.jetbrains.compose.web.dom.Ul
 @Composable
 fun ColumnScope.ProjectDialog(
     project: Project,
+    selectedCategory: ProjectCategory,
     isNextPreviousBtnShow: Boolean = false,
     onDismiss: () -> Unit,
     onNext: () -> Unit,
@@ -181,6 +183,14 @@ fun ColumnScope.ProjectDialog(
                     )
                 }
             }
+        }
+        if (selectedCategory == ProjectCategory.IOT){
+            SpanText(
+                text = "Credit: Hardware connections, electrical work, and mentoring by my brother Pranav, an electrical engineer and IoT expert. Software development by me.",
+                modifier = Modifier.fontWeight(FontWeight.Bold).color(Theme.LightFontColor.color)
+                    .backgroundColor(Theme.LightBackGroundColor.color).borderRadius(10.percent)
+                    .padding(leftRight = 20.px).margin(5.px)
+            )
         }
         Hr(
             attrs = Modifier.fillMaxWidth().border(
