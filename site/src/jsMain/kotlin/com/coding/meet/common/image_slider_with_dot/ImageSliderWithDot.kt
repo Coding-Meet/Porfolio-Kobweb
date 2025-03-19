@@ -37,7 +37,7 @@ fun ImageSliderWithDot(
     imageList: List<String>,
     showControls: Boolean = true,
     showIndicators: Boolean = true,
-    autoPlay: Boolean = false,
+    autoPlay: Boolean = true,
     interval: Int = 3000
 ) {
     var currentIndex by remember { mutableStateOf(0) }

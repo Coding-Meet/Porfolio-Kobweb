@@ -7,12 +7,12 @@ enum class Section(
     HOME("Home", homePath),
     PROJECTS("Projects", projectsPath),
     SERVICE("Service", servicePath),
-    ARTICLES("Articles", articlesPath),
+    ARTICLES("Blog", articlesPath),
     CONTACT_ME("Contact Me", contactMePath)
 }
 
 const val homePath = "/"
 const val projectsPath = "/projects"
 const val servicePath = "/service"
-const val articlesPath = "/articles"
+const val articlesPath = "/blog"
 const val contactMePath = "/contact_me"

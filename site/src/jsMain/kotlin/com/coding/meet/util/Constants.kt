@@ -158,6 +158,36 @@ object Constants {
             categories = listOf(ProjectCategory.ANDROID,ProjectCategory.KMP,ProjectCategory.WEB)
         ),
         Project(
+            title = "Coding Meet Kobweb",
+            shortDescription = "My personal portfolio website built using Kobweb.",
+            longDescription = "Coding Meet Kobweb is my personal portfolio website built using Kobweb. It showcases my projects, services, blog articles, and achievements. The website features smooth animations, organized sections, and an interactive UI for visitors.",
+            categories = listOf(ProjectCategory.WEB),
+            websiteUrl = "https://codingmeet.com",
+            githubUrl = "https://github.com/Coding-Meet/Porfolio-Kobweb",
+            features = listOf(
+                "Portfolio showcasing projects, services, and blog articles",
+                "Achievements highlighting YouTube, GitHub, and Fiverr milestones",
+                "Interactive UI with smooth animations and transitions",
+                "Contact form with social media links",
+                "Built with Kobweb for enhanced performance and SEO"
+            ),
+            technologies = listOf("Kotlin", "Kobweb", "Jetpack Compose"),
+            libraries = listOf(),
+            imageUrls = listOf(
+                "project/coding_meet_website/kobweb_banner.png",
+                "project/coding_meet_website/kobweb_img_1.png",
+                "project/coding_meet_website/kobweb_img_2.png",
+                "project/coding_meet_website/kobweb_img_3.png",
+                "project/coding_meet_website/kobweb_img_4.png",
+                "project/coding_meet_website/kobweb_img_5.png",
+                "project/coding_meet_website/kobweb_img_6.png",
+                "project/coding_meet_website/kobweb_img_7.png",
+                "project/coding_meet_website/kobweb_img_8.png",
+            ),
+            platform = listOf("Web"),
+            topics = listOf("Portfolio", "Web Development", "Kobweb", "SEO Optimization"),
+        ),
+        Project(
             title = "String Translator Desktop App",
             shortDescription = "A Jetpack Compose desktop app for translating multiple strings effortlessly.",
             longDescription = "String Translator Desktop App is a powerful desktop application built with Jetpack Compose, aiming to streamline the translation of strings for developers. It empowers users to seamlessly translate multiple strings into various languages, thereby optimizing the localization process.",
@@ -1248,7 +1278,7 @@ object Constants {
         ),
         Achievement(
             title = "📦 30+ Completed Orders",
-            subtitle = "Delivering 30+ custom-built projects",
+            subtitle = "Collaborated with 30+ clients globally, delivering high-quality Android apps worth $4,000+ with 100% rating.",
             platform = "Fiverr",
             link = contactMePath,
             lightImage = "social/fiverr.svg"
@@ -1270,7 +1300,7 @@ object Constants {
         ),
         Achievement(
             title = "✍️ 350+ Claps",
-            subtitle = "Sharing insights with 5 published articles on ProAndroidDev",
+            subtitle = "\"Sharing insights with 5 published articles on ProAndroidDev and Medium.",
             lightImage = "social/medium.svg",
             platform = "Medium",
             link = "https://www.medium.com/@meet26",

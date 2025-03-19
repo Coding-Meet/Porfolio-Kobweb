@@ -117,7 +117,7 @@ fun ProjectPage() {
                 ) {
                     ProjectDialog(
                         project = currentProject,
-                        selectedCategory= selectedCategory,
+                        selectedCategory = selectedCategory,
                         onDismiss = {
                             isShowDialog = false
                             openProject = null
@@ -157,7 +157,12 @@ fun ProjectPage() {
                         .padding(
                             bottom = 10.px,
                             leftRight = if (breakpoint > Breakpoint.SM) 10.px else 0.px
-                        )
+                        ).animation(
+                            fadeInUpPageAnimation.toAnimation(
+                                duration = 1.s,
+                                timingFunction = AnimationTimingFunction.EaseOut
+                            )
+                        ),
                 ) {
                     filteredProjects.forEachIndexed { index, project ->
                         ProjectCard(project) {
