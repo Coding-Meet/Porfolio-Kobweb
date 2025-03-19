@@ -10,6 +10,7 @@ import com.coding.meet.models.Service
 import com.coding.meet.models.Skill
 import com.coding.meet.models.Social
 import com.coding.meet.models.Testimonial
+import com.coding.meet.models.contactMePath
 
 object Constants {
     const val WEBSITE_NAME = "Coding Meet"
@@ -102,7 +103,7 @@ object Constants {
             categories = listOf(ProjectCategory.ANDROID,ProjectCategory.KMP)
         ),
         Project(
-            title = "Gemini AI Kotlin Multiplatform App - Chat with Gemini AI 💬✨",
+            title = "Gemini AI Kotlin Multiplatform App",
             shortDescription = "A KMP app enabling AI-powered conversations across Android, iOS, Desktop, and Web.",
             longDescription = "The Gemini AI KMP App is a Kotlin Compose Multiplatform project designed to target Android, iOS, Windows, macOS, Linux, and Web platforms. This application allows users to extract information from text and images in a conversational format. Additionally, it enables chat storage using SQLDelight and KStore, and facilitates changing the Gemini API key.",
             features = listOf(
@@ -136,6 +137,7 @@ object Constants {
                 "kotlinx.datetime"
             ),
             githubUrl = "https://github.com/Coding-Meet/Gemini-AI-KMP-App",
+            websiteUrl = "https://coding-meet.github.io/Gemini-AI-KMP-App/",
             imageUrls = listOf(
                 "project/gemini_ai_kmp_app/gemini_app_banner.png",
                 "project/gemini_ai_kmp_app/gemini_app_img_1.png",
@@ -394,7 +396,7 @@ object Constants {
             libraries = listOf(
                 "Retrofit",
                 "Room Database",
-                "Material Design Components",
+                "Material Design",
                 "Text-to-Speech (TTS)",
                 "Voice-to-Text (VTT)",
                 "Encrypted SharedPreferences"
@@ -493,7 +495,7 @@ object Constants {
             libraries = listOf(
                 "Google Doc ML Kit",
                 "Room Database",
-                "Material Design Components",
+                "Material Design",
                 "Jetpack Compose",
                 "Shared Preferences"
             ),
@@ -559,7 +561,7 @@ object Constants {
             technologies = listOf("Kotlin", "Android Studio", "Arduino"),
             libraries = listOf(
                 "Bluetooth API",
-                "Material Design Components"
+                "Material Design"
             ),
             imageUrls = listOf(
                 "project/bluetooth_control_app/bluetooth_app_banner.png",
@@ -704,7 +706,7 @@ object Constants {
             title = "Android Addict",
             shortDescription = "A React-based website providing Android component code for developers.",
             longDescription = "Android Addict is a React-based website designed to help Android developers by providing ready-to-use Android component code. It serves as a valuable resource for developers seeking efficient solutions and code snippets to improve their Android projects.",
-            githubUrl = "https://meetdev26.github.io/android-addict/#/",
+            websiteUrl = "https://meetdev26.github.io/android-addict/#/",
             features = listOf(
                 "Collection of Android component code",
                 "User-friendly interface for easy navigation",
@@ -742,7 +744,7 @@ object Constants {
                 "Firebase Database",
                 "Firebase Storage",
                 "Glide",
-                "Material Design Components"
+                "Material Design"
             ),
             imageUrls = listOf(
                 "project/gamers_arena_app/gamers_area_img_1.png",
@@ -1232,34 +1234,46 @@ object Constants {
         Achievement(
             title = "📺 3.8K+ YouTube Subscribers",
             subtitle = "Creating 400+ videos for developers",
+            platform = "Youtube",
+            link = "https://youtube.com/@codingmeet26?si=_2Mu6ozuCdYuqihA",
             lightImage = "social/youtube.svg"
         ),
         Achievement(
             title = "⭐ 400+ GitHub Stars",
             subtitle = "Trusted by 400+ developers and followers",
             lightImage = "social/github.svg",
+            platform = "Github",
+            link = "https://github.com/Coding-Meet",
             darkImage = "social/github_dark_mode.svg"
         ),
         Achievement(
             title = "📦 30+ Completed Orders",
             subtitle = "Delivering 30+ custom-built projects",
+            platform = "Fiverr",
+            link = contactMePath,
             lightImage = "social/fiverr.svg"
         ),
         Achievement(
             title = "🤝 200+ Contributions",
             subtitle = "Actively supporting developers on Telegram, Instagram, LinkedIn, Facebook & Twitter",
             lightImage = "social/contributions.svg",
+            platform = "Social Media",
+            link = contactMePath,
             darkImage = "social/contributions_dark.svg"
         ),
         Achievement(
             title = "💬 60+ Answers",
             subtitle = "Guiding developers with 60+ solutions on Stack Overflow",
+            platform = "Stack Overflow",
+            link = "https://stackoverflow.com/users/13082664/meet",
             lightImage = "social/stack_overflow.svg"
         ),
         Achievement(
             title = "✍️ 350+ Claps",
             subtitle = "Sharing insights with 5 published articles on ProAndroidDev",
             lightImage = "social/medium.svg",
+            platform = "Medium",
+            link = "https://www.medium.com/@meet26",
             darkImage = "social/medium_dark_mode.svg"
         )
     )

@@ -7,6 +7,7 @@ import com.coding.meet.common.image_slider_with_dot.MainButtonStyle
 import com.coding.meet.models.Project
 import com.coding.meet.models.ProjectCategory
 import com.coding.meet.util.CustomColor
+import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
@@ -41,6 +42,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.CloseIcon
 import com.varabyte.kobweb.silk.components.icons.fa.FaGithub
 import com.varabyte.kobweb.silk.components.icons.fa.FaGooglePlay
+import com.varabyte.kobweb.silk.components.icons.fa.FaLink
 import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toAttrs
@@ -87,9 +89,9 @@ fun ColumnScope.ProjectDialog(
                     )
                 ).fontSize(1.5.cssRem).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
             )
-            if (project.githubUrl != null || project.appStoreUrl != null) {
+            if (project.githubUrl != null || project.appStoreUrl != null || project.websiteUrl != null) {
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(topBottom = 20.px),
+                    modifier = Modifier.fillMaxWidth().padding(topBottom = 10.px),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(
                         5.px,
@@ -97,27 +99,62 @@ fun ColumnScope.ProjectDialog(
                     ),
                 ) {
                     if (project.appStoreUrl != null) {
-                        FaGooglePlay(
-                            size = IconSize.XXL,
-                            modifier = Modifier.cursor(Cursor.Pointer).onClick {
-                                window.open(project.appStoreUrl)
-                            })
+                        Button(
+                            attrs = MainButtonStyle.toAttrs {
+                                onClick {
+                                    window.open(project.appStoreUrl)
+                                }
+                            }
+                        ) {
+                            FaGooglePlay(
+                                size = IconSize.XXL,
+                                modifier = Modifier
+                            )
+                            SpanText(
+                                modifier = Modifier.fontSize(1.0.cssRem).fontWeight(FontWeight.Bold)
+                                    .padding(left = 10.px),
+                                text = Res.Strings.PLAY_STORE,
+                            )
+                        }
                     }
                     if (project.githubUrl != null) {
-                        FaGithub(
-                            size = IconSize.XXL,
-                            modifier = Modifier.cursor(Cursor.Pointer).onClick {
-                                window.open(project.githubUrl)
-                            })
-                        if (project.stargazersCount > 0) {
+                        Button(
+                            attrs = MainButtonStyle.toAttrs {
+                                onClick {
+                                    window.open(project.githubUrl)
+                                }
+                            }
+                        ) {
+                            FaGithub(
+                                size = IconSize.XXL,
+                                modifier = Modifier
+                            )
+                            if (project.stargazersCount > 0) {
+                                SpanText(
+                                    modifier = Modifier.fontSize(1.0.cssRem)
+                                        .fontWeight(FontWeight.Bold)
+                                        .padding(left = 10.px),
+                                    text = project.stargazersCount.toString() + " stars",
+                                )
+                            }
+                        }
+                    }
+                    if (project.websiteUrl != null) {
+                        Button(
+                            attrs = MainButtonStyle.toAttrs {
+                                onClick {
+                                    window.open(project.websiteUrl)
+                                }
+                            }
+                        ) {
+                            FaLink(
+                                size = IconSize.XXL,
+                                modifier = Modifier
+                            )
                             SpanText(
-                                modifier = Modifier.padding(leftRight = 5.px).color(
-                                    CustomColor(
-                                        lightColor = Theme.LightFontColor,
-                                        darkColor = Theme.DarkFontColor
-                                    )
-                                ).fontSize(1.0.cssRem).fontWeight(FontWeight.Bold),
-                                text = project.stargazersCount.toString() + " stars",
+                                modifier = Modifier.fontSize(1.0.cssRem).fontWeight(FontWeight.Bold)
+                                    .padding(left = 10.px),
+                                text = Res.Strings.LIVE,
                             )
                         }
                     }
@@ -165,7 +202,7 @@ fun ColumnScope.ProjectDialog(
         )
     }
     if (project.features.isNotEmpty()) {
-        TitleSpanText(text = "Features & Technologies:")
+        TitleSpanText(text = "Features:")
         Ul(
             attrs = Modifier.fillMaxWidth().padding(leftRight = 10.px).toAttrs()
         ) {
@@ -200,12 +237,22 @@ fun ColumnScope.ProjectDialog(
     }
 
     if (project.libraries.isNotEmpty()) {
-        TitleSpanText(text = "Libraries:")
+        TitleSpanText(text = "Technologies & Libraries:")
         Div(
             attrs = Modifier.fillMaxWidth().display(value = DisplayStyle.Flex)
                 .flexWrap(FlexWrap.Wrap)
                 .margin(top = 5.px).justifyContent(JustifyContent.Center).toAttrs()
         ) {
+            if (project.libraries.size <= 3){
+                project.technologies.forEach {
+                    SpanText(
+                        text = it,
+                        modifier = Modifier.color(Theme.LightFontColor.color)
+                            .backgroundColor(Theme.LightBackGroundColor.color).borderRadius(20.percent)
+                            .padding(leftRight = 20.px).margin(5.px)
+                    )
+                }
+            }
             project.libraries.forEach {
                 SpanText(
                     text = it,

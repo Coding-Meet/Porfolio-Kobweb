@@ -37,7 +37,7 @@ fun ImageSliderWithDot(
     imageList: List<String>,
     showControls: Boolean = true,
     showIndicators: Boolean = true,
-    autoPlay: Boolean = true,
+    autoPlay: Boolean = false,
     interval: Int = 3000
 ) {
     var currentIndex by remember { mutableStateOf(0) }
@@ -99,6 +99,7 @@ fun ImageSliderWithDot(
                 attrs = ControlButtonStyle.toAttrs {
                     style { left(10.px) }
                     onClick {
+                        it.stopPropagation()
                         currentIndex = if (currentIndex > 0) currentIndex - 1 else lastIndex
                     }
                 }
@@ -110,6 +111,7 @@ fun ImageSliderWithDot(
                 attrs = ControlButtonStyle.toAttrs {
                     style { right(10.px) }
                     onClick {
+                        it.stopPropagation()
                         currentIndex = (currentIndex + 1) % imageList.size
                     }
                 }

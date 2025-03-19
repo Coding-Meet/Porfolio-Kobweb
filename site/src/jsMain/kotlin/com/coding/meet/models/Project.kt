@@ -7,6 +7,7 @@ data class Project(
     val categories: List<ProjectCategory>,
     val appStoreUrl: String? = null,
     val githubUrl: String? = null,
+    val websiteUrl: String? = null,
     val stargazersCount: Int = 0,
     val youtubeVideoLink : String? = null,
     val features: List<String> = arrayListOf(),

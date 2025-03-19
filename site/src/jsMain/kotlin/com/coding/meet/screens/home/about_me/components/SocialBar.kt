@@ -6,6 +6,7 @@ import com.coding.meet.screens.home.about_me.styles.SocialImageStyle
 import com.coding.meet.util.Constants
 import com.coding.meet.util.Theme
 import com.coding.meet.util.customColor
+import com.varabyte.kobweb.browser.dom.ElementTarget
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
@@ -21,6 +22,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.components.overlay.PopupPlacement
+import com.varabyte.kobweb.silk.components.overlay.Tooltip
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.border
@@ -70,6 +73,11 @@ fun SocialBar() {
                     .margin(5.px).cursor(Cursor.Pointer).onClick {
                         window.open(social.link)
                     }.toAttrs()
+            )
+            Tooltip(
+                target = ElementTarget.PreviousSibling,
+                text =  social.title,
+                placement = PopupPlacement.Top
             )
         }
     }

@@ -14,8 +14,6 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.plus
 import com.varabyte.kobweb.silk.style.selectors.hover
-import com.varabyte.kobweb.silk.theme.colors.palette.border
-import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import org.jetbrains.compose.web.css.AnimationTimingFunction
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.ms

@@ -38,6 +38,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.top
 import com.varabyte.kobweb.compose.ui.modifiers.transform
 import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.modifiers.width
+import com.varabyte.kobweb.compose.ui.modifiers.zIndex
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.active
 import com.varabyte.kobweb.silk.style.selectors.hover
