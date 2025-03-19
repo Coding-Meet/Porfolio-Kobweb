@@ -171,7 +171,7 @@ object Constants {
                 "Contact form with social media links",
                 "Built with Kobweb for enhanced performance and SEO"
             ),
-            technologies = listOf("Kotlin", "Kobweb", "Jetpack Compose"),
+            technologies = listOf("Kotlin", "Kobweb","Compose HTML", "Jetpack Compose"),
             libraries = listOf(),
             imageUrls = listOf(
                 "project/coding_meet_website/kobweb_banner.png",
