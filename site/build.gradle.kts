@@ -1,6 +1,7 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.link
 import kotlinx.html.meta
+import kotlinx.html.title
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -18,6 +19,7 @@ kobweb {
         index {
             description.set("Explore my Android development portfolio featuring Kotlin, Jetpack Compose, and KMP projects. Get premium source codes, expert services, and valuable tutorials!")
             head.add {
+                title("Coding Meet - My Portfolio")
                 link(rel = "stylesheet", href = "/fonts/fonts.css")
 
                 // this is link preview
