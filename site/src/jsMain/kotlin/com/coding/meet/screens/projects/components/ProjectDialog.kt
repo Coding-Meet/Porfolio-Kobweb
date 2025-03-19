@@ -68,7 +68,6 @@ import org.jetbrains.compose.web.dom.Ul
 @Composable
 fun ColumnScope.ProjectDialog(
     project: Project,
-    selectedCategory: ProjectCategory,
     isNextPreviousBtnShow: Boolean = false,
     onDismiss: () -> Unit,
     onNext: () -> Unit,
@@ -221,7 +220,7 @@ fun ColumnScope.ProjectDialog(
                 }
             }
         }
-        if (selectedCategory == ProjectCategory.IOT){
+        if (project.categories.contains(ProjectCategory.IOT)){
             SpanText(
                 text = "Credit: Hardware connections, electrical work, and mentoring by my brother Pranav, an electrical engineer and IoT expert. Software development by me.",
                 modifier = Modifier.fontWeight(FontWeight.Bold).color(Theme.LightFontColor.color)

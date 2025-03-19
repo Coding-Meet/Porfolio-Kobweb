@@ -169,10 +169,11 @@ object Constants {
                 "Achievements highlighting YouTube, GitHub, and Fiverr milestones",
                 "Interactive UI with smooth animations and transitions",
                 "Contact form with social media links",
-                "Built with Kobweb for enhanced performance and SEO"
+                "Built with Kobweb for enhanced performance and SEO",
+                "Deployed on Firebase Hosting for fast and reliable delivery"
             ),
-            technologies = listOf("Kotlin", "Kobweb","Compose HTML", "Jetpack Compose"),
-            libraries = listOf(),
+            technologies = listOf("Firebase Hosting"),
+            libraries = listOf("Kotlin", "Kobweb","Compose HTML", "Jetpack Compose"),
             imageUrls = listOf(
                 "project/coding_meet_website/kobweb_banner.png",
                 "project/coding_meet_website/kobweb_img_1.png",

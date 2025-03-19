@@ -117,7 +117,6 @@ fun ProjectPage() {
                 ) {
                     ProjectDialog(
                         project = currentProject,
-                        selectedCategory = selectedCategory,
                         onDismiss = {
                             isShowDialog = false
                             openProject = null
