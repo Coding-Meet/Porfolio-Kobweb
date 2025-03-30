@@ -22,7 +22,7 @@ object Constants {
 
     const val WELCOME_TEXT = "Welcome to my portfolio website"
 
-    const val EMAIL_ID = "meetb2602@gmail.com"
+    const val EMAIL_ID = "meetb2602@gmail.com" 
 
     private const val GITHUB_USER_NAME = "Coding-Meet"
 
@@ -99,7 +99,7 @@ object Constants {
                 "Local Storage",
                 "MVVM Architecture"
             ),
-            stargazersCount = 121,
+            stargazersCount = 130,
             categories = listOf(ProjectCategory.ANDROID,ProjectCategory.KMP)
         ),
         Project(
@@ -154,7 +154,7 @@ object Constants {
                 "SQLDelight",
                 "KStore"
             ),
-            stargazersCount = 80,
+            stargazersCount = 81,
             categories = listOf(ProjectCategory.ANDROID,ProjectCategory.KMP,ProjectCategory.WEB)
         ),
         Project(
@@ -186,6 +186,7 @@ object Constants {
                 "project/coding_meet_website/kobweb_img_8.png",
             ),
             platform = listOf("Web"),
+            stargazersCount = 10,
             topics = listOf("Portfolio", "Web Development", "Kobweb", "SEO Optimization"),
         ),
         Project(
@@ -433,6 +434,7 @@ object Constants {
                 "Encrypted SharedPreferences"
             ),
             imageUrls = listOf(
+                "project/chatgpt_app/chatgpt_app_banner.png",
                 "project/chatgpt_app/chatgpt_app_img_1.png",
                 "project/chatgpt_app/chatgpt_app_img_2.png",
             ),
@@ -467,6 +469,7 @@ object Constants {
                 "Glide"
             ),
             imageUrls = listOf(
+                "project/multi_factor_authenticator_app/multi_factor_authenticator_app_banner.png",
                 "project/multi_factor_authenticator_app/multi_factor_authenticator_app_img_1.png",
                 "project/multi_factor_authenticator_app/multi_factor_authenticator_app_img_2.png",
             ),
@@ -499,6 +502,7 @@ object Constants {
                 "MultiWaveHeader"
             ),
             imageUrls = listOf(
+                "project/daily_affirmations_app/daily_affirmations_app_banner.png",
                 "project/daily_affirmations_app/daily_affirmations_app_img_1.png",
                 "project/daily_affirmations_app/daily_affirmations_app_img_2.png",
                 "project/daily_affirmations_app/daily_affirmations_app_img_3.png",
@@ -531,6 +535,7 @@ object Constants {
                 "Shared Preferences"
             ),
             imageUrls = listOf(
+                "project/doc_scanner_app/doc_scanner_app_banner.png",
                 "project/doc_scanner_app/doc_scanner_app_img_1.png",
             ),
             platform = listOf("Android"),
@@ -629,6 +634,7 @@ object Constants {
                 "AndroidX Core Splash Screen"
             ),
             imageUrls = listOf(
+                "project/truth_and_dare/truth_and_dare_app_banner.png",
                 "project/truth_and_dare/truth_and_dare_img_1.png",
                 "project/truth_and_dare/truth_and_dare_img_2.png",
                 "project/truth_and_dare/truth_and_dare_img_3.png"
@@ -671,6 +677,7 @@ object Constants {
                 "Razorpay Checkout"
             ),
             imageUrls = listOf(
+                "project/meet_my_show_app/meet_my_show_app_banner.png",
                 "project/meet_my_show_app/meet_my_show_img_1.png",
                 "project/meet_my_show_app/meet_my_show_img_2.png",
                 "project/meet_my_show_app/meet_my_show_img_3.png",
@@ -791,6 +798,16 @@ object Constants {
         )
     )
     val articles = listOf(
+
+        Article(
+            title = "Efficient Logging in Kotlin with ProGuard Optimization",
+            shortDescription = "Learn how to implement an optimized logging system in Kotlin that automatically removes logs in release builds using ProGuard.",
+            thumbnail = "articles/logging_proguard.png",
+            link = "https://medium.com/@meet26/efficient-logging-in-kotlin-with-proguard-optimization-452bdac5c016",
+            categories = listOf("Android", "Kotlin", "Logging", "ProGuard", "Best Practices"),
+            pubDate = "Mar 26, 2025",
+            readTime = "4 min read"
+        ),
         Article(
             title = "Automate Android Feature Creation with Gradle",
             shortDescription = "Learn how to automate Android feature creation using Gradle scripting.",
