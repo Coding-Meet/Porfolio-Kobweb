@@ -82,8 +82,7 @@ fun initColorMode(initSilkContext: InitSilkContext) {
 
 @InitKobweb
 fun pageNotFoundHandling(initSilkContext: InitKobwebContext) {
-    initSilkContext.router.setErrorHandler {
-        if (it != 404) return@setErrorHandler
+    initSilkContext.router.setErrorPage {
         initSilkContext.router.navigateTo(
             "/",
             openExternalLinksStrategy = OpenLinkStrategy.IN_PLACE,
