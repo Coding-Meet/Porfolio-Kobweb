@@ -41,6 +41,29 @@
 ```
 5. Open your browser and visit: http://localhost:8080
 
+### Firebase Hosting 🚀
+
+1. Install Firebase CLI:
+   ```bash
+   npm install -g firebase-tools
+   ```
+
+2. Login to Firebase:
+   ```bash
+   firebase login
+   ```
+
+3. Initialize Firebase Hosting in the root directory:
+   ```bash
+   firebase init hosting
+   ```
+
+4. To deploy the website, run the following command in the root directory:
+
+```bash
+cd site && kobweb export --layout static && cd .. && firebase deploy
+```
+
 ## 📸 Screenshots
 
 <table>
