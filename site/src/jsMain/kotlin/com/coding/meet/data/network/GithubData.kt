@@ -18,19 +18,31 @@ fun GithubStargazersCountData() {
                     "$GITHUB_BASE_URL?page=${page + 1}&per_page=100"
                 )?.decodeToString()
                 response?.let {
-                    val github = json.decodeFromString<ArrayList<Github>>(response)
+                    val githubRepos = json.decodeFromString<ArrayList<Github>>(response)
+
+                    checkLatestData(
+                        label = "GitHub Project",
+                        localItems = projects,
+                        onlineItems = githubRepos,
+                        getLocalId = { it.githubUrl },
+                        getOnlineId = { it.htmlUrl },
+                        getOnlineTitle = { it.name },
+                        isUpToDate = { local, online ->
+                            // Only check stargazersCount as requested
+                            local.stargazersCount == online.stargazersCount
+                        },
+                        showNewItems = false // Don't show new repo logs
+                    )
+
                     projects.forEachIndexed { index, project ->
                         project.githubUrl?.let { githubUrl ->
-                            github.find { githubItem ->
-                                githubItem.htmlUrl == githubUrl
-                            }?.let {
-                                projects[index] = projects[index].copy(
-                                    topics = it.topics, stargazersCount = it.stargazersCount
-                                )
+                            githubRepos.find { it.htmlUrl == githubUrl }?.let {
+                                // Only update the stargazersCount
+                                projects[index] = projects[index].copy(stargazersCount = it.stargazersCount)
                             }
                         }
                     }
-                    console.log(projects.map { it.stargazersCount })
+//                    console.log(projects.map { it.stargazersCount })
                 }
             }
         } catch (e: Exception) {

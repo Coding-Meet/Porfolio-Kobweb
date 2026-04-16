@@ -8,6 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.coding.meet.data.response.medium.Medium
 import com.coding.meet.util.Constants.MEDIUM_BASE_URL
+import com.coding.meet.util.Constants.articles
 import com.coding.meet.util.Constants.mediumArticleDummyData
 import com.varabyte.kobweb.browser.http.http
 import kotlinx.browser.window
@@ -44,11 +45,27 @@ fun MediumArticleData(): Medium? {
             val response = window.http.tryGet(MEDIUM_BASE_URL)?.decodeToString()
             response?.let {
                 val myMedium = json.decodeFromString<Medium>(response)
-                myMedium.networkArticles.forEach { article ->
-                    val start = article.description.indexOf("src=\"")
-                    val end = article.description.indexOf("\">")
-                    val imageUrl = article.description.substring(start + 5, end)
-                    article.thumbnail = imageUrl
+
+                checkLatestData(
+                    label = "Medium Article",
+                    localItems = articles,
+                    onlineItems = myMedium.networkArticles,
+                    getLocalId = { it.link },
+                    getOnlineId = { it.link },
+                    getOnlineTitle = { it.title },
+                    isUpToDate = { local, online ->
+                        // Check title and pubDate
+                        local.title == online.title && local.pubDate == online.pubDate
+                    }
+                )
+
+                myMedium.networkArticles.forEach { networkArticle ->
+                    val start = networkArticle.description.indexOf("src=\"")
+                    val end = networkArticle.description.indexOf("\">")
+                    if (start != -1 && end != -1) {
+                        val imageUrl = networkArticle.description.substring(start + 5, end)
+                        networkArticle.thumbnail = imageUrl
+                    }
                 }
                 medium = myMedium
                 medium?.networkArticles?.forEach {
