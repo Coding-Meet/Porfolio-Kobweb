@@ -10,8 +10,8 @@ import com.coding.meet.screens.loader.LoaderScreen
 import com.coding.meet.util.Constants
 import com.coding.meet.util.Res
 import com.coding.meet.util.Res.Font.FONT_FAMILY_REGULAR
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
-import com.varabyte.kobweb.compose.ui.modifiers.minHeight
 import com.varabyte.kobweb.core.App
 import com.varabyte.kobweb.core.init.InitKobweb
 import com.varabyte.kobweb.core.init.InitKobwebContext
@@ -27,7 +27,6 @@ import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.document
 import kotlinx.browser.localStorage
 import kotlinx.browser.window
-import org.jetbrains.compose.web.css.vh
 import org.w3c.dom.DocumentReadyState
 import org.w3c.dom.INTERACTIVE
 
@@ -63,7 +62,7 @@ fun AppEntry(content: @Composable () -> Unit) {
                 isLoaded = true
             }, 10000)
         }
-        Surface(SmoothColorStyle.toModifier().minHeight(100.vh).fontFamily(FONT_FAMILY_REGULAR)) {
+        Surface(SmoothColorStyle.toModifier().fillMaxSize().fontFamily(FONT_FAMILY_REGULAR)) {
             if (!isLoaded) {
                 LoaderScreen(colorMode)
             } else {
