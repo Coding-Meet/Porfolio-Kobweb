@@ -1,7 +1,13 @@
+import com.varabyte.kobweb.gradle.application.tasks.KobwebCacheAppFrontendDataTask
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
+import com.varabyte.kobweb.project.frontend.AppFrontendData
 import kotlinx.html.link
 import kotlinx.html.meta
+import kotlinx.html.script
 import kotlinx.html.title
+import kotlinx.html.unsafe
+import kotlinx.serialization.json.Json
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -14,11 +20,34 @@ plugins {
 group = "com.coding.meet"
 version = "1.0-SNAPSHOT"
 
+val localProperties = Properties().apply {
+    val file = rootProject.file("local.properties")
+    if (file.exists()) {
+        load(file.inputStream())
+    }
+}
+val trackingId = localProperties.getProperty("trackingId")
+
 kobweb {
     app {
         index {
             description.set("Explore my Android development portfolio featuring Kotlin, Jetpack Compose, and KMP projects. Get premium source codes, expert services, and valuable tutorials!")
             head.add {
+                script {
+                    async = true
+                    src = "https://www.googletagmanager.com/gtag/js?id=$trackingId"
+                }
+                script {
+                    unsafe {
+                        +"""
+                            window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+                            gtag('config', '$trackingId');
+                        """.trimIndent()
+                    }
+                }
+
                 title("Coding Meet - My Portfolio")
                 link(rel = "stylesheet", href = "/fonts/fonts.css")
 
@@ -87,7 +116,40 @@ kobweb {
     }
 }
 
+val Project.kobwebSiteRoutes: Provider<List<String>>
+    get() = tasks.named<KobwebCacheAppFrontendDataTask>("kobwebCacheAppFrontendData").map { task ->
+        val pageEntries =
+            Json.decodeFromString<AppFrontendData>(task.appDataFile.get().asFile.readText()).frontendData.pages
+        pageEntries
+            .asSequence()
+            .map { it.route }
+            .sorted()
+            .toList()
+    }
 
+tasks.register("createSitemap") {
+    val routesProvider = kobwebSiteRoutes
+    inputs.property("routes", routesProvider)
+    val sitemapFile = layout.projectDirectory.file("src/jsMain/resources/public/sitemap.xml")
+    outputs.file(sitemapFile)
+
+    doLast {
+        val routes = routesProvider.get()
+        val sitemapStr = buildString {
+            appendLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
+            appendLine("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">")
+
+            routes.filter { !it.contains('{') }.forEach { route ->
+                appendLine("  <url>")
+                appendLine("    <loc>https://codingmeet.com$route</loc>")
+                appendLine("  </url>")
+            }
+            appendLine("</urlset>")
+        }
+        sitemapFile.asFile.writeText(sitemapStr)
+        println("Sitemap generated at: ${sitemapFile.asFile.absolutePath}")
+    }
+}
 
 kotlin {
     configAsKobwebApplication("meet")
