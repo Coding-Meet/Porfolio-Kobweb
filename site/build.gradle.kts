@@ -40,11 +40,16 @@ kobweb {
                 script {
                     unsafe {
                         +"""
-                            window.dataLayer = window.dataLayer || [];
-                            function gtag(){dataLayer.push(arguments);}
-                            gtag('js', new Date());
-                            gtag('config', '$trackingId');
-                        """.trimIndent()
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+
+            gtag('js', new Date());
+
+            gtag('config', '$trackingId', {
+                page_title: document.title,
+                page_path: window.location.pathname
+            });
+        """.trimIndent()
                     }
                 }
 
