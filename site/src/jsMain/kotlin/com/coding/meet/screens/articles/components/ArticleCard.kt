@@ -10,7 +10,9 @@ import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
@@ -28,6 +30,10 @@ import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.components.icons.fa.FaBookOpen
+import com.varabyte.kobweb.silk.components.icons.fa.FaChalkboardUser
+import com.varabyte.kobweb.silk.components.icons.fa.FaEye
+import com.varabyte.kobweb.silk.components.icons.fa.FaHandsClapping
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toModifier
 import kotlinx.browser.window
@@ -85,6 +91,21 @@ fun ArticleCard(article: Article) {
                 )
             }
         }
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .margin(top = 15.px)
+                .padding(leftRight = 10.px),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            article.views?.let { StatItem(it) { FaEye() } }
+            article.reads?.let { StatItem(it) { FaBookOpen() } }
+            article.claps?.let { StatItem(it) { FaHandsClapping() } }
+            article.presentations?.let { StatItem(it) { FaChalkboardUser() } }
+        }
+
         SpanText(
             text = article.pubDate + " | " + article.readTime,
             modifier = Modifier.fillMaxWidth().padding(topBottom = 5.px, leftRight = 10.px).color(
@@ -92,6 +113,24 @@ fun ArticleCard(article: Article) {
                     lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor
                 )
             ).fontSize(1.cssRem).textAlign(TextAlign.Center)
+        )
+    }
+}
+@Composable
+private fun StatItem(value: String, icon: @Composable () -> Unit) {
+    Row(
+        modifier = Modifier.margin(leftRight = 8.px),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(modifier = Modifier.margin(right = 4.px).fontSize(0.8.cssRem)) {
+            icon()
+        }
+        SpanText(
+            text = value,
+            modifier = Modifier
+                .fontSize(0.8.cssRem)
+                .fontWeight(FontWeight.Medium)
+                .color(CustomColor(Theme.LightFontColor, Theme.DarkFontColor))
         )
     }
 }

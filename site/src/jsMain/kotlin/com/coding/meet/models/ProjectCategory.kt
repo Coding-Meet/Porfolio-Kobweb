@@ -5,5 +5,6 @@ enum class ProjectCategory(val title: String) {
     ANDROID("Android"),
     KMP("KMP"),
     IOT("IOT"),
+    DESKTOP("Desktop"),
     WEB("Web"),
 }

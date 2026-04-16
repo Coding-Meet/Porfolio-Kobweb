@@ -16,13 +16,12 @@ object Constants {
     const val WEBSITE_NAME = "Coding Meet"
 
     const val BIO =
-        "Hello! I’m Meet, an Android developer passionate about building apps with Kotlin, Java, KMP, and Jetpack Compose. Through my YouTube channel, GitHub projects, and this website, I share tutorials, source code, and practical guides to help developers improve their skills. I also offer custom Android development services, including app creation, bug fixing, and SDK updates. Let’s simplify Android development together! \uD83D\uDE80"
-
+        "Hi, I’m Meet, an Android developer specializing in Kotlin, Java, KMP, and Jetpack Compose. I build scalable apps, share practical tutorials, and contribute to open source. I also offer services like custom app development, bug fixing, and app upgrades.\uD83D\uDE80"
     const val NAMASTE_TEXT = "Namaste 🙏"
 
     const val WELCOME_TEXT = "Welcome to my portfolio website"
 
-    const val EMAIL_ID = "meetb2602@gmail.com" 
+    const val EMAIL_ID = "meetb2602@gmail.com"
 
     private const val GITHUB_USER_NAME = "Coding-Meet"
 
@@ -99,8 +98,61 @@ object Constants {
                 "Local Storage",
                 "MVVM Architecture"
             ),
-            stargazersCount = 130,
-            categories = listOf(ProjectCategory.ANDROID,ProjectCategory.KMP)
+            stargazersCount = 205,
+            categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP)
+        ),
+        Project(
+            title = "DevAnalyzer",
+            shortDescription = "A powerful desktop tool to analyze, clean, and optimize your Android & Kotlin development environment.",
+            longDescription = "DevAnalyzer is a cross-platform desktop application built with Kotlin Multiplatform and Compose Multiplatform. It helps developers analyze project structure, manage build artifacts, and monitor storage usage across SDKs, IDEs, and Gradle environments. Designed for modern development workflows, DevAnalyzer provides a unified interface to understand and optimize your entire development ecosystem.",
+            features = listOf(
+                "Analyze Gradle modules, plugins, dependencies, and build configurations",
+                "Inspect project metadata (AGP, SDK versions, NDK, CMake, multi-module setup)",
+                "Preview project and Gradle files inside the app",
+                "Scan and clean build folders across all modules",
+                "Real-time storage analysis for SDK, IDE, Gradle, and libraries",
+                "Selective deletion with advanced filtering and batch operations",
+                "Track recoverable disk space before cleanup",
+                "Custom path configuration for SDK, Gradle, Kotlin Native, and IDE",
+                "Crash logging and error tracking support"
+            ),
+            technologies = listOf(
+                "Kotlin",
+                "Kotlin Multiplatform",
+                "Compose Multiplatform",
+                "MVVM Architecture"
+            ),
+            libraries = listOf(
+                "Koin",
+                "Jetpack Navigation",
+                "Coil3",
+                "DataStore",
+                "kotlinx.serialization",
+                "Kermit",
+                "FileKit",
+                "JSystemThemeDetector",
+                "SemVer",
+                "kotlinx.coroutines",
+                "Sentry",
+                "BuildKonfig"
+            ),
+            githubUrl = "https://github.com/Coding-Meet/DevAnalyzer",
+            platform = listOf("Desktop", "Windows", "macOS", "Linux"),
+            topics = listOf(
+                "Developer Tools",
+                "Kotlin Multiplatform",
+                "Compose Multiplatform",
+                "Gradle",
+                "Project Analysis",
+                "Storage Optimization"
+            ),
+            stargazersCount = 88,
+            categories = listOf(ProjectCategory.KMP, ProjectCategory.DESKTOP),
+            youtubeVideoLink = "https://www.youtube.com/embed/c3t1SIKSBBk",
+            imageUrls = listOf(
+                "project/dev_analyzer/dev_analyzer_banner.png"
+            ),
+            websiteUrl = "https://coding-meet.github.io/DevAnalyzer/",
         ),
         Project(
             title = "Gemini AI Kotlin Multiplatform App",
@@ -154,8 +206,187 @@ object Constants {
                 "SQLDelight",
                 "KStore"
             ),
-            stargazersCount = 81,
-            categories = listOf(ProjectCategory.ANDROID,ProjectCategory.KMP,ProjectCategory.WEB)
+            stargazersCount = 111,
+            categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP, ProjectCategory.WEB)
+        ),
+        Project(
+            title = "Pokemon App - MVI Compose Multiplatform",
+            shortDescription = "A modern Pokemon app built with Compose Multiplatform using MVI architecture, featuring dynamic UI and cross-platform support.",
+            longDescription = "Pokemon App is a beautifully designed cross-platform application built using Kotlin Multiplatform and Compose Multiplatform. It demonstrates a scalable MVI architecture with type-safe navigation, dynamic theming, and smooth user experience across Android, iOS, and Desktop. The project showcases modern Android/KMP best practices, clean architecture, and reactive UI patterns.",
+            features = listOf(
+                "Cross-platform support: Android, iOS, Desktop",
+                "MVI architecture for predictable state management",
+                "Type-safe navigation using Kotlin Serialization",
+                "Material 3 UI with dynamic theming and dark mode",
+                "Browse Pokemon list with infinite scrolling",
+                "Detailed Pokemon view with stats, abilities, and types",
+                "Favorites management with offline support (Room)",
+                "Type-based UI theming for better UX",
+                "Smooth animations and micro-interactions",
+                "Optimized performance with lazy loading and caching"
+            ),
+            technologies = listOf(
+                "Kotlin",
+                "Kotlin Multiplatform",
+                "Compose Multiplatform",
+                "MVI Architecture",
+                "Clean Architecture",
+                "StateFlow"
+            ),
+            libraries = listOf(
+                "Ktor",
+                "Room",
+                "DataStore",
+                "Koin",
+                "Coil3",
+                "kotlinx.serialization",
+                "Navigation"
+            ),
+            githubUrl = "https://github.com/Coding-Meet/CMP-MVI-Template",
+            platform = listOf("Android", "iOS", "Desktop"),
+            topics = listOf(
+                "Kotlin Multiplatform",
+                "Compose Multiplatform",
+                "MVI Architecture",
+                "Pokemon App",
+                "Dynamic Theming",
+                "Offline Support"
+            ),
+            stargazersCount = 64,
+            categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP),
+            imageUrls = listOf(
+                "project/pokemon_cmp/pokemon_cmp_banner_1.png"
+            )
+        ),
+        Project(
+            title = "Text-to-Speech with Real-time Highlighting",
+            shortDescription = "A cross-platform Text-to-Speech app with real-time word highlighting and seamless Swift-Kotlin interoperability.",
+            longDescription = "Text-to-Speech CMP is a modern cross-platform application built with Kotlin Multiplatform and Compose Multiplatform. It demonstrates real-time word highlighting synchronized with speech, along with smooth pause/resume functionality. The project showcases advanced concepts like Swift-Kotlin interoperability, expect/actual abstraction, and clean architecture for building scalable cross-platform apps.",
+            features = listOf(
+                "Real-time word highlighting synchronized with speech",
+                "Pause and resume with accurate position tracking",
+                "Cross-platform support: Android and iOS",
+                "Custom text input and pre-loaded sample texts",
+                "Clean expect/actual implementation for platform abstraction",
+                "Seamless Swift-Kotlin interoperability",
+                "Type-safe communication between Kotlin and Swift",
+                "Unified interface using provider pattern",
+                "Modern UI with Compose Multiplatform"
+            ),
+            technologies = listOf(
+                "Kotlin",
+                "Kotlin Multiplatform",
+                "Compose Multiplatform",
+                "StateFlow",
+            ),
+            libraries = listOf(
+                "Compose Multiplatform",
+                "kotlinx.coroutines",
+                "Lifecycle Compose",
+                "Material 3"
+            ),
+            githubUrl = "https://github.com/Coding-Meet/TextToSpeech-CMP",
+            platform = listOf("Android", "iOS"),
+            topics = listOf(
+                "Kotlin Multiplatform",
+                "Compose Multiplatform",
+                "Text-to-Speech",
+                "Swift Interoperability",
+                "Real-time Highlighting",
+                "Cross-platform App"
+            ),
+            stargazersCount = 47,
+            categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP),
+            youtubeVideoLink = "https://www.youtube.com/embed/SzuDWWdEkqE",
+            imageUrls = listOf(
+                "articles/tts_highlighting.png"
+            )
+        ),
+        Project(
+            title = "Git Backup Hub",
+            shortDescription = "A cross-platform desktop tool to back up GitHub repositories with progress tracking and modern UI.",
+            longDescription = "Git Backup Hub is a developer-focused desktop application built with Kotlin Multiplatform and Compose for Desktop. It enables seamless backup of GitHub repositories (public and private) with real-time progress tracking, filtering, and flexible storage options. Designed for reliability and ease of use, it helps developers securely manage and archive their codebases.",
+            features = listOf(
+                "Fetch all public and private GitHub repositories",
+                "Support for private repositories using Personal Access Token (PAT)",
+                "Select one or multiple repositories for backup",
+                "Choose custom local destination for backups",
+                "Real-time progress tracking with percentage, ETA, and logs",
+                "Search and filter repositories",
+                "Cancel ongoing downloads anytime",
+                "Modern Material 3 UI with dark and light theme support"
+            ),
+            technologies = listOf(
+                "Kotlin",
+                "Kotlin Multiplatform",
+                "Compose for Desktop"
+            ),
+            libraries = listOf(
+                "Ktor",
+                "Koin",
+                "kotlinx.serialization",
+                "Kermit"
+            ),
+            githubUrl = "https://github.com/Coding-Meet/Git-Backup-Hub",
+            platform = listOf("Desktop", "Windows", "macOS", "Linux"),
+            topics = listOf(
+                "Developer Tools",
+                "GitHub",
+                "Backup Tool",
+                "Kotlin Multiplatform",
+                "Compose Desktop",
+                "Automation"
+            ),
+            stargazersCount = 27,
+            categories = listOf(ProjectCategory.KMP, ProjectCategory.DESKTOP),
+            youtubeVideoLink = "https://www.youtube.com/embed/SKgjtKWt4VQ",
+            websiteUrl = "https://github.com/Coding-Meet/Git-Backup-Hub/releases",
+            imageUrls = listOf(
+                "project/git_backup_hub/git_backup_hub_banner.png"
+            )
+        ),
+        Project(
+            title = "Shader Compose Multiplatform App",
+            shortDescription = "A cross-platform shader showcase app with 23+ animated effects using Compose Multiplatform.",
+            longDescription = "Shader CMP App is a visually rich cross-platform application built with Kotlin Multiplatform and Compose Multiplatform. It demonstrates how to implement and run GPU shaders across Android, iOS, Desktop, and Web using a unified approach. The project includes 23+ real-time animated shader effects and showcases advanced rendering techniques, expect/actual architecture, and performance-optimized UI rendering.",
+            features = listOf(
+                "23+ animated shader screens with real-time rendering",
+                "Cross-platform support: Android, iOS, Desktop, Web (WASM/JS)",
+                "Unified shader logic using AGSL (Android) and SkSL (others)",
+                "ShaderProvider for handling uniforms (time, resolution, colors)",
+                "Advanced rendering using drawBehind and graphicsLayer",
+                "Touch-based interactive shader animations",
+                "Safe fallback support for Android below API 33",
+                "High-performance GPU-based visual effects"
+            ),
+            technologies = listOf(
+                "Kotlin",
+                "Kotlin Multiplatform",
+                "Compose Multiplatform",
+                "AGSL",
+                "SkSL"
+            ),
+            libraries = listOf(
+                "Compose Multiplatform",
+                "kotlinx.coroutines"
+            ),
+            githubUrl = "https://github.com/Coding-Meet/Shader-Animation-CMP",
+            websiteUrl = "https://coding-meet.github.io/Shader-Animation-CMP/",
+            platform = listOf("Android", "iOS", "Desktop", "Web"),
+            topics = listOf(
+                "Shaders",
+                "Compose Multiplatform",
+                "Kotlin Multiplatform",
+                "Graphics Programming",
+                "Animation",
+                "GPU Rendering"
+            ),
+            stargazersCount = 12,
+            categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP, ProjectCategory.WEB),
+            youtubeVideoLink = "https://www.youtube.com/embed/zIDrScVQjhg",
+            imageUrls = listOf(
+                "articles/shader-cmp.png"
+            )
         ),
         Project(
             title = "Coding Meet Kobweb",
@@ -173,7 +404,7 @@ object Constants {
                 "Deployed on Firebase Hosting for fast and reliable delivery"
             ),
             technologies = listOf("Firebase Hosting"),
-            libraries = listOf("Kotlin", "Kobweb","Compose HTML", "Jetpack Compose"),
+            libraries = listOf("Kotlin", "Kobweb", "Compose HTML", "Jetpack Compose"),
             imageUrls = listOf(
                 "project/coding_meet_website/kobweb_banner.png",
                 "project/coding_meet_website/kobweb_img_1.png",
@@ -186,7 +417,7 @@ object Constants {
                 "project/coding_meet_website/kobweb_img_8.png",
             ),
             platform = listOf("Web"),
-            stargazersCount = 10,
+            stargazersCount = 20,
             topics = listOf("Portfolio", "Web Development", "Kobweb", "SEO Optimization"),
         ),
         Project(
@@ -269,14 +500,13 @@ object Constants {
                 "project/custom_lcd_app/custom_lcd_app_img_2.png"
             ),
             platform = listOf("Android"),
-            categories = listOf(ProjectCategory.ANDROID,ProjectCategory.IOT)
+            categories = listOf(ProjectCategory.ANDROID, ProjectCategory.IOT)
         ),
         Project(
             title = "Third Eye - AI Assistant App for Blind People",
             shortDescription = "An AI-powered Android app designed to assist blind people with voice commands, image descriptions, and text extraction.",
             longDescription = "Third Eye is an innovative Android application that leverages Gemini AI to enhance accessibility for blind individuals. It offers features like custom prompts, image-to-text conversion, and detailed image descriptions to support daily tasks through voice commands and AI-powered insights.",
-            githubUrl = "https://github.com/Coding-Meet/Third-Eye",
-            stargazersCount = 3,
+
             youtubeVideoLink = "https://www.youtube.com/embed/cRTjUSgXhKY",
             features = listOf(
                 "Custom Prompt for text-based queries and instructions",
@@ -359,7 +589,7 @@ object Constants {
             ),
             platform = listOf("Android"),
             topics = listOf("Home Automation", "IoT", "Arduino", "Smart Home"),
-            categories = listOf(ProjectCategory.ANDROID,ProjectCategory.IOT)
+            categories = listOf(ProjectCategory.ANDROID, ProjectCategory.IOT)
         ),
         Project(
             title = "Electric Vehicle",
@@ -607,7 +837,7 @@ object Constants {
             ),
             platform = listOf("Android"),
             topics = listOf("Bluetooth Communication", "Arduino", "IoT", "Home Automation"),
-            categories = listOf(ProjectCategory.ANDROID,ProjectCategory.IOT)
+            categories = listOf(ProjectCategory.ANDROID, ProjectCategory.IOT)
         ),
         Project(
             title = "Truth Or Dare App",
@@ -740,6 +970,130 @@ object Constants {
             topics = listOf("IoT", "Automation", "Smart Agriculture", "Environmental Monitoring"),
             categories = listOf(ProjectCategory.IOT)
         ),
+
+        Project(
+            title = "TODO / Note App",
+            shortDescription = "A complete TODO/Note app built with MVVM and Room, covering all core Android concepts through a step-by-step tutorial series.",
+            longDescription = "TODO/Note App is a fully functional Android application built using Kotlin, MVVM architecture, and Room Database. It is designed as a comprehensive learning project supported by a detailed YouTube playlist, covering everything from basic CRUD operations to advanced features like search, sorting, and performance optimization. This project is ideal for beginners and intermediate developers looking to master Android app development with real-world implementation.",
+            features = listOf(
+                "Create, update, delete, and view tasks (CRUD operations)",
+                "MVVM architecture with clean separation of concerns",
+                "Local database using Room for persistent storage",
+                "Search functionality for quick task lookup",
+                "Sort tasks with multiple options",
+                "Restore deleted tasks for better UX",
+                "Efficient UI with RecyclerView, ListAdapter, and DiffUtil",
+                "Optimized performance with coroutines and repository pattern",
+                "Modern UI with dialogs, AppBar, and smooth scrolling"
+            ),
+            technologies = listOf(
+                "Kotlin",
+                "Android SDK",
+                "MVVM Architecture",
+                "Room Database"
+            ),
+            libraries = listOf(
+                "Room",
+                "Lifecycle",
+                "ViewModel",
+                "Coroutines",
+                "RecyclerView"
+            ),
+            githubUrl = "https://github.com/Coding-Meet/Todo-App",
+            youtubeVideoLink = "https://www.youtube.com/embed/videoseries?list=PLlSuJy9SfzvFqbcWKhs-a3NtYQicyCFo8",
+            platform = listOf("Android"),
+            topics = listOf(
+                "Android Development",
+                "MVVM Architecture",
+                "Room Database",
+                "CRUD App",
+                "Beginner Project",
+                "Android Tutorials"
+            ),
+            stargazersCount = 20,
+            categories = listOf(ProjectCategory.ANDROID)
+        ),
+        Project(
+            title = "Camera App",
+            shortDescription = "A feature-rich Android camera app built with CameraX, covering image capture, video recording, and advanced camera controls.",
+            longDescription = "CameraX App is a modern Android application demonstrating how to build a complete camera solution using the CameraX library. It covers essential and advanced features like image capture, video recording, zoom, focus, and real-time UI updates. The project is supported by a detailed YouTube playlist, making it ideal for learning and implementing real-world camera functionalities.",
+            features = listOf(
+                "Capture high-quality images using CameraX",
+                "Video recording with real-time duration display",
+                "Zoom control and tap-to-focus with visual feedback",
+                "Handle image rotation and aspect ratio adjustments",
+                "Fix common CameraX issues (e.g., Android 13 bugs)",
+                "Smooth camera preview and lifecycle handling",
+                "Step-by-step learning through video tutorials"
+            ),
+            technologies = listOf(
+                "Kotlin",
+                "Android SDK",
+                "CameraX",
+                "Jetpack Libraries"
+            ),
+            libraries = listOf(
+                "CameraX",
+                "Lifecycle",
+                "ViewBinding"
+            ),
+            githubUrl = "https://github.com/Coding-Meet/Camera-Using-CameraX",
+            youtubeVideoLink = "https://www.youtube.com/embed/videoseries?list=PLlSuJy9SfzvGEeoalzMz-VA5ohI0LzSKH",
+            platform = listOf("Android"),
+            topics = listOf(
+                "CameraX",
+                "Android Development",
+                "Image Capture",
+                "Video Recording",
+                "Mobile Camera App",
+                "Android Tutorials"
+            ),
+            stargazersCount = 28,
+            websiteUrl = "https://youtube.com/playlist?list=PLlSuJy9SfzvGEeoalzMz-VA5ohI0LzSKH&si=JahooX-lqG2T42OP",
+            categories = listOf(ProjectCategory.ANDROID)
+        ),
+        Project(
+            title = "Math Quiz App",
+            shortDescription = "An interactive quiz app built with Kotlin, covering core Android concepts along with encryption and security techniques.",
+            longDescription = "Math Quiz App is an Android application developed using Kotlin, designed as a complete learning project for building interactive quiz-based apps. It covers UI design, data handling, scoring logic, and advanced topics like encryption and API key security. Supported by a structured YouTube playlist, this project helps developers understand both fundamental and advanced Android concepts through hands-on implementation.",
+            features = listOf(
+                "Interactive quiz system with multiple levels",
+                "Score calculation and result display",
+                "Countdown timer for each question",
+                "JSON-based question loading",
+                "Option selection and dynamic scoring",
+                "Remove options feature for enhanced gameplay",
+                "Modern UI with splash screen, dialogs, and toolbar",
+                "File encryption and decryption for secure data handling",
+                "API key and sensitive data protection using NDK and libraries"
+            ),
+            technologies = listOf(
+                "Kotlin",
+                "Android SDK",
+                "JSON Parsing",
+                "NDK"
+            ),
+            libraries = listOf(
+                "Gson / JSON",
+                "NDK",
+                "AndroidX",
+                "ViewBinding"
+            ),
+            githubUrl = "https://github.com/Coding-Meet/Math-Quiz-App",
+            youtubeVideoLink= "https://www.youtube.com/embed/videoseries?list=PLlSuJy9SfzvHpc1-IcBTbZnyeBoVCynPE",
+            websiteUrl = "https://youtube.com/playlist?list=PLlSuJy9SfzvHpc1-IcBTbZnyeBoVCynPE&si=BAMF8pBR1Aw7l1SQ",
+            platform = listOf("Android"),
+            topics = listOf(
+                "Android Development",
+                "Quiz App",
+                "Kotlin",
+                "JSON",
+                "Encryption",
+                "NDK Security"
+            ),
+            stargazersCount = 18,
+            categories = listOf(ProjectCategory.ANDROID)
+        ),
         Project(
             title = "Android Addict",
             shortDescription = "A React-based website providing Android component code for developers.",
@@ -761,7 +1115,7 @@ object Constants {
             ),
             platform = listOf("Web"),
             topics = listOf("Android Development", "Web Development", "Code Snippets"),
-            categories = listOf(ProjectCategory.WEB,ProjectCategory.ANDROID)
+            categories = listOf(ProjectCategory.WEB, ProjectCategory.ANDROID)
         ),
         Project(
             title = "Gamer's Arena",
@@ -800,58 +1154,152 @@ object Constants {
     val articles = listOf(
 
         Article(
+            title = "How to Implement Shaders in Compose Multiplatform (Android, iOS, Desktop & Web)",
+            shortDescription = "Learn how to build and run shader animations across Android, iOS, Desktop, and Web using Compose Multiplatform.",
+            thumbnail = "articles/shader-cmp.png",
+            link = "https://medium.com/@meet26/how-to-implement-shaders-in-compose-multiplatform-android-ios-desktop-web-c86a36dd9666",
+            categories = listOf("KMP", "Shaders", "Compose Multiplatform", "Graphics"),
+            pubDate = "Apr 12, 2026",
+            readTime = "13 min read",
+            presentations = "1.3K",
+            views = "208",
+            reads = "109",
+            claps = "133",
+            isFeatured = false
+        ),
+
+        Article(
+            title = "Building a Fully Adaptive Navigation System in Compose Multiplatform (KMP)",
+            shortDescription = "Create a responsive navigation system that adapts across screen sizes in Compose Multiplatform.",
+            thumbnail = "articles/adaptive_navigation.png",
+            link = "https://medium.com/@meet26/building-a-fully-adaptive-navigation-system-in-compose-multiplatform-kmp-e1a8921ca792",
+            categories = listOf("KMP", "Navigation", "UI Design"),
+            pubDate = "Jan 24, 2026",
+            readTime = "15 min read",
+            presentations = "3.3K",
+            views = "1.1K",
+            reads = "640",
+            claps = "58",
+            isFeatured = true
+        ),
+
+        Article(
+            title = "Cross-Platform Text-to-Speech with Real-time Highlighting",
+            shortDescription = "Implement text-to-speech with synchronized highlighting using Kotlin Multiplatform and Swift.",
+            thumbnail = "articles/tts_highlighting.png",
+            link = "https://medium.com/@meet26/cross-platform-text-to-speech-with-real-time-highlighting-kotlin-multiplatform-swift-9a02fa667f6f",
+            categories = listOf("KMP", "TTS", "Accessibility"),
+            pubDate = "Aug 19, 2025",
+            readTime = "21 min read",
+            presentations = "2.9K",
+            views = "1.3K",
+            reads = "647",
+            claps = "74",
+            isFeatured = true
+        ),
+
+        Article(
+            title = "How to Show Toasts in Compose Multiplatform (Android, iOS, Desktop)",
+            shortDescription = "Implement cross-platform toast messages using expect/actual in Compose Multiplatform.",
+            thumbnail = "articles/toast_cmp.png",
+            link = "https://medium.com/@meet26/how-to-show-toasts-in-compose-multiplatform-android-ios-desktop-with-expect-actual-85c630d46d06",
+            categories = listOf("KMP", "UI", "Compose"),
+            pubDate = "Jun 19, 2025",
+            readTime = "7 min read",
+            presentations = "1.94K",
+            views = "2.9K",
+            reads = "1.2K",
+            claps = "140",
+            isFeatured = true
+        ),
+
+        Article(
             title = "Efficient Logging in Kotlin with ProGuard Optimization",
-            shortDescription = "Learn how to implement an optimized logging system in Kotlin that automatically removes logs in release builds using ProGuard.",
+            shortDescription = "Implement an optimized logging system that removes logs in release builds using ProGuard.",
             thumbnail = "articles/logging_proguard.png",
             link = "https://medium.com/@meet26/efficient-logging-in-kotlin-with-proguard-optimization-452bdac5c016",
-            categories = listOf("Android", "Kotlin", "Logging", "ProGuard", "Best Practices"),
-            pubDate = "Mar 26, 2025",
-            readTime = "4 min read"
+            categories = listOf("Android", "Kotlin", "Logging", "ProGuard"),
+            pubDate = "Mar 24, 2025",
+            readTime = "4 min read",
+            presentations = "6.3K",
+            views = "2.2K",
+            reads = "900",
+            claps = "139",
+            isFeatured = true
         ),
+
+        Article(
+            title = "Part 2: Automating Reverse Feature to Template Transformation in Gradle",
+            shortDescription = "Automate Android template creation using Gradle scripting.",
+            thumbnail = "articles/feature-to-template.png",
+            link = "https://medium.com/@meet26/part-2-automating-reverse-feature-to-template-transformation-in-gradle-3973880bb6ff",
+            categories = listOf("Android", "Gradle", "Automation"),
+            pubDate = "Feb 18, 2025",
+            readTime = "7 min read",
+            presentations = "1.8K",
+            views = "375",
+            reads = "124",
+            claps = "91",
+            isFeatured = false
+        ),
+
         Article(
             title = "Automate Android Feature Creation with Gradle",
-            shortDescription = "Learn how to automate Android feature creation using Gradle scripting.",
+            shortDescription = "Speed up Android development by automating feature creation with Gradle.",
             thumbnail = "articles/template-to-feature.png",
             link = "https://medium.com/@meet26/automate-android-feature-creation-with-gradle-cfd51373e167",
             categories = listOf("Android", "Gradle", "Automation"),
             pubDate = "Dec 10, 2024",
-            readTime = "7 min read"
+            readTime = "7 min read",
+            presentations = null,
+            views = "2.5K",
+            reads = "1.1K",
+            claps = "212",
+            isFeatured = true
         ),
-        Article(
-            title = "Part 2: Automating Reverse Feature to Template Transformation in Gradle",
-            shortDescription = "Learn how to automate Android template creation using Gradle scripting.",
-            thumbnail = "articles/feature-to-template.png",
-            link = "https://medium.com/@meet26/part-2-automating-reverse-feature-to-template-transformation-in-gradle-3973880bb6ff",
-            categories = listOf("Android", "Gradle", "Automation", "Android Studio"),
-            pubDate = "Feb 18, 2025",
-            readTime = "7 min read"
-        ),
+
         Article(
             title = "Full Guide: How to Form Validation With Jetpack Compose in Kotlin",
-            shortDescription = "A complete guide to implementing form validation in Jetpack Compose.",
+            shortDescription = "Complete guide to implementing form validation in Jetpack Compose.",
             thumbnail = "articles/form-validation-jetpack-compose.png",
             link = "https://medium.com/@meet26/full-guide-how-to-form-validation-with-jetpack-compose-01e0464ae884",
             categories = listOf("Jetpack Compose", "Validation", "Kotlin"),
             pubDate = "Oct 1, 2024",
-            readTime = "16 min read"
+            readTime = "16 min read",
+            presentations = null,
+            views = "4K",
+            reads = "2.3K",
+            claps = "109",
+            isFeatured = true
         ),
+
         Article(
-            title = "Bottom Navigation Bar for compact screens & Navigation Rail for larger screens in Compose Multiplatform",
-            shortDescription = "A guide on implementing bottom navigation for compact screens and navigation rail for larger screens.",
+            title = "Bottom Navigation Bar & Navigation Rail in Compose Multiplatform",
+            shortDescription = "Implement adaptive navigation for compact and large screens in Compose Multiplatform.",
             thumbnail = "articles/bottom-navigation-bar-cmp.png",
             link = "https://medium.com/@meet26/how-to-integrate-bottom-navigation-bar-for-compact-screens-and-a-navigation-rail-for-larger-screens-c7dc3baab0e7",
             categories = listOf("Android", "Navigation", "UI Design"),
             pubDate = "Sep 20, 2024",
-            readTime = "10 min read"
+            readTime = "10 min read",
+            presentations = null,
+            views = "4.3K",
+            reads = "2.1K",
+            claps = "76",
+            isFeatured = true
         ),
         Article(
             title = "How to Integrate ViewModel in Kotlin Multiplatform with Koin",
-            shortDescription = "Learn how to use ViewModel in Kotlin Multiplatform projects with Koin.",
+            shortDescription = "Use ViewModel in Kotlin Multiplatform projects with Koin dependency injection.",
             thumbnail = "articles/viewmodel-kmp.png",
             link = "https://medium.com/@meet26/how-to-integrate-viewmodel-in-kotlin-multiplatform-with-koin-1a1134530215",
-            categories = listOf("Kotlin Multiplatform", "ViewModel", "Dependency Injection"),
+            categories = listOf("Kotlin Multiplatform", "ViewModel", "Dependency Injection", "Koin"),
             pubDate = "Sep 11, 2024",
-            readTime = "5 min read"
+            readTime = "5 min read",
+            presentations = null,
+            views = "6.7K",
+            reads = "4K",
+            claps = "63",
+            isFeatured = true
         )
     )
     val animatedTexts = listOf(
@@ -866,30 +1314,30 @@ object Constants {
     val experiences = listOf(
         Experience(
             title = "📱 Android Developer",
-            company = "💼 Fiverr",
+            company = "💼 Freelance (Fiverr)",
             type = "Freelance",
             startDate = "Jun 2023",
             endDate = "Present",
             location = "🌍 Remote",
-            description = "Collaborated with 30+ clients globally, delivering high-quality Android applications worth over $4,000. Maintained a 100% ⭐⭐⭐⭐⭐ rating, demonstrating expertise in Kotlin, Jetpack Compose, and modern Android development practices."
+            description = "Delivered 45+ Android projects globally with $4,000+ earnings and a 4.9★ rating. Specialized in Kotlin, Jetpack Compose, and building scalable, production-ready applications."
         ),
         Experience(
             title = "🎥 Content Creator",
-            company = "▶️ YouTube",
+            company = "▶️ YouTube (Coding Meet)",
             type = "Part-time",
             startDate = "Apr 2023",
             endDate = "Present",
             location = "🌍 India · Remote",
-            description = "Founder of Coding Meet, a YouTube channel dedicated to Android development. Created 400+ videos covering Kotlin, Jetpack Compose, Compose Multiplatform and best practices, helping thousands of developers improve their skills."
+            description = "Created 440+ tutorials on Android development, Kotlin, Jetpack Compose, and KMP. Built a growing developer community with 4.4K+ subscribers."
         ),
         Experience(
-            title = "✍️ Blogger",
+            title = "✍️ Technical Writer",
             company = "📝 Medium",
-            type = "Full-time",
+            type = "Part-time",
             startDate = "Sep 2024",
             endDate = "Present",
             location = "🌍 India · Remote",
-            description = "Publishing in-depth articles on Android development, Jetpack Compose, Kotlin Multiplatform, and Compose Multiplatform, sharing insights and best practices with a growing tech audience."
+            description = "Published 10+ in-depth articles on Android, Kotlin Multiplatform, and Compose Multiplatform, reaching thousands of developers with practical insights."
         ),
         Experience(
             title = "🛠️ Android Development Intern",
@@ -1280,23 +1728,23 @@ object Constants {
 
     val achievements = listOf(
         Achievement(
-            title = "📺 3.8K+ YouTube Subscribers",
-            subtitle = "Creating 400+ videos for developers",
+            title = "📺 4.4K+ YouTube Subscribers",
+            subtitle = "Created 450+ Android development tutorials",
             platform = "Youtube",
             link = "https://youtube.com/@codingmeet26?si=_2Mu6ozuCdYuqihA",
             lightImage = "social/youtube.svg"
         ),
         Achievement(
-            title = "⭐ 400+ GitHub Stars",
-            subtitle = "Trusted by 400+ developers and followers",
+            title = "⭐ 850+ GitHub Stars",
+            subtitle = "500+ followers and growing open-source community",
             lightImage = "social/github.svg",
             platform = "Github",
             link = "https://github.com/Coding-Meet",
             darkImage = "social/github_dark_mode.svg"
         ),
         Achievement(
-            title = "📦 30+ Completed Orders",
-            subtitle = "Collaborated with 30+ clients globally, delivering high-quality Android apps worth $4,000+ with 100% rating.",
+            title = "📦 45+ Completed Orders",
+            subtitle = "Completed 45+ client projects with $4,000+ earnings and 4.9⭐ rating",
             platform = "Fiverr",
             link = contactMePath,
             lightImage = "social/fiverr.svg"
@@ -1317,8 +1765,8 @@ object Constants {
             lightImage = "social/stack_overflow.svg"
         ),
         Achievement(
-            title = "✍️ 350+ Claps",
-            subtitle = "\"Sharing insights with 5 published articles on ProAndroidDev and Medium.",
+            title = "✍️ 1K+ Claps",
+            subtitle = "Published 10+ technical articles on Medium",
             lightImage = "social/medium.svg",
             platform = "Medium",
             link = "https://www.medium.com/@meet26",
