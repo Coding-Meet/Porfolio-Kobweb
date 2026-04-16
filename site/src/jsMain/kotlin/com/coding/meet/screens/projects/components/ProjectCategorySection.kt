@@ -8,7 +8,7 @@ import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.BackgroundPosition
 import com.varabyte.kobweb.compose.css.CSSPosition
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.backgroundPosition
+import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.display
@@ -43,7 +43,9 @@ fun ProjectCategorySection(
                 attrs = CategoryButtonStyle.toModifier().then(
                     if (projectCategory == selectedCategory) Modifier
                         .boxShadow(0.px, 0.px, 0.3.em, null, rgba(0, 0, 0, 0.25f))
-                        .backgroundPosition(BackgroundPosition.of(CSSPosition(0.px)))
+                        .background {
+                            position(BackgroundPosition.of(CSSPosition(0.px)))
+                        }
                         .color(
                             CustomColor(
                                 lightColor = Theme.DarkFontColor,

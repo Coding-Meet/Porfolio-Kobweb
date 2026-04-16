@@ -13,10 +13,9 @@ import com.varabyte.kobweb.compose.css.TransitionTimingFunction
 import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
+import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundImage
-import com.varabyte.kobweb.compose.ui.modifiers.backgroundPosition
-import com.varabyte.kobweb.compose.ui.modifiers.backgroundSize
 import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.bottom
@@ -38,7 +37,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.top
 import com.varabyte.kobweb.compose.ui.modifiers.transform
 import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.modifiers.width
-import com.varabyte.kobweb.compose.ui.modifiers.zIndex
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.active
 import com.varabyte.kobweb.silk.style.selectors.hover
@@ -136,11 +134,15 @@ val MainButtonStyle = CssStyle {
     )
     base {
         Modifier
-            .backgroundSize(BackgroundSize.of(220.percent))
+            .background {
+                size(BackgroundSize.of(220.percent))
+            }
             .boxShadow(0.px, 0.2.em, 0.3.em, null, rgba(0, 0, 0, 0.15f))
             .color(backgroundColor)
             .backgroundColor(Colors.Transparent)
-            .backgroundPosition(BackgroundPosition.of(CSSPosition(100.percent)))
+            .background {
+                position(BackgroundPosition.of(CSSPosition(100.percent)))
+            }
             .border(3.px, LineStyle.Solid, backgroundColor)
             .textTransform(TextTransform.Uppercase)
             .padding(8.px, 16.px)
@@ -163,7 +165,9 @@ val MainButtonStyle = CssStyle {
         Modifier
             .transform { translateY((-2).px) }
             .boxShadow(0.px, 0.px, 0.3.em, null, rgba(0, 0, 0, 0.25f))
-            .backgroundPosition(BackgroundPosition.of(CSSPosition(0.px)))
+            .background {
+                position(BackgroundPosition.of(CSSPosition(0.px)))
+            }
             .color(textColor)
     }
     active {
