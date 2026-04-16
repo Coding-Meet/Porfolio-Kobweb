@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "/site/.kobweb/site",
+    "public": "site/.kobweb/site",
     "ignore": [
       "firebase.json",
       "**/.*",
