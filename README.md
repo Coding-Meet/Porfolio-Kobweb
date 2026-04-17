@@ -30,15 +30,13 @@
    ```bash
    git clone https://github.com/Coding-Meet/Porfolio-Kobweb.git
    ```
-
-3. Follow the [Kobweb](https://kobweb.varabyte.com/docs/getting-started/getting-kobweb) Installation Guide to set up Kobweb in your system.
-2. Open in the latest version of IntelliJ IDEA Community Edition.
+2. Follow the [Kobweb](https://kobweb.varabyte.com/docs/getting-started/getting-kobweb) Installation Guide to set up Kobweb in your system.
+3. Open in the latest version of IntelliJ IDEA Community Edition.
 4. Run the development server by typing the following command in a terminal under the `site` folder:
-
-```bash
-  $ cd site
-  $ kobweb run
-```
+   ```bash
+     $ cd site
+     $ kobweb run
+   ```
 5. Open your browser and visit: http://localhost:8080
 
 ### Firebase Hosting 🚀
