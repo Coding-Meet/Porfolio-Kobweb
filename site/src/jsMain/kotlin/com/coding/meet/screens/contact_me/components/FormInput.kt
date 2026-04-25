@@ -7,7 +7,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.coding.meet.common.image_slider_with_dot.MainButtonStyle
 import com.coding.meet.screens.contact_me.styles.formStyle
-import com.coding.meet.util.Constants
+import com.coding.meet.util.AppInfo.EMAIL_ID
 import com.coding.meet.util.Res
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -90,7 +90,7 @@ fun FormInput() {
                         """.trimIndent().replace("\n", "%0A")
 
                         window.open(
-                            "mailto:${Constants.EMAIL_ID}?subject=$finalSubject&body=$body",
+                            "mailto:${EMAIL_ID}?subject=$finalSubject&body=$body",
                         )
                     }
                 }

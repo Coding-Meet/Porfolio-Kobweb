@@ -1,8 +1,8 @@
 package com.coding.meet.screens.home.skils.components
 
 import androidx.compose.runtime.Composable
-import com.coding.meet.util.Constants
 import com.coding.meet.util.CustomColor
+import com.coding.meet.util.SkillData.skills
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -42,7 +42,7 @@ fun SkillsSection() {
             if (breakpoint > Breakpoint.MD) 70.percent else 90.percent
         ).padding(topBottom = 10.px)
     ) {
-        Constants.skills.forEach { skill ->
+        skills.forEach { skill ->
             SkillCard(skill)
         }
     }

@@ -7,7 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.coding.meet.screens.loader.LoaderScreen
-import com.coding.meet.util.Constants
+import com.coding.meet.util.AppInfo
 import com.coding.meet.util.Res
 import com.coding.meet.util.Res.Font.FONT_FAMILY_REGULAR
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
@@ -44,7 +44,7 @@ fun AppEntry(content: @Composable () -> Unit) {
         var isLoaded by remember { mutableStateOf(false) }
 
         LaunchedEffect(Unit) {
-            document.title = "${Constants.WEBSITE_NAME} - My Portfolio"
+            document.title = "${AppInfo.WEBSITE_NAME} - My Portfolio"
 
             document.onreadystatechange = {
                 if (document.readyState == DocumentReadyState.INTERACTIVE) {

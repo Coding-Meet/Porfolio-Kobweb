@@ -7,7 +7,7 @@ import com.coding.meet.models.Section
 import com.coding.meet.models.articlesPath
 import com.coding.meet.screens.articles.components.ArticleCard
 import com.coding.meet.common.page_layout.fadeInUpPageAnimation
-import com.coding.meet.util.Constants.articles
+import com.coding.meet.util.ArticleData.articles
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment

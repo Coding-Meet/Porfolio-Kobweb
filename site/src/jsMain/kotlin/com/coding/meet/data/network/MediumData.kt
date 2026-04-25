@@ -7,9 +7,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.coding.meet.data.response.medium.Medium
-import com.coding.meet.util.Constants.MEDIUM_BASE_URL
-import com.coding.meet.util.Constants.articles
-import com.coding.meet.util.Constants.mediumArticleDummyData
+import com.coding.meet.util.ArticleData.articles
+import com.coding.meet.util.ArticleData.mediumArticleDummyData
+import com.coding.meet.util.ExternalConfig.MEDIUM_BASE_URL
 import com.varabyte.kobweb.browser.http.http
 import kotlinx.browser.window
 

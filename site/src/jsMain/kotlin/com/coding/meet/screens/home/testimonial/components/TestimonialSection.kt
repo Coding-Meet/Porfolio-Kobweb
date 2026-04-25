@@ -8,9 +8,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.coding.meet.common.components.custom_dialog.CustomDialog
 import com.coding.meet.common.image_slider_with_dot.MainButtonStyle
-import com.coding.meet.util.Constants
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
+import com.coding.meet.util.TestimonialData.testimonials
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -102,7 +102,7 @@ fun TestimonialSection() {
             if (breakpoint > Breakpoint.MD) 70.percent else 90.percent
         ).padding(top = 10.px)
     ) {
-        Constants.testimonials.take(6).forEach { testimonial ->
+        testimonials.take(6).forEach { testimonial ->
             TestimonialCard(testimonial)
         }
     }

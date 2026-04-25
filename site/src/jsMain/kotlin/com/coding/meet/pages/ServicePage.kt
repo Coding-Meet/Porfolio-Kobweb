@@ -8,8 +8,9 @@ import com.coding.meet.models.servicePath
 import com.coding.meet.common.page_layout.fadeInUpPageAnimation
 import com.coding.meet.screens.service.components.FAQCard
 import com.coding.meet.screens.service.components.ServiceCard
-import com.coding.meet.util.Constants
 import com.coding.meet.util.CustomColor
+import com.coding.meet.util.FAQData.faqs
+import com.coding.meet.util.ServiceData.services
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -85,7 +86,7 @@ fun ServiceSection() {
                     if (breakpoint > Breakpoint.MD) 70.percent else 90.percent
                 ).padding(topBottom = 10.px)
             ) {
-                Constants.services.forEach { service ->
+                services.forEach { service ->
                     ServiceCard(service)
                 }
             }
@@ -116,7 +117,7 @@ fun ServiceSection() {
                     if (breakpoint > Breakpoint.MD) 70.percent else 90.percent
                 ).padding(topBottom = 10.px)
             ) {
-                Constants.faqs.forEach { faq ->
+                faqs.forEach { faq ->
                     FAQCard(faq)
                 }
             }

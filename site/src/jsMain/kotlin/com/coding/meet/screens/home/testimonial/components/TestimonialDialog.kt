@@ -2,8 +2,8 @@ package com.coding.meet.screens.home.testimonial.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import com.coding.meet.util.Constants
 import com.coding.meet.util.CustomColor
+import com.coding.meet.util.TestimonialData.testimonials
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
@@ -76,7 +76,7 @@ fun ColumnScope.TestimonialDialog(
         numColumns = numColumns(base = 1, sm = 1, md = 3),
         modifier = Modifier.fillMaxWidth().padding(topBottom = 10.px)
     ) {
-        Constants.testimonials.forEach { testimonial ->
+        testimonials.forEach { testimonial ->
             TestimonialCard(testimonial)
         }
     }

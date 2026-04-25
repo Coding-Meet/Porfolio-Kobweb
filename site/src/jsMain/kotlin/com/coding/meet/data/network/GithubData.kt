@@ -3,9 +3,9 @@ package com.coding.meet.data.network
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import com.coding.meet.data.response.github.Github
-import com.coding.meet.util.Constants.GITHUB_BASE_URL
-import com.coding.meet.util.Constants.TOTAL_PAGE
-import com.coding.meet.util.Constants.projects
+import com.coding.meet.util.ExternalConfig.GITHUB_BASE_URL
+import com.coding.meet.util.ExternalConfig.TOTAL_PAGE
+import com.coding.meet.util.ProjectData.projects
 import com.varabyte.kobweb.browser.http.http
 import kotlinx.browser.window
 

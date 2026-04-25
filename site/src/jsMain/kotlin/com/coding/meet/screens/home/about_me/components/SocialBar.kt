@@ -3,7 +3,7 @@ package com.coding.meet.screens.home.about_me.components
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import com.coding.meet.screens.home.about_me.styles.SocialImageStyle
-import com.coding.meet.util.Constants
+import com.coding.meet.util.SocialData.socials
 import com.coding.meet.util.Theme
 import com.coding.meet.util.customColor
 import com.varabyte.kobweb.browser.dom.ElementTarget
@@ -57,7 +57,7 @@ fun SocialBar() {
             )
             .boxShadow(0.px, 0.px, 0.px, 0.px).toAttrs()
     ) {
-        Constants.socials.forEach { social ->
+        socials.forEach { social ->
             Img(
                 src = when (colorMode) {
                     ColorMode.LIGHT -> {

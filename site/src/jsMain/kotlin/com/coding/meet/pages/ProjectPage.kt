@@ -18,7 +18,7 @@ import com.coding.meet.screens.projects.components.ProjectCard
 import com.coding.meet.screens.projects.components.ProjectCategorySection
 import com.coding.meet.screens.projects.components.ProjectDialog
 import com.coding.meet.screens.projects.styles.rotateAnimation
-import com.coding.meet.util.Constants
+import com.coding.meet.util.ProjectData.projects
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -52,15 +52,15 @@ fun ProjectPage() {
     ) {
         var selectedCategory by remember { mutableStateOf(ProjectCategory.ALL) }
         var isLoading by remember { mutableStateOf(false) }
-        var filteredProjects by remember { mutableStateOf(Constants.projects) }
+        var filteredProjects by remember { mutableStateOf(projects) }
 
         LaunchedEffect(selectedCategory) {
             isLoading = true
             delay(300)
             filteredProjects = if (selectedCategory == ProjectCategory.ALL) {
-                Constants.projects
+                projects
             } else {
-                Constants.projects.filter { it.categories.contains(selectedCategory) }
+                projects.filter { it.categories.contains(selectedCategory) }
                     .toMutableList()
             }
             isLoading = false

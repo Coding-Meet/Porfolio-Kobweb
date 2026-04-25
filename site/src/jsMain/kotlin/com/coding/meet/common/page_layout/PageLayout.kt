@@ -11,7 +11,7 @@ import com.coding.meet.common.components.BackToTopButton
 import com.coding.meet.common.components.navigation_bar.components.DesktopMenu
 import com.coding.meet.common.components.navigation_bar.components.MobileSideMenu
 import com.coding.meet.models.Section
-import com.coding.meet.util.Constants
+import com.coding.meet.util.AppInfo
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
@@ -41,7 +41,7 @@ fun PageLayout(
         }
     }
     LaunchedEffect(title) {
-        document.title = "${Constants.WEBSITE_NAME} - $title - My Portfolio"
+        document.title = "${AppInfo.WEBSITE_NAME} - $title - My Portfolio"
     }
     Div(
         attrs = Modifier

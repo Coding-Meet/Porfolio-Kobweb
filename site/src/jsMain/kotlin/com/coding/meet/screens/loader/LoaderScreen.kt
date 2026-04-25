@@ -1,7 +1,8 @@
 package com.coding.meet.screens.loader
 
 import androidx.compose.runtime.Composable
-import com.coding.meet.util.Constants
+import com.coding.meet.util.AppInfo.NAMASTE_TEXT
+import com.coding.meet.util.AppInfo.WELCOME_TEXT
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
 import com.coding.meet.util.customColor
@@ -58,7 +59,7 @@ fun LoaderScreen(colorMode: ColorMode) {
                 alt = "Logo Image"
             )
             SpanText(
-                text = Constants.NAMASTE_TEXT,
+                text = NAMASTE_TEXT,
                 modifier = Modifier
                     .fontSize(30.px)
                     .textAlign(TextAlign.Center)
@@ -80,7 +81,7 @@ fun LoaderScreen(colorMode: ColorMode) {
             )
 
             SpanText(
-                text = Constants.WELCOME_TEXT,
+                text = WELCOME_TEXT,
                 modifier = Modifier
                     .fontSize(20.px)
                     .textAlign(TextAlign.Center)

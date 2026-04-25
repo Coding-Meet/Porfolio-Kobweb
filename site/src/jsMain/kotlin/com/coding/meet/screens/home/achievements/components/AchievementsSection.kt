@@ -1,7 +1,7 @@
 package com.coding.meet.screens.home.achievements.components
 
 import androidx.compose.runtime.Composable
-import com.coding.meet.util.Constants
+import com.coding.meet.util.AchievementData.achievements
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.FontWeight
@@ -53,7 +53,7 @@ fun AchievementsSection() {
             if (breakpoint > Breakpoint.MD) 70.percent else 90.percent
         ).padding(topBottom = 10.px)
     ) {
-        Constants.achievements.forEach { achievement ->
+        achievements.forEach { achievement ->
             AchievementCard(achievement)
         }
     }

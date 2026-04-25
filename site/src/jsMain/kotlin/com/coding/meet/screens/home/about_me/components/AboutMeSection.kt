@@ -7,8 +7,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.coding.meet.screens.home.about_me.styles.ProfileImageStyle
-import com.coding.meet.util.Constants
-import com.coding.meet.util.Constants.animatedTexts
+import com.coding.meet.util.AppInfo.BIO
+import com.coding.meet.util.AppInfo.animatedTexts
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
@@ -114,7 +114,7 @@ fun AboutMeSection() {
                     ).fontSize(1.8.cssRem).fontWeight(FontWeight.Bold)
             )
             SpanText(
-                text = Constants.BIO,
+                text = BIO,
                 modifier = Modifier.padding(topBottom = 10.px)
             )
             SocialBar()
