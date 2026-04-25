@@ -7,7 +7,9 @@ import com.coding.meet.util.TestimonialData.testimonials
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.TextAlign
+import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.ColumnScope
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -21,13 +23,11 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
-import com.varabyte.kobweb.compose.ui.modifiers.padding
+import com.varabyte.kobweb.compose.ui.modifiers.overflow
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.CloseIcon
-import com.varabyte.kobweb.silk.components.layout.SimpleGrid
-import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.border
@@ -48,14 +48,14 @@ fun ColumnScope.TestimonialDialog(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Column(modifier = Modifier.weight(1f)) {
+        Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
             SpanText(
-                text = "\uD83C\uDF1F Testimonial",
-                modifier = Modifier.fillMaxWidth().margin(right = 20.px).color(
+                text = "\uD83C\uDF1F All Testimonials",
+                modifier = Modifier.color(
                     CustomColor(
                         lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor
                     )
-                ).fontSize(1.5.cssRem).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
+                ).fontSize(1.8.cssRem).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
             )
         }
         CloseIcon(
@@ -68,13 +68,15 @@ fun ColumnScope.TestimonialDialog(
         )
     }
     Hr(
-        attrs = Modifier.fillMaxWidth().border(
+        attrs = Modifier.fillMaxWidth().margin(bottom = 20.px).border(
             color = colorMode.toPalette().border, style = LineStyle.Solid, width = 2.px
         ).toAttrs()
     )
-    SimpleGrid(
-        numColumns = numColumns(base = 1, sm = 1, md = 3),
-        modifier = Modifier.fillMaxWidth().padding(topBottom = 10.px)
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .overflow(Overflow.Auto),
+        verticalArrangement = Arrangement.spacedBy(20.px)
     ) {
         testimonials.forEach { testimonial ->
             TestimonialCard(testimonial)

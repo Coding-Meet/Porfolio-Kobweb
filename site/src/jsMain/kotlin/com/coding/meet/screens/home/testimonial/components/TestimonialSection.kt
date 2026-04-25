@@ -103,7 +103,10 @@ fun TestimonialSection() {
         ).padding(top = 10.px)
     ) {
         testimonials.take(6).forEach { testimonial ->
-            TestimonialCard(testimonial)
+            TestimonialCard(
+                testimonial = testimonial,
+                maxLines = 6
+            )
         }
     }
 

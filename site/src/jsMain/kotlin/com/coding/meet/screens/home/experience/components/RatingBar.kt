@@ -12,15 +12,15 @@ import com.varabyte.kobweb.silk.components.graphics.Image
 import org.jetbrains.compose.web.css.px
 
 @Composable
-fun RatingBar(modifier: Modifier = Modifier) {
+fun RatingBar(modifier: Modifier = Modifier, rating: Double = 5.0) {
     Row(modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center) {
-        repeat(5) {
+        repeat(rating.toInt()) {
             Image(
                 modifier = Modifier
-                    .margin(right = if (it != 4) 2.px else 0.px)
-                    .size(30.px),
+                    .margin(right = if (it != rating.toInt() - 1) 2.px else 0.px)
+                    .size(20.px),
                 src = Res.Image.STAR_ICON,
                 alt = "Star Icon"
             )
