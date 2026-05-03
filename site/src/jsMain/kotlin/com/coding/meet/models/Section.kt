@@ -18,6 +18,6 @@ const val projectsPath = "/projects"
 const val servicePath = "/service"
 
 const val articlesPath = "/blog"
-const val articlesDetailPath = "/blog-detail"
+const val articlesDetailPath = "/blog/{id}"
 
 const val contactMePath = "/contact_me"

@@ -21,7 +21,7 @@ object ServiceData {
                 "Integrate Firebase Realtime Database, Firestore, and Push Notifications"
             ),
             imageUrls = listOf(
-                "services/build_android_app.png"
+                "/services/build_android_app.png"
             ),
         ),
         Service(
@@ -43,7 +43,7 @@ object ServiceData {
                 "Debug Android Studio SDK-related problems"
             ),
             imageUrls = listOf(
-                "services/fix_bug.png"
+                "/services/fix_bug.png"
             ),
         ),
         Service(
@@ -62,7 +62,7 @@ object ServiceData {
                 "Resolve errors when uploading to the Play Store"
             ),
             imageUrls = listOf(
-                "services/update_android_app.png"
+                "/services/update_android_app.png"
             ),
         ),
         Service(
@@ -81,7 +81,7 @@ object ServiceData {
                 "API Key Security with encrypted SharedPreferences"
             ),
             imageUrls = listOf(
-                "services/chatbot.png"
+                "/services/chatbot.png"
             ),
         )
     )

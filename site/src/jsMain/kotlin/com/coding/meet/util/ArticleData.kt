@@ -10,7 +10,7 @@ object ArticleData {
         Article(
             title = "How to Implement Shaders in Compose Multiplatform (Android, iOS, Desktop & Web)",
             shortDescription = "Learn how to build and run shader animations across Android, iOS, Desktop, and Web using Compose Multiplatform.",
-            thumbnail = "articles/shader-cmp.png",
+            thumbnail = "/articles/shader-cmp.png",
             link = "https://medium.com/@meet26/how-to-implement-shaders-in-compose-multiplatform-android-ios-desktop-web-c86a36dd9666",
             categories = listOf("KMP", "Shaders", "Compose Multiplatform", "Graphics"),
             pubDate = "Apr 12, 2026",
@@ -26,7 +26,7 @@ object ArticleData {
         Article(
             title = "Building a Fully Adaptive Navigation System in Compose Multiplatform (KMP)",
             shortDescription = "Create a responsive navigation system that adapts across screen sizes in Compose Multiplatform.",
-            thumbnail = "articles/adaptive_navigation.png",
+            thumbnail = "/articles/adaptive_navigation.png",
             link = "https://medium.com/@meet26/building-a-fully-adaptive-navigation-system-in-compose-multiplatform-kmp-e1a8921ca792",
             categories = listOf("KMP", "Navigation", "UI Design"),
             pubDate = "Jan 24, 2026",
@@ -42,7 +42,7 @@ object ArticleData {
         Article(
             title = "Cross-Platform Text-to-Speech with Real-time Highlighting",
             shortDescription = "Implement text-to-speech with synchronized highlighting using Kotlin Multiplatform and Swift.",
-            thumbnail = "articles/tts_highlighting.png",
+            thumbnail = "/articles/tts_highlighting.png",
             link = "https://medium.com/@meet26/cross-platform-text-to-speech-with-real-time-highlighting-kotlin-multiplatform-swift-9a02fa667f6f",
             categories = listOf("KMP", "TTS", "Accessibility"),
             pubDate = "Aug 19, 2025",
@@ -58,7 +58,7 @@ object ArticleData {
         Article(
             title = "How to Show Toasts in Compose Multiplatform (Android, iOS, Desktop)",
             shortDescription = "Implement cross-platform toast messages using expect/actual in Compose Multiplatform.",
-            thumbnail = "articles/toast_cmp.png",
+            thumbnail = "/articles/toast_cmp.png",
             link = "https://medium.com/@meet26/how-to-show-toasts-in-compose-multiplatform-android-ios-desktop-with-expect-actual-85c630d46d06",
             categories = listOf("KMP", "UI", "Compose"),
             pubDate = "Jun 19, 2025",
@@ -74,7 +74,7 @@ object ArticleData {
         Article(
             title = "Efficient Logging in Kotlin with ProGuard Optimization",
             shortDescription = "Implement an optimized logging system that removes logs in release builds using ProGuard.",
-            thumbnail = "articles/logging_proguard.png",
+            thumbnail = "/articles/logging_proguard.png",
             link = "https://medium.com/@meet26/efficient-logging-in-kotlin-with-proguard-optimization-452bdac5c016",
             categories = listOf("Android", "Kotlin", "Logging", "ProGuard"),
             pubDate = "Mar 24, 2025",
@@ -90,7 +90,7 @@ object ArticleData {
         Article(
             title = "Part 2: Automating Reverse Feature to Template Transformation in Gradle",
             shortDescription = "Automate Android template creation using Gradle scripting.",
-            thumbnail = "articles/feature-to-template.png",
+            thumbnail = "/articles/feature-to-template.png",
             link = "https://medium.com/@meet26/part-2-automating-reverse-feature-to-template-transformation-in-gradle-3973880bb6ff",
             categories = listOf("Android", "Gradle", "Automation"),
             pubDate = "Feb 18, 2025",
@@ -106,7 +106,7 @@ object ArticleData {
         Article(
             title = "Automate Android Feature Creation with Gradle",
             shortDescription = "Speed up Android development by automating feature creation with Gradle.",
-            thumbnail = "articles/template-to-feature.png",
+            thumbnail = "/articles/template-to-feature.png",
             link = "https://medium.com/@meet26/automate-android-feature-creation-with-gradle-cfd51373e167",
             categories = listOf("Android", "Gradle", "Automation"),
             pubDate = "Dec 10, 2024",
@@ -122,7 +122,7 @@ object ArticleData {
         Article(
             title = "Full Guide: How to Form Validation With Jetpack Compose in Kotlin",
             shortDescription = "Complete guide to implementing form validation in Jetpack Compose.",
-            thumbnail = "articles/form-validation-jetpack-compose.png",
+            thumbnail = "/articles/form-validation-jetpack-compose.png",
             link = "https://medium.com/@meet26/full-guide-how-to-form-validation-with-jetpack-compose-01e0464ae884",
             categories = listOf("Jetpack Compose", "Validation", "Kotlin"),
             pubDate = "Oct 1, 2024",
@@ -138,7 +138,7 @@ object ArticleData {
         Article(
             title = "Bottom Navigation Bar & Navigation Rail in Compose Multiplatform",
             shortDescription = "Implement adaptive navigation for compact and large screens in Compose Multiplatform.",
-            thumbnail = "articles/bottom-navigation-bar-cmp.png",
+            thumbnail = "/articles/bottom-navigation-bar-cmp.png",
             link = "https://medium.com/@meet26/how-to-integrate-bottom-navigation-bar-for-compact-screens-and-a-navigation-rail-for-larger-screens-c7dc3baab0e7",
             categories = listOf("Android", "Navigation", "UI Design"),
             pubDate = "Sep 20, 2024",
@@ -153,7 +153,7 @@ object ArticleData {
         Article(
             title = "How to Integrate ViewModel in Kotlin Multiplatform with Koin",
             shortDescription = "Use ViewModel in Kotlin Multiplatform projects with Koin dependency injection.",
-            thumbnail = "articles/viewmodel-kmp.png",
+            thumbnail = "/articles/viewmodel-kmp.png",
             link = "https://medium.com/@meet26/how-to-integrate-viewmodel-in-kotlin-multiplatform-with-koin-1a1134530215",
             categories = listOf("Kotlin Multiplatform", "ViewModel", "Dependency Injection", "Koin"),
             pubDate = "Sep 11, 2024",

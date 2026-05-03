@@ -7,8 +7,6 @@ import com.coding.meet.models.Section
 import com.coding.meet.models.articlesPath
 import com.coding.meet.screens.articles.components.ArticleCard
 import com.coding.meet.common.page_layout.fadeInUpPageAnimation
-import com.coding.meet.models.DummyArticleState
-import com.coding.meet.models.articlesDetailPath
 import com.coding.meet.util.ArticleData.articles
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -19,7 +17,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.core.Page
-import com.varabyte.kobweb.core.rememberPageContext
+import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.style.animation.toAnimation
@@ -31,12 +29,10 @@ import org.jetbrains.compose.web.css.s
 
 @Page(articlesPath)
 @Composable
-fun ArticlesPage() {
+fun ArticlesPage(context: PageContext) {
     PageLayout(
         title = Section.ARTICLES.title
     ) {
-        val context = rememberPageContext()
-
         val breakpoint = rememberBreakpoint()
 
         Column(
@@ -59,8 +55,7 @@ fun ArticlesPage() {
             ) {
                 articles.forEach { article ->
                     ArticleCard(article, onClick = {
-                        DummyArticleState.selectedArticle = article
-                        context.router.navigateTo(articlesDetailPath)
+                        context.router.navigateTo("$articlesPath/${article.guid.split("/").last()}")
                     })
                 }
             }

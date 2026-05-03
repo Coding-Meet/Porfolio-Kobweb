@@ -22,11 +22,11 @@ object Res {
 
 
     object Image {
-        const val PROFILE = "profile_pic.png"
-        const val LOGO_DARK = "logo_white.svg"
-        const val LOGO_LIGHT = "logo_black.svg"
-        const val KOBWEB_LOGO = "kobweb.png"
-        const val STAR_ICON = "star_icon.svg"
+        const val PROFILE = "/profile_pic.png"
+        const val LOGO_DARK = "/logo_white.svg"
+        const val LOGO_LIGHT = "/logo_black.svg"
+        const val KOBWEB_LOGO = "/kobweb.png"
+        const val STAR_ICON = "/star_icon.svg"
     }
 
 }

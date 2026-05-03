@@ -1,13 +1,16 @@
 package com.coding.meet.pages
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import com.coding.meet.common.components.IconButton
 import com.coding.meet.common.components.footer.Footer
 import com.coding.meet.common.page_layout.PageLayout
 import com.coding.meet.common.page_layout.fadeInUpPageAnimation
-import com.coding.meet.models.DummyArticleState
 import com.coding.meet.models.articlesDetailPath
+import com.coding.meet.models.articlesPath
 import com.coding.meet.screens.articles.components.StatItem
+import com.coding.meet.util.ArticleData
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.FontWeight
@@ -29,7 +32,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.core.Page
-import com.varabyte.kobweb.core.rememberPageContext
+import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.silk.components.icons.fa.FaArrowLeft
 import com.varabyte.kobweb.silk.components.icons.fa.FaBookOpen
 import com.varabyte.kobweb.silk.components.icons.fa.FaCalendarDays
@@ -56,9 +59,20 @@ import org.w3c.dom.get
 
 @Page(articlesDetailPath)
 @Composable
-fun ArticleDetailPage() {
-    val article = DummyArticleState.selectedArticle
-    val context = rememberPageContext()
+fun ArticleDetailPage(context: PageContext) {
+    val articleId = context.route.params["id"]
+    val article = remember(articleId) {
+        articleId?.let { id ->
+            ArticleData.articles.find { it.guid.endsWith(id) }
+        }
+    }
+
+    LaunchedEffect(articleId, article) {
+        if (articleId == null || article == null) {
+            context.router.navigateTo(articlesPath)
+        }
+    }
+
     val breakpoint = rememberBreakpoint()
 
     PageLayout(
@@ -83,7 +97,7 @@ fun ArticleDetailPage() {
             ) {
                 IconButton(
                     onClick = {
-                        window.history.back()
+                        context.router.navigateTo(articlesPath)
                     }
                 ) {
                     FaArrowLeft()
