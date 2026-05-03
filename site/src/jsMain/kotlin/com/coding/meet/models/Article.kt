@@ -15,4 +15,5 @@ data class Article(
     val reads: String? = null,
     val claps: String? = null,
     val isFeatured: Boolean = false,
+    val content: String = "",
 )

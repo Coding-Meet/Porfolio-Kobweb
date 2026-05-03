@@ -46,13 +46,17 @@ import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
 
 @Composable
-fun ArticleCard(article: Article) {
+fun ArticleCard(article: Article, onClick: (() -> Unit)? = null) {
     Column(
         modifier = ArticleStyle.toModifier()
             .margin(10.px)
             .cursor(Cursor.Pointer)
             .onClick {
-                window.open(article.link)
+                if (onClick != null) {
+                    onClick()
+                } else {
+                    window.open(article.link)
+                }
             },
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
