@@ -1,6 +1,7 @@
 package com.coding.meet.pages
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import com.coding.meet.common.components.footer.Footer
 import com.coding.meet.common.page_layout.PageLayout
 import com.coding.meet.models.Section
@@ -23,6 +24,7 @@ import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import kotlinx.browser.window
 import org.jetbrains.compose.web.css.AnimationTimingFunction
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.s
@@ -34,7 +36,14 @@ fun ArticlesPage(context: PageContext) {
         title = Section.ARTICLES.title
     ) {
         val breakpoint = rememberBreakpoint()
+        LaunchedEffect(Unit) {
+            val saved = window.sessionStorage.getItem("articles_scroll")
 
+            if (saved != null) {
+                window.scrollTo(0.0, saved.toDouble())
+                window.sessionStorage.removeItem("articles_scroll")
+            }
+        }
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -55,6 +64,8 @@ fun ArticlesPage(context: PageContext) {
             ) {
                 articles.forEach { article ->
                     ArticleCard(article, onClick = {
+                        val scrollY = window.scrollY.toInt()
+                        window.sessionStorage.setItem("articles_scroll", scrollY.toString())
                         context.router.navigateTo("$articlesPath/${article.guid.split("/").last()}")
                     })
                 }
