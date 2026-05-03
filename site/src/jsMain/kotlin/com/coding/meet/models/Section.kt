@@ -12,7 +12,12 @@ enum class Section(
 }
 
 const val homePath = "/"
+
 const val projectsPath = "/projects"
+
 const val servicePath = "/service"
+
 const val articlesPath = "/blog"
+const val articlesDetailPath = "/blog-detail"
+
 const val contactMePath = "/contact_me"

@@ -6,6 +6,8 @@ import com.coding.meet.common.components.footer.Footer
 import com.coding.meet.common.page_layout.PageLayout
 import com.coding.meet.common.page_layout.fadeInUpPageAnimation
 import com.coding.meet.models.DummyArticleState
+import com.coding.meet.models.articlesDetailPath
+import com.coding.meet.models.articlesPath
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.FontWeight
@@ -40,7 +42,7 @@ import org.jetbrains.compose.web.dom.Div
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.get
 
-@Page("/article-detail")
+@Page(articlesDetailPath)
 @Composable
 fun ArticleDetailPage() {
     val article = DummyArticleState.selectedArticle
@@ -68,7 +70,7 @@ fun ArticleDetailPage() {
                 horizontalArrangement = Arrangement.Start
             ) {
                 IconButton(
-                    onClick = { context.router.navigateTo("/medium-dummy") }
+                    onClick = { context.router.navigateTo(articlesPath) }
                 ) {
                     FaArrowLeft()
                 }

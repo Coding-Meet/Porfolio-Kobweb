@@ -7,6 +7,8 @@ import com.coding.meet.models.Section
 import com.coding.meet.models.articlesPath
 import com.coding.meet.screens.articles.components.ArticleCard
 import com.coding.meet.common.page_layout.fadeInUpPageAnimation
+import com.coding.meet.models.DummyArticleState
+import com.coding.meet.models.articlesDetailPath
 import com.coding.meet.util.ArticleData.articles
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -17,6 +19,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.style.animation.toAnimation
@@ -32,6 +35,7 @@ fun ArticlesPage() {
     PageLayout(
         title = Section.ARTICLES.title
     ) {
+        val context = rememberPageContext()
 
         val breakpoint = rememberBreakpoint()
 
@@ -54,7 +58,10 @@ fun ArticlesPage() {
                     .padding(topBottom = 10.px, leftRight = if (breakpoint > Breakpoint.SM) 10.px else 0.px)
             ) {
                 articles.forEach { article ->
-                    ArticleCard(article)
+                    ArticleCard(article, onClick = {
+                        DummyArticleState.selectedArticle = article
+                        context.router.navigateTo(articlesDetailPath)
+                    })
                 }
             }
             Footer()

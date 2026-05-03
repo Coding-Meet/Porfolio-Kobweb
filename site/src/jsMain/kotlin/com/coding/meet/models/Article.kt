@@ -8,6 +8,7 @@ data class Article(
     val categories: List<String>,
     val pubDate: String,
     val readTime: String,
+    val guid: String,
 
 
     val presentations: String? = null,

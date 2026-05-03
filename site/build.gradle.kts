@@ -7,6 +7,7 @@ import kotlinx.html.script
 import kotlinx.html.title
 import kotlinx.html.unsafe
 import kotlinx.serialization.json.Json
+import java.net.URL
 import java.util.Properties
 
 plugins {
@@ -153,6 +154,36 @@ tasks.register("createSitemap") {
         }
         sitemapFile.asFile.writeText(sitemapStr)
         println("Sitemap generated at: ${sitemapFile.asFile.absolutePath}")
+    }
+}
+
+tasks.register("fetchMediumContent") {
+    val outputFile = layout.projectDirectory.file("src/jsMain/kotlin/com/coding/meet/util/MediumContent.kt")
+
+    doLast {
+        try {
+            val jsonStr = URL("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@meet26").readText()
+            
+            val escapedJson = jsonStr
+                .replace("$", "\${'$'}")
+                .replace("\"\"\"", "\"\" + \"\"\"")
+
+            val fileContent = buildString {
+                appendLine("package com.coding.meet.util")
+                appendLine()
+                appendLine("object MediumContent {")
+                appendLine("    const val jsonStr = \"\"\"$escapedJson\"\"\"")
+                appendLine("}")
+            }
+
+            outputFile.asFile.writeText(fileContent)
+            println("MediumContent.kt generated with raw JSON string.")
+        } catch (e: Exception) {
+            println("Failed to fetch Medium content: ${e.message}")
+            if (!outputFile.asFile.exists()) {
+                outputFile.asFile.writeText("package com.coding.meet.util\n\nobject MediumContent {\n    const val jsonStr = \"{}\"\n}")
+            }
+        }
     }
 }
 
