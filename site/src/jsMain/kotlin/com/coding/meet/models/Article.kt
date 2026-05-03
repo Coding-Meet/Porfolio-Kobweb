@@ -17,4 +17,6 @@ data class Article(
     val claps: String? = null,
     val isFeatured: Boolean = false,
     val content: String = "",
+
+    val replaceUrlList : Map<String, String> = mapOf()
 )

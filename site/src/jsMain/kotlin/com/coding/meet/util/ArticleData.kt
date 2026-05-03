@@ -52,7 +52,10 @@ object ArticleData {
             views = "1.3K",
             reads = "647",
             claps = "74",
-            isFeatured = true
+            isFeatured = true,
+            replaceUrlList = mapOf(
+                "https://medium.com/media/ebc60e432aadd97971fd61cdd30c7476" to "https://www.youtube.com/watch?v=SzuDWWdEkqE"
+            )
         ),
 
         Article(
@@ -171,7 +174,11 @@ object ArticleData {
         val mediumData = json.decodeFromString<Medium>(MediumContent.jsonStr)
         rawArticles.map { article ->
             val onlineItem = mediumData.networkArticles.find { it.guid == article.guid }
-            article.copy(content = onlineItem?.content ?: article.content)
+            var content = onlineItem?.content ?: article.content
+            article.replaceUrlList.forEach { (old, new) ->
+                content = content.replace(old, new)
+            }
+            article.copy(content = content)
         }
     } catch (e: Exception) {
         rawArticles
