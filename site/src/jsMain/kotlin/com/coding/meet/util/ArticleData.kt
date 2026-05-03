@@ -20,7 +20,10 @@ object ArticleData {
             views = "208",
             reads = "109",
             claps = "133",
-            isFeatured = false
+            isFeatured = false,
+            replaceUrlList = mapOf(
+                "https://medium.com/media/17e14b58c22d2a700f92305581567830" to "https://www.youtube.com/watch?v=zIDrScVQjhg"
+            )
         ),
 
         Article(
@@ -135,7 +138,10 @@ object ArticleData {
             views = "4K",
             reads = "2.3K",
             claps = "109",
-            isFeatured = true
+            isFeatured = true,
+            replaceUrlList = mapOf(
+                "https://medium.com/media/03ea2be5ab777b90e0a030ce0c9330cb" to "https://www.youtube.com/watch?v=8M_CNcVWHx0"
+            )
         ),
 
         Article(
@@ -151,14 +157,22 @@ object ArticleData {
             views = "4.3K",
             reads = "2.1K",
             claps = "76",
-            isFeatured = true
+            isFeatured = true,
+            replaceUrlList = mapOf(
+                "https://medium.com/media/0978046c7e7b122964874b23b4aa1223" to "https://www.youtube.com/watch?v=ThDlqCwCN28"
+            )
         ),
         Article(
             title = "How to Integrate ViewModel in Kotlin Multiplatform with Koin",
             shortDescription = "Use ViewModel in Kotlin Multiplatform projects with Koin dependency injection.",
             thumbnail = "/articles/viewmodel-kmp.png",
             link = "https://medium.com/@meet26/how-to-integrate-viewmodel-in-kotlin-multiplatform-with-koin-1a1134530215",
-            categories = listOf("Kotlin Multiplatform", "ViewModel", "Dependency Injection", "Koin"),
+            categories = listOf(
+                "Kotlin Multiplatform",
+                "ViewModel",
+                "Dependency Injection",
+                "Koin"
+            ),
             pubDate = "Sep 11, 2024",
             readTime = "5 min read",
             guid = "https://medium.com/p/1a1134530215",
