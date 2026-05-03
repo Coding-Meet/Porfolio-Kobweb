@@ -121,7 +121,7 @@ fun ArticleCard(article: Article, onClick: (() -> Unit)? = null) {
     }
 }
 @Composable
-private fun StatItem(value: String, icon: @Composable () -> Unit) {
+fun StatItem(value: String, icon: @Composable () -> Unit) {
     Row(
         modifier = Modifier.margin(leftRight = 8.px),
         verticalAlignment = Alignment.CenterVertically

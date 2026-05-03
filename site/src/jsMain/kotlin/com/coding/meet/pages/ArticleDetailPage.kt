@@ -7,7 +7,7 @@ import com.coding.meet.common.page_layout.PageLayout
 import com.coding.meet.common.page_layout.fadeInUpPageAnimation
 import com.coding.meet.models.DummyArticleState
 import com.coding.meet.models.articlesDetailPath
-import com.coding.meet.models.articlesPath
+import com.coding.meet.screens.articles.components.StatItem
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.FontWeight
@@ -21,19 +21,31 @@ import com.varabyte.kobweb.compose.ui.modifiers.animation
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.flexWrap
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
+import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
+import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.icons.fa.FaArrowLeft
+import com.varabyte.kobweb.silk.components.icons.fa.FaBookOpen
+import com.varabyte.kobweb.silk.components.icons.fa.FaCalendarDays
+import com.varabyte.kobweb.silk.components.icons.fa.FaChalkboardUser
+import com.varabyte.kobweb.silk.components.icons.fa.FaClock
+import com.varabyte.kobweb.silk.components.icons.fa.FaEye
+import com.varabyte.kobweb.silk.components.icons.fa.FaHandsClapping
+import com.varabyte.kobweb.silk.components.icons.fa.FaShareNodes
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.AnimationTimingFunction
+import org.jetbrains.compose.web.css.FlexWrap
+import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
@@ -66,16 +78,17 @@ fun ArticleDetailPage() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Row(
-                modifier = Modifier.fillMaxWidth().padding(bottom = 20.px),
+                modifier = Modifier.fillMaxWidth().padding(bottom = 10.px),
                 horizontalArrangement = Arrangement.Start
             ) {
                 IconButton(
-                    onClick = { context.router.navigateTo(articlesPath) }
+                    onClick = {
+                        window.history.back()
+                    }
                 ) {
                     FaArrowLeft()
                 }
             }
-
             if (article != null) {
                 SpanText(
                     text = article.title,
@@ -87,6 +100,33 @@ fun ArticleDetailPage() {
                         .fontWeight(FontWeight.Bold)
                         .textAlign(TextAlign.Center)
                 )
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(if (breakpoint >= Breakpoint.MD) 80.percent else 100.percent)
+                        .padding(bottom = 20.px)
+                        .flexWrap(FlexWrap.Wrap)
+                        .justifyContent(JustifyContent.Center),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    StatItem(article.pubDate) { FaCalendarDays() }
+                    StatItem(article.readTime) { FaClock() }
+                    article.views?.let { StatItem(it) { FaEye() } }
+                    article.reads?.let { StatItem(it) { FaBookOpen() } }
+                    article.claps?.let { StatItem(it) { FaHandsClapping() } }
+                    article.presentations?.let { StatItem(it) { FaChalkboardUser() } }
+
+                    IconButton(
+                        modifier = Modifier.margin(left = 10.px, top = if (breakpoint == Breakpoint.SM)  10.px else 0.px),
+                        tooltipText = "Share",
+                        onClick = {
+                            window.navigator.clipboard.writeText(article.link)
+                        }
+                    ) {
+                        FaShareNodes()
+                    }
+                }
 
                 Column(
                     modifier = Modifier
