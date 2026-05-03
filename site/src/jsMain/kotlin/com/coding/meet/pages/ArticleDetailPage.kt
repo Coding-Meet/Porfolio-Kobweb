@@ -68,7 +68,7 @@ fun ArticleDetailPage(context: PageContext) {
     val articleId = context.route.params["id"]
     val article = remember(articleId) {
         articleId?.let { id ->
-            ArticleData.articles.find { it.guid.endsWith(id) }
+            ArticleData.articles.find { it.link.endsWith(id) }
         }
     }
 
@@ -79,7 +79,6 @@ fun ArticleDetailPage(context: PageContext) {
     }
 
     val breakpoint = rememberBreakpoint()
-
     PageLayout(
         title = article?.title ?: "Article Detail"
     ) {
@@ -163,7 +162,7 @@ fun ArticleDetailPage(context: PageContext) {
                         ).margin(left = 10.px, top = if (breakpoint == Breakpoint.SM)  10.px else 0.px),
                         tooltipText = "Share",
                         onClick = {
-                            window.navigator.clipboard.writeText(article.link)
+                            window.navigator.clipboard.writeText(window.location.href)
                         }
                     ) {
                         FaShareNodes()
@@ -261,6 +260,11 @@ fun ArticleDetailPage(context: PageContext) {
                                     white-space: pre;
                                     overflow-wrap: normal;
                                 }
+                                .article-content .comment,
+                                .article-content .token.comment,
+                                .article-content .hljs-comment {
+                                    color: #858585 !important;
+                                }
                                 .copy-button {
                                     position: absolute;
                                     top: 12px;
@@ -291,6 +295,16 @@ fun ArticleDetailPage(context: PageContext) {
                             val preBlocks = element.querySelectorAll("pre")
                             for (i in 0 until preBlocks.length) {
                                 val pre = preBlocks[i] as HTMLElement
+
+                                // Inject simple comment highlighting if not already present
+                                val currentHTML = pre.innerHTML
+                                if (!currentHTML.contains("class=\"comment\"")) {
+                                    pre.innerHTML = currentHTML
+                                        .replace(Regex("(^|[^:])(//.*?)(?=<br>|$)"), "$1<span class=\"comment\">$2</span>")
+                                        .replace(Regex("(^|<br>)(#.*?)(?=<br>|$)"), "$1<span class=\"comment\">$2</span>")
+                                        .replace(Regex("(/\\*.*?\\*/)"), "<span class=\"comment\">$1</span>")
+                                }
+
                                 val button = window.document.createElement("button")
                                 button.className = "copy-button"
                                 button.innerHTML = "Copy"

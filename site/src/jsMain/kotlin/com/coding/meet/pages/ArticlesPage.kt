@@ -66,7 +66,7 @@ fun ArticlesPage(context: PageContext) {
                     ArticleCard(article, onClick = {
                         val scrollY = window.scrollY.toInt()
                         window.sessionStorage.setItem("articles_scroll", scrollY.toString())
-                        context.router.navigateTo("$articlesPath/${article.guid.split("/").last()}")
+                        context.router.navigateTo("$articlesPath/${article.link.split("/").last()}")
                     })
                 }
             }
