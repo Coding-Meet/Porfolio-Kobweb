@@ -1066,7 +1066,6 @@ object ProjectData {
             title = "Android Addict",
             shortDescription = "A React-based website providing Android component code for developers.",
             longDescription = "Android Addict is a React-based website designed to help Android developers by providing ready-to-use Android component code. It serves as a valuable resource for developers seeking efficient solutions and code snippets to improve their Android projects.",
-            websiteUrl = "https://meetdev26.github.io/android-addict/#/",
             features = listOf(
                 "Collection of Android component code",
                 "User-friendly interface for easy navigation",
