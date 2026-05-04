@@ -8,6 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.coding.meet.screens.loader.LoaderScreen
 import com.coding.meet.util.AppInfo
+import com.coding.meet.util.ArticleData.articleSiteMap
 import com.coding.meet.util.Res
 import com.coding.meet.util.Res.Font.FONT_FAMILY_REGULAR
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
@@ -40,6 +41,9 @@ fun AppEntry(content: @Composable () -> Unit) {
         val savedTheme = localStorage.getItem(Res.Strings.SAVED_THEME) ?: ColorMode.LIGHT.name
         colorMode = ColorMode.valueOf(savedTheme)
     }
+
+    // console.log(articleSiteMap.joinToString("\n"))
+
     SilkApp {
         var isLoaded by remember { mutableStateOf(false) }
 

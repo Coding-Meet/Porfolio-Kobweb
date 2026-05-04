@@ -32,7 +32,9 @@ val trackingId = localProperties.getProperty("trackingId")
 kobweb {
     app {
         index {
-            description.set("Explore my Android development portfolio featuring Kotlin, Jetpack Compose, and KMP projects. Get premium source codes, expert services, and valuable tutorials!")
+            description.set(
+                "Android developer portfolio by Meet. Get production-ready Kotlin, Jetpack Compose & KMP apps, premium source code, and expert app development services. 45+ projects delivered."
+            )
             head.add {
                 script {
                     async = true
@@ -54,21 +56,32 @@ kobweb {
                     }
                 }
 
-                title("Coding Meet - My Portfolio")
+                title("Coding Meet - Android Developer | Kotlin, Compose, KMP Apps & Source Code")
                 link(rel = "stylesheet", href = "/fonts/fonts.css")
 
                 // this is link preview
-                meta("og:title", "Coding Meet - My Portfolio")
-                meta("og:description", "Explore my Android development portfolio featuring Kotlin, Jetpack Compose, and KMP projects. Get premium source codes, expert services, and valuable tutorials!")
+                meta("og:title", "Coding Meet - Android Developer Portfolio & Source Code")
+                meta(
+                    "og:description",
+                    "Production-ready Android apps, Jetpack Compose UI, and Kotlin Multiplatform projects. Buy source code or hire for custom app development."
+                )
+
                 meta("og:image", "https://codingmeet.com/preview_image.png")
                 meta("og:url", "https://codingmeet.com")
                 meta("og:type", "website")
 
                 meta("twitter:card", "summary_large_image")
-                meta("twitter:title", "Coding Meet - My Portfolio")
-                meta("twitter:description", "Explore my Android development portfolio featuring Kotlin, Jetpack Compose, and KMP projects. Get premium source codes, expert services, and valuable tutorials!")
+                meta("twitter:title", "Android Apps, Source Code & Services | Coding Meet")
+                meta(
+                    "twitter:description",
+                    "Explore real-world Android projects, premium source code, and freelance app development services built with Kotlin & Compose."
+                )
                 meta("twitter:image", "https://codingmeet.com/preview_image.png")
 
+                meta(
+                    name = "keywords",
+                    content = "Android Developer, Kotlin, Jetpack Compose, KMP, Android apps, source code, freelance developer, mobile apps"
+                )
                 // this is web icon
                 link {
                     rel = "icon"

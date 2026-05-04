@@ -197,4 +197,12 @@ object ArticleData {
     } catch (e: Exception) {
         rawArticles
     }
+    val articleSiteMap = articles.map { article ->
+        """
+    <url>
+        <loc>
+            https://codingmeet.com/blog/${article.id}
+        </loc>
+    </url>"""
+    }
 }

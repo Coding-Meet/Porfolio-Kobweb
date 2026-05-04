@@ -19,4 +19,6 @@ data class Article(
     val content: String = "",
 
     val replaceUrlList : Map<String, String> = mapOf()
-)
+) {
+    val id = link.split("/").last()
+}
