@@ -33,7 +33,7 @@ kobweb {
     app {
         index {
             description.set(
-                "Android developer portfolio by Meet. Get production-ready Kotlin, Jetpack Compose & KMP apps, premium source code, and expert app development services. 45+ projects delivered."
+                "Android developer portfolio by Meet. I build high-quality apps using Kotlin, Jetpack Compose, and KMP. 45+ projects delivered with clean architecture and scalable solutions."
             )
             head.add {
                 script {
@@ -56,14 +56,14 @@ kobweb {
                     }
                 }
 
-                title("Coding Meet - Android Developer | Kotlin, Compose, KMP Apps & Source Code")
+                title("Coding Meet - Android App Developer | Kotlin, Jetpack Compose, KMP")
                 link(rel = "stylesheet", href = "/fonts/fonts.css")
 
                 // this is link preview
-                meta("og:title", "Coding Meet - Android Developer Portfolio & Source Code")
+                meta("og:title", "Coding Meet - Android App Developer Portfolio")
                 meta(
                     "og:description",
-                    "Production-ready Android apps, Jetpack Compose UI, and Kotlin Multiplatform projects. Buy source code or hire for custom app development."
+                    "Hire an Android developer for modern apps built with Kotlin, Jetpack Compose, and KMP. 45+ successful projects delivered."
                 )
 
                 meta("og:image", "https://codingmeet.com/preview_image.png")
@@ -71,10 +71,10 @@ kobweb {
                 meta("og:type", "website")
 
                 meta("twitter:card", "summary_large_image")
-                meta("twitter:title", "Android Apps, Source Code & Services | Coding Meet")
+                meta("twitter:title", "Hire Android Developer | Kotlin, Compose, KMP")
                 meta(
                     "twitter:description",
-                    "Explore real-world Android projects, premium source code, and freelance app development services built with Kotlin & Compose."
+                    "Professional Android app development with clean architecture, scalable code, and modern tech stack."
                 )
                 meta("twitter:image", "https://codingmeet.com/preview_image.png")
 
