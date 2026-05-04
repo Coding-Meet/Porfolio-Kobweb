@@ -10,6 +10,7 @@ import com.coding.meet.common.components.custom_dialog.CustomDialog
 import com.coding.meet.common.components.footer.Footer
 import com.coding.meet.common.page_layout.PageLayout
 import com.coding.meet.common.page_layout.fadeInUpPageAnimation
+import com.coding.meet.data.network.GithubStargazersCountData
 import com.coding.meet.models.Project
 import com.coding.meet.models.ProjectCategory
 import com.coding.meet.models.Section
@@ -42,7 +43,6 @@ import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.s
 import org.jetbrains.compose.web.dom.Div
 
-
 @Page(projectsPath)
 @Composable
 fun ProjectPage() {
@@ -52,15 +52,17 @@ fun ProjectPage() {
     ) {
         var selectedCategory by remember { mutableStateOf(ProjectCategory.ALL) }
         var isLoading by remember { mutableStateOf(false) }
-        var filteredProjects by remember { mutableStateOf(projects) }
+        val projectsState = remember { mutableStateOf(projects.toMutableList()) }
+        GithubStargazersCountData(projectsState)
+        var filteredProjects by remember { mutableStateOf(projectsState.value) }
 
         LaunchedEffect(selectedCategory) {
             isLoading = true
             delay(300)
             filteredProjects = if (selectedCategory == ProjectCategory.ALL) {
-                projects
+                projectsState.value
             } else {
-                projects.filter { it.categories.contains(selectedCategory) }
+                projectsState.value.filter { it.categories.contains(selectedCategory) }
                     .toMutableList()
             }
             isLoading = false
