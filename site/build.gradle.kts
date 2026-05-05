@@ -1,6 +1,7 @@
 import com.varabyte.kobweb.gradle.application.tasks.KobwebCacheAppFrontendDataTask
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import com.varabyte.kobweb.project.frontend.AppFrontendData
+import kotlinx.html.FlowOrMetaDataOrPhrasingContent
 import kotlinx.html.link
 import kotlinx.html.meta
 import kotlinx.html.script
@@ -9,6 +10,7 @@ import kotlinx.html.unsafe
 import kotlinx.serialization.json.Json
 import java.net.URL
 import java.util.Properties
+import javax.xml.parsers.DocumentBuilderFactory
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -60,33 +62,33 @@ kobweb {
                 link(rel = "stylesheet", href = "/fonts/fonts.css")
 
                 // this is link preview
-                meta("og:title", "Coding Meet - Android App Developer Portfolio")
-                meta(
+                ogMeta("og:title", "Coding Meet - Android App Developer Portfolio")
+                ogMeta(
                     "og:description",
                     "Hire an Android developer for modern apps built with Kotlin, Jetpack Compose, and KMP. 45+ successful projects delivered."
                 )
 
-                meta("og:image", "https://codingmeet.com/preview_image.png")
-                meta("og:url", "https://codingmeet.com")
-                meta("og:type", "website")
+                ogMeta("og:image", "https://codingmeet.com/preview_image.png")
+                ogMeta("og:url", "https://codingmeet.com")
+                ogMeta("og:type", "website")
 
-                meta("twitter:card", "summary_large_image")
-                meta("twitter:title", "Hire Android Developer | Kotlin, Compose, KMP")
-                meta(
+                ogMeta("twitter:card", "summary_large_image")
+                ogMeta("twitter:title", "Hire Android Developer | Kotlin, Compose, KMP")
+                ogMeta(
                     "twitter:description",
                     "Professional Android app development with clean architecture, scalable code, and modern tech stack."
                 )
-                meta("twitter:image", "https://codingmeet.com/preview_image.png")
+                ogMeta("twitter:image", "https://codingmeet.com/preview_image.png")
 
-                meta(
-                    name = "keywords",
-                    content = "Android Developer, Kotlin, Jetpack Compose, KMP, Android apps, source code, freelance developer, mobile apps"
+                ogMeta(
+                  "keywords",
+                   "Android Developer, Kotlin, Jetpack Compose, KMP, Android apps, source code, freelance developer, mobile apps"
                 )
                 // this is web icon
                 link {
                     rel = "icon"
                     sizes = "16x16 24x24 32x32 64x64"
-                    href = "/favicon.icon"
+                    href = "/favicon.ico"
                 }
                 link {
                     rel = "icon"
@@ -134,6 +136,64 @@ kobweb {
         }
     }
 }
+fun FlowOrMetaDataOrPhrasingContent.ogMeta(
+    property: String,
+    content: String
+) {
+    meta {
+        attributes["property"] = property
+        attributes["content"] = content
+    }
+}
+
+data class BlogPreview(
+    val id: String,
+    val title: String,
+    val description: String,
+    val image: String,
+)
+
+fun String.escapeHtmlAttribute(): String = buildString {
+    this@escapeHtmlAttribute.forEach { char ->
+        when (char) {
+            '&' -> append("&amp;")
+            '"' -> append("&quot;")
+            '<' -> append("&lt;")
+            '>' -> append("&gt;")
+            else -> append(char)
+        }
+    }
+}
+
+fun String.toAbsoluteSiteUrl(): String =
+    if (startsWith("http://") || startsWith("https://")) this else "https://codingmeet.com$this"
+
+fun String.replaceMetaTag(property: String, content: String, attribute: String = "property"): String {
+    val escapedContent = content.escapeHtmlAttribute()
+    val metaRegex = Regex(
+        """<meta\s+[^>]*(?:property|name)=["']${Regex.escape(property)}["'][^>]*>""",
+        RegexOption.IGNORE_CASE
+    )
+    val replacement = """<meta $attribute="$property" content="$escapedContent">"""
+    return if (metaRegex.containsMatchIn(this)) {
+        replace(metaRegex, replacement)
+    } else {
+        replace("</head>", "  $replacement\n </head>")
+    }
+}
+
+fun String.replaceDescriptionMeta(content: String): String {
+    val escapedContent = content.escapeHtmlAttribute()
+    return replace(
+        Regex("""<meta\s+[^>]*name=["']description["'][^>]*>""", RegexOption.IGNORE_CASE),
+        """<meta name="description" content="$escapedContent">"""
+    )
+}
+
+fun String.replaceHtmlTitle(title: String): String {
+    val escapedTitle = title.escapeHtmlAttribute()
+    return replace(Regex("""<title>.*?</title>"""), "<title>$escapedTitle</title>")
+}
 
 val Project.kobwebSiteRoutes: Provider<List<String>>
     get() = tasks.named<KobwebCacheAppFrontendDataTask>("kobwebCacheAppFrontendData").map { task ->
@@ -171,12 +231,14 @@ tasks.register("createSitemap") {
 }
 
 tasks.register("fetchMediumContent") {
-    val outputFile = layout.projectDirectory.file("src/jsMain/kotlin/com/coding/meet/util/MediumContent.kt")
+    val outputFile =
+        layout.projectDirectory.file("src/jsMain/kotlin/com/coding/meet/util/MediumContent.kt")
 
     doLast {
         try {
-            val jsonStr = URL("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@meet26").readText()
-            
+            val jsonStr =
+                URL("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@meet26").readText()
+
             val escapedJson = jsonStr
                 .replace("$", "\${'$'}")
                 .replace("\"\"\"", "\"\" + \"\"\"")
@@ -200,6 +262,70 @@ tasks.register("fetchMediumContent") {
     }
 }
 
+tasks.register("applyBlogLinkPreviews") {
+    notCompatibleWithConfigurationCache("This task patches exported HTML using script-local helpers.")
+
+    val articleDataFile = layout.projectDirectory.file("src/jsMain/kotlin/com/coding/meet/util/ArticleData.kt")
+    val exportedSiteDir = layout.projectDirectory.dir(".kobweb/site")
+
+    inputs.file(articleDataFile)
+    outputs.dir(exportedSiteDir)
+    outputs.upToDateWhen { false }
+
+    doLast {
+        val source = articleDataFile.asFile.readText()
+        val articleRegex = Regex("""Article\((.*?)(?=\n\s*\),)""", RegexOption.DOT_MATCHES_ALL)
+        val fieldRegex = { field: String ->
+            Regex("""$field\s*=\s*"((?:\\.|[^"\\])*)"""")
+        }
+        val previews = articleRegex.findAll(source).mapNotNull { match ->
+            val block = match.groupValues[1]
+            val title = fieldRegex("title").find(block)?.groupValues?.get(1) ?: return@mapNotNull null
+            val description = fieldRegex("shortDescription").find(block)?.groupValues?.get(1) ?: return@mapNotNull null
+            val thumbnail = fieldRegex("thumbnail").find(block)?.groupValues?.get(1) ?: return@mapNotNull null
+            val link = fieldRegex("link").find(block)?.groupValues?.get(1) ?: return@mapNotNull null
+
+            BlogPreview(
+                id = link.substringAfterLast("/"),
+                title = title,
+                description = description,
+                image = thumbnail.toAbsoluteSiteUrl(),
+            )
+        }.toList()
+
+        check(previews.isNotEmpty()) {
+            "No blog previews found in ${articleDataFile.asFile.absolutePath}"
+        }
+
+        previews.forEach { preview ->
+            val htmlFile = exportedSiteDir.file("blog/${preview.id}.html").asFile
+            if (!htmlFile.exists()) {
+                logger.warn("No exported HTML found for blog preview: ${preview.id}")
+                return@forEach
+            }
+
+            val pageUrl = "https://codingmeet.com/blog/${preview.id}"
+            val pageTitle = "${preview.title} | Coding Meet"
+            val html = htmlFile.readText()
+                .replaceHtmlTitle(pageTitle)
+                .replaceDescriptionMeta(preview.description)
+                .replaceMetaTag("og:title", preview.title)
+                .replaceMetaTag("og:description", preview.description)
+                .replaceMetaTag("og:image", preview.image)
+                .replaceMetaTag("og:url", pageUrl)
+                .replaceMetaTag("og:type", "article")
+                .replaceMetaTag("twitter:card", "summary_large_image", attribute = "name")
+                .replaceMetaTag("twitter:title", preview.title, attribute = "name")
+                .replaceMetaTag("twitter:description", preview.description, attribute = "name")
+                .replaceMetaTag("twitter:image", preview.image, attribute = "name")
+
+            htmlFile.writeText(html)
+        }
+
+        println("Applied blog link previews to ${previews.size} exported pages.")
+    }
+}
+
 kotlin {
     configAsKobwebApplication("meet")
 
@@ -213,5 +339,72 @@ kotlin {
             // implementation(libs.kobwebx.markdown)
             implementation(libs.kotlinx.serialization.json)
         }
+    }
+}
+
+
+tasks.register("generateBlogKotlinPages") {
+
+    val sitemapFile = layout.projectDirectory.file("src/jsMain/resources/public/sitemap.xml")
+    val outputDir = layout.projectDirectory.dir(
+        "src/jsMain/kotlin/com/coding/meet/pages/blog"
+    )
+
+    doLast {
+        val file = sitemapFile.asFile
+        val doc = DocumentBuilderFactory.newInstance()
+            .newDocumentBuilder()
+            .parse(file)
+
+        val urls = doc.getElementsByTagName("loc")
+
+        val output = outputDir.asFile
+        output.mkdirs()
+
+        for (i in 0 until urls.length) {
+            val url = urls.item(i).textContent.trim()
+
+            if (!url.contains("/blog/")) continue
+
+            val slug = url.substringAfter("/blog/")
+
+            // Clean class name
+            val className = slug
+                .replace("-", "_")
+                .replace(Regex("[^a-zA-Z0-9_]"), "")
+                .replaceFirstChar { it.uppercase() }
+
+            val fileName = "$className.kt"
+
+            val kotlinFile = File(output, fileName)
+
+            val content = """
+                package com.coding.meet.pages.blog
+
+                import androidx.compose.runtime.Composable
+                import androidx.compose.runtime.remember
+                import com.coding.meet.screens.articles_detail.components.ArticleDetail
+                import com.coding.meet.util.ArticleData
+                import com.varabyte.kobweb.core.Page
+                import com.varabyte.kobweb.core.PageContext
+
+                @Page("/blog/$slug")
+                @Composable
+                fun $className(context: PageContext) {
+
+                    val article = remember {
+                        ArticleData.articles.find { it.id == "$slug" }
+                    }
+                    
+                    if (article != null) {
+                        ArticleDetail(article = article, context = context)
+                    }
+                }
+            """.trimIndent()
+
+            kotlinFile.writeText(content)
+        }
+
+        println("✅ Blog Kotlin pages generated successfully!")
     }
 }

@@ -59,7 +59,7 @@
 4. To deploy the website, run the following command in the root directory:
 
 ```bash
-cd site && kobweb export --layout static && cd .. && firebase deploy
+cd site && kobweb export --layout static && cd .. && ./gradlew --no-configuration-cache :site:applyBlogLinkPreviews && firebase deploy
 ```
 
 ## 📸 Screenshots
