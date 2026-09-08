@@ -207,6 +207,7 @@ val Project.kobwebSiteRoutes: Provider<List<String>>
     }
 
 tasks.register("createSitemap") {
+    description = "Generates sitemap.xml for all Kobweb site routes."
     val routesProvider = kobwebSiteRoutes
     inputs.property("routes", routesProvider)
     val sitemapFile = layout.projectDirectory.file("src/jsMain/resources/public/sitemap.xml")
@@ -231,6 +232,7 @@ tasks.register("createSitemap") {
 }
 
 tasks.register("fetchMediumContent") {
+    description = "Fetches Medium articles RSS feed and generates MediumContent.kt."
     val outputFile =
         layout.projectDirectory.file("src/jsMain/kotlin/com/coding/meet/util/MediumContent.kt")
 
@@ -263,6 +265,7 @@ tasks.register("fetchMediumContent") {
 }
 
 tasks.register("applyBlogLinkPreviews") {
+    description = "Injects Open Graph and Twitter meta tags into exported blog HTML files for link previews."
     notCompatibleWithConfigurationCache("This task patches exported HTML using script-local helpers.")
 
     val articleDataFile = layout.projectDirectory.file("src/jsMain/kotlin/com/coding/meet/util/ArticleData.kt")
@@ -344,6 +347,7 @@ kotlin {
 
 
 tasks.register("generateBlogKotlinPages") {
+    description = "Generates Kotlin @Page files for blog articles based on sitemap.xml routes."
 
     val sitemapFile = layout.projectDirectory.file("src/jsMain/resources/public/sitemap.xml")
     val outputDir = layout.projectDirectory.dir(
