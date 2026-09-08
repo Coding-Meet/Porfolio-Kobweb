@@ -4,8 +4,20 @@
     "ignore": [
       "firebase.json",
       "**/.*",
+      "!**/.well-known/**",
       "**/node_modules/**"
     ],
-    "cleanUrls": true
+    "cleanUrls": true,
+    "headers": [
+      {
+        "source": "/",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </index.md>; rel=\"service-doc\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\""
+          }
+        ]
+      }
+    ]
   }
 }

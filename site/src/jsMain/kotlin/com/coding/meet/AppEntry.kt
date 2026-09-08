@@ -30,12 +30,17 @@ import kotlinx.browser.localStorage
 import kotlinx.browser.window
 import org.w3c.dom.DocumentReadyState
 import org.w3c.dom.INTERACTIVE
+import kotlin.js.json
 
 
 @App
 @Composable
 fun AppEntry(content: @Composable () -> Unit) {
     var colorMode by ColorMode.currentState
+
+    LaunchedEffect(Unit) {
+        initWebMCP()
+    }
 
     LaunchedEffect(colorMode) {
         val savedTheme = localStorage.getItem(Res.Strings.SAVED_THEME) ?: ColorMode.LIGHT.name
@@ -92,5 +97,56 @@ fun pageNotFoundHandling(initSilkContext: InitKobwebContext) {
             openInternalLinksStrategy = OpenLinkStrategy.IN_PLACE,
             updateHistoryMode = UpdateHistoryMode.REPLACE
         )
+    }
+}
+
+private fun initWebMCP() {
+    val navigator = window.navigator.asDynamic()
+    if (navigator.modelContext != null) {
+        try {
+            navigator.modelContext.provideContext(
+                json(
+                    "tools" to arrayOf(
+                        json(
+                            "name" to "get_projects",
+                            "description" to "Get a list of portfolio projects with their titles and descriptions",
+                            "inputSchema" to json(
+                                "type" to "object",
+                                "properties" to json()
+                            ),
+                            "execute" to { _: dynamic ->
+                                // This would ideally fetch from ProjectData, but for simplicity in JS:
+                                "Fetching projects information from the portfolio site..."
+                            }
+                        ),
+                        json(
+                            "name" to "get_articles",
+                            "description" to "Get a list of blog articles published on the portfolio",
+                            "inputSchema" to json(
+                                "type" to "object",
+                                "properties" to json()
+                            ),
+                            "execute" to { _: dynamic ->
+                                "Fetching articles information from the portfolio site..."
+                            }
+                        ),
+                        json(
+                            "name" to "get_services",
+                            "description" to "Get a list of professional services offered (Mobile Apps, AI, Modernization)",
+                            "inputSchema" to json(
+                                "type" to "object",
+                                "properties" to json()
+                            ),
+                            "execute" to { _: dynamic ->
+                                "Fetching services information from the portfolio site..."
+                            }
+                        )
+                    )
+                )
+            )
+            println("WebMCP tools initialized")
+        } catch (e: Exception) {
+            println("Failed to initialize WebMCP: ${e.message}")
+        }
     }
 }

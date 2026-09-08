@@ -1,0 +1,23 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0.json",
+  "skills": [
+    {
+      "name": "Read Portfolio",
+      "type": "informational",
+      "description": "Provides a comprehensive overview of the developer's portfolio, including projects, skills, and contact information.",
+      "url": "https://codingmeet.com/index.md"
+    },
+    {
+      "name": "Search Articles",
+      "type": "informational",
+      "description": "Allows agents to discover and read blog articles related to Kotlin Multiplatform, Android, and Web development.",
+      "url": "https://codingmeet.com/blog"
+    },
+    {
+      "name": "View Services",
+      "type": "informational",
+      "description": "Explores the professional services offered, including mobile app development, bug fixing, and AI integration.",
+      "url": "https://codingmeet.com/service"
+    }
+  ]
+}

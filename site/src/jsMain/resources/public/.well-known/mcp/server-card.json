@@ -1,0 +1,17 @@
+{
+  "serverInfo": {
+    "name": "Coding Meet Portfolio",
+    "version": "1.0.0"
+  },
+  "capabilities": {
+    "resources": {
+      "list": [
+        {
+          "uri": "https://codingmeet.com/index.md",
+          "name": "Portfolio Summary",
+          "mimeType": "text/markdown"
+        }
+      ]
+    }
+  }
+}

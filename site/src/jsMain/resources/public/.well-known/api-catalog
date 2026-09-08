@@ -1,0 +1,28 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://codingmeet.com/",
+      "rel": "service-doc",
+      "href": "https://codingmeet.com/index.md",
+      "type": "text/markdown"
+    },
+    {
+      "anchor": "https://codingmeet.com/projects",
+      "rel": "item",
+      "href": "https://codingmeet.com/projects",
+      "title": "Portfolio Projects"
+    },
+    {
+      "anchor": "https://codingmeet.com/blog",
+      "rel": "item",
+      "href": "https://codingmeet.com/blog",
+      "title": "Blog Articles"
+    },
+    {
+      "anchor": "https://codingmeet.com/service",
+      "rel": "item",
+      "href": "https://codingmeet.com/service",
+      "title": "Professional Services"
+    }
+  ]
+}

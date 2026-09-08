@@ -1,0 +1,56 @@
+# Global rules for all crawlers
+User-agent: *
+Allow: /
+
+# Important public pages
+Allow: /blog/
+Allow: /projects/
+Allow: /service/
+Allow: /contact_me/
+
+# Block unnecessary URLs
+Disallow: /search
+Disallow: /*?
+Disallow: /admin/
+Disallow: /temp/
+Disallow: /private/
+
+# Optional crawl delay for non-Google bots
+Crawl-delay: 1
+
+# ========================================
+# Specific Search Engine Bots
+# ========================================
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+
+# Social Media Preview Bots
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# ========================================
+# Sitemaps
+# ========================================
+
+Sitemap: https://codingmeet.com/sitemap.xml
+Sitemap: https://www.codingmeet.com/sitemap.xml
