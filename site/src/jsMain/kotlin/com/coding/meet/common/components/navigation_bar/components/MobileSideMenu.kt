@@ -18,14 +18,16 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Color.Companion.argb
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
+import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
 import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.height
+import com.varabyte.kobweb.compose.ui.modifiers.left
 import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.opacity
 import com.varabyte.kobweb.compose.ui.modifiers.overflow
@@ -33,10 +35,12 @@ import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.position
 import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
 import com.varabyte.kobweb.compose.ui.modifiers.size
+import com.varabyte.kobweb.compose.ui.modifiers.top
 import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.modifiers.translateX
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.modifiers.zIndex
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.icons.CloseIcon
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
@@ -44,10 +48,12 @@ import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.web.css.AnimationTimingFunction
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.css.vh
 
 @Composable
@@ -69,7 +75,7 @@ fun MobileSideMenu(
             scope.launch {
                 translateX = (-100).percent
                 opacity = 0.percent
-                delay(500)
+                delay(300)
                 onMenuClosed()
             }
         }
@@ -80,21 +86,27 @@ fun MobileSideMenu(
             .fillMaxWidth()
             .height(100.vh)
             .position(Position.Fixed)
-            .zIndex(1100)
+            .top(0.px)
+            .left(0.px)
+            .zIndex(2000)
             .opacity(opacity)
-            .backgroundColor(argb(a = 0.5f, r = 0.0f, g = 0.0f, b = 0.0f))
+            .backgroundColor(rgba(0, 0, 0, 0.55))
+            .styleModifier {
+                property("backdrop-filter", "blur(4px)")
+                property("-webkit-backdrop-filter", "blur(4px)")
+            }
             .transition(
                 Transition.of(
                     property = "opacity",
-                    duration = 500.ms,
-                    timingFunction = null,
+                    duration = 300.ms,
+                    timingFunction = AnimationTimingFunction.EaseInOut,
                     delay = null
                 )
             ).onClick {
                 scope.launch {
                     translateX = (-100).percent
                     opacity = 0.percent
-                    delay(500)
+                    delay(300)
                     onMenuClosed()
                 }
             }
@@ -102,7 +114,8 @@ fun MobileSideMenu(
         Column(
             modifier = Modifier
                 .fillMaxHeight()
-                .width(if (breakpoint <= Breakpoint.SM) 78.percent else 45.percent)
+                .fillMaxWidth(82.percent)
+                .maxWidth(290.px)
                 .overflow(Overflow.Auto)
                 .scrollBehavior(ScrollBehavior.Smooth)
                 .backgroundColor(
@@ -111,37 +124,50 @@ fun MobileSideMenu(
                         darkColor = Theme.DarkCardBackGroundColor
                     )
                 )
-                .borderRadius(topRight = 24.px, bottomRight = 24.px)
+                .boxShadow(
+                    8.px,
+                    0.px,
+                    24.px,
+                    null,
+                    if (colorMode.isLight) rgba(0, 0, 0, 0.12) else rgba(0, 0, 0, 0.6)
+                )
+                .styleModifier {
+                    property("border-right", "1px solid ${if (colorMode.isLight) "rgba(0, 0, 0, 0.08)" else "rgba(255, 255, 255, 0.10)"}")
+                }
+                .borderRadius(topRight = 20.px, bottomRight = 20.px)
                 .translateX(tx = translateX)
                 .transition(
                     Transition.of(
-                        property = "translate",
-                        duration = 500.ms,
-                        timingFunction = null,
+                        property = "transform",
+                        duration = 300.ms,
+                        timingFunction = AnimationTimingFunction.cubicBezier(0.16, 1.0, 0.3, 1.0),
                         delay = null
                     )
                 )
+                .onClick { it.stopPropagation() }
         ) {
             Row(
-                modifier = Modifier.fillMaxWidth()
-                    .padding(20.px),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(topBottom = 20.px, leftRight = 18.px),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 CloseIcon(
                     modifier = Modifier
+                        .size(16.px)
                         .cursor(Cursor.Pointer)
-                        .margin(right = 20.px)
+                        .margin(right = 16.px)
                         .onClick {
                             scope.launch {
                                 translateX = (-100).percent
                                 opacity = 0.percent
-                                delay(500)
+                                delay(300)
                                 onMenuClosed()
                             }
                         },
                 )
                 Image(
-                    modifier = Modifier.size(120.px),
+                    modifier = Modifier.height(32.px).cursor(Cursor.Pointer),
                     src = when (colorMode) {
                         ColorMode.LIGHT -> Res.Image.LOGO_LIGHT
                         ColorMode.DARK -> Res.Image.LOGO_DARK
@@ -149,7 +175,13 @@ fun MobileSideMenu(
                     alt = "Logo Image"
                 )
             }
-            NavigationMenu(selectedSectionId)
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(leftRight = 8.px, top = 6.px)
+            ) {
+                NavigationMenu(selectedSectionId)
+            }
         }
     }
 }
