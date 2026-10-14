@@ -46,11 +46,15 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.height
+import com.varabyte.kobweb.compose.ui.modifiers.left
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.padding
+import com.varabyte.kobweb.compose.ui.modifiers.position
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.textDecorationLine
+import com.varabyte.kobweb.compose.ui.modifiers.top
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.navigation.OpenLinkStrategy
 import com.varabyte.kobweb.compose.ui.styleModifier
@@ -71,6 +75,7 @@ import org.jetbrains.compose.web.css.AnimationTimingFunction
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexWrap
 import org.jetbrains.compose.web.css.LineStyle
+import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
@@ -107,7 +112,8 @@ fun AboutMeSection() {
     SimpleGrid(
         numColumns = numColumns(base = 1, sm = 1, md = 2),
         modifier = Modifier
-            .fillMaxWidth(if (breakpoint > Breakpoint.MD) 75.percent else 92.percent)
+            .fillMaxWidth(if (breakpoint > Breakpoint.LG) 80.percent else if (breakpoint > Breakpoint.SM) 92.percent else 96.percent)
+            .maxWidth(1200.px)
             .padding(
                 top = if (breakpoint > Breakpoint.SM) 32.px else 16.px,
                 bottom = if (breakpoint > Breakpoint.SM) 40.px else 20.px
@@ -118,21 +124,79 @@ fun AboutMeSection() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Image(
-                modifier = ProfileImageStyle.toModifier()
-                    .size(if (breakpoint > Breakpoint.MD) 310.px else if (breakpoint > Breakpoint.SM) 240.px else 200.px)
-                    .display(DisplayStyle.Block)
-                    .borderRadius(50.percent)
-                    .boxSizing(BoxSizing.BorderBox)
-                    .border(
-                        3.px,
-                        LineStyle.Solid,
-                        if (colorMode.isLight) rgba(16, 185, 129, 0.4) else rgba(16, 185, 129, 0.6)
-                    ),
-                src = Res.Image.PROFILE,
-                alt = "Meet - Profile",
-            )
-            SocialBar(modifier = Modifier.margin(top = 22.px))
+            val avatarRadius = when {
+                breakpoint > Breakpoint.LG -> 160
+                breakpoint > Breakpoint.MD -> 132
+                breakpoint > Breakpoint.SM -> 118
+                else -> 110
+            }
+            val avatarSize = (avatarRadius * 2).px
+            val orbitRadius = when {
+                breakpoint > Breakpoint.LG -> 202
+                breakpoint > Breakpoint.MD -> 168
+                breakpoint > Breakpoint.SM -> 152
+                else -> 144
+            }
+            val iconBoxSize = when {
+                breakpoint > Breakpoint.LG -> 46
+                breakpoint > Breakpoint.MD -> 40
+                breakpoint > Breakpoint.SM -> 38
+                else -> 42
+            }
+            val iconImageSize = when {
+                breakpoint > Breakpoint.LG -> 24
+                breakpoint > Breakpoint.MD -> 21
+                breakpoint > Breakpoint.SM -> 20
+                else -> 22
+            }
+            val containerWidth = (orbitRadius * 2 + iconBoxSize + 6).px
+            val containerHeight = (avatarRadius + orbitRadius + iconBoxSize / 2 + 20).px
+
+            Box(
+                modifier = Modifier
+                    .size(width = containerWidth, height = containerHeight)
+                    .position(Position.Relative),
+                contentAlignment = Alignment.TopCenter
+            ) {
+                // Decorative semi-circular dashed orbit track
+                Box(
+                    modifier = Modifier
+                        .position(Position.Absolute)
+                        .size((orbitRadius * 2).px)
+                        .left(50.percent)
+                        .top(avatarRadius.px)
+                        .styleModifier {
+                            property("transform", "translate(-50%, -50%)")
+                            property("border", "1.5px dashed ${if (colorMode.isLight) "rgba(16, 185, 129, 0.28)" else "rgba(16, 185, 129, 0.35)"}")
+                            property("border-top-color", "transparent")
+                        }
+                        .borderRadius(50.percent)
+                )
+
+                // Profile Image
+                Image(
+                    modifier = ProfileImageStyle.toModifier()
+                        .size(avatarSize)
+                        .display(DisplayStyle.Block)
+                        .borderRadius(50.percent)
+                        .boxSizing(BoxSizing.BorderBox)
+                        .border(
+                            3.px,
+                            LineStyle.Solid,
+                            if (colorMode.isLight) rgba(16, 185, 129, 0.4) else rgba(16, 185, 129, 0.6)
+                        ),
+                    src = Res.Image.PROFILE,
+                    alt = "Meet - Profile",
+                )
+
+                // Social Icons orbiting the bottom half-circle
+                SocialBar(
+                    avatarRadius = avatarRadius,
+                    orbitRadius = orbitRadius,
+                    iconBoxSize = iconBoxSize,
+                    iconImageSize = iconImageSize
+                )
+            }
         }
 
         Column(
@@ -194,14 +258,14 @@ fun AboutMeSection() {
                     modifier = Modifier
                         .color(CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor))
                         .fontFamily(Res.Font.FONT_FAMILY_HEADING)
-                        .fontSize(if (breakpoint > Breakpoint.MD) 2.6.cssRem else if (breakpoint > Breakpoint.SM) 2.2.cssRem else 1.9.cssRem)
+                        .fontSize(if (breakpoint > Breakpoint.LG) 2.6.cssRem else if (breakpoint > Breakpoint.MD) 2.3.cssRem else if (breakpoint > Breakpoint.SM) 2.1.cssRem else 1.9.cssRem)
                         .fontWeight(FontWeight.Bold)
                         .lineHeight(1.2)
                 )
                 SpanText(
                     text = "👋",
                     modifier = WavingHandStyle.toModifier()
-                        .fontSize(if (breakpoint > Breakpoint.MD) 2.6.cssRem else if (breakpoint > Breakpoint.SM) 2.2.cssRem else 1.9.cssRem)
+                        .fontSize(if (breakpoint > Breakpoint.LG) 2.6.cssRem else if (breakpoint > Breakpoint.MD) 2.3.cssRem else if (breakpoint > Breakpoint.SM) 2.1.cssRem else 1.9.cssRem)
                         .lineHeight(1.2)
                 )
             }
@@ -227,14 +291,14 @@ fun AboutMeSection() {
                 SpanText(
                     text = prefix,
                     modifier = Modifier
-                        .fontSize(if (breakpoint > Breakpoint.MD) 1.4.cssRem else if (breakpoint > Breakpoint.SM) 1.25.cssRem else 1.15.cssRem)
+                        .fontSize(if (breakpoint > Breakpoint.LG) 1.4.cssRem else if (breakpoint > Breakpoint.MD) 1.25.cssRem else 1.15.cssRem)
                         .color(CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor))
                         .fontWeight(FontWeight.SemiBold)
                 )
                 SpanText(
                     text = currentText,
                     modifier = Modifier
-                        .fontSize(if (breakpoint > Breakpoint.MD) 1.4.cssRem else if (breakpoint > Breakpoint.SM) 1.25.cssRem else 1.15.cssRem)
+                        .fontSize(if (breakpoint > Breakpoint.LG) 1.4.cssRem else if (breakpoint > Breakpoint.MD) 1.25.cssRem else 1.15.cssRem)
                         .color(Theme.Primary.color)
                         .fontWeight(FontWeight.Bold)
                 )
@@ -242,7 +306,7 @@ fun AboutMeSection() {
                     modifier = Modifier
                         .display(DisplayStyle.InlineBlock)
                         .width(2.px)
-                        .height(if (breakpoint > Breakpoint.MD) 22.px else if (breakpoint > Breakpoint.SM) 19.px else 17.px)
+                        .height(if (breakpoint > Breakpoint.LG) 22.px else if (breakpoint > Breakpoint.MD) 20.px else if (breakpoint > Breakpoint.SM) 18.px else 17.px)
                         .margin(left = 3.px)
                         .styleModifier {
                             property("vertical-align", "text-bottom")

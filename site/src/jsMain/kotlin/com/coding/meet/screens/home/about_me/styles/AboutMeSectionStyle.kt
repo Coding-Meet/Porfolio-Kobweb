@@ -117,7 +117,6 @@ val BlinkCursorAnimation = Keyframes {
 val SocialIconButtonStyle = CssStyle {
     base {
         Modifier
-            .size(40.px)
             .borderRadius(50.percent)
             .display(DisplayStyle.Flex)
             .alignItems(AlignItems.Center)
@@ -141,6 +140,9 @@ val SocialIconButtonStyle = CssStyle {
             .styleModifier {
                 property("backdrop-filter", "blur(8px)")
                 property("-webkit-backdrop-filter", "blur(8px)")
+                property("touch-action", "manipulation")
+                property("-webkit-tap-highlight-color", "transparent")
+                property("flex-shrink", "0")
             }
             .transition(
                 Transition.all(
