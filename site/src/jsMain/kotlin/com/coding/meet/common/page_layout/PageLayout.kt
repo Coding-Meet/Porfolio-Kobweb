@@ -148,8 +148,6 @@ fun PageLayout(
             attrs = Modifier
                 .fillMaxWidth()
                 .flexGrow(1)
-                .position(Position.Relative)
-                .zIndex(1)
                 .display(DisplayStyle.Flex)
                 .flexDirection(FlexDirection.Column)
                 .toAttrs()
