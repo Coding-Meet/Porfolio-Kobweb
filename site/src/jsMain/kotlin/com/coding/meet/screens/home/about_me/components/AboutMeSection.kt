@@ -53,6 +53,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.textDecorationLine
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.navigation.OpenLinkStrategy
+import com.varabyte.kobweb.compose.ui.styleModifier
+import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
@@ -73,6 +75,7 @@ import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
+import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.css.s
 import org.jetbrains.compose.web.dom.Button
 
@@ -117,7 +120,7 @@ fun AboutMeSection() {
         ) {
             Image(
                 modifier = ProfileImageStyle.toModifier()
-                    .size(if (breakpoint > Breakpoint.MD) 310.px else if (breakpoint > Breakpoint.SM) 260.px else 200.px)
+                    .size(if (breakpoint > Breakpoint.MD) 310.px else if (breakpoint > Breakpoint.SM) 240.px else 200.px)
                     .display(DisplayStyle.Block)
                     .borderRadius(50.percent)
                     .boxSizing(BoxSizing.BorderBox)
@@ -135,7 +138,7 @@ fun AboutMeSection() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(leftRight = if (breakpoint > Breakpoint.SM) 20.px else 8.px, topBottom = 10.px),
+                .padding(leftRight = if (breakpoint > Breakpoint.MD) 20.px else 12.px, topBottom = 10.px),
             verticalArrangement = Arrangement.Center
         ) {
             // Status Pill Badge
@@ -191,14 +194,14 @@ fun AboutMeSection() {
                     modifier = Modifier
                         .color(CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor))
                         .fontFamily(Res.Font.FONT_FAMILY_HEADING)
-                        .fontSize(if (breakpoint > Breakpoint.SM) 2.6.cssRem else 1.9.cssRem)
+                        .fontSize(if (breakpoint > Breakpoint.MD) 2.6.cssRem else if (breakpoint > Breakpoint.SM) 2.2.cssRem else 1.9.cssRem)
                         .fontWeight(FontWeight.Bold)
                         .lineHeight(1.2)
                 )
                 SpanText(
                     text = "👋",
                     modifier = WavingHandStyle.toModifier()
-                        .fontSize(if (breakpoint > Breakpoint.SM) 2.6.cssRem else 1.9.cssRem)
+                        .fontSize(if (breakpoint > Breakpoint.MD) 2.6.cssRem else if (breakpoint > Breakpoint.SM) 2.2.cssRem else 1.9.cssRem)
                         .lineHeight(1.2)
                 )
             }
@@ -215,29 +218,35 @@ fun AboutMeSection() {
                 "I'm a "
             }
 
-            Row(
-                modifier = Modifier.padding(top = 8.px, bottom = 12.px),
-                verticalAlignment = Alignment.CenterVertically
+            Div(
+                attrs = Modifier
+                    .padding(top = 8.px, bottom = 12.px)
+                    .lineHeight(1.3)
+                    .toAttrs()
             ) {
                 SpanText(
                     text = prefix,
                     modifier = Modifier
-                        .fontSize(if (breakpoint > Breakpoint.SM) 1.4.cssRem else 1.15.cssRem)
+                        .fontSize(if (breakpoint > Breakpoint.MD) 1.4.cssRem else if (breakpoint > Breakpoint.SM) 1.25.cssRem else 1.15.cssRem)
                         .color(CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor))
                         .fontWeight(FontWeight.SemiBold)
                 )
                 SpanText(
                     text = currentText,
                     modifier = Modifier
-                        .fontSize(if (breakpoint > Breakpoint.SM) 1.4.cssRem else 1.15.cssRem)
+                        .fontSize(if (breakpoint > Breakpoint.MD) 1.4.cssRem else if (breakpoint > Breakpoint.SM) 1.25.cssRem else 1.15.cssRem)
                         .color(Theme.Primary.color)
                         .fontWeight(FontWeight.Bold)
                 )
                 Box(
                     modifier = Modifier
+                        .display(DisplayStyle.InlineBlock)
                         .width(2.px)
-                        .height(if (breakpoint > Breakpoint.SM) 22.px else 18.px)
-                        .margin(left = 2.px)
+                        .height(if (breakpoint > Breakpoint.MD) 22.px else if (breakpoint > Breakpoint.SM) 19.px else 17.px)
+                        .margin(left = 3.px)
+                        .styleModifier {
+                            property("vertical-align", "text-bottom")
+                        }
                         .backgroundColor(Theme.Primary.color)
                         .animation(
                             BlinkCursorAnimation.toAnimation(
@@ -261,7 +270,11 @@ fun AboutMeSection() {
 
             // CTA action buttons
             Row(
-                modifier = Modifier.padding(bottom = 16.px).gap(12.px),
+                modifier = Modifier
+                    .padding(bottom = 16.px)
+                    .gap(12.px)
+                    .display(DisplayStyle.Flex)
+                    .flexWrap(FlexWrap.Wrap),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Link(
