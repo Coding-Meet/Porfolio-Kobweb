@@ -12,18 +12,37 @@ import com.coding.meet.common.components.navigation_bar.components.DesktopMenu
 import com.coding.meet.common.components.navigation_bar.components.MobileSideMenu
 import com.coding.meet.models.Section
 import com.coding.meet.util.AppInfo
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.flexDirection
 import com.varabyte.kobweb.compose.ui.modifiers.flexGrow
+import com.varabyte.kobweb.compose.ui.modifiers.height
+import com.varabyte.kobweb.compose.ui.modifiers.left
 import com.varabyte.kobweb.compose.ui.modifiers.minHeight
+import com.varabyte.kobweb.compose.ui.modifiers.overflow
+import com.varabyte.kobweb.compose.ui.modifiers.position
+import com.varabyte.kobweb.compose.ui.modifiers.top
+import com.varabyte.kobweb.compose.ui.modifiers.zIndex
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.document
 import kotlinx.browser.window
+import com.varabyte.kobweb.compose.css.CSSPosition
+import com.varabyte.kobweb.compose.css.Overflow
+import com.varabyte.kobweb.compose.css.functions.RadialGradient
+import com.varabyte.kobweb.compose.css.functions.radialGradient
+import com.varabyte.kobweb.compose.ui.graphics.Colors
+import com.varabyte.kobweb.compose.ui.modifiers.backgroundImage
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexDirection
+import org.jetbrains.compose.web.css.Position
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.dom.Div
 
@@ -33,6 +52,7 @@ fun PageLayout(
     content: @Composable () -> Unit,
 ) {
     var menuOpened by remember { mutableStateOf(false) }
+    val colorMode by ColorMode.currentState
     val selectedSectionId by remember(
         window.location
     ) {
@@ -51,9 +71,35 @@ fun PageLayout(
         attrs = Modifier
             .fillMaxWidth()
             .minHeight(100.vh)
+            .position(Position.Relative)
             .display(DisplayStyle.Flex)
             .flexDirection(FlexDirection.Column).toAttrs()
     ) {
+        // Full Page Ambient Aurora Background Effect
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .position(Position.Fixed)
+                .top(0.px)
+                .left(0.px)
+                .zIndex(0)
+                .styleModifier {
+                    property(
+                        "background",
+                        if (colorMode.isDark) {
+                            "radial-gradient(ellipse 90% 55% at 50% -10%, rgba(16, 185, 129, 0.22) 0%, transparent 70%), " +
+                            "radial-gradient(circle 650px at 12% 85%, rgba(16, 185, 129, 0.14) 0%, transparent 70%), " +
+                            "radial-gradient(circle 550px at 88% 45%, rgba(16, 185, 129, 0.10) 0%, transparent 70%)"
+                        } else {
+                            "radial-gradient(ellipse 90% 55% at 50% -10%, rgba(16, 185, 129, 0.14) 0%, transparent 70%), " +
+                            "radial-gradient(circle 650px at 12% 85%, rgba(16, 185, 129, 0.08) 0%, transparent 70%), " +
+                            "radial-gradient(circle 550px at 88% 45%, rgba(16, 185, 129, 0.06) 0%, transparent 70%)"
+                        }
+                    )
+                    property("pointer-events", "none")
+                }
+        )
+
         DesktopMenu(
             selectedSectionId = selectedSectionId,
             onMenuClicked = {
@@ -64,6 +110,8 @@ fun PageLayout(
             attrs = Modifier
                 .fillMaxWidth()
                 .flexGrow(1)
+                .position(Position.Relative)
+                .zIndex(1)
                 .display(DisplayStyle.Flex)
                 .flexDirection(FlexDirection.Column)
                 .toAttrs()
