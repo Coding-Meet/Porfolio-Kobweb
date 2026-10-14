@@ -2,11 +2,14 @@ package com.coding.meet.screens.projects.styles
 
 import com.coding.meet.util.Theme
 import com.coding.meet.util.customColor
+import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.css.AnimationIterationCount
 import com.varabyte.kobweb.compose.css.BoxSizing
 import com.varabyte.kobweb.compose.css.Cursor
+import com.varabyte.kobweb.compose.css.JustifyContent
 import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.alignItems
 import com.varabyte.kobweb.compose.ui.modifiers.animation
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.border
@@ -18,6 +21,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.content
 import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
+import com.varabyte.kobweb.compose.ui.modifiers.gap
+import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.letterSpacing
 import com.varabyte.kobweb.compose.ui.modifiers.margin
@@ -119,8 +124,16 @@ val LdsDualRing = Keyframes {
 val CategoryButtonStyle = CssStyle {
     base {
         Modifier
+            .display(DisplayStyle.Flex)
+            .alignItems(AlignItems.Center)
+            .justifyContent(JustifyContent.Center)
+            .gap(7.px)
             .backgroundColor(
-                if (colorMode.isLight) rgba(0, 0, 0, 0.03) else rgba(255, 255, 255, 0.06)
+                customColor(
+                    colorMode = colorMode,
+                    lightColor = Theme.LightCardBackGroundColor,
+                    darkColor = Theme.DarkCardBackGroundColor
+                )
             )
             .color(
                 customColor(
@@ -130,7 +143,8 @@ val CategoryButtonStyle = CssStyle {
                 )
             )
             .border(1.px, LineStyle.Solid, colorMode.toPalette().border)
-            .padding(8.px, 18.px)
+            .boxShadow(0.px, 2.px, 6.px, null, if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(0, 0, 0, 0.2))
+            .padding(8.px, 16.px)
             .borderRadius(9999.px)
             .transition(Transition.all(200.ms, AnimationTimingFunction.EaseInOut))
             .fontWeight(500)
@@ -141,10 +155,8 @@ val CategoryButtonStyle = CssStyle {
     hover {
         Modifier
             .transform { translateY((-2).px) }
-            .backgroundColor(
-                if (colorMode.isLight) rgba(0, 0, 0, 0.06) else rgba(255, 255, 255, 0.12)
-            )
-            .boxShadow(0.px, 4.px, 12.px, null, rgba(0, 0, 0, 0.08))
+            .border(1.px, LineStyle.Solid, Theme.Primary.color)
+            .boxShadow(0.px, 4.px, 12.px, null, if (colorMode.isLight) rgba(16, 185, 129, 0.15) else rgba(0, 0, 0, 0.35))
     }
     active {
         Modifier.transform { translateY(0.px) }

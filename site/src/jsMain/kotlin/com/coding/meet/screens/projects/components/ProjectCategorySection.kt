@@ -19,6 +19,12 @@ import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.components.icons.fa.FaAndroid
+import com.varabyte.kobweb.silk.components.icons.fa.FaBorderAll
+import com.varabyte.kobweb.silk.components.icons.fa.FaDesktop
+import com.varabyte.kobweb.silk.components.icons.fa.FaGlobe
+import com.varabyte.kobweb.silk.components.icons.fa.FaLayerGroup
+import com.varabyte.kobweb.silk.components.icons.fa.FaMicrochip
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -40,7 +46,7 @@ fun ProjectCategorySection(
             .fillMaxWidth()
             .display(DisplayStyle.Flex)
             .flexWrap(FlexWrap.Wrap)
-            .gap(8.px)
+            .gap(10.px)
             .margin(top = 24.px, bottom = 20.px)
             .justifyContent(JustifyContent.Center)
             .toAttrs()
@@ -64,6 +70,14 @@ fun ProjectCategorySection(
                         }
                     }
             ) {
+                when (projectCategory) {
+                    ProjectCategory.ALL -> FaBorderAll()
+                    ProjectCategory.ANDROID -> FaAndroid()
+                    ProjectCategory.KMP -> FaLayerGroup()
+                    ProjectCategory.IOT -> FaMicrochip()
+                    ProjectCategory.DESKTOP -> FaDesktop()
+                    ProjectCategory.WEB -> FaGlobe()
+                }
                 SpanText(
                     text = projectCategory.title,
                 )
