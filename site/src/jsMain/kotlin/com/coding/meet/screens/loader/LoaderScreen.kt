@@ -6,6 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.coding.meet.common.page_layout.AmbientAuroraBackground
 import com.coding.meet.util.AppInfo.GREETINGS
 import com.coding.meet.util.AppInfo.WELCOME_TEXT
 import com.coding.meet.util.Res
@@ -20,7 +21,9 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.animation.toAnimation
@@ -48,15 +51,24 @@ fun LoaderScreen(colorMode: ColorMode) {
             .left(0.px)
             .zIndex(9999)
             .backgroundColor(
-                customColor(
-                    colorMode = colorMode,
-                    lightColor = Theme.White,
-                    darkColor = Theme.DarkCardBackGroundColor
-                )
-            ),
+                if (colorMode.isDark) {
+                    Color.rgb(11, 15, 25)
+                } else {
+                    Theme.LightBackGroundColor.rgb
+                }
+            )
+            .styleModifier {
+                property("isolation", "isolate")
+            },
         contentAlignment = Alignment.Center
     ) {
+        AmbientAuroraBackground(
+            colorMode = colorMode,
+            zIndex = 0
+        )
+
         Column(
+            modifier = Modifier.position(Position.Relative).zIndex(1),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
