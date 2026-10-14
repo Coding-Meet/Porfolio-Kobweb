@@ -477,7 +477,7 @@ fun ClientWorldMap(
                         .boxShadow(0.px, 0.px, 10.px, 2.px, Theme.Primary.color)
                 )
                 SpanText(
-                    text = "Global Client Presence (OpenFreeMap)",
+                    text = "Global Client Presence",
                     modifier = Modifier
                         .fontFamily(Res.Font.FONT_FAMILY_HEADING)
                         .fontSize(1.15.cssRem)
