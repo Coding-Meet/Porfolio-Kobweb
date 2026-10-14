@@ -1,5 +1,6 @@
 package com.coding.meet.screens.home.about_me.styles
 
+import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.AnimationIterationCount
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.Transition
@@ -125,12 +126,22 @@ val SocialIconButtonStyle = CssStyle {
             .border(
                 1.px,
                 LineStyle.Solid,
-                colorMode.toPalette().border
+                if (colorMode.isLight) colorMode.toPalette().border else rgba(255, 255, 255, 0.12)
             )
             .backgroundColor(
-                if (colorMode.isLight) rgba(0, 0, 0, 0.03) else rgba(255, 255, 255, 0.06)
+                if (colorMode.isLight) Theme.White.color else rgba(255, 255, 255, 0.07)
             )
-            .boxShadow(0.px, 2.px, 8.px, null, rgba(0, 0, 0, 0.04))
+            .boxShadow(
+                0.px,
+                2.px,
+                8.px,
+                null,
+                if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(0, 0, 0, 0.25)
+            )
+            .styleModifier {
+                property("backdrop-filter", "blur(8px)")
+                property("-webkit-backdrop-filter", "blur(8px)")
+            }
             .transition(
                 Transition.all(
                     duration = 200.ms,
