@@ -1,7 +1,6 @@
 package com.coding.meet.common.components.custom_dialog
 
 import androidx.compose.runtime.Composable
-import com.coding.meet.common.page_layout.fadeInUpPageAnimation
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.ColumnScope
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -28,9 +27,9 @@ fun CustomDialog(
             modifier = modifier
                 .then(DialogContentStyle.toModifier())
                 .animation(
-                    fadeInUpPageAnimation.toAnimation(
-                        duration = 0.8.s,
-                        timingFunction = AnimationTimingFunction.EaseOut
+                    dialogEntranceAnimation.toAnimation(
+                        duration = 0.28.s,
+                        timingFunction = AnimationTimingFunction.cubicBezier(0.16, 1.0, 0.3, 1.0)
                     )
                 )
         ) {
