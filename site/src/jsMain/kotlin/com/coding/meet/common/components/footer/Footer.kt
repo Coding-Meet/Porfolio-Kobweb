@@ -21,10 +21,12 @@ import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.flex
+import com.varabyte.kobweb.compose.ui.modifiers.flexWrap
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.height
+import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
@@ -43,6 +45,8 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.FlexWrap
+import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Img
@@ -57,7 +61,7 @@ fun Footer() {
         Box(modifier = Modifier.flex(1), contentAlignment = Alignment.CenterStart) {
             Copyright()
         }
-        Box(modifier = Modifier.flex(1), contentAlignment = Alignment.Center) {
+        Box(modifier = Modifier.flex(1).padding(leftRight = 10.px), contentAlignment = Alignment.Center) {
             SocialLinks()
         }
         Box(modifier = Modifier.flex(1), contentAlignment = Alignment.CenterEnd) {
@@ -79,26 +83,41 @@ fun Footer() {
 private fun SocialLinks() {
     val colorMode by ColorMode.currentState
     Row(
-        modifier = Modifier.gap(10.px),
+        modifier = Modifier
+            .display(DisplayStyle.Flex)
+            .flexWrap(FlexWrap.Wrap)
+            .gap(8.px)
+            .justifyContent(JustifyContent.Center),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
         socials.forEach { social ->
-            Img(
-                src = when (colorMode) {
-                    ColorMode.LIGHT -> social.lightImage
-                    ColorMode.DARK -> social.darkImage ?: social.lightImage
-                },
-                alt = social.title,
-                attrs = SocialImageStyle.toModifier()
-                    .size(24.px)
-                    .padding(2.px)
-                    .cursor(Cursor.Pointer)
+            Box(
+                modifier = FooterSocialButtonStyle.toModifier()
                     .onClick {
                         window.open(social.link)
-                    }
-                    .toAttrs()
-            )
+                    },
+                contentAlignment = Alignment.Center
+            ) {
+                Img(
+                    src = when (colorMode) {
+                        ColorMode.LIGHT -> social.lightImage
+                        ColorMode.DARK -> social.darkImage ?: social.lightImage
+                    },
+                    alt = social.title,
+                    attrs = Modifier
+                        .size(18.px)
+                        .toAttrs {
+                            style {
+                                property("display", "block")
+                                property("margin", "auto")
+                                property("pointer-events", "none")
+                                property("user-select", "none")
+                                property("-webkit-user-drag", "none")
+                            }
+                        }
+                )
+            }
             Tooltip(
                 target = ElementTarget.PreviousSibling,
                 text = social.title,
