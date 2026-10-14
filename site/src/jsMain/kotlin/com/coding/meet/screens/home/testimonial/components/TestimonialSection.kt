@@ -19,14 +19,20 @@ import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
+import com.varabyte.kobweb.compose.ui.modifiers.border
+import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
+import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
+import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.minHeight
 import com.varabyte.kobweb.compose.ui.modifiers.padding
+import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
@@ -34,15 +40,19 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.window
+import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.Button
 
 @Composable
 fun TestimonialSection() {
     val breakpoint = rememberBreakpoint()
+    val colorMode by ColorMode.currentState
     var isShowDialog by remember { mutableStateOf(false) }
     val dialogId by remember { mutableStateOf("testimonialDialog") }
     var selectedCountry by remember { mutableStateOf<String?>(null) }
@@ -89,11 +99,44 @@ fun TestimonialSection() {
         }
     }
 
+    // 100% Real & Verified Reviews Trust Badge
+    Row(
+        modifier = Modifier
+            .margin(top = 36.px, bottom = 12.px)
+            .padding(leftRight = 14.px, topBottom = 6.px)
+            .backgroundColor(
+                if (colorMode.isLight) rgba(16, 185, 129, 0.08) else rgba(16, 185, 129, 0.15)
+            )
+            .border(
+                1.px,
+                LineStyle.Solid,
+                if (colorMode.isLight) rgba(16, 185, 129, 0.25) else rgba(16, 185, 129, 0.35)
+            )
+            .borderRadius(9999.px),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(
+            modifier = Modifier
+                .size(7.px)
+                .borderRadius(50.percent)
+                .backgroundColor(Theme.Primary.color)
+                .boxShadow(0.px, 0.px, 8.px, null, rgba(16, 185, 129, 0.8))
+                .margin(right = 8.px)
+        )
+        SpanText(
+            text = "✓ 100% Real & Verified Client Reviews",
+            modifier = Modifier
+                .fontSize(0.85.cssRem)
+                .fontWeight(FontWeight.SemiBold)
+                .color(Theme.Primary.color)
+        )
+    }
+
     SpanText(
         text = "💬 Client Testimonials",
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 36.px, bottom = 6.px, leftRight = 10.px)
+            .padding(top = 0.px, bottom = 6.px, leftRight = 10.px)
             .color(
                 CustomColor(
                     lightColor = Theme.LightFontColor,
