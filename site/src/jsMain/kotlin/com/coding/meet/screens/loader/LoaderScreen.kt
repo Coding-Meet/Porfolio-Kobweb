@@ -1,7 +1,12 @@
 package com.coding.meet.screens.loader
 
 import androidx.compose.runtime.Composable
-import com.coding.meet.util.AppInfo.NAMASTE_TEXT
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import com.coding.meet.util.AppInfo.GREETINGS
 import com.coding.meet.util.AppInfo.WELCOME_TEXT
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
@@ -12,24 +17,36 @@ import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.animation.toAnimation
+import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
+import kotlinx.coroutines.delay
 import org.jetbrains.compose.web.css.*
 
 @Composable
 fun LoaderScreen(colorMode: ColorMode) {
+    var greetingIndex by remember { mutableStateOf(0) }
+
+    LaunchedEffect(Unit) {
+        while (true) {
+            delay(220)
+            greetingIndex = (greetingIndex + 1) % GREETINGS.size
+        }
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             .position(Position.Fixed)
             .top(0.px)
             .left(0.px)
-            .zIndex(100)
+            .zIndex(9999)
             .backgroundColor(
                 customColor(
                     colorMode = colorMode,
@@ -59,10 +76,19 @@ fun LoaderScreen(colorMode: ColorMode) {
                 alt = "Logo Image"
             )
             SpanText(
-                text = NAMASTE_TEXT,
+                text = "🙏",
+                modifier = NamasteEmojiStyle.toModifier()
+                    .margin(top = 16.px)
+                    .fontSize(36.px)
+            )
+
+            SpanText(
+                text = GREETINGS[greetingIndex],
                 modifier = Modifier
+                    .margin(top = 8.px)
                     .fontSize(30.px)
-                    .textAlign(TextAlign.Center)
+                    .fontFamily(Res.Font.FONT_FAMILY_HEADING)
+                    .fontWeight(FontWeight.Bold)
                     .color(
                         customColor(
                             colorMode = colorMode,
@@ -70,29 +96,22 @@ fun LoaderScreen(colorMode: ColorMode) {
                             darkColor = Theme.DarkFontColor
                         )
                     )
-                    .margin(top = 8.px)
-                    .animation(
-                        fadeInUpTextAnimation.toAnimation(
-                            duration = 1.s,
-                            timingFunction = AnimationTimingFunction.EaseOut
-                        )
-                    )
-                    .fontWeight(FontWeight.Bold)
             )
 
             SpanText(
                 text = WELCOME_TEXT,
                 modifier = Modifier
-                    .fontSize(20.px)
+                    .fontSize(17.px)
                     .textAlign(TextAlign.Center)
+                    .fontFamily(Res.Font.FONT_FAMILY_REGULAR)
                     .color(
                         customColor(
                             colorMode = colorMode,
-                            lightColor = Theme.LightFontColor,
-                            darkColor = Theme.DarkFontColor
+                            lightColor = Theme.DarkGray,
+                            darkColor = Theme.Muted
                         )
                     )
-                    .margin(top = 8.px)
+                    .margin(top = 6.px)
                     .animation(
                         fadeInUpTextAnimation.toAnimation(
                             duration = 1.s,

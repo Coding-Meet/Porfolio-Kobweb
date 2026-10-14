@@ -21,6 +21,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
+import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
@@ -36,11 +37,13 @@ import org.jetbrains.compose.web.css.px
 fun FAQCard(
     faq: FAQ
 ) {
-
     var isAnswer by remember { mutableStateOf(false) }
 
     Column(
-        modifier = faqCardStyle.toModifier().margin(10.px).padding(10.px).cursor(Cursor.Pointer)
+        modifier = faqCardStyle.toModifier()
+            .margin(topBottom = 8.px)
+            .padding(all = 18.px)
+            .cursor(Cursor.Pointer)
             .onClick {
                 isAnswer = !isAnswer
             },
@@ -48,38 +51,52 @@ fun FAQCard(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(leftRight = 10.px),
+            modifier = Modifier.fillMaxWidth().padding(leftRight = 4.px),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             SpanText(
-                text = "\uD83D\uDE4B "+faq.question,
-                modifier = Modifier.fillMaxWidth().padding(right = 20.px).color(
-                    CustomColor(
-                        lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor
+                text = faq.question,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(right = 16.px)
+                    .color(
+                        if (isAnswer) Theme.Primary.color
+                        else CustomColor(
+                            lightColor = Theme.LightFontColor,
+                            darkColor = Theme.DarkFontColor
+                        )
                     )
-                ).fontSize(1.cssRem).fontWeight(FontWeight.Bold)
+                    .fontSize(1.05.cssRem)
+                    .fontWeight(FontWeight.SemiBold)
             )
             if (isAnswer) {
                 FaAngleUp(
-                    size = IconSize.XL
+                    size = IconSize.LG,
+                    modifier = Modifier.color(Theme.Primary.color)
                 )
             } else {
                 FaAngleDown(
-                    size = IconSize.XL
+                    size = IconSize.LG,
+                    modifier = Modifier.color(CustomColor(Theme.DarkGray, Theme.Muted))
                 )
             }
         }
         if (isAnswer) {
             SpanText(
-                text = "\uD83D\uDC49 "+faq.answer,
-                modifier = Modifier.fillMaxWidth().padding(top = 5.px, leftRight = 10.px).color(
-                    CustomColor(
-                        lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor
+                text = faq.answer,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 12.px, leftRight = 4.px)
+                    .color(
+                        CustomColor(
+                            lightColor = Theme.DarkGray,
+                            darkColor = Theme.Muted
+                        )
                     )
-                ).fontSize(1.cssRem)
+                    .fontSize(0.95.cssRem)
+                    .lineHeight(1.6)
             )
         }
     }
 }
-

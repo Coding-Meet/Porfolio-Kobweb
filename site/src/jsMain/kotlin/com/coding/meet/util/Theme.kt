@@ -10,22 +10,19 @@ typealias rgbColor = com.varabyte.kobweb.compose.ui.graphics.Color
 
 enum class Theme(
     val color: CSSColorValue,
-    val rgb: rgbColor = rgbColor.rgb(
-        210,
-        251,
-        208
-    )
+    val rgb: rgbColor = rgbColor.rgb(16, 185, 129)
 ) {
-    LightBackGroundColor(color = Color("#D2FBD0")),
-    LightFontColor(color = Color("#013216")),
-    DarkFontColor(color = Color("#FFFFFF")),
-    Primary(color = Color("#03FA6E")),
-    LightGray(color = Color("#EDEDED")),
-    DarkGray(color = Color("#5C5C5C")),
-    Black(color = Color.black),
-    White(color = Color.white),
-    LightCardBackGroundColor(color = Color("#f2f2f280")),
-    DarkCardBackGroundColor(color = Color("#161616")),
+    LightBackGroundColor(color = Color("#FAFBFC"), rgb = rgbColor.rgb(250, 251, 252)),
+    LightFontColor(color = Color("#0F172A"), rgb = rgbColor.rgb(15, 23, 42)),
+    DarkFontColor(color = Color("#F8FAFC"), rgb = rgbColor.rgb(248, 250, 252)),
+    Primary(color = Color("#10B981"), rgb = rgbColor.rgb(16, 185, 129)),
+    LightGray(color = Color("#F1F5F9"), rgb = rgbColor.rgb(241, 245, 249)),
+    DarkGray(color = Color("#64748B"), rgb = rgbColor.rgb(100, 116, 139)),
+    Black(color = Color.black, rgb = rgbColor.rgb(0, 0, 0)),
+    White(color = Color.white, rgb = rgbColor.rgb(255, 255, 255)),
+    LightCardBackGroundColor(color = Color("#FFFFFF"), rgb = rgbColor.rgb(255, 255, 255)),
+    DarkCardBackGroundColor(color = Color("#111827"), rgb = rgbColor.rgb(17, 24, 39)),
+    Muted(color = Color("#94A3B8"), rgb = rgbColor.rgb(148, 163, 184)),
 }
 
 @Composable

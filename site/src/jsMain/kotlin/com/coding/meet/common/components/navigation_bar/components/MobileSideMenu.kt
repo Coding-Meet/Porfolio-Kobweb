@@ -80,7 +80,7 @@ fun MobileSideMenu(
             .fillMaxWidth()
             .height(100.vh)
             .position(Position.Fixed)
-            .zIndex(100)
+            .zIndex(1100)
             .opacity(opacity)
             .backgroundColor(argb(a = 0.5f, r = 0.0f, g = 0.0f, b = 0.0f))
             .transition(
@@ -102,7 +102,7 @@ fun MobileSideMenu(
         Column(
             modifier = Modifier
                 .fillMaxHeight()
-                .width(if (breakpoint < Breakpoint.MD) 50.percent else 25.percent)
+                .width(if (breakpoint <= Breakpoint.SM) 78.percent else 45.percent)
                 .overflow(Overflow.Auto)
                 .scrollBehavior(ScrollBehavior.Smooth)
                 .backgroundColor(
@@ -111,7 +111,7 @@ fun MobileSideMenu(
                         darkColor = Theme.DarkCardBackGroundColor
                     )
                 )
-                .borderRadius(topRight = 20.px, bottomRight = 20.px)
+                .borderRadius(topRight = 24.px, bottomRight = 24.px)
                 .translateX(tx = translateX)
                 .transition(
                     Transition.of(

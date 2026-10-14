@@ -1,2 +1,316 @@
-@import url("https://fonts.googleapis.com/css?family=Space Mono");
-@import url("https://fonts.googleapis.com/css?family=Poppins");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap");
+@import url("https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css");
+
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+::selection {
+  background-color: rgba(16, 185, 129, 0.25);
+  color: inherit;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7);
+}
+
+/* MapLibre & OpenFreeMap custom map styling */
+.maplibregl-map {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  width: 100%;
+  height: 100%;
+}
+
+.maplibregl-canvas {
+  outline: none;
+}
+
+/* Client Map Marker Pins */
+.client-marker-container {
+  cursor: pointer;
+  user-select: none;
+}
+
+.client-marker-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1e293b;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  border: 2px solid #10B981;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+}
+
+#client-openfreemap[data-theme="light"] .client-marker-pin {
+  background: #ffffff;
+  border: 2px solid #10B981;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.client-marker-pin:hover {
+  transform: scale(1.22);
+}
+
+/* Selected Hero Pin (Active Highlighted Country) */
+.client-marker-pin.is-selected {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
+  border: 3px solid #ffffff !important;
+  transform: scale(1.38) !important;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.45), 0 8px 25px rgba(16, 185, 129, 0.9) !important;
+}
+
+/* Unselected Pins (Clear, Visible Neutral Color - NOT Hidden, NO Green) */
+.client-marker-pin.is-unselected {
+  background: #334155 !important;
+  border: 2px solid #64748b !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+  transform: scale(0.92) !important;
+  opacity: 0.88 !important;
+}
+
+#client-openfreemap[data-theme="light"] .client-marker-pin.is-unselected {
+  background: #f1f5f9 !important;
+  border: 2px solid #cbd5e1 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+}
+
+.client-marker-pin.is-unselected .client-marker-pulse {
+  display: none !important;
+  animation: none !important;
+}
+
+.client-marker-pin.is-unselected:hover {
+  transform: scale(1.15) !important;
+  opacity: 1 !important;
+  background: #475569 !important;
+  border-color: #94a3b8 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
+
+#client-openfreemap[data-theme="light"] .client-marker-pin.is-unselected:hover {
+  background: #e2e8f0 !important;
+  border-color: #94a3b8 !important;
+}
+
+/* Marker Pulse Ring */
+.client-marker-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.3);
+  animation: markerPulse 2.8s infinite ease-out;
+  pointer-events: none;
+}
+
+.client-marker-pin.is-selected .client-marker-pulse {
+  display: block !important;
+  background: rgba(16, 185, 129, 0.8) !important;
+  animation: markerHeroPulse 1.8s infinite ease-out !important;
+}
+
+@keyframes markerPulse {
+  0% { transform: scale(1); opacity: 0.75; }
+  70% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes markerHeroPulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  65% { transform: scale(2.6); opacity: 0; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* Ensure Popups always sit in front of all markers */
+.maplibregl-popup {
+  z-index: 25 !important;
+}
+
+/* MapLibre Base Popup Content */
+.maplibregl-popup-content {
+  border-radius: 14px !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  padding: 12px 14px !important;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
+}
+
+.maplibregl-popup-close-button {
+  font-size: 16px !important;
+  padding: 4px 8px !important;
+  line-height: 1 !important;
+  border-radius: 6px !important;
+}
+
+/* MapLibre Popup Inner Card Typography */
+.client-map-popup-inner {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-width: 175px;
+  max-width: 250px;
+}
+.client-popup-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.client-popup-stats {
+  font-weight: 600;
+  font-size: 11.5px;
+  margin-bottom: 6px;
+}
+.client-popup-quote {
+  font-size: 11.5px;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+/* Dark Theme Map Styling */
+#client-openfreemap[data-theme="dark"],
+.dark #client-openfreemap {
+  background-color: #0b0f19 !important;
+}
+
+#client-openfreemap[data-theme="dark"] .maplibregl-popup-content {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6) !important;
+}
+#client-openfreemap[data-theme="dark"] .client-popup-title {
+  color: #f8fafc;
+}
+#client-openfreemap[data-theme="dark"] .client-popup-stats {
+  color: #10B981;
+}
+#client-openfreemap[data-theme="dark"] .client-popup-quote {
+  color: #94A3B8;
+}
+#client-openfreemap[data-theme="dark"] .maplibregl-popup-close-button {
+  color: #94a3b8 !important;
+}
+#client-openfreemap[data-theme="dark"] .maplibregl-popup-close-button:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+#client-openfreemap[data-theme="dark"] .maplibregl-popup-anchor-top .maplibregl-popup-tip {
+  border-bottom-color: #0f172a !important;
+}
+#client-openfreemap[data-theme="dark"] .maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+  border-top-color: #0f172a !important;
+}
+#client-openfreemap[data-theme="dark"] .maplibregl-popup-anchor-left .maplibregl-popup-tip {
+  border-right-color: #0f172a !important;
+}
+#client-openfreemap[data-theme="dark"] .maplibregl-popup-anchor-right .maplibregl-popup-tip {
+  border-left-color: #0f172a !important;
+}
+#client-openfreemap[data-theme="dark"] .maplibregl-ctrl-group {
+  background: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+}
+#client-openfreemap[data-theme="dark"] .maplibregl-ctrl-group button {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+#client-openfreemap[data-theme="dark"] .maplibregl-ctrl-icon {
+  filter: invert(1) brightness(1.2) !important;
+}
+#client-openfreemap[data-theme="dark"] .maplibregl-ctrl-group button:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+#client-openfreemap[data-theme="dark"] .maplibregl-ctrl-attrib {
+  background: rgba(15, 23, 42, 0.85) !important;
+  color: #94a3b8 !important;
+}
+#client-openfreemap[data-theme="dark"] .maplibregl-ctrl-attrib a {
+  color: #38bdf8 !important;
+}
+
+/* Light Theme Map Styling */
+#client-openfreemap[data-theme="light"],
+.light #client-openfreemap {
+  background-color: #f1f5f9 !important;
+}
+
+#client-openfreemap[data-theme="light"] .maplibregl-popup-content {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(0, 0, 0, 0.09) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12) !important;
+}
+#client-openfreemap[data-theme="light"] .client-popup-title {
+  color: #0f172a;
+}
+#client-openfreemap[data-theme="light"] .client-popup-stats {
+  color: #059669;
+}
+#client-openfreemap[data-theme="light"] .client-popup-quote {
+  color: #475569;
+}
+#client-openfreemap[data-theme="light"] .maplibregl-popup-close-button {
+  color: #64748b !important;
+}
+#client-openfreemap[data-theme="light"] .maplibregl-popup-close-button:hover {
+  color: #0f172a !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+#client-openfreemap[data-theme="light"] .maplibregl-popup-anchor-top .maplibregl-popup-tip {
+  border-bottom-color: #ffffff !important;
+}
+#client-openfreemap[data-theme="light"] .maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+  border-top-color: #ffffff !important;
+}
+#client-openfreemap[data-theme="light"] .maplibregl-popup-anchor-left .maplibregl-popup-tip {
+  border-right-color: #ffffff !important;
+}
+#client-openfreemap[data-theme="light"] .maplibregl-popup-anchor-right .maplibregl-popup-tip {
+  border-left-color: #ffffff !important;
+}
+#client-openfreemap[data-theme="light"] .maplibregl-ctrl-group {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+#client-openfreemap[data-theme="light"] .maplibregl-ctrl-group button {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+#client-openfreemap[data-theme="light"] .maplibregl-ctrl-icon {
+  filter: none !important;
+}
+#client-openfreemap[data-theme="light"] .maplibregl-ctrl-group button:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+#client-openfreemap[data-theme="light"] .maplibregl-ctrl-attrib {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #64748b !important;
+}
+#client-openfreemap[data-theme="light"] .maplibregl-ctrl-attrib a {
+  color: #0284c7 !important;
+}

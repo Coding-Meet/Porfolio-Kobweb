@@ -4,10 +4,13 @@ import com.coding.meet.util.Theme
 import com.coding.meet.util.customColor
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.autoLength
+import com.varabyte.kobweb.compose.css.functions.blur
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.backdropFilter
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
+import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.left
@@ -31,22 +34,27 @@ val DialogStyle = CssStyle.base {
     Modifier
         .display(DisplayStyle.None)
         .position(Position.Fixed)
-        .zIndex(1000)
+        .zIndex(2000)
         .left(0.px)
         .top(0.px)
         .overflow(Overflow.Auto)
-        .backgroundColor(rgba(0, 0, 0, 0.4f))
+        .backgroundColor(rgba(0, 0, 0, 0.65f))
+        .backdropFilter(blur(8.px))
         .fillMaxSize()
-        .padding(topBottom = 10.px)
+        .padding(topBottom = 20.px)
 }
+
 val DialogContentStyle = CssStyle.base {
     Modifier
         .margin(autoLength)
-        .padding(20.px)
-        .borderRadius(10.px)
+        .padding(24.px)
+        .borderRadius(20.px)
         .border(
-            color = colorMode.toPalette().border, style = LineStyle.Solid, width = 1.px
+            color = colorMode.toPalette().border,
+            style = LineStyle.Solid,
+            width = 1.px
         )
+        .boxShadow(0.px, 20.px, 60.px, null, rgba(0, 0, 0, 0.35))
         .backgroundColor(
             customColor(
                 colorMode = colorMode,

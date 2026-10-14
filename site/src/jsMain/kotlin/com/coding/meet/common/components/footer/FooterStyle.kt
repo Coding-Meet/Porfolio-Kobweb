@@ -4,7 +4,7 @@ import com.coding.meet.util.Theme
 import com.coding.meet.util.customColor
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.background
-import com.varabyte.kobweb.compose.ui.modifiers.border
+import com.varabyte.kobweb.compose.ui.modifiers.borderTop
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.silk.style.CssStyle
@@ -25,21 +25,21 @@ val FooterStyle = CssStyle {
                     darkColor = Theme.DarkCardBackGroundColor
                 )
             )
-            .border(color = colorMode.toPalette().border, style = LineStyle.Solid, width = 1.px)
+            .borderTop(1.px, LineStyle.Solid, colorMode.toPalette().border)
     }
     Breakpoint.ZERO {
-        Modifier.padding(left = 12.px, right = 12.px, top = 10.px, bottom = 10.px)
+        Modifier.padding(left = 16.px, right = 16.px, top = 20.px, bottom = 20.px)
     }
     Breakpoint.SM {
-        Modifier.padding(left = 24.px, right = 24.px, top = 10.px, bottom = 10.px)
+        Modifier.padding(left = 24.px, right = 24.px, top = 20.px, bottom = 20.px)
     }
     Breakpoint.MD {
-        Modifier.padding(left = 34.px, right = 34.px, top = 10.px, bottom = 10.px)
+        Modifier.padding(left = 40.px, right = 40.px, top = 24.px, bottom = 24.px)
     }
     Breakpoint.LG {
-        Modifier.padding(left = 54.px, right = 54.px, top = 10.px, bottom = 10.px)
+        Modifier.padding(left = 60.px, right = 60.px, top = 24.px, bottom = 24.px)
     }
     Breakpoint.XL {
-        Modifier.padding(left = 104.px, right = 104.px, top = 10.px, bottom = 10.px)
+        Modifier.padding(left = 100.px, right = 100.px, top = 24.px, bottom = 24.px)
     }
 }

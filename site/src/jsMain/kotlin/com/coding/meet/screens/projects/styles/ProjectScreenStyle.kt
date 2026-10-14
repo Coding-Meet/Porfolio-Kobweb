@@ -1,25 +1,14 @@
 package com.coding.meet.screens.projects.styles
 
-
 import com.coding.meet.util.Theme
 import com.coding.meet.util.customColor
 import com.varabyte.kobweb.compose.css.AnimationIterationCount
-import com.varabyte.kobweb.compose.css.BackgroundPosition
-import com.varabyte.kobweb.compose.css.BackgroundSize
-import com.varabyte.kobweb.compose.css.BoxShadow
 import com.varabyte.kobweb.compose.css.BoxSizing
-import com.varabyte.kobweb.compose.css.CSSPosition
 import com.varabyte.kobweb.compose.css.Cursor
-import com.varabyte.kobweb.compose.css.TextTransform
 import com.varabyte.kobweb.compose.css.Transition
-import com.varabyte.kobweb.compose.css.TransitionTimingFunction
-import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.animation
-import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
-import com.varabyte.kobweb.compose.ui.modifiers.backgroundImage
 import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
@@ -34,13 +23,10 @@ import com.varabyte.kobweb.compose.ui.modifiers.letterSpacing
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.size
-import com.varabyte.kobweb.compose.ui.modifiers.textTransform
 import com.varabyte.kobweb.compose.ui.modifiers.transform
 import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.animation.Keyframes
-import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.style.plus
 import com.varabyte.kobweb.silk.style.selectors.active
 import com.varabyte.kobweb.silk.style.selectors.after
 import com.varabyte.kobweb.silk.style.selectors.hover
@@ -51,13 +37,11 @@ import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.deg
-import org.jetbrains.compose.web.css.em
 import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.css.s
-
 
 val ProjectStyle = CssStyle {
     base {
@@ -69,72 +53,37 @@ val ProjectStyle = CssStyle {
                     darkColor = Theme.DarkCardBackGroundColor
                 )
             )
-            .borderRadius(10.px)
+            .borderRadius(18.px)
             .border(
-                color = colorMode.toPalette().border, style = LineStyle.Solid, width = 1.px
+                color = colorMode.toPalette().border,
+                style = LineStyle.Solid,
+                width = 1.px
             )
-            .boxShadow(0.px, 0.px, 0.px, 0.px)
+            .boxShadow(0.px, 2.px, 14.px, null, rgba(0, 0, 0, 0.04))
             .transition(
                 Transition.all(
-                    duration = 200.ms,
-                    timingFunction = AnimationTimingFunction.EaseInOut
+                    duration = 250.ms,
+                    timingFunction = AnimationTimingFunction.cubicBezier(0.16, 1.0, 0.3, 1.0)
                 )
             )
     }
 
-    (Breakpoint.MD + hover) {
+    hover {
         Modifier
-            .border(3.px, LineStyle.Solid, colorMode.toPalette().border)
-            .padding(0.25.em, 0.5.em)
-            .boxShadow(
-                BoxShadow.of(
-                    1.px,
-                    1.px,
-                    0.px,
-                    0.px
-                ),
-                BoxShadow.of(
-                    2.px,
-                    2.px,
-                    0.px,
-                    0.px,
-                ),
-                BoxShadow.of(
-                    3.px,
-                    3.px,
-                    0.px,
-                    0.px,
-                ),
-                BoxShadow.of(
-                    4.px,
-                    4.px,
-                    0.px,
-                    0.px,
-                ),
-                BoxShadow.of(
-                    5.px,
-                    5.px,
-                    0.px,
-                    0.px
-                )
+            .transform { translateY((-6).px) }
+            .border(
+                color = if (colorMode.isLight) rgba(16, 185, 129, 0.5) else rgba(16, 185, 129, 0.7),
+                style = LineStyle.Solid,
+                width = 1.px
             )
-            .transition(
-                Transition.all(
-                    duration = 200.ms,
-                    timingFunction = AnimationTimingFunction.EaseInOut
-                )
-            )
+            .boxShadow(0.px, 18.px, 36.px, (-10).px, rgba(16, 185, 129, 0.18))
     }
 }
 
-
-
 val rotateAnimation = CssStyle {
-    val sharedModifier0 = Modifier
-        .boxSizing(BoxSizing.BorderBox)
+    val sharedModifier0 = Modifier.boxSizing(BoxSizing.BorderBox)
     base {
-        sharedModifier0
-            .display(DisplayStyle.InlineBlock)
+        sharedModifier0.display(DisplayStyle.InlineBlock)
     }
     after {
         sharedModifier0
@@ -143,83 +92,61 @@ val rotateAnimation = CssStyle {
             .margin(30.px)
             .borderRadius(50.percent)
             .border {
-                width(5.px)
+                width(4.px)
                 style(LineStyle.Solid)
                 color(Theme.Primary.color, Color.transparent, colorMode.toPalette().border, Theme.Primary.color)
             }
             .animation(
                 LdsDualRing.toAnimation(
-                    duration = 1.2.s,
+                    duration = 1.s,
                     timingFunction = AnimationTimingFunction.Linear,
                     iterationCount = AnimationIterationCount.Infinite
                 )
             )
-            .size(200.px)
+            .size(60.px)
     }
 }
+
 val LdsDualRing = Keyframes {
     0.percent {
-        Modifier
-            .transform { rotate(0.deg) }
+        Modifier.transform { rotate(0.deg) }
     }
     100.percent {
-        Modifier
-            .transform { rotate(360.deg) }
+        Modifier.transform { rotate(360.deg) }
     }
 }
 
 val CategoryButtonStyle = CssStyle {
-    val backgroundColor = customColor(
-        colorMode = colorMode,
-        lightColor = Theme.LightFontColor,
-        darkColor = Theme.DarkFontColor
-    )
-    val textColor = customColor(
-        colorMode = colorMode,
-        lightColor = Theme.DarkFontColor,
-        darkColor = Theme.LightFontColor
-    )
     base {
         Modifier
-            .background {
-                size(BackgroundSize.of(220.percent))
-            }
-            .boxShadow(0.px, 0.2.em, 0.3.em, null, rgba(0, 0, 0, 0.15f))
-            .color(backgroundColor)
-            .backgroundColor(Colors.Transparent)
-            .background {
-                position(BackgroundPosition.of(CSSPosition(100.percent)))
-            }
-            .border(3.px, LineStyle.Solid, backgroundColor)
-            .textTransform(TextTransform.Uppercase)
-            .padding(8.px, 16.px)
-            .borderRadius(3.px)
-            .transition(Transition.of("all", 0.2.s, TransitionTimingFunction.EaseOut))
-            .fontWeight(900)
-            .cursor(Cursor.Pointer)
-            .letterSpacing(2.px)
-            .backgroundImage(
-                linearGradient(110.deg) {
-                    add(backgroundColor, 0.percent)
-                    add(backgroundColor, 50.percent)
-                    add(Colors.Transparent, 50.percent)
-                    add(Colors.Transparent, 100.percent)
-                }
+            .backgroundColor(
+                if (colorMode.isLight) rgba(0, 0, 0, 0.03) else rgba(255, 255, 255, 0.06)
             )
+            .color(
+                customColor(
+                    colorMode = colorMode,
+                    lightColor = Theme.LightFontColor,
+                    darkColor = Theme.DarkFontColor
+                )
+            )
+            .border(1.px, LineStyle.Solid, colorMode.toPalette().border)
+            .padding(8.px, 18.px)
+            .borderRadius(9999.px)
+            .transition(Transition.all(200.ms, AnimationTimingFunction.EaseInOut))
+            .fontWeight(500)
+            .cursor(Cursor.Pointer)
+            .letterSpacing(0.3.px)
             .fontSize(14.px)
     }
     hover {
         Modifier
             .transform { translateY((-2).px) }
-            .boxShadow(0.px, 0.px, 0.3.em, null, rgba(0, 0, 0, 0.25f))
-            .background {
-                position(BackgroundPosition.of(CSSPosition(0.px)))
-            }
-            .color(textColor)
+            .backgroundColor(
+                if (colorMode.isLight) rgba(0, 0, 0, 0.06) else rgba(255, 255, 255, 0.12)
+            )
+            .boxShadow(0.px, 4.px, 12.px, null, rgba(0, 0, 0, 0.08))
     }
     active {
-        Modifier
-            .transform { translateY((-1).px) }
+        Modifier.transform { translateY(0.px) }
     }
-
 }

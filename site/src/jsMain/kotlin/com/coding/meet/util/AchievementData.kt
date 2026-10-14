@@ -21,8 +21,8 @@ object AchievementData {
             darkImage = "/social/github_dark_mode.svg"
         ),
         Achievement(
-            title = "📦 45+ Completed Orders",
-            subtitle = "Completed 45+ client projects with $4,000+ earnings and 4.9⭐ rating",
+            title = "📦 70+ Completed Orders",
+            subtitle = "Completed 70+ client projects with $9,000+ earnings and 4.9⭐ rating",
             platform = "Fiverr",
             link = contactMePath,
             lightImage = "/social/fiverr.svg"

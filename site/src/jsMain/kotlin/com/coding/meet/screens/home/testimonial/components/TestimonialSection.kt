@@ -15,13 +15,17 @@ import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
+import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
+import com.varabyte.kobweb.compose.ui.modifiers.minHeight
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
@@ -41,6 +45,15 @@ fun TestimonialSection() {
     val breakpoint = rememberBreakpoint()
     var isShowDialog by remember { mutableStateOf(false) }
     val dialogId by remember { mutableStateOf("testimonialDialog") }
+    var selectedCountry by remember { mutableStateOf<String?>(null) }
+
+    val filteredTestimonials = remember(selectedCountry) {
+        if (selectedCountry != null) {
+            testimonials.filter { it.country == selectedCountry }
+        } else {
+            testimonials
+        }
+    }
 
     LaunchedEffect(Unit) {
         window.addEventListener("click", {
@@ -71,50 +84,79 @@ fun TestimonialSection() {
         ),
         dialogId = dialogId,
     ) {
-        TestimonialDialog {
+        TestimonialDialog(selectedCountry = selectedCountry) {
             isShowDialog = false
         }
     }
 
     SpanText(
-        text = "\uD83C\uDF1F Testimonial",
-        modifier = Modifier.fillMaxWidth().padding(topBottom = 10.px, leftRight = 10.px)
+        text = "💬 Client Testimonials",
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 36.px, bottom = 6.px, leftRight = 10.px)
             .color(
                 CustomColor(
-                    lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor
+                    lightColor = Theme.LightFontColor,
+                    darkColor = Theme.DarkFontColor
                 )
-            ).fontSize(2.cssRem).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
-    )
-    SpanText(
-        text = "What my clients & collaborators say about my work! 🚀",
-        modifier = Modifier.fillMaxWidth(
-            if (breakpoint > Breakpoint.MD) 70.percent else 90.percent
-
-        ).padding(topBottom = 5.px, leftRight = 20.px).color(
-            CustomColor(
-                lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor
             )
-        ).fontSize(1.cssRem).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
+            .fontFamily(Res.Font.FONT_FAMILY_HEADING)
+            .fontSize(if (breakpoint > Breakpoint.SM) 2.2.cssRem else 1.7.cssRem)
+            .fontWeight(FontWeight.Bold)
+            .textAlign(TextAlign.Center)
     )
+
+    SpanText(
+        text = "What founders, engineering leads, and clients across the world say about working together.",
+        modifier = Modifier
+            .fillMaxWidth(if (breakpoint > Breakpoint.MD) 65.percent else 90.percent)
+            .padding(bottom = 12.px, leftRight = 20.px)
+            .color(
+                CustomColor(
+                    lightColor = Theme.DarkGray,
+                    darkColor = Theme.Muted
+                )
+            )
+            .fontSize(1.0.cssRem)
+            .lineHeight(1.6)
+            .textAlign(TextAlign.Center)
+    )
+
+    // Interactive Global Client World Map
+    Box(
+        modifier = Modifier
+            .fillMaxWidth(if (breakpoint > Breakpoint.MD) 75.percent else 92.percent)
+            .padding(bottom = 14.px)
+    ) {
+        ClientWorldMap(
+            selectedCountry = selectedCountry,
+            onSelectCountry = { country ->
+                selectedCountry = country
+            }
+        )
+    }
+
+    // Testimonials Grid (Dynamically filtered by country or full list)
     SimpleGrid(
         numColumns = numColumns(base = 1, sm = 1, md = 3),
-        modifier = Modifier.fillMaxWidth(
-            if (breakpoint > Breakpoint.MD) 70.percent else 90.percent
-        ).padding(top = 10.px)
+        modifier = Modifier
+            .fillMaxWidth(if (breakpoint > Breakpoint.MD) 75.percent else 92.percent)
+            .minHeight(if (breakpoint > Breakpoint.MD) 260.px else 180.px)
+            .padding(bottom = 12.px)
     ) {
-        testimonials.take(6).forEach { testimonial ->
+        filteredTestimonials.take(6).forEach { testimonial ->
             TestimonialCard(
                 testimonial = testimonial,
-                maxLines = 6
+                maxLines = 5
             )
         }
     }
 
     Row(
-        modifier = Modifier.fillMaxWidth(
-            if (breakpoint > Breakpoint.MD) 70.percent else 90.percent
-        ).padding(topBottom = 20.px, leftRight = 20.px),
-        horizontalArrangement = Arrangement.spacedBy(10.px, Alignment.CenterHorizontally),
+        modifier = Modifier
+            .fillMaxWidth(if (breakpoint > Breakpoint.MD) 75.percent else 92.percent)
+            .padding(top = 10.px, bottom = 36.px, leftRight = 20.px),
+        horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Button(
@@ -125,7 +167,8 @@ fun TestimonialSection() {
             }
         ) {
             SpanText(
-                text = Res.Strings.SEE_ALL_REVIEW,
+                text = if (selectedCountry != null) "View All Reviews for $selectedCountry (${filteredTestimonials.size}) →"
+                else "${Res.Strings.SEE_ALL_REVIEW} →",
             )
         }
     }

@@ -3,11 +3,12 @@ package com.coding.meet.pages
 import androidx.compose.runtime.Composable
 import com.coding.meet.common.components.footer.Footer
 import com.coding.meet.common.page_layout.PageLayout
+import com.coding.meet.common.page_layout.fadeInUpPageAnimation
 import com.coding.meet.models.Section
 import com.coding.meet.models.contactMePath
 import com.coding.meet.screens.contact_me.components.FormInput
-import com.coding.meet.common.page_layout.fadeInUpPageAnimation
 import com.coding.meet.util.CustomColor
+import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -19,8 +20,11 @@ import com.varabyte.kobweb.compose.ui.modifiers.animation
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.flexGrow
+import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
+import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.core.Page
@@ -34,18 +38,17 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.s
 
-
 @Page(contactMePath)
 @Composable
 fun ContactMePage() {
     val breakpoint = rememberBreakpoint()
-
     PageLayout(
         title = Section.CONTACT_ME.title
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
+                .flexGrow(1)
                 .animation(
                     fadeInUpPageAnimation.toAnimation(
                         duration = 1.s,
@@ -56,30 +59,45 @@ fun ContactMePage() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Column(
-                modifier = Modifier,
+                modifier = Modifier
+                    .fillMaxWidth(if (breakpoint > Breakpoint.MD) 58.percent else 92.percent)
+                    .padding(top = 36.px, bottom = 40.px),
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 SpanText(
-                    text = "\uD83D\uDE80 Let’s Build Something Amazing Together!",
-                    modifier = Modifier.fillMaxWidth().padding(topBottom = 10.px, leftRight = 10.px)
+                    text = "📬 Let's Build Something Great",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 6.px, leftRight = 10.px)
                         .color(
                             CustomColor(
-                                lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor
+                                lightColor = Theme.LightFontColor,
+                                darkColor = Theme.DarkFontColor
                             )
-                        ).fontSize(2.cssRem).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
-                )
-                SpanText(
-                    text = "📩 Feel free to reach out – let’s collaborate and create something extraordinary!",
-                    modifier = Modifier.fillMaxWidth(
-                        if (breakpoint > Breakpoint.MD) 70.percent else 90.percent
-
-                    ).padding(topBottom = 5.px, leftRight = 20.px).color(
-                        CustomColor(
-                            lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor
                         )
-                    ).fontSize(1.2.cssRem).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
+                        .fontFamily(Res.Font.FONT_FAMILY_HEADING)
+                        .fontSize(if (breakpoint > Breakpoint.SM) 2.2.cssRem else 1.7.cssRem)
+                        .fontWeight(FontWeight.Bold)
+                        .textAlign(TextAlign.Center)
                 )
+
+                SpanText(
+                    text = "Have an idea, need Android / KMP expertise, or want to discuss an upcoming project? Send a message and let's talk.",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 24.px, leftRight = 20.px)
+                        .color(
+                            CustomColor(
+                                lightColor = Theme.DarkGray,
+                                darkColor = Theme.Muted
+                            )
+                        )
+                        .fontSize(1.0.cssRem)
+                        .lineHeight(1.6)
+                        .textAlign(TextAlign.Center)
+                )
+
                 FormInput()
             }
             Footer()

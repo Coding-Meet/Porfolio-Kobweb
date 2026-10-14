@@ -11,8 +11,12 @@ import com.coding.meet.util.AppInfo
 import com.coding.meet.util.ArticleData.articleSiteMap
 import com.coding.meet.util.Res
 import com.coding.meet.util.Res.Font.FONT_FAMILY_REGULAR
+import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
+import com.varabyte.kobweb.compose.ui.modifiers.minHeight
+import org.jetbrains.compose.web.css.vh
 import com.varabyte.kobweb.core.App
 import com.varabyte.kobweb.core.init.InitKobweb
 import com.varabyte.kobweb.core.init.InitKobwebContext
@@ -25,6 +29,9 @@ import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.style.common.SmoothColorStyle
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
+import com.varabyte.kobweb.silk.theme.colors.palette.background
+import com.varabyte.kobweb.silk.theme.colors.palette.border
+import com.varabyte.kobweb.silk.theme.colors.palette.color
 import kotlinx.browser.document
 import kotlinx.browser.localStorage
 import kotlinx.browser.window
@@ -71,7 +78,7 @@ fun AppEntry(content: @Composable () -> Unit) {
                 isLoaded = true
             }, 10000)
         }
-        Surface(SmoothColorStyle.toModifier().fillMaxSize().fontFamily(FONT_FAMILY_REGULAR)) {
+        Surface(SmoothColorStyle.toModifier().fillMaxWidth().minHeight(100.vh).fontFamily(FONT_FAMILY_REGULAR)) {
             if (!isLoaded) {
                 LoaderScreen(colorMode)
             } else {
@@ -84,7 +91,13 @@ fun AppEntry(content: @Composable () -> Unit) {
 @InitSilk
 fun initColorMode(initSilkContext: InitSilkContext) {
     initSilkContext.apply {
-//        theme.palettes.light.background = Theme.LightBackGroundColor.rgb
+        theme.palettes.light.background = Theme.LightBackGroundColor.rgb
+        theme.palettes.light.color = Theme.LightFontColor.rgb
+        theme.palettes.light.border = com.varabyte.kobweb.compose.ui.graphics.Color.rgb(226, 232, 240)
+
+        theme.palettes.dark.background = com.varabyte.kobweb.compose.ui.graphics.Color.rgb(11, 15, 25)
+        theme.palettes.dark.color = Theme.DarkFontColor.rgb
+        theme.palettes.dark.border = com.varabyte.kobweb.compose.ui.graphics.Color.rgb(30, 41, 59)
     }
 }
 

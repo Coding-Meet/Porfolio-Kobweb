@@ -11,7 +11,7 @@ object ExperienceData {
             startDate = "Jun 2023",
             endDate = "Present",
             location = "🌍 Remote",
-            description = "Delivered 45+ Android projects globally with $4,000+ earnings and a 4.9★ rating. Specialized in Kotlin, Jetpack Compose, and building scalable, production-ready applications."
+            description = "Delivered 70+ Android projects globally with $4,000+ earnings and a 4.9★ rating. Specialized in Kotlin, Jetpack Compose, and building scalable, production-ready applications."
         ),
         Experience(
             title = "🎥 Content Creator",

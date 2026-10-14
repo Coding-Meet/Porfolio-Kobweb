@@ -4,29 +4,35 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import com.coding.meet.common.components.IconButton
+import com.coding.meet.common.components.navigation_bar.styles.HeaderButtonStyle
 import com.coding.meet.common.components.navigation_bar.styles.LogoStyle
 import com.coding.meet.common.components.navigation_bar.styles.NavBarStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
+import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
+import com.varabyte.kobweb.compose.ui.modifiers.cursor
+import com.varabyte.kobweb.compose.ui.modifiers.gap
+import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.size
+import com.varabyte.kobweb.navigation.OpenLinkStrategy
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.icons.HamburgerIcon
 import com.varabyte.kobweb.silk.components.icons.MoonIcon
 import com.varabyte.kobweb.silk.components.icons.SunIcon
+import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.localStorage
-import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
 
@@ -36,56 +42,67 @@ fun DesktopMenu(
     onMenuClicked: () -> Unit
 ) {
     var colorMode by ColorMode.currentState
-
     val breakpoint = rememberBreakpoint()
 
     Div(
         attrs = NavBarStyle.toAttrs(),
     ) {
         Row(
-            modifier = Modifier.padding(all = 0.5.cssRem),
+            modifier = Modifier.padding(leftRight = if (breakpoint > Breakpoint.SM) 28.px else 14.px, topBottom = 10.px),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
             if (breakpoint <= Breakpoint.MD) {
                 IconButton(
-                    modifier = Modifier.size(50.px).backgroundColor(
-                        CustomColor(
-                            lightColor = Theme.LightGray,
-                            darkColor = Theme.DarkGray
-                        )
-                    ),
+                    modifier = HeaderButtonStyle.toModifier()
+                        .size(42.px)
+                        .backgroundColor(
+                            CustomColor(
+                                lightColor = Theme.LightGray,
+                                darkColor = Theme.DarkCardBackGroundColor
+                            )
+                        ),
                     onClick = {
                         onMenuClicked()
                     },
                 ) {
                     HamburgerIcon(
-                        modifier = Modifier.size(30.px)
+                        modifier = Modifier.size(20.px)
                     )
                 }
             }
-            Image(
-                modifier = LogoStyle.toModifier(),
-                src = when (colorMode) {
-                    ColorMode.LIGHT -> Res.Image.LOGO_LIGHT
-                    ColorMode.DARK -> Res.Image.LOGO_DARK
-                },
-                alt = "Logo Image"
-            )
+
+            Link(path = "/", openInternalLinksStrategy = OpenLinkStrategy.IN_PLACE) {
+                Image(
+                    modifier = LogoStyle.toModifier().height(36.px).cursor(Cursor.Pointer),
+                    src = when (colorMode) {
+                        ColorMode.LIGHT -> Res.Image.LOGO_LIGHT
+                        ColorMode.DARK -> Res.Image.LOGO_DARK
+                    },
+                    alt = "Logo Image"
+                )
+            }
+
             if (breakpoint > Breakpoint.MD) {
                 Row(
-                    horizontalArrangement = Arrangement.Center
+                    modifier = Modifier.gap(6.px),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     NavigationMenu(selectedSectionId)
                 }
             }
+
             IconButton(
-                modifier = Modifier.size(50.px).backgroundColor(
-                    CustomColor(
-                        lightColor = Theme.LightGray,
-                        darkColor = Theme.DarkGray
-                    )
-                ),
+                modifier = HeaderButtonStyle.toModifier()
+                    .size(42.px)
+                    .backgroundColor(
+                        CustomColor(
+                            lightColor = Theme.LightGray,
+                            darkColor = Theme.DarkCardBackGroundColor
+                        )
+                    ),
+                tooltipText = if (colorMode.isLight) "Switch to Dark Mode" else "Switch to Light Mode",
                 onClick = {
                     colorMode = colorMode.opposite
                     localStorage.setItem(Res.Strings.SAVED_THEME, colorMode.name)
@@ -94,13 +111,13 @@ fun DesktopMenu(
                 when (colorMode) {
                     ColorMode.LIGHT -> {
                         MoonIcon(
-                            modifier = Modifier.size(30.px)
+                            modifier = Modifier.size(20.px)
                         )
                     }
 
                     ColorMode.DARK -> {
                         SunIcon(
-                            modifier = Modifier.size(30.px)
+                            modifier = Modifier.size(20.px)
                         )
                     }
                 }

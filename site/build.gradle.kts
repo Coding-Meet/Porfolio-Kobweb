@@ -35,7 +35,7 @@ kobweb {
     app {
         index {
             description.set(
-                "Android developer portfolio by Meet. I build high-quality apps using Kotlin, Jetpack Compose, and KMP. 45+ projects delivered with clean architecture and scalable solutions."
+                "Android developer portfolio by Meet. I build high-quality apps using Kotlin, Jetpack Compose, and KMP. 70+ projects delivered with clean architecture and scalable solutions."
             )
             head.add {
                 script {
@@ -60,12 +60,16 @@ kobweb {
 
                 title("Coding Meet - Android App Developer | Kotlin, Jetpack Compose, KMP")
                 link(rel = "stylesheet", href = "/fonts/fonts.css")
+                link(rel = "stylesheet", href = "https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css")
+                script {
+                    src = "https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"
+                }
 
                 // this is link preview
                 ogMeta("og:title", "Coding Meet - Android App Developer Portfolio")
                 ogMeta(
                     "og:description",
-                    "Hire an Android developer for modern apps built with Kotlin, Jetpack Compose, and KMP. 45+ successful projects delivered."
+                    "Hire an Android developer for modern apps built with Kotlin, Jetpack Compose, and KMP. 70+ successful projects delivered."
                 )
 
                 ogMeta("og:image", "https://codingmeet.com/preview_image.png")

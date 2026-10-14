@@ -40,13 +40,13 @@ fun ImageSliderWithDot(
     autoPlay: Boolean = true,
     interval: Int = 3000
 ) {
-    var currentIndex by remember { mutableStateOf(0) }
+    var currentIndex by remember(imageList) { mutableStateOf(0) }
     val lastIndex = imageList.size - 1
     val colorMode by ColorMode.currentState
 
     // Auto-Play Logic
-    LaunchedEffect(autoPlay, currentIndex) {
-        if (autoPlay) {
+    LaunchedEffect(autoPlay, currentIndex, imageList) {
+        if (autoPlay && imageList.size > 1) {
             delay(interval.toLong())
             currentIndex = (currentIndex + 1) % imageList.size
         }
@@ -66,7 +66,13 @@ fun ImageSliderWithDot(
                 Img(
                     src = image,
                     alt = "Project Image",
-                    attrs = Modifier.fillMaxSize().borderRadius(10.px).toAttrs()
+                    attrs = Modifier.fillMaxSize().borderRadius(10.px).toAttrs {
+                        style {
+                            property("min-width", "100%")
+                            property("flex-shrink", "0")
+                            property("object-fit", "cover")
+                        }
+                    }
                 )
 
             }

@@ -74,12 +74,12 @@ import org.jetbrains.compose.web.css.s
 
 val ArticleContentStyle = CssStyle {
     val backgroundColor = when (colorMode) {
-        ColorMode.LIGHT -> rgba(3, 250, 110, 0.15)
-        ColorMode.DARK -> rgb(73, 80, 76)
+        ColorMode.LIGHT -> rgba(16, 185, 129, 0.12)
+        ColorMode.DARK -> rgba(16, 185, 129, 0.2)
     }
     val textColor = when (colorMode) {
-        ColorMode.LIGHT -> rgb(0x008138)
-        ColorMode.DARK -> rgb(0x03FA6E)
+        ColorMode.LIGHT -> rgb(5, 150, 105)
+        ColorMode.DARK -> rgb(52, 211, 153)
     }
     val sharedModifier2 = Modifier
         .fontWeight(800)
@@ -155,10 +155,10 @@ val ArticleContentStyle = CssStyle {
     }
     cssRule(" blockquote") {
         Modifier
-            .borderLeft(4.px, LineStyle.Solid, rgb(0x03FA6E))
+            .borderLeft(4.px, LineStyle.Solid, rgb(16, 185, 129))
             .margin(1.5.cssRem, 0.px)
             .fontStyle(FontStyle.Italic)
-            .opacity(0.8)
+            .opacity(0.85)
             .overflowWrap(OverflowWrap.BreakWord)
             .padding(left = 1.cssRem)
     }
@@ -242,12 +242,12 @@ val LinkPreviewContentStyle = CssStyle.base {
 }
 val LinkPreviewTitleStyle = CssStyle.base {
     val backgroundColor = when (colorMode) {
-        ColorMode.LIGHT -> rgba(3, 250, 110, 0.15)
-        ColorMode.DARK -> rgb(73, 80, 76)
+        ColorMode.LIGHT -> rgba(16, 185, 129, 0.12)
+        ColorMode.DARK -> rgba(16, 185, 129, 0.2)
     }
     val textColor = when (colorMode) {
-        ColorMode.LIGHT -> rgb(0x008138)
-        ColorMode.DARK -> rgb(0x03FA6E)
+        ColorMode.LIGHT -> rgb(5, 150, 105)
+        ColorMode.DARK -> rgb(52, 211, 153)
     }
     Modifier
         .fontWeight(800)
@@ -284,7 +284,7 @@ val CopyButtonStyle = CssStyle {
             .cursor(Cursor.Pointer)
             .fontSize(0.8.cssRem)
             .transition(Transition.of("all", 0.2.s, TransitionTimingFunction.Ease))
-            .fontFamily("Inter", "sans-serif")
+            .fontFamily(com.coding.meet.util.Res.Font.FONT_FAMILY_REGULAR, "sans-serif")
             .fontWeight(500)
     }
     hover {

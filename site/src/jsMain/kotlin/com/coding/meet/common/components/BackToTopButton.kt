@@ -7,8 +7,10 @@ import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
+import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.bottom
+import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.display
@@ -48,13 +50,15 @@ fun BackToTopButton() {
             .id("backTopBtn")
             .display(DisplayStyle.None)
             .position(Position.Fixed)
-            .size(50.px)
-            .bottom(20.px)
-            .right(20.px)
-            .zIndex(99)
+            .size(46.px)
+            .bottom(24.px)
+            .right(24.px)
+            .zIndex(500)
             .backgroundColor(Theme.Primary.color)
             .cursor(Cursor.Pointer)
-            .borderRadius(20.percent),
+            .borderRadius(50.percent)
+            .boxShadow(0.px, 6.px, 20.px, null, org.jetbrains.compose.web.css.rgba(16, 185, 129, 0.45))
+            .border(0.px),
         onClick = {
             window.scrollTo(
                 ScrollToOptions(

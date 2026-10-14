@@ -40,6 +40,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.active
 import com.varabyte.kobweb.silk.style.selectors.hover
+import com.varabyte.kobweb.silk.theme.colors.palette.border
+import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import org.jetbrains.compose.web.css.AnimationTimingFunction
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -122,56 +124,64 @@ val ControlButtonStyle = CssStyle {
 }
 
 val MainButtonStyle = CssStyle {
-    val backgroundColor = customColor(
-        colorMode = colorMode,
-        lightColor = Theme.LightFontColor,
-        darkColor = Theme.DarkFontColor
-    )
-    val textColor = customColor(
-        colorMode = colorMode,
-        lightColor = Theme.DarkFontColor,
-        darkColor = Theme.LightFontColor
-    )
     base {
         Modifier
-            .background {
-                size(BackgroundSize.of(220.percent))
-            }
-            .boxShadow(0.px, 0.2.em, 0.3.em, null, rgba(0, 0, 0, 0.15f))
-            .color(backgroundColor)
-            .backgroundColor(Colors.Transparent)
-            .background {
-                position(BackgroundPosition.of(CSSPosition(100.percent)))
-            }
-            .border(3.px, LineStyle.Solid, backgroundColor)
-            .textTransform(TextTransform.Uppercase)
-            .padding(8.px, 16.px)
-            .borderRadius(3.px)
-            .transition(Transition.of("all", 0.2.s, TransitionTimingFunction.EaseOut))
-            .fontWeight(900)
+            .backgroundColor(Theme.Primary.color)
+            .color(Colors.White)
+            .border(0.px)
+            .padding(10.px, 22.px)
+            .borderRadius(9999.px)
+            .boxShadow(0.px, 4.px, 14.px, null, rgba(16, 185, 129, 0.35))
+            .transition(Transition.all(200.ms, AnimationTimingFunction.EaseInOut))
+            .fontWeight(600)
             .cursor(Cursor.Pointer)
-            .letterSpacing(2.px)
-            .backgroundImage(
-                linearGradient(110.deg) {
-                    add(backgroundColor, 0.percent)
-                    add(backgroundColor, 50.percent)
-                    add(Colors.Transparent, 50.percent)
-                    add(Colors.Transparent, 100.percent)
-                }
-            )
+            .letterSpacing(0.4.px)
             .fontSize(14.px)
     }
     hover {
         Modifier
             .transform { translateY((-2).px) }
-            .boxShadow(0.px, 0.px, 0.3.em, null, rgba(0, 0, 0, 0.25f))
-            .background {
-                position(BackgroundPosition.of(CSSPosition(0.px)))
-            }
-            .color(textColor)
+            .boxShadow(0.px, 8.px, 20.px, null, rgba(16, 185, 129, 0.5))
     }
     active {
         Modifier
-            .transform { translateY((-1).px) }
+            .transform { translateY(0.px) }
+    }
+}
+
+val SecondaryButtonStyle = CssStyle {
+    base {
+        Modifier
+            .backgroundColor(Colors.Transparent)
+            .color(
+                customColor(
+                    colorMode = colorMode,
+                    lightColor = Theme.LightFontColor,
+                    darkColor = Theme.DarkFontColor
+                )
+            )
+            .border(
+                1.px,
+                LineStyle.Solid,
+                colorMode.toPalette().border
+            )
+            .padding(10.px, 22.px)
+            .borderRadius(9999.px)
+            .transition(Transition.all(200.ms, AnimationTimingFunction.EaseInOut))
+            .fontWeight(600)
+            .cursor(Cursor.Pointer)
+            .letterSpacing(0.4.px)
+            .fontSize(14.px)
+    }
+    hover {
+        Modifier
+            .transform { translateY((-2).px) }
+            .backgroundColor(
+                if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(255, 255, 255, 0.08)
+            )
+    }
+    active {
+        Modifier
+            .transform { translateY(0.px) }
     }
 }

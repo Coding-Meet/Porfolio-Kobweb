@@ -6,20 +6,24 @@ import com.coding.meet.screens.home.experience.components.RatingBar
 import com.coding.meet.screens.home.testimonial.styles.testimonialCardStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Theme
-import com.varabyte.kobweb.compose.css.FontStyle
 import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.color
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.flexGrow
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
-import com.varabyte.kobweb.compose.ui.modifiers.fontStyle
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.overflow
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.styleModifier
@@ -42,62 +46,81 @@ fun TestimonialCard(
                     Modifier.fillMaxWidth()
                 }
             ),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.Start
     ) {
-        // Quote Icon at top left
-        SpanText(
-            text = "“",
-            modifier = Modifier.fillMaxWidth().color(Theme.Primary.color)
-                .fontSize(3.cssRem).fontWeight(FontWeight.Bold).textAlign(TextAlign.Start)
-                .margin(top = (-15).px, bottom = (-20).px)
-        )
+        // Top Header: Rating & Quote mark
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(bottom = 12.px),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            RatingBar(
+                modifier = Modifier,
+                rating = testimonial.rating
+            )
+            SpanText(
+                text = "“",
+                modifier = Modifier
+                    .color(Theme.Primary.color)
+                    .fontSize(2.4.cssRem)
+                    .fontWeight(FontWeight.Bold)
+                    .lineHeight(1)
+            )
+        }
 
-        RatingBar(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 10.px),
-            rating = testimonial.rating
-        )
-
-        SpanText(
-            text = testimonial.review,
+        // Review Text container
+        Box(
             modifier = Modifier
-                .padding(bottom = 5.px, leftRight = 5.px)
-                .color(
-                    CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor)
-                )
-                .fontSize(0.9.cssRem)
-                .fontStyle(FontStyle.Italic)
-                .textAlign(TextAlign.Center)
-                .lineHeight(1.5)
-                .then(
-                    if (maxLines != null) {
-                        Modifier.styleModifier {
-                            property("display", "-webkit-box")
-                            property("-webkit-line-clamp", maxLines)
-                            property("-webkit-box-orient", "vertical")
-                            property("overflow", "hidden")
-                        }
-                    } else Modifier
-                )
-        )
-
-        Column(
-            modifier = Modifier.fillMaxWidth().margin(top = 10.px),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .fillMaxWidth()
+                .flexGrow(1)
+                .overflow(Overflow.Hidden)
+                .padding(bottom = 12.px)
         ) {
             SpanText(
-                text = "\uD83C\uDF0D ${testimonial.country}",
-                modifier = Modifier.color(
-                    CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor)
-                ).fontSize(0.8.cssRem).fontWeight(FontWeight.Bold)
+                text = testimonial.review,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .color(
+                        CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor)
+                    )
+                    .fontSize(0.92.cssRem)
+                    .textAlign(TextAlign.Start)
+                    .lineHeight(1.55)
+                    .then(
+                        if (maxLines != null) {
+                            Modifier.styleModifier {
+                                property("display", "-webkit-box")
+                                property("-webkit-line-clamp", maxLines.toString())
+                                property("-webkit-box-orient", "vertical")
+                                property("overflow", "hidden")
+                                property("text-overflow", "ellipsis")
+                                property("word-break", "break-word")
+                            }
+                        } else Modifier
+                    )
+            )
+        }
+
+        // Author metadata
+        Column(
+            modifier = Modifier.fillMaxWidth().margin(top = 8.px),
+            horizontalAlignment = Alignment.Start
+        ) {
+            SpanText(
+                text = testimonial.country,
+                modifier = Modifier
+                    .color(CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor))
+                    .fontSize(0.85.cssRem)
+                    .fontWeight(FontWeight.SemiBold)
             )
             SpanText(
                 text = testimonial.serviceName.replace("_", " "),
-                modifier = Modifier.color(Theme.DarkGray.color).fontSize(0.7.cssRem)
+                modifier = Modifier
+                    .padding(top = 2.px)
+                    .color(CustomColor(lightColor = Theme.DarkGray, darkColor = Theme.Muted))
+                    .fontSize(0.78.cssRem)
             )
         }
     }
 }
-
-
-

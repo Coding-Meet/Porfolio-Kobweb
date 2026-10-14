@@ -7,35 +7,33 @@ object ServiceData {
     val services = listOf(
 
         Service(
-            title = "\uD83D\uDCF1 Build Android & iOS Apps",
-            description = "Need a modern mobile app for Android, iOS, Desktop, or Web? I build scalable apps using the latest technologies.",
+            title = "\uD83D\uDCF1 Custom Android App Development",
+            description = "Need a custom mobile app for Android? I build high-quality, scalable apps using Kotlin and modern architecture.",
             features = listOf(
-                "Develop apps using Kotlin, Java, Jetpack Compose, Compose Multiplatform, and Kotlin Multiplatform",
-                "Build Android, iOS, Desktop, and Web apps from a shared codebase",
-                "Modern UI development using Material 3 and Compose",
+                "Develop custom apps using Kotlin, Java, and Jetpack Compose",
                 "Clean Architecture + MVVM for scalable and maintainable apps",
                 "Dependency Injection using Koin and Dagger Hilt",
                 "REST API integration using Retrofit, Ktor, and OkHttp",
                 "Local database integration with Room and SQLDelight",
-                "Firebase integration: Authentication, Firestore, Realtime Database, Analytics, Crashlytics, Push Notifications",
+                "Firebase integration: Auth, Firestore, Realtime DB, Crashlytics, Push Notifications",
                 "Google APIs integration: Maps, Sign-In, Location, Billing, AdMob",
-                "Media apps with ExoPlayer, audio/video support, and file handling",
                 "Offline-first architecture with caching and synchronization",
                 "Performance optimization and smooth animations",
-                "Play Store and App Store ready production apps"
+                "Play Store production release ready"
             ),
             imageUrls = listOf(
-                "/services/build_android_app.png"
+                "/services/custom-android-app/[14-52-39_28-06-26]-variant_2_custom_android_app.png",
+                "/services/custom-android-app/[14-52-43_28-06-26]-variant_3_custom_android_app.png",
+                "/services/custom-android-app/[15-01-37_28-06-26]-variant_2_custom_android_app.png"
             ),
         ),
 
         Service(
-            title = "\uD83D\uDD27 Fix Bugs & Improve Existing Apps",
-            description = "Facing crashes, slow performance, or architecture issues? I can debug and improve your app professionally.",
+            title = "\uD83D\uDD27 Fix Bugs & Debug Android Apps",
+            description = "Facing crashes, slow performance, or architecture issues? I can debug and fix your app professionally.",
             features = listOf(
                 "Fix app crashes, ANRs, memory leaks, and runtime issues",
                 "Resolve Jetpack Compose recomposition and UI state bugs",
-                "Debug Kotlin Multiplatform and Compose Multiplatform issues",
                 "Fix Gradle, SDK, dependency, and Android Studio problems",
                 "Resolve API integration and JSON parsing issues",
                 "Improve app performance, startup speed, and responsiveness",
@@ -43,58 +41,65 @@ object ServiceData {
                 "Resolve Firebase Authentication and database problems",
                 "Fix Play Store publishing and signing issues",
                 "Refactor messy code into clean architecture",
-                "Optimize network calls and background processing",
-                "Debug WebView, media player, notification, and permission issues",
-                "Resolve compatibility issues across Android versions and devices"
+                "Resolve compatibility issues across Android versions"
             ),
             imageUrls = listOf(
-                "/services/fix_bug.png"
+                "/services/fix_android_bugs/[18-24-42_28-06-26]-variant_1_fix_android_bugs.png",
+                "/services/fix_android_bugs/[18-24-44_28-06-26]-variant_2_fix_android_bugs.png",
+                "/services/fix_android_bugs/[18-24-48_28-06-26]-variant_3_fix_android_bugs.png"
             ),
         ),
 
         Service(
-            title = "\uD83D\uDE80 Upgrade SDK, Gradle & Modernize App",
-            description = "Need to migrate your old project to the latest Android ecosystem? I can modernize your app safely.",
+            title = "🎨 Kotlin & Jetpack Compose UI",
+            description = "Modernize your UI with Jetpack Compose. Dynamic, reactive, and responsive interfaces built with Material 3.",
             features = listOf(
-                "Upgrade project to latest Android SDK and Gradle versions",
-                "Migrate Java/XML projects to Kotlin and Jetpack Compose",
-                "Update deprecated APIs and outdated libraries",
-                "Migrate from old support libraries to AndroidX",
-                "Modernize architecture using MVVM and Clean Architecture",
-                "Fix breaking changes after SDK or dependency updates",
-                "Resolve AGP, Kotlin, and build configuration issues",
-                "Improve app security and Play Store compliance",
-                "Add edge-to-edge UI and latest Android features",
-                "Prepare apps for latest Play Store requirements",
-                "Optimize app size and build performance",
-                "Fix release build, ProGuard, and R8 issues",
-                "Support latest Android devices and API levels"
+                "Declarative UI development with Jetpack Compose & Material 3",
+                "Custom animations, transitions, and state management",
+                "Adaptive layouts for phones, tablets, and foldables",
+                "Dark mode & light mode theme switching",
+                "Migrate legacy XML layouts to modern Jetpack Compose",
+                "Custom UI components, design systems, and canvas drawing"
             ),
             imageUrls = listOf(
-                "/services/update_android_app.png"
+                "/services/kotlin_jetpack_compose/[15-44-20_28-06-26]-variant_1_kotlin_jetpack_compose.png",
+                "/services/kotlin_jetpack_compose/[15-44-23_28-06-26]-variant_2_kotlin_jetpack_compose.png",
+                "/services/kotlin_jetpack_compose/[15-50-56_28-06-26]-variant_3_kotlin_jetpack_compose.png"
             ),
         ),
 
         Service(
-            title = "\uD83E\uDD16 AI Integration & Smart Features",
-            description = "Want to add AI-powered experiences to your app? I integrate modern AI tools and automation features.",
+            title = "⚡ Kotlin Multiplatform & Compose Multiplatform",
+            description = "Target Android, iOS, Desktop, and Web from a single codebase using Kotlin Multiplatform & Compose Multiplatform.",
             features = listOf(
-                "Integrate OpenAI GPT, Google Gemini, and other AI APIs",
-                "Build AI chatbots with streaming responses",
-                "Voice-to-Text and Text-to-Speech integration",
-                "AI image generation and image analysis features",
-                "AI-powered content generation and summarization",
-                "Secure API handling and token management",
-                "Chat history management using Room or SQLDelight",
-                "Clipboard actions, message actions, and smart prompts",
-                "Modern chat UI with markdown and code highlighting",
-                "Realtime AI responses using WebSockets or streaming APIs",
-                "Custom AI assistants for business or productivity apps",
-                "Offline caching and optimized API usage for lower costs",
-                "Integrate AI features into existing Android/iOS apps"
+                "Share business logic across Android, iOS, Desktop, and Web",
+                "Shared UI using Compose Multiplatform (CMP)",
+                "Cross-platform state management with Koin & Decompose / ViewModel",
+                "Shared networking with Ktor & multiplatform serialization",
+                "Multiplatform database storage using SQLDelight or Room KMP",
+                "Cost-effective & faster time to market for cross-platform apps"
             ),
             imageUrls = listOf(
-                "/services/chatbot.png"
+                "/services/kotlin_multiplatform_cmp/[15-41-03_30-06-26]-variant_1_kotlin_multiplatform_cmp.png",
+                "/services/kotlin_multiplatform_cmp/[15-41-06_30-06-26]-variant_2_kotlin_multiplatform_cmp.png",
+                "/services/kotlin_multiplatform_cmp/[15-41-10_30-06-26]-variant_3_kotlin_multiplatform_cmp.png"
+            ),
+        ),
+
+        Service(
+            title = "🍎 Native iOS App Development (Swift)",
+            description = "Build high-performance native iOS applications using Swift and SwiftUI with clean architecture.",
+            features = listOf(
+                "Native iOS development using Swift and SwiftUI / UIKit",
+                "Clean Architecture + MVVM for scalable iOS codebases",
+                "REST API integration & URLSession / Alamofire networking",
+                "Local data storage with SwiftData or CoreData",
+                "iOS App Store release preparation & TestFlight deployment"
+            ),
+            imageUrls = listOf(
+                "/services/native_ios_swift/[16-54-40_30-06-26]-variant_1_native_ios_swift.png",
+                "/services/native_ios_swift/[16-54-43_30-06-26]-variant_2_native_ios_swift.png",
+                "/services/native_ios_swift/[16-54-46_30-06-26]-variant_3_native_ios_swift.png"
             ),
         )
     )
