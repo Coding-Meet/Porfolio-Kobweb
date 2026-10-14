@@ -2,22 +2,26 @@ package com.coding.meet.screens.contact_me.styles
 
 import com.coding.meet.util.Theme
 import com.coding.meet.util.customColor
+import com.varabyte.kobweb.compose.css.BoxSizing
 import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
+import com.varabyte.kobweb.compose.ui.modifiers.boxSizing
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.letterSpacing
 import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.minHeight
 import com.varabyte.kobweb.compose.ui.modifiers.opacity
 import com.varabyte.kobweb.compose.ui.modifiers.outline
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.transition
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.theme.colors.palette.border
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
@@ -29,6 +33,7 @@ import org.jetbrains.compose.web.css.rgba
 val formStyle = CssStyle {
     val commonFormInputFormTextAreaModifier = Modifier
         .fillMaxWidth()
+        .boxSizing(BoxSizing.BorderBox)
         .background(
             customColor(
                 colorMode = colorMode,
@@ -58,6 +63,14 @@ val formStyle = CssStyle {
     }
     cssRule(" textarea") {
         commonFormInputFormTextAreaModifier
+            .minHeight(140.px)
+            .styleModifier {
+                property("resize", "vertical")
+                property("min-width", "100%")
+                property("max-width", "100%")
+                property("min-height", "140px")
+                property("max-height", "450px")
+            }
     }
     cssRule(" input:focus") {
         Modifier
