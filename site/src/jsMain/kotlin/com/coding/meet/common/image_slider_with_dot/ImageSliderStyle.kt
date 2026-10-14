@@ -2,10 +2,12 @@ package com.coding.meet.common.image_slider_with_dot
 
 import com.coding.meet.util.Theme
 import com.coding.meet.util.customColor
+import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.css.BackgroundPosition
 import com.varabyte.kobweb.compose.css.BackgroundSize
 import com.varabyte.kobweb.compose.css.CSSPosition
 import com.varabyte.kobweb.compose.css.Cursor
+import com.varabyte.kobweb.compose.css.JustifyContent
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.TextTransform
 import com.varabyte.kobweb.compose.css.Transition
@@ -13,6 +15,7 @@ import com.varabyte.kobweb.compose.css.TransitionTimingFunction
 import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
+import com.varabyte.kobweb.compose.ui.modifiers.alignItems
 import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundImage
@@ -27,6 +30,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.height
+import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
 import com.varabyte.kobweb.compose.ui.modifiers.left
 import com.varabyte.kobweb.compose.ui.modifiers.letterSpacing
 import com.varabyte.kobweb.compose.ui.modifiers.overflow
@@ -37,6 +41,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.top
 import com.varabyte.kobweb.compose.ui.modifiers.transform
 import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.modifiers.width
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.active
 import com.varabyte.kobweb.silk.style.selectors.hover
@@ -126,6 +131,9 @@ val ControlButtonStyle = CssStyle {
 val MainButtonStyle = CssStyle {
     base {
         Modifier
+            .display(DisplayStyle.Flex)
+            .alignItems(AlignItems.Center)
+            .justifyContent(JustifyContent.Center)
             .backgroundColor(Theme.Primary.color)
             .color(Colors.White)
             .border(0.px)
@@ -152,7 +160,12 @@ val MainButtonStyle = CssStyle {
 val SecondaryButtonStyle = CssStyle {
     base {
         Modifier
-            .backgroundColor(Colors.Transparent)
+            .display(DisplayStyle.Flex)
+            .alignItems(AlignItems.Center)
+            .justifyContent(JustifyContent.Center)
+            .backgroundColor(
+                if (colorMode.isLight) Theme.White.color else rgba(255, 255, 255, 0.07)
+            )
             .color(
                 customColor(
                     colorMode = colorMode,
@@ -163,8 +176,19 @@ val SecondaryButtonStyle = CssStyle {
             .border(
                 1.px,
                 LineStyle.Solid,
-                colorMode.toPalette().border
+                if (colorMode.isLight) colorMode.toPalette().border else rgba(255, 255, 255, 0.12)
             )
+            .boxShadow(
+                0.px,
+                2.px,
+                6.px,
+                null,
+                if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(0, 0, 0, 0.2)
+            )
+            .styleModifier {
+                property("backdrop-filter", "blur(8px)")
+                property("-webkit-backdrop-filter", "blur(8px)")
+            }
             .padding(10.px, 22.px)
             .borderRadius(9999.px)
             .transition(Transition.all(200.ms, AnimationTimingFunction.EaseInOut))
@@ -177,7 +201,15 @@ val SecondaryButtonStyle = CssStyle {
         Modifier
             .transform { translateY((-2).px) }
             .backgroundColor(
-                if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(255, 255, 255, 0.08)
+                if (colorMode.isLight) Theme.White.color else rgba(255, 255, 255, 0.12)
+            )
+            .border(1.px, LineStyle.Solid, Theme.Primary.color)
+            .boxShadow(
+                0.px,
+                4.px,
+                14.px,
+                null,
+                if (colorMode.isLight) rgba(16, 185, 129, 0.15) else rgba(16, 185, 129, 0.25)
             )
     }
     active {
