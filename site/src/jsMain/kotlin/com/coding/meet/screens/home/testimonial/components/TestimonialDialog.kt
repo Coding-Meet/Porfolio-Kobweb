@@ -34,6 +34,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.CloseIcon
+import com.varabyte.kobweb.silk.components.layout.SimpleGrid
+import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.border
@@ -114,15 +116,17 @@ fun ColumnScope.TestimonialDialog(
             )
             .toAttrs()
     )
-    Column(
+    SimpleGrid(
+        numColumns = numColumns(base = 1, md = 1),
         modifier = Modifier
             .fillMaxWidth()
             .overflow(Overflow.Auto)
-            .padding(top = 4.px),
-        verticalArrangement = Arrangement.spacedBy(20.px)
+            .padding(top = 4.px)
     ) {
         displayList.forEach { testimonial ->
-            TestimonialCard(testimonial)
+            Box(modifier = Modifier.fillMaxWidth().padding(6.px)) {
+                TestimonialCard(testimonial)
+            }
         }
     }
 }

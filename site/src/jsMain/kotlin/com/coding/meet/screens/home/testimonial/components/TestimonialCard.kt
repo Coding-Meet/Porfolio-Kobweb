@@ -23,6 +23,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.minHeight
 import com.varabyte.kobweb.compose.ui.modifiers.overflow
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
@@ -37,21 +38,23 @@ fun TestimonialCard(
     testimonial: Testimonial,
     maxLines: Int? = null
 ) {
+    val isDialogView = (maxLines == null)
+
     Column(
         modifier = testimonialCardStyle.toModifier()
             .then(
-                if (maxLines != null) {
+                if (!isDialogView) {
                     Modifier.margin(10.px)
                 } else {
-                    Modifier.fillMaxWidth()
+                    Modifier.fillMaxWidth().minHeight(0.px).padding(18.px)
                 }
             ),
-        verticalArrangement = Arrangement.SpaceBetween,
+        verticalArrangement = if (!isDialogView) Arrangement.SpaceBetween else Arrangement.Top,
         horizontalAlignment = Alignment.Start
     ) {
         // Top Header: Rating & Quote mark
         Row(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 12.px),
+            modifier = Modifier.fillMaxWidth().padding(bottom = if (!isDialogView) 12.px else 8.px),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
@@ -63,7 +66,7 @@ fun TestimonialCard(
                 text = "“",
                 modifier = Modifier
                     .color(Theme.Primary.color)
-                    .fontSize(2.4.cssRem)
+                    .fontSize(if (!isDialogView) 2.4.cssRem else 2.0.cssRem)
                     .fontWeight(FontWeight.Bold)
                     .lineHeight(1)
             )
@@ -73,9 +76,11 @@ fun TestimonialCard(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .flexGrow(1)
-                .overflow(Overflow.Hidden)
-                .padding(bottom = 12.px)
+                .then(
+                    if (!isDialogView) Modifier.flexGrow(1).overflow(Overflow.Hidden)
+                    else Modifier.flexGrow(0)
+                )
+                .padding(bottom = if (!isDialogView) 12.px else 10.px)
         ) {
             SpanText(
                 text = testimonial.review,
@@ -104,7 +109,7 @@ fun TestimonialCard(
 
         // Author metadata
         Column(
-            modifier = Modifier.fillMaxWidth().margin(top = 8.px),
+            modifier = Modifier.fillMaxWidth().margin(top = if (!isDialogView) 8.px else 4.px),
             horizontalAlignment = Alignment.Start
         ) {
             SpanText(
