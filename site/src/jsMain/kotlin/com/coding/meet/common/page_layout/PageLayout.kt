@@ -72,6 +72,9 @@ fun PageLayout(
             .fillMaxWidth()
             .minHeight(100.vh)
             .position(Position.Relative)
+            .styleModifier {
+                property("isolation", "isolate")
+            }
             .display(DisplayStyle.Flex)
             .flexDirection(FlexDirection.Column).toAttrs()
     ) {
@@ -82,7 +85,7 @@ fun PageLayout(
                 .position(Position.Fixed)
                 .top(0.px)
                 .left(0.px)
-                .zIndex(0)
+                .zIndex(-1)
                 .styleModifier {
                     property(
                         "background",
@@ -107,7 +110,7 @@ fun PageLayout(
                 .position(Position.Fixed)
                 .top(0.px)
                 .left(0.px)
-                .zIndex(0)
+                .zIndex(-1)
                 .styleModifier {
                     property(
                         "background-image",
