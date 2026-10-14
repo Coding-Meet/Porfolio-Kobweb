@@ -12,6 +12,7 @@ import com.coding.meet.models.articlesPath
 import com.coding.meet.screens.articles.components.StatItem
 import com.coding.meet.screens.articles_detail.styles.ArticleContentStyle
 import com.coding.meet.util.CustomColor
+import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
@@ -21,15 +22,19 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
+import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.flexWrap
+import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
+import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
@@ -49,14 +54,17 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.document
 import kotlinx.browser.window
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.web.css.FlexWrap
 import org.jetbrains.compose.web.css.JustifyContent
+import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.Div
 import org.w3c.dom.HTMLAnchorElement
 import org.w3c.dom.HTMLButtonElement
@@ -71,6 +79,7 @@ fun ArticleContent(
     article: Article?,
 ) {
     val breakpoint = rememberBreakpoint()
+    val colorMode by ColorMode.currentState
     var isCopied by remember { mutableStateOf(false) }
 
     LaunchedEffect(isCopied) {
@@ -82,13 +91,23 @@ fun ArticleContent(
     if (article != null) {
         Row(
             modifier = Modifier
-                .fillMaxWidth(if (breakpoint >= Breakpoint.MD) 80.percent else 100.percent)
+                .fillMaxWidth(if (breakpoint >= Breakpoint.MD) 75.percent else 95.percent)
                 .padding(topBottom = 15.px),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Start
         ) {
             Row(
                 modifier = Modifier
+                    .padding(leftRight = 14.px, topBottom = 8.px)
+                    .borderRadius(9999.px)
+                    .border(
+                        1.px,
+                        LineStyle.Solid,
+                        if (colorMode.isLight) rgba(0, 0, 0, 0.08) else rgba(255, 255, 255, 0.12)
+                    )
+                    .backgroundColor(
+                        if (colorMode.isLight) rgba(0, 0, 0, 0.03) else rgba(255, 255, 255, 0.05)
+                    )
                     .cursor(Cursor.Pointer)
                     .onClick {
                         val isInternal =
@@ -101,13 +120,13 @@ fun ArticleContent(
                     },
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                FaArrowLeft(modifier = Modifier.margin(right = 8.px))
+                FaArrowLeft(modifier = Modifier.margin(right = 8.px).fontSize(0.9.cssRem).color(Theme.Primary.color))
                 SpanText(
                     text = "Back to Blog",
                     modifier = Modifier
                         .color(CustomColor(Theme.LightFontColor, Theme.DarkFontColor))
-                        .fontSize(1.cssRem)
-                        .fontWeight(FontWeight.Medium)
+                        .fontSize(0.92.cssRem)
+                        .fontWeight(FontWeight.SemiBold)
                 )
             }
         }
@@ -115,17 +134,19 @@ fun ArticleContent(
         SpanText(
             text = article.title,
             modifier = Modifier
-                .fillMaxWidth(if (breakpoint >= Breakpoint.MD) 80.percent else 100.percent)
-                .padding(bottom = 20.px)
+                .fillMaxWidth(if (breakpoint >= Breakpoint.MD) 75.percent else 95.percent)
+                .padding(top = 10.px, bottom = 20.px)
                 .color(CustomColor(Theme.LightFontColor, Theme.DarkFontColor))
-                .fontSize(2.0.cssRem)
+                .fontFamily(Res.Font.FONT_FAMILY_HEADING)
+                .fontSize(if (breakpoint > Breakpoint.SM) 2.4.cssRem else 1.8.cssRem)
                 .fontWeight(FontWeight.Bold)
+                .lineHeight(1.25)
                 .textAlign(TextAlign.Center)
         )
 
         Row(
             modifier = Modifier
-                .fillMaxWidth(if (breakpoint >= Breakpoint.MD) 80.percent else 100.percent)
+                .fillMaxWidth(if (breakpoint >= Breakpoint.MD) 75.percent else 95.percent)
                 .flexWrap(FlexWrap.Wrap)
                 .justifyContent(JustifyContent.Center),
             horizontalArrangement = Arrangement.Center,
@@ -142,11 +163,12 @@ fun ArticleContent(
                 modifier = Modifier
                     .backgroundColor(Theme.Primary.color)
                     .padding(leftRight = 14.px, topBottom = 8.px)
-                    .borderRadius(12.px)
+                    .borderRadius(9999.px)
                     .margin(
                         left = 10.px,
                         top = if (breakpoint == Breakpoint.SM) 10.px else 0.px
-                    ),
+                    )
+                    .cursor(Cursor.Pointer),
                 onClick = {
                     window.navigator.clipboard.writeText(window.location.href)
                     isCopied = true
@@ -157,24 +179,24 @@ fun ArticleContent(
                 ) {
                     FaLink(
                         modifier = Modifier
-                            .margin(right = 8.px)
-                            .fontSize(1.cssRem)
-                            .color(Theme.LightFontColor.color)
+                            .margin(right = 6.px)
+                            .fontSize(0.85.cssRem)
+                            .color(Colors.White)
                     )
                     SpanText(
                         text = if (isCopied) "Copied!" else "Copy Link",
                         modifier = Modifier
-                            .color(Theme.LightFontColor.color)
-                            .fontSize(0.9.cssRem)
-                            .fontWeight(FontWeight.Bold)
+                            .color(Colors.White)
+                            .fontSize(0.85.cssRem)
+                            .fontWeight(FontWeight.SemiBold)
                     )
                 }
             }
         }
         Column(
             modifier = Modifier
-                .fillMaxWidth(if (breakpoint >= Breakpoint.MD) 80.percent else 100.percent)
-                .padding(bottom = 40.px)
+                .fillMaxWidth(if (breakpoint >= Breakpoint.MD) 75.percent else 95.percent)
+                .padding(top = 24.px, bottom = 40.px)
                 .color(CustomColor(Theme.LightFontColor, Theme.DarkFontColor))
         ) {
             key(article.content) {

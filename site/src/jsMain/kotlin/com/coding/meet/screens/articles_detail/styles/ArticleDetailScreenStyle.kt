@@ -1,8 +1,11 @@
 package com.coding.meet.screens.articles_detail.styles
 
+import com.coding.meet.util.Res
+import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.BoxSizing
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontStyle
+import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.OverflowWrap
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -16,7 +19,6 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Color.Companion.rgb
 import com.varabyte.kobweb.compose.ui.graphics.Colors.Transparent
 import com.varabyte.kobweb.compose.ui.modifiers.alignItems
-import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.borderLeft
@@ -52,7 +54,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.top
 import com.varabyte.kobweb.compose.ui.modifiers.transform
 import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.modifiers.whiteSpace
-import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.modifiers.wordBreak
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
@@ -73,32 +74,32 @@ import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.css.s
 
 val ArticleContentStyle = CssStyle {
-    val backgroundColor = when (colorMode) {
-        ColorMode.LIGHT -> rgba(16, 185, 129, 0.12)
-        ColorMode.DARK -> rgba(16, 185, 129, 0.2)
+    val codeBgColor = when (colorMode) {
+        ColorMode.LIGHT -> rgba(16, 185, 129, 0.1)
+        ColorMode.DARK -> rgba(16, 185, 129, 0.18)
     }
-    val textColor = when (colorMode) {
+    val codeTextColor = when (colorMode) {
         ColorMode.LIGHT -> rgb(5, 150, 105)
         ColorMode.DARK -> rgb(52, 211, 153)
     }
-    val sharedModifier2 = Modifier
-        .fontWeight(800)
-        .backgroundColor(backgroundColor)
-        .color(textColor)
-        .padding(2.px, 6.px)
-        .borderRadius(4.px)
-        .display(DisplayStyle.InlineBlock)
-        .lineHeight(1.2)
-    val sharedModifier5 = Modifier
-        .overflowWrap(OverflowWrap.BreakWord)
-        .margin(top = 2.cssRem, bottom = 1.cssRem)
+
     val sharedModifier6 = Modifier
         .maxWidth(100.percent)
         .boxSizing(BoxSizing.BorderBox)
         .margin(bottom = 1.5.cssRem)
         .padding(left = 1.5.cssRem)
-    val sharedModifier20 = Modifier
-        .color(rgb(0x858585))
+
+    val commentColor = Modifier.color(rgb(0x858585))
+
+    val sharedModifier2 = Modifier
+        .fontWeight(800)
+        .backgroundColor(codeBgColor)
+        .color(codeTextColor)
+        .padding(leftRight = 6.px, topBottom = 2.px)
+        .borderRadius(4.px)
+        .display(DisplayStyle.InlineBlock)
+        .lineHeight(1.2)
+
     base {
         Modifier
             .lineHeight(1.5)
@@ -108,113 +109,191 @@ val ArticleContentStyle = CssStyle {
             .overflowWrap(OverflowWrap.BreakWord)
             .flexWrap(FlexWrap.Wrap)
     }
+
     cssRule(" p") {
         Modifier
             .margin(bottom = 1.5.cssRem)
     }
+
     cssRule(" strong") {
         sharedModifier2
     }
+
     cssRule(" b") {
         sharedModifier2
     }
+
+    cssRule(" h1") {
+        Modifier
+            .fontFamily(Res.Font.FONT_FAMILY_HEADING)
+            .fontSize(1.9.cssRem)
+            .fontWeight(FontWeight.Bold)
+            .lineHeight(1.25)
+            .margin(top = 2.4.cssRem, bottom = 1.cssRem)
+            .overflowWrap(OverflowWrap.BreakWord)
+    }
+
+    cssRule(" h2") {
+        Modifier
+            .fontFamily(Res.Font.FONT_FAMILY_HEADING)
+            .fontSize(1.55.cssRem)
+            .fontWeight(FontWeight.Bold)
+            .lineHeight(1.3)
+            .margin(top = 2.cssRem, bottom = 0.8.cssRem)
+            .overflowWrap(OverflowWrap.BreakWord)
+    }
+
+    cssRule(" h3") {
+        Modifier
+            .fontFamily(Res.Font.FONT_FAMILY_HEADING)
+            .fontSize(1.3.cssRem)
+            .fontWeight(FontWeight.Bold)
+            .lineHeight(1.35)
+            .margin(top = 1.6.cssRem, bottom = 0.6.cssRem)
+            .overflowWrap(OverflowWrap.BreakWord)
+    }
+
+    cssRule(" a") {
+        Modifier
+            .color(Theme.Primary.color)
+            .fontWeight(FontWeight.SemiBold)
+            .textDecorationLine(TextDecorationLine.Underline)
+            .transition(Transition.of("opacity", 0.2.s, TransitionTimingFunction.Ease))
+    }
+
+    cssRule(" a:hover") {
+        Modifier.opacity(0.8)
+    }
+
     cssRule(" figure") {
         Modifier
-            .margin(1.cssRem, 0.px)
+            .margin(1.5.cssRem, 0.px)
             .display(DisplayStyle.Flex)
             .flexDirection(FlexDirection.Column)
             .alignItems(AlignItems.Center)
             .justifyContent(JustifyContent.Center)
             .maxWidth(100.percent)
     }
+
     cssRule(" img") {
         Modifier
             .maxWidth(100.percent)
             .height(autoLength)
-            .borderRadius(12.px)
+            .borderRadius(14.px)
+            .boxShadow(0.px, 4.px, 20.px, null, rgba(0, 0, 0, 0.15))
     }
-    cssRule(" h1") {
-        sharedModifier5
-    }
-    cssRule(" h2") {
-        sharedModifier5
-    }
-    cssRule(" h3") {
-        sharedModifier5
-    }
+
     cssRule(" ul") {
         sharedModifier6
     }
+
     cssRule(" ol") {
         sharedModifier6
     }
+
     cssRule(" li") {
         Modifier
             .overflowWrap(OverflowWrap.BreakWord)
             .margin(bottom = 0.5.cssRem)
+            .lineHeight(1.65)
     }
+
     cssRule(" blockquote") {
         Modifier
-            .borderLeft(4.px, LineStyle.Solid, rgb(16, 185, 129))
+            .borderLeft(4.px, LineStyle.Solid, Theme.Primary.color)
             .margin(1.5.cssRem, 0.px)
             .fontStyle(FontStyle.Italic)
-            .opacity(0.85)
+            .opacity(0.88)
             .overflowWrap(OverflowWrap.BreakWord)
-            .padding(left = 1.cssRem)
+            .padding(top = 4.px, bottom = 4.px, left = 1.2.cssRem)
     }
+
+    cssRule(" code") {
+        Modifier
+            .fontFamily("Fira Code", "monospace")
+            .color(codeTextColor)
+            .backgroundColor(codeBgColor)
+            .padding(leftRight = 6.px, topBottom = 2.px)
+            .borderRadius(5.px)
+            .fontSize(0.9.cssRem)
+            .overflowWrap(OverflowWrap.BreakWord)
+    }
+
     cssRule(" pre") {
         Modifier
-            .background(rgb(0x1e1e1e))
+            .backgroundColor(rgb(0x1e1e1e))
             .color(rgb(0xd4d4d4))
-            .padding(2.5.cssRem, 1.5.cssRem, 1.5.cssRem, 1.5.cssRem)
-            .borderRadius(12.px)
+            .padding(top = 2.8.cssRem, leftRight = 1.5.cssRem, bottom = 1.5.cssRem)
+            .borderRadius(14.px)
             .overflow { x(Overflow.Auto) }
             .margin(0.px)
             .fontFamily("Fira Code", "Courier New", "monospace")
-            .boxShadow(0.px, 0.px,20.px, 10.px, rgba(0, 0, 0, 0.2f))
+            .boxShadow(0.px, 6.px, 25.px, null, rgba(0, 0, 0, 0.35))
             .maxWidth(100.percent)
             .boxSizing(BoxSizing.BorderBox)
+            .border(1.px, LineStyle.Solid, rgba(255, 255, 255, 0.1))
     }
-    cssRule(" code") {
-        Modifier
-            .fontFamily("inherit")
-            .color(rgb(0xce9178))
-            .background(rgba(0, 0, 0, 0.05f))
-            .padding(2.px, 6.px)
-            .borderRadius(4.px)
-            .overflowWrap(OverflowWrap.BreakWord)
-    }
+
     cssRule(" pre code") {
         Modifier
-            .background(Transparent)
+            .backgroundColor(Transparent)
             .padding(0.px)
             .color(rgb(0x9cdcfe))
+            .fontSize(0.9.cssRem)
             .whiteSpace(WhiteSpace.Pre)
             .overflowWrap(OverflowWrap.Normal)
     }
-    cssRule(" .comment") {
-        sharedModifier20
+
+    // Code copy wrapper & button
+    cssRule(" .code-wrapper") {
+        Modifier
+            .position(Position.Relative)
+            .margin(topBottom = 2.cssRem)
+            .fillMaxWidth()
     }
-    cssRule(" .token.comment") {
-        sharedModifier20
+
+    cssRule(" .copy-button") {
+        Modifier
+            .position(Position.Absolute)
+            .top(12.px)
+            .right(12.px)
+            .backgroundColor(rgba(255, 255, 255, 0.08))
+            .color(rgb(0xcccccc))
+            .border(1.px, LineStyle.Solid, rgba(255, 255, 255, 0.15))
+            .padding(leftRight = 12.px, topBottom = 6.px)
+            .borderRadius(6.px)
+            .cursor(Cursor.Pointer)
+            .fontSize(0.78.cssRem)
+            .fontFamily(Res.Font.FONT_FAMILY_REGULAR)
+            .fontWeight(FontWeight.SemiBold)
+            .transition(Transition.of("all", 0.2.s, TransitionTimingFunction.Ease))
     }
-    cssRule(" .hljs-comment") {
-        sharedModifier20
+
+    cssRule(" .copy-button:hover") {
+        Modifier
+            .backgroundColor(Theme.Primary.color)
+            .color(rgb(255, 255, 255))
+            .border(1.px, LineStyle.Solid, Theme.Primary.color)
     }
-}
-val VideoContainerStyle = CssStyle {
-    base {
+
+    cssRule(" .copy-button:active") {
+        Modifier.transform { scale(0.96) }
+    }
+
+    // Video container embed
+    cssRule(" .video-container") {
         Modifier
             .position(Position.Relative)
             .height(0.px)
             .overflow(Overflow.Hidden)
             .maxWidth(100.percent)
-            .borderRadius(12.px)
-            .margin(2.cssRem, 0.px)
-            .boxShadow(0.px,0.px, 30.px, 10.px, rgba(0, 0, 0, 0.2f))
+            .borderRadius(14.px)
+            .margin(topBottom = 2.cssRem)
+            .boxShadow(0.px, 6.px, 25.px, null, rgba(0, 0, 0, 0.25))
             .padding(bottom = 56.25.percent)
     }
-    cssRule(" iframe") {
+
+    cssRule(" .video-container iframe") {
         Modifier
             .position(Position.Absolute)
             .top(0.px)
@@ -222,79 +301,52 @@ val VideoContainerStyle = CssStyle {
             .border(0.px)
             .fillMaxSize()
     }
-}
-val LinkPreviewStyle = CssStyle {
-    base {
+
+    // Link previews
+    cssRule(" .link-preview") {
         Modifier
             .display(DisplayStyle.Flex)
             .flexDirection(FlexDirection.Column)
-            .margin(bottom = 1.5.cssRem)
-            .overflow(Overflow.Hidden)
+            .margin(topBottom = 1.4.cssRem)
+            .padding(leftRight = 16.px, topBottom = 12.px)
+            .backgroundColor(if (colorMode.isLight) rgba(0, 0, 0, 0.03) else rgba(255, 255, 255, 0.04))
+            .border(1.px, LineStyle.Solid, if (colorMode.isLight) rgba(0, 0, 0, 0.08) else rgba(255, 255, 255, 0.1))
+            .borderRadius(12.px)
             .textDecorationLine(TextDecorationLine.None)
             .transition(Transition.of("all", 0.2.s, TransitionTimingFunction.Ease))
             .cursor(Cursor.Pointer)
     }
 
-}
-val LinkPreviewContentStyle = CssStyle.base {
-    Modifier
+    cssRule(" .link-preview:hover") {
+        Modifier
+            .backgroundColor(if (colorMode.isLight) rgba(16, 185, 129, 0.06) else rgba(16, 185, 129, 0.1))
+            .border(1.px, LineStyle.Solid, Theme.Primary.color)
+    }
 
-}
-val LinkPreviewTitleStyle = CssStyle.base {
-    val backgroundColor = when (colorMode) {
-        ColorMode.LIGHT -> rgba(16, 185, 129, 0.12)
-        ColorMode.DARK -> rgba(16, 185, 129, 0.2)
-    }
-    val textColor = when (colorMode) {
-        ColorMode.LIGHT -> rgb(5, 150, 105)
-        ColorMode.DARK -> rgb(52, 211, 153)
-    }
-    Modifier
-        .fontWeight(800)
-        .backgroundColor(backgroundColor)
-        .color(textColor)
-        .padding(2.px, 6.px)
-        .borderRadius(4.px)
-        .display(DisplayStyle.InlineBlock)
-        .lineHeight(1.2)
-}
-val LinkPreviewUrlStyle = CssStyle.base {
-    Modifier
-        .fontSize(0.9.cssRem)
-        .opacity(0.7)
-        .wordBreak(WordBreak.BreakAll)
-}
-val CodeWrapperStyle = CssStyle.base {
-    Modifier
-        .position(Position.Relative)
-        .margin(2.5.cssRem, 0.px)
-        .fillMaxWidth()
-}
-val CopyButtonStyle = CssStyle {
-    base {
+    cssRule(" .link-preview-title") {
         Modifier
-            .position(Position.Absolute)
-            .top(12.px)
-            .right(12.px)
-            .background(rgba(255, 255, 255, 0.05f))
-            .color(rgb(0x888888))
-            .border(1.px, LineStyle.Solid, rgba(255, 255, 255, 0.1f))
-            .padding(6.px, 14.px)
-            .borderRadius(8.px)
-            .cursor(Cursor.Pointer)
-            .fontSize(0.8.cssRem)
-            .transition(Transition.of("all", 0.2.s, TransitionTimingFunction.Ease))
-            .fontFamily(com.coding.meet.util.Res.Font.FONT_FAMILY_REGULAR, "sans-serif")
-            .fontWeight(500)
+            .fontWeight(FontWeight.Bold)
+            .color(Theme.Primary.color)
+            .fontSize(0.95.cssRem)
+            .margin(bottom = 4.px)
     }
-    hover {
+
+    cssRule(" .link-preview-url") {
         Modifier
-            .background(rgba(255, 255, 255, 0.15f))
-            .color(rgb(0xffffff))
-            .border { color(rgba(255, 255, 255, 0.3f)) }
+            .fontSize(0.85.cssRem)
+            .color(if (colorMode.isLight) rgb(100, 116, 139) else rgb(148, 163, 184))
+            .wordBreak(WordBreak.BreakAll)
     }
-    active {
-        Modifier
-            .transform { scale(0.96) }
+
+    cssRule(" .comment") {
+        commentColor
+    }
+
+    cssRule(" .token.comment") {
+        commentColor
+    }
+
+    cssRule(" .hljs-comment") {
+        commentColor
     }
 }
