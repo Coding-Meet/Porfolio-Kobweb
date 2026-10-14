@@ -58,10 +58,6 @@ fun AchievementCard(achievement: Achievement) {
             Box(
                 modifier = Modifier
                     .size(48.px)
-                    .borderRadius(12.px)
-                    .backgroundColor(
-                        if (colorMode.isLight) rgba(16, 185, 129, 0.08) else rgba(16, 185, 129, 0.15)
-                    )
                     .padding(8.px),
                 contentAlignment = Alignment.Center
             ) {

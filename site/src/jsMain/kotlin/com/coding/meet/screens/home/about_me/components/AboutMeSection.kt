@@ -272,14 +272,9 @@ fun AboutMeSection() {
 
             // Dynamic typing subhead
             val currentRole = animatedTexts.getOrElse(textIndex) { "" }
-            val prefix = if (currentRole.startsWith("A", ignoreCase = true) ||
-                currentRole.startsWith("I", ignoreCase = true) ||
-                currentRole.startsWith("E", ignoreCase = true) ||
-                currentRole.startsWith("O", ignoreCase = true)
-            ) {
-                "I'm an "
-            } else {
-                "I'm a "
+            val prefix = when (currentRole) {
+                "Open Source Contributor" -> "I'm an "
+                else -> "I'm a "
             }
 
             Div(

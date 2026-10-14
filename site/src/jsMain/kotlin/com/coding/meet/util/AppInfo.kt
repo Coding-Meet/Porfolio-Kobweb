@@ -1,15 +1,11 @@
 package com.coding.meet.util
 
-import com.coding.meet.models.Experience
-import com.coding.meet.models.Testimonial
-
 object AppInfo {
-    const val WEBSITE_NAME = "Coding Meet"
+    const val WEBSITE_NAME = "Meet"
 
     const val BIO =
-        "Hi, I’m Meet, an Android developer specializing in Kotlin, Java, KMP, and Jetpack Compose. I build scalable apps, share practical tutorials, and contribute to open source. I also offer services like custom app development, bug fixing, and app upgrades.\uD83D\uDE80"
-
-    const val WELCOME_TEXT = "Welcome to my portfolio website"
+        "I build mobile and desktop applications, create practical tutorials, and contribute to open source. I also help clients with custom app development, bug fixes, and app upgrades. 🚀"
+    const val WELCOME_TEXT = "Explore my work, projects, and expertise"
 
     val GREETINGS = listOf(
         "Namaste",
@@ -28,11 +24,12 @@ object AppInfo {
 
     val animatedTexts = listOf(
         "Native Android Developer",
-        "Freelancer",
         "Kotlin Multiplatform Developer",
-        "Content Creator",
-        "Tech Blogger",
-        "IOT Developer"
+        "Compose Multiplatform Developer",
+        "Freelance App Developer",
+        "Technical Content Creator",
+        "Technical Writer",
+        "Open Source Contributor"
     )
 }
 

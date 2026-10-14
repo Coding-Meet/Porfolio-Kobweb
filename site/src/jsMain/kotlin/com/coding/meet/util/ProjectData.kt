@@ -71,18 +71,25 @@ object ProjectData {
         ),
         Project(
             title = "DevAnalyzer",
-            shortDescription = "A powerful desktop tool to analyze, clean, and optimize your Android & Kotlin development environment.",
-            longDescription = "DevAnalyzer is a cross-platform desktop application built with Kotlin Multiplatform and Compose Multiplatform. It helps developers analyze project structure, manage build artifacts, and monitor storage usage across SDKs, IDEs, and Gradle environments. Designed for modern development workflows, DevAnalyzer provides a unified interface to understand and optimize your entire development ecosystem.",
+            shortDescription = "A cross-platform desktop tool to analyze Gradle and Kotlin Multiplatform projects, clean build folders, manage SDK resources, and optimize development environments.",
+            longDescription = "DevAnalyzer is a cross-platform desktop application built with Compose Multiplatform and Kotlin Multiplatform (KMP) to help Android and Kotlin Multiplatform developers understand, optimize, and maintain their development environment. It provides project analysis across Android, iOS, JVM, JS, Wasm, and Server targets, safe build folder cleanup, workspace resource analysis, and detailed storage insights across Android SDKs, Gradle caches, Kotlin/Native toolchains, JDKs, AVDs, and IDE data. With smart path discovery, custom toolchain configuration, privacy controls, and GitHub release update checks, DevAnalyzer helps developers manage their development ecosystem efficiently.",
             features = listOf(
-                "Analyze Gradle modules, plugins, dependencies, and build configurations",
-                "Inspect project metadata (AGP, SDK versions, NDK, CMake, multi-module setup)",
-                "Preview project and Gradle files inside the app",
-                "Scan and clean build folders across all modules",
-                "Real-time storage analysis for SDK, IDE, Gradle, and libraries",
-                "Selective deletion with advanced filtering and batch operations",
-                "Track recoverable disk space before cleanup",
-                "Custom path configuration for SDK, Gradle, Kotlin Native, and IDE",
-                "Crash logging and error tracking support"
+                "Analyze Gradle modules, plugins, dependencies, and configurations across Android, iOS, JVM, JS, Wasm, and Server targets",
+                "Inspect project metadata, including Kotlin, AGP, Gradle, SDK, NDK, and CMake versions",
+                "Browse Kotlin, Java, XML, Gradle scripts, and Version Catalog libraries inside the app",
+                "Scan module build folders, calculate folder sizes, and safely delete selected build directories in batches",
+                "Analyze multiple workspace directories to identify active and potentially unused development resources",
+                "Cross-reference Android SDK Platforms, Build Tools, Sources, NDK, CMake, and Gradle resources with projects",
+                "Identify potentially unused Kotlin/Native toolchains, Gradle caches, JDKs, Android System Images, and AVDs",
+                "Analyze storage usage across Android SDKs, Gradle caches, Kotlin/Native toolchains, JDKs, AVDs, and IDE data",
+                "Track storage scan progress with elapsed timers and support custom JDK and IDE locations",
+                "Discover JDK, Android SDK, and IDE installations, including custom locations",
+                "Configure and validate custom SDK, Gradle, Kotlin/Native, JDK, Android Studio, and IntelliJ IDEA paths",
+                "Manage privacy controls for local crash logging, anonymous crash reporting, and usage analytics",
+                "Process project and filesystem analysis locally without uploading source code, project names, or file paths",
+                "Collect optional anonymous usage analytics without user identification or personal information",
+                "Rate the app, suggest features, and report issues through the in-app feedback dialog",
+                "Check GitHub releases on startup and display release notes inside the app"
             ),
             technologies = listOf(
                 "Kotlin",
@@ -108,19 +115,83 @@ object ProjectData {
             platform = listOf("Desktop", "Windows", "macOS", "Linux"),
             topics = listOf(
                 "Developer Tools",
+                "Android Development",
                 "Kotlin Multiplatform",
                 "Compose Multiplatform",
                 "Gradle",
                 "Project Analysis",
-                "Storage Optimization"
+                "Workspace Analysis",
+                "Storage Analysis",
+                "SDK Management",
+                "Development Environment Optimization"
             ),
             stargazersCount = 88,
             categories = listOf(ProjectCategory.KMP, ProjectCategory.DESKTOP),
-            youtubeVideoLink = "https://www.youtube.com/embed/c3t1SIKSBBk",
+            youtubeVideoLink = "https://www.youtube.com/embed/U7UPpqcjdLA",
             imageUrls = listOf(
-                "/project/dev_analyzer/dev_analyzer_banner.png"
+                "/project/dev_analyzer/dev_analyzer_banner.png",
+                "/project/dev_analyzer/img_0_project_overview_tab.png",
+                "/project/dev_analyzer/img_0_setting_all_section_like_scan_location_jdk_version.png",
+                "/project/dev_analyzer/img_0_storage_overview_tab.png",
+                "/project/dev_analyzer/img_0_workspace_all_project_with_all_resources_tab.png",
+                "/project/dev_analyzer/img_1_project_modules_tab.png",
             ),
             websiteUrl = "https://coding-meet.github.io/DevAnalyzer/",
+        ),
+        Project(
+            title = "Pepper Robot AI Assistant",
+            shortDescription = "An Android tablet app for SoftBank Pepper robots featuring voice-based AI conversations powered by Google Gemini.",
+            longDescription = "Pepper Robot AI Assistant is an Android tablet application built for the SoftBank Pepper robot, combining Pepper's native QiSDK with Google's Gemini AI to deliver interactive speech-to-speech conversations. It captures free-form voice input, generates contextual AI responses, and speaks them back through Pepper's native Text-to-Speech engine. The app features a premium split-screen dashboard with chat history, animated interaction states, and Start, Stop, and Reset controls. GPS-based location context enables locally relevant recommendations, while an emulator testing mode supports UI, animation, and AI integration testing without physical robot hardware.",
+            features = listOf(
+                "Capture free-form speech using custom QiChat wildcard rules",
+                "Integrate Google Gemini AI for real-time conversational responses",
+                "Convert AI responses into spoken output using Pepper's native Text-to-Speech engine",
+                "Prevent recursive microphone input with processing state management",
+                "Display chat history with user and Pepper-themed message bubbles",
+                "Provide a split-screen tablet interface with a chat panel and interaction dashboard",
+                "Visualize Ready, Listening, Thinking, and Speaking states with animations",
+                "Control robot interactions using Start, Stop, and Reset actions",
+                "Retrieve GPS coordinates and reverse-geocode location context for relevant AI recommendations",
+                "Test UI, animations, location context, and Gemini responses in emulator mode without physical robot hardware",
+                "Integrate Firebase Crashlytics for crash reporting and diagnostics"
+            ),
+            technologies = listOf(
+                "Kotlin",
+                "Android",
+                "QiSDK",
+                "Google Gemini AI",
+                "Jetpack Compose",
+                "MVVM Architecture"
+            ),
+            libraries = listOf(
+                "QiSDK",
+                "QiSDK Design",
+                "OkHttp",
+                "Retrofit",
+                "Google Play Services Location",
+                "kotlinx.serialization",
+                "Firebase Crashlytics",
+                "Timber"
+            ),
+            platform = listOf("Android", "Pepper Robot", "Android Tablet"),
+            topics = listOf(
+                "Android Development",
+                "Robotics",
+                "SoftBank Pepper",
+                "QiSDK",
+                "Google Gemini AI",
+                "Voice Assistant",
+                "Speech-to-Speech",
+                "Conversational AI",
+                "GPS Integration",
+                "Firebase Crashlytics"
+            ),
+            stargazersCount = 0,
+            categories = listOf(ProjectCategory.ANDROID),
+            youtubeVideoLink = "https://www.youtube.com/embed/9R6y0NyqYF8",
+            imageUrls = listOf(
+                "/project/pepper-robot-app/pepper-Robot-Meets-Gemini-AI.png",
+            ),
         ),
         Project(
             title = "Gemini AI Kotlin Multiplatform App",
@@ -938,7 +1009,61 @@ object ProjectData {
             topics = listOf("IoT", "Automation", "Smart Agriculture", "Environmental Monitoring"),
             categories = listOf(ProjectCategory.IOT)
         ),
-
+        Project(
+            title = "Android Addict",
+            shortDescription = "A React-based website providing Android component code for developers.",
+            longDescription = "Android Addict is a React-based website designed to help Android developers by providing ready-to-use Android component code. It serves as a valuable resource for developers seeking efficient solutions and code snippets to improve their Android projects.",
+            features = listOf(
+                "Collection of Android component code",
+                "User-friendly interface for easy navigation",
+                "Code snippets for common Android features",
+            ),
+            technologies = listOf("React", "JavaScript", "CSS", "HTML"),
+            libraries = listOf(
+                "React",
+                "React Router",
+                "Material UI"
+            ),
+            imageUrls = listOf(
+                "/project/android_addict_website/android_addict_website_banner.png"
+            ),
+            platform = listOf("Web"),
+            topics = listOf("Android Development", "Web Development", "Code Snippets"),
+            categories = listOf(ProjectCategory.WEB, ProjectCategory.ANDROID)
+        ),
+        Project(
+            title = "Gamer's Arena",
+            shortDescription = "An Android app for hosting and joining gaming tournaments with chat and profile management features.",
+            longDescription = "Gamer's Arena is a feature-rich Android application that allows admins to organize gaming tournaments, set schedules, prizes, and declare winners. Users can join tournaments, view participant details, chat with other players, and manage their profiles. The app aims to provide a genuine and transparent platform for gamers to showcase their skills and win rewards.",
+            features = listOf(
+                "Admin can create and manage tournaments",
+                "Users can join tournaments and view details",
+                "Chat functionality for player interaction",
+                "Profile management for both users and admins",
+                "Room ID and password management for secure entry",
+                "Tournament result declaration by admins"
+            ),
+            technologies = listOf("Kotlin", "Android Studio", "XML"),
+            libraries = listOf(
+                "Firebase Firestore",
+                "Firebase Authentication",
+                "Firebase Database",
+                "Firebase Storage",
+                "Glide",
+                "Material Design"
+            ),
+            imageUrls = listOf(
+                "/project/gamers_arena_app/gamers_area_img_1.png",
+                "/project/gamers_arena_app/gamers_area_img_2.png",
+                "/project/gamers_arena_app/gamers_area_img_3.png",
+                "/project/gamers_arena_app/gamers_area_img_4.png",
+                "/project/gamers_arena_app/gamers_area_img_5.png",
+                "/project/gamers_arena_app/gamers_area_img_6.png",
+            ),
+            platform = listOf("Android"),
+            topics = listOf("Gaming", "Tournament Management", "Chat System"),
+            categories = listOf(ProjectCategory.ANDROID)
+        ),
         Project(
             title = "TODO / Note App",
             shortDescription = "A complete TODO/Note app built with MVVM and Room, covering all core Android concepts through a step-by-step tutorial series.",
@@ -1048,7 +1173,7 @@ object ProjectData {
                 "ViewBinding"
             ),
             githubUrl = "https://github.com/Coding-Meet/Math-Quiz-App",
-            youtubeVideoLink= "https://www.youtube.com/embed/videoseries?list=PLlSuJy9SfzvHpc1-IcBTbZnyeBoVCynPE",
+            youtubeVideoLink = "https://www.youtube.com/embed/videoseries?list=PLlSuJy9SfzvHpc1-IcBTbZnyeBoVCynPE",
             websiteUrl = "https://youtube.com/playlist?list=PLlSuJy9SfzvHpc1-IcBTbZnyeBoVCynPE&si=BAMF8pBR1Aw7l1SQ",
             platform = listOf("Android"),
             topics = listOf(
@@ -1060,61 +1185,6 @@ object ProjectData {
                 "NDK Security"
             ),
             stargazersCount = 18,
-            categories = listOf(ProjectCategory.ANDROID)
-        ),
-        Project(
-            title = "Android Addict",
-            shortDescription = "A React-based website providing Android component code for developers.",
-            longDescription = "Android Addict is a React-based website designed to help Android developers by providing ready-to-use Android component code. It serves as a valuable resource for developers seeking efficient solutions and code snippets to improve their Android projects.",
-            features = listOf(
-                "Collection of Android component code",
-                "User-friendly interface for easy navigation",
-                "Code snippets for common Android features",
-            ),
-            technologies = listOf("React", "JavaScript", "CSS", "HTML"),
-            libraries = listOf(
-                "React",
-                "React Router",
-                "Material UI"
-            ),
-            imageUrls = listOf(
-                "/project/android_addict_website/android_addict_website_banner.png"
-            ),
-            platform = listOf("Web"),
-            topics = listOf("Android Development", "Web Development", "Code Snippets"),
-            categories = listOf(ProjectCategory.WEB, ProjectCategory.ANDROID)
-        ),
-        Project(
-            title = "Gamer's Arena",
-            shortDescription = "An Android app for hosting and joining gaming tournaments with chat and profile management features.",
-            longDescription = "Gamer's Arena is a feature-rich Android application that allows admins to organize gaming tournaments, set schedules, prizes, and declare winners. Users can join tournaments, view participant details, chat with other players, and manage their profiles. The app aims to provide a genuine and transparent platform for gamers to showcase their skills and win rewards.",
-            features = listOf(
-                "Admin can create and manage tournaments",
-                "Users can join tournaments and view details",
-                "Chat functionality for player interaction",
-                "Profile management for both users and admins",
-                "Room ID and password management for secure entry",
-                "Tournament result declaration by admins"
-            ),
-            technologies = listOf("Kotlin", "Android Studio", "XML"),
-            libraries = listOf(
-                "Firebase Firestore",
-                "Firebase Authentication",
-                "Firebase Database",
-                "Firebase Storage",
-                "Glide",
-                "Material Design"
-            ),
-            imageUrls = listOf(
-                "/project/gamers_arena_app/gamers_area_img_1.png",
-                "/project/gamers_arena_app/gamers_area_img_2.png",
-                "/project/gamers_arena_app/gamers_area_img_3.png",
-                "/project/gamers_arena_app/gamers_area_img_4.png",
-                "/project/gamers_arena_app/gamers_area_img_5.png",
-                "/project/gamers_arena_app/gamers_area_img_6.png",
-            ),
-            platform = listOf("Android"),
-            topics = listOf("Gaming", "Tournament Management", "Chat System"),
             categories = listOf(ProjectCategory.ANDROID)
         )
     )

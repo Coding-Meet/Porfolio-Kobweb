@@ -35,7 +35,7 @@ kobweb {
     app {
         index {
             description.set(
-                "Android developer portfolio by Meet. I build high-quality apps using Kotlin, Jetpack Compose, and KMP. 70+ projects delivered with clean architecture and scalable solutions."
+                "Meet is an Android and Kotlin Multiplatform developer specializing in Kotlin, Java, Jetpack Compose, and Compose Multiplatform. Explore projects, tutorials, and freelance app development services."
             )
             head.add {
                 script {
@@ -58,35 +58,42 @@ kobweb {
                     }
                 }
 
-                title("Coding Meet - Android App Developer | Kotlin, Jetpack Compose, KMP")
+                title("Meet | Android, Kotlin Multiplatform & Compose Developer")
+
                 link(rel = "stylesheet", href = "/fonts/fonts.css")
                 link(rel = "stylesheet", href = "https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css")
                 script {
                     src = "https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"
                 }
 
-                // this is link preview
-                ogMeta("og:title", "Coding Meet - Android App Developer Portfolio")
+                // Open Graph metadata
+                ogMeta("og:title", "Meet | Android & Kotlin Multiplatform Developer")
                 ogMeta(
                     "og:description",
-                    "Hire an Android developer for modern apps built with Kotlin, Jetpack Compose, and KMP. 70+ successful projects delivered."
+                    "Explore Meet's Android and cross-platform projects built with Kotlin, Jetpack Compose, KMP, and CMP. Discover freelance services, tutorials, and open-source work."
                 )
 
                 ogMeta("og:image", "https://codingmeet.com/preview_image.png")
                 ogMeta("og:url", "https://codingmeet.com")
                 ogMeta("og:type", "website")
+                ogMeta("og:site_name", "Coding Meet")
 
+                // Twitter / X metadata
                 ogMeta("twitter:card", "summary_large_image")
-                ogMeta("twitter:title", "Hire Android Developer | Kotlin, Compose, KMP")
+                ogMeta(
+                    "twitter:title",
+                    "Meet | Android, KMP & Compose Multiplatform Developer"
+                )
                 ogMeta(
                     "twitter:description",
-                    "Professional Android app development with clean architecture, scalable code, and modern tech stack."
+                    "Building Android and cross-platform apps with Kotlin, Jetpack Compose, KMP, and CMP. Explore projects and freelance services."
                 )
                 ogMeta("twitter:image", "https://codingmeet.com/preview_image.png")
 
+                // SEO keywords
                 ogMeta(
-                  "keywords",
-                   "Android Developer, Kotlin, Jetpack Compose, KMP, Android apps, source code, freelance developer, mobile apps"
+                    "keywords",
+                    "Android Developer, Kotlin Developer, Java Developer, Jetpack Compose, Kotlin Multiplatform, KMP, Compose Multiplatform, CMP, Android App Development, Desktop App Development, Freelance Developer, Coding Meet"
                 )
                 // this is web icon
                 link {
