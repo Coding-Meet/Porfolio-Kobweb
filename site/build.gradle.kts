@@ -65,6 +65,9 @@ kobweb {
                 script {
                     src = "https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"
                 }
+                script {
+                    src = "/js/cursor.js"
+                }
 
                 // Open Graph metadata
                 ogMeta("og:title", "Meet | Android & Kotlin Multiplatform Developer")

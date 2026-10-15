@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap");
 @import url("https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css");
 
+*, *::before, *::after {
+  -webkit-tap-highlight-color: transparent;
+}
+
 html, body {
   min-height: 100vh;
   margin: 0;
@@ -313,4 +317,99 @@ html, body {
 }
 #client-openfreemap[data-theme="light"] .maplibregl-ctrl-attrib a {
   color: #0284c7 !important;
+}
+
+/* ==========================================================================
+   Minimal & Ultra-Responsive Custom Cursor
+   - Precision emerald dot (exact 1:1 mouse speed)
+   - Clean, lightweight reactive ring (smooth expansion on hover)
+   - Hidden on touch / mobile devices
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) {
+  body, select {
+    cursor: none !important;
+  }
+
+  /* Readable text elements get natural native text cursor */
+  p, h1, h2, h3, h4, h5, h6, li, blockquote, pre, code, article, input, textarea, [data-cursor-text] {
+    cursor: text !important;
+  }
+
+  /* Interactive elements keep custom cursor */
+  a, a *, button, button *, [role="button"], [role="button"] *, .clickable, .client-marker-pin {
+    cursor: none !important;
+  }
+
+  .custom-cursor-dot {
+    position: fixed;
+    top: -3px;
+    left: -3px;
+    width: 6px;
+    height: 6px;
+    background-color: #10B981;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999999;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.7);
+    will-change: transform;
+  }
+
+  .custom-cursor-ring {
+    position: fixed;
+    top: -16px;
+    left: -16px;
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid rgba(16, 185, 129, 0.45);
+    background-color: rgba(16, 185, 129, 0.03);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999998;
+    opacity: 0;
+    transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                top 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                left 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.2s ease,
+                background-color 0.2s ease,
+                opacity 0.2s ease;
+    will-change: transform, width, height;
+  }
+
+  /* Hover state over links, buttons, cards */
+  .custom-cursor-ring.cursor-hover {
+    width: 48px;
+    height: 48px;
+    top: -24px;
+    left: -24px;
+    border-color: #10B981;
+    background-color: rgba(16, 185, 129, 0.1);
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.25);
+  }
+
+  /* Click / Active state */
+  .custom-cursor-ring.cursor-active {
+    width: 24px;
+    height: 24px;
+    top: -12px;
+    left: -12px;
+    border-color: #059669;
+    background-color: rgba(16, 185, 129, 0.25);
+  }
+
+  /* Hidden in text input mode */
+  .custom-cursor-dot.cursor-hidden,
+  .custom-cursor-ring.cursor-hidden {
+    opacity: 0 !important;
+  }
+}
+
+/* Ensure completely hidden on touch devices */
+@media (hover: none) or (pointer: coarse) {
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none !important;
+  }
 }

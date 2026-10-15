@@ -36,6 +36,7 @@ import kotlinx.browser.document
 import kotlinx.browser.localStorage
 import kotlinx.browser.window
 import org.w3c.dom.DocumentReadyState
+import org.w3c.dom.HTMLScriptElement
 import org.w3c.dom.INTERACTIVE
 import kotlin.js.json
 
@@ -47,6 +48,7 @@ fun AppEntry(content: @Composable () -> Unit) {
 
     LaunchedEffect(Unit) {
         initWebMCP()
+        initCustomCursor()
     }
 
     LaunchedEffect(colorMode) {
@@ -163,3 +165,16 @@ private fun initWebMCP() {
         }
     }
 }
+
+private fun initCustomCursor() {
+    try {
+        if (document.getElementById("custom-cursor-dot") != null) return
+        val existingScript = document.querySelector("script[src*='cursor.js']")
+        if (existingScript == null) {
+            val script = document.createElement("script") as HTMLScriptElement
+            script.src = "/js/cursor.js"
+            document.body?.appendChild(script)
+        }
+    } catch (_: Exception) {}
+}
+
