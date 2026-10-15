@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.coding.meet.common.components.custom_dialog.CustomDialog
+import com.coding.meet.common.components.custom_dialog.resetDialogScroll
 import com.coding.meet.common.components.footer.Footer
 import com.coding.meet.common.page_layout.PageLayout
 import com.coding.meet.common.page_layout.fadeInUpPageAnimation
@@ -100,16 +101,18 @@ fun ProjectPage() {
                     }
                 })
             }
-            LaunchedEffect(isShowDialog) {
+            LaunchedEffect(isShowDialog, openProject) {
                 val model = window.document.getElementById(dialogId)
                 val modal = model?.asDynamic()
                 val body = window.document.body?.asDynamic()
 
                 if (isShowDialog) {
                     modal?.style?.display = "block"
+                    resetDialogScroll(dialogId)
                     body?.style?.setProperty("overflow", "hidden") // Disable scrolling
                 } else {
                     modal?.style?.display = "none"
+                    resetDialogScroll(dialogId)
                     body?.style?.removeProperty("overflow") // Restore default scrolling
                 }
             }
@@ -122,6 +125,7 @@ fun ProjectPage() {
                         if (breakpoint > Breakpoint.MD) 65.percent else 92.percent
                     ),
                     dialogId = dialogId,
+                    resetKey = openProject?.title,
                 ) {
                     ProjectDialog(
                         project = activeProject,
@@ -139,6 +143,7 @@ fun ProjectPage() {
                                     }
                                 currentProjectIndex = prevIdx
                                 openProject = filteredProjects[prevIdx]
+                                resetDialogScroll(dialogId)
                             }
                         },
                         onNext = {
@@ -151,6 +156,7 @@ fun ProjectPage() {
                                     }
                                 currentProjectIndex = nextIdx
                                 openProject = filteredProjects[nextIdx]
+                                resetDialogScroll(dialogId)
                             }
                         }
                     )
@@ -184,6 +190,7 @@ fun ProjectPage() {
                             openProject = project
                             currentProjectIndex = index
                             isShowDialog = true
+                            resetDialogScroll(dialogId)
                         }
                     }
                 }

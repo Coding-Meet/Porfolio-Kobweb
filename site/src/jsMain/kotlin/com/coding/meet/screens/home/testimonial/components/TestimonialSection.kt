@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.coding.meet.common.components.custom_dialog.CustomDialog
+import com.coding.meet.common.components.custom_dialog.resetDialogScroll
 import com.coding.meet.common.image_slider_with_dot.MainButtonStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
@@ -74,16 +75,18 @@ fun TestimonialSection() {
             }
         })
     }
-    LaunchedEffect(isShowDialog) {
+    LaunchedEffect(isShowDialog, selectedCountry) {
         val model = window.document.getElementById(dialogId)
         val modal = model?.asDynamic()
         val body = window.document.body?.asDynamic()
 
         if (isShowDialog) {
             modal?.style?.display = "block"
+            resetDialogScroll(dialogId)
             body?.style?.setProperty("overflow", "hidden") // Disable scrolling
         } else {
             modal?.style?.display = "none"
+            resetDialogScroll(dialogId)
             body?.style?.removeProperty("overflow") // Restore default scrolling
         }
     }
@@ -93,6 +96,7 @@ fun TestimonialSection() {
             if (breakpoint > Breakpoint.MD) 60.percent else 90.percent
         ),
         dialogId = dialogId,
+        resetKey = selectedCountry,
     ) {
         TestimonialDialog(selectedCountry = selectedCountry) {
             isShowDialog = false
@@ -206,6 +210,7 @@ fun TestimonialSection() {
             attrs = MainButtonStyle.toAttrs {
                 onClick {
                     isShowDialog = true
+                    resetDialogScroll(dialogId)
                 }
             }
         ) {
