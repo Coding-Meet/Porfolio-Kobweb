@@ -10,7 +10,6 @@ import androidx.compose.runtime.setValue
 import com.coding.meet.common.components.BackToTopButton
 import com.coding.meet.common.components.navigation_bar.components.DesktopMenu
 import com.coding.meet.common.components.navigation_bar.components.MobileSideMenu
-import com.coding.meet.common.components.footer.Footer
 import com.coding.meet.models.Section
 import com.coding.meet.util.AppInfo
 import com.varabyte.kobweb.compose.ui.Modifier

@@ -2,13 +2,12 @@ package com.coding.meet.common.components.footer
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import com.coding.meet.screens.home.about_me.styles.SocialImageStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
 import com.coding.meet.util.SocialData.socials
 import com.coding.meet.util.Theme
+import com.coding.meet.util.select
 import com.varabyte.kobweb.browser.dom.ElementTarget
-import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -18,7 +17,6 @@ import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.color
-import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.flex
 import com.varabyte.kobweb.compose.ui.modifiers.flexWrap
@@ -50,7 +48,6 @@ import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Img
-import com.coding.meet.util.select
 
 @Composable
 fun Footer() {
@@ -62,7 +59,10 @@ fun Footer() {
         Box(modifier = Modifier.flex(1), contentAlignment = Alignment.CenterStart) {
             Copyright()
         }
-        Box(modifier = Modifier.flex(1).padding(leftRight = 10.px), contentAlignment = Alignment.Center) {
+        Box(
+            modifier = Modifier.flex(1).padding(leftRight = 10.px),
+            contentAlignment = Alignment.Center
+        ) {
             SocialLinks()
         }
         Box(modifier = Modifier.flex(1), contentAlignment = Alignment.CenterEnd) {
@@ -172,7 +172,7 @@ private fun PoweredByKobweb() {
                     CustomColor(
                         lightColor = Theme.DarkGray, darkColor = Theme.Muted
                     )
-                    ).fontSize(0.9.cssRem).fontWeight(FontWeight.Medium).textAlign(TextAlign.Center),
+                ).fontSize(0.9.cssRem).fontWeight(FontWeight.Medium).textAlign(TextAlign.Center),
             text = Res.Strings.POWERED_BY
         )
         Link(path = "https://kobweb.varabyte.com/") {

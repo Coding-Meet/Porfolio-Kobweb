@@ -49,7 +49,10 @@ fun DesktopMenu(
         attrs = NavBarStyle.toAttrs(),
     ) {
         Row(
-            modifier = Modifier.padding(leftRight = if (breakpoint > Breakpoint.SM) 28.px else 14.px, topBottom = 10.px),
+            modifier = Modifier.padding(
+                leftRight = if (breakpoint > Breakpoint.SM) 28.px else 14.px,
+                topBottom = 10.px
+            ),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {

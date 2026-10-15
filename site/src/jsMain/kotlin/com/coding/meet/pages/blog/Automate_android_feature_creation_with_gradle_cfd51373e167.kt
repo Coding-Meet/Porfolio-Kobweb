@@ -14,7 +14,7 @@ fun Automate_android_feature_creation_with_gradle_cfd51373e167(context: PageCont
     val article = remember {
         ArticleData.articles.find { it.id == "automate-android-feature-creation-with-gradle-cfd51373e167" }
     }
-    
+
     if (article != null) {
         ArticleDetail(article = article, context = context)
     }

@@ -1,5 +1,8 @@
 package com.coding.meet.common.components.navigation_bar.styles
 
+import com.coding.meet.util.Theme
+import com.coding.meet.util.backgroundRgba
+import com.coding.meet.util.glassSubtle
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.css.functions.blur
@@ -24,7 +27,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.modifiers.zIndex
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.hover
-import com.varabyte.kobweb.silk.theme.colors.palette.background
 import com.varabyte.kobweb.silk.theme.colors.palette.border
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import org.jetbrains.compose.web.css.AnimationTimingFunction
@@ -34,10 +36,6 @@ import org.jetbrains.compose.web.css.deg
 import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
-import com.coding.meet.util.Theme
-import com.coding.meet.util.backgroundRgba
-import com.coding.meet.util.glassSubtle
 
 val NavBarStyle = CssStyle {
     base {
@@ -91,9 +89,9 @@ val LogoStyle = CssStyle {
     }
     hover {
         Modifier
-            .transform { 
+            .transform {
                 scale(1.05)
-                rotate((-4).deg) 
+                rotate((-4).deg)
             }
     }
 }

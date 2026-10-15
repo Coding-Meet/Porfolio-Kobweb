@@ -6,13 +6,13 @@ import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
 import com.coding.meet.util.TestimonialData.testimonials
 import com.coding.meet.util.Theme
+import com.coding.meet.util.glassSubtle
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
-import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.ColumnScope
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -44,9 +44,7 @@ import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.Hr
-import com.coding.meet.util.glassSubtle
 
 
 @Composable

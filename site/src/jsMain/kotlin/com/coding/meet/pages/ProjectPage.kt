@@ -114,7 +114,8 @@ fun ProjectPage() {
                 }
             }
 
-            val activeProject = openProject ?: filteredProjects.firstOrNull() ?: projects.firstOrNull()
+            val activeProject =
+                openProject ?: filteredProjects.firstOrNull() ?: projects.firstOrNull()
             if (activeProject != null) {
                 CustomDialog(
                     modifier = Modifier.fillMaxWidth(
@@ -130,22 +131,24 @@ fun ProjectPage() {
                         },
                         onPrevious = {
                             if (filteredProjects.isNotEmpty()) {
-                                val prevIdx = if (currentProjectIndex == null || currentProjectIndex!! <= 0) {
-                                    filteredProjects.size - 1
-                                } else {
-                                    currentProjectIndex!! - 1
-                                }
+                                val prevIdx =
+                                    if (currentProjectIndex == null || currentProjectIndex!! <= 0) {
+                                        filteredProjects.size - 1
+                                    } else {
+                                        currentProjectIndex!! - 1
+                                    }
                                 currentProjectIndex = prevIdx
                                 openProject = filteredProjects[prevIdx]
                             }
                         },
                         onNext = {
                             if (filteredProjects.isNotEmpty()) {
-                                val nextIdx = if (currentProjectIndex == null || currentProjectIndex!! >= filteredProjects.size - 1) {
-                                    0
-                                } else {
-                                    currentProjectIndex!! + 1
-                                }
+                                val nextIdx =
+                                    if (currentProjectIndex == null || currentProjectIndex!! >= filteredProjects.size - 1) {
+                                        0
+                                    } else {
+                                        currentProjectIndex!! + 1
+                                    }
                                 currentProjectIndex = nextIdx
                                 openProject = filteredProjects[nextIdx]
                             }

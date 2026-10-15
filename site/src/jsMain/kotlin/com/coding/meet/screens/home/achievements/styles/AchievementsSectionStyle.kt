@@ -18,7 +18,6 @@ import org.jetbrains.compose.web.css.AnimationTimingFunction
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
 
 val achievementCardStyle = CssStyle {
     base {

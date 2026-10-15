@@ -8,6 +8,7 @@ import com.coding.meet.screens.articles.styles.ArticleStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
+import com.coding.meet.util.glassSubtle
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -52,9 +53,7 @@ import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.Div
-import com.coding.meet.util.glassSubtle
 
 @Composable
 fun ArticleCard(article: Article, onClick: (() -> Unit)? = null) {
@@ -89,7 +88,12 @@ fun ArticleCard(article: Article, onClick: (() -> Unit)? = null) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(leftRight = 4.px)
-                    .color(CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor))
+                    .color(
+                        CustomColor(
+                            lightColor = Theme.LightFontColor,
+                            darkColor = Theme.DarkFontColor
+                        )
+                    )
                     .fontFamily(Res.Font.FONT_FAMILY_HEADING)
                     .fontSize(1.2.cssRem)
                     .fontWeight(FontWeight.Bold)
@@ -170,7 +174,9 @@ fun StatItem(value: String, icon: @Composable () -> Unit) {
         modifier = Modifier.margin(right = 14.px),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Box(modifier = Modifier.margin(right = 5.px).fontSize(0.8.cssRem).color(Theme.Primary.color)) {
+        Box(
+            modifier = Modifier.margin(right = 5.px).fontSize(0.8.cssRem).color(Theme.Primary.color)
+        ) {
             icon()
         }
         SpanText(

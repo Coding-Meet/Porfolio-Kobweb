@@ -6,7 +6,6 @@ import com.coding.meet.screens.projects.styles.CategoryButtonStyle
 import com.coding.meet.util.Theme
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
@@ -32,7 +31,6 @@ import org.jetbrains.compose.web.css.FlexWrap
 import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
 

@@ -20,6 +20,7 @@ import com.coding.meet.util.AppInfo.animatedTexts
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
+import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.AnimationIterationCount
 import com.varabyte.kobweb.compose.css.BoxSizing
 import com.varabyte.kobweb.compose.css.FontWeight
@@ -38,7 +39,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
 import com.varabyte.kobweb.compose.ui.modifiers.boxSizing
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.display
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.flexWrap
 import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
@@ -56,9 +56,9 @@ import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.textDecorationLine
 import com.varabyte.kobweb.compose.ui.modifiers.top
 import com.varabyte.kobweb.compose.ui.modifiers.width
-import com.varabyte.kobweb.navigation.OpenLinkStrategy
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.navigation.OpenLinkStrategy
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
@@ -79,11 +79,9 @@ import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
-import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.css.s
 import org.jetbrains.compose.web.dom.Button
-import com.coding.meet.util.select
+import org.jetbrains.compose.web.dom.Div
 
 @Composable
 fun AboutMeSection() {
@@ -203,7 +201,10 @@ fun AboutMeSection() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(leftRight = if (breakpoint > Breakpoint.MD) 20.px else 12.px, topBottom = 10.px),
+                .padding(
+                    leftRight = if (breakpoint > Breakpoint.MD) 20.px else 12.px,
+                    topBottom = 10.px
+                ),
             verticalArrangement = Arrangement.Center
         ) {
             // Status Pill Badge
@@ -257,7 +258,12 @@ fun AboutMeSection() {
                 SpanText(
                     text = "Hi, I'm Meet",
                     modifier = Modifier
-                        .color(CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor))
+                        .color(
+                            CustomColor(
+                                lightColor = Theme.LightFontColor,
+                                darkColor = Theme.DarkFontColor
+                            )
+                        )
                         .fontFamily(Res.Font.FONT_FAMILY_HEADING)
                         .fontSize(if (breakpoint > Breakpoint.LG) 2.6.cssRem else if (breakpoint > Breakpoint.MD) 2.3.cssRem else if (breakpoint > Breakpoint.SM) 2.1.cssRem else 1.9.cssRem)
                         .fontWeight(FontWeight.Bold)
@@ -288,7 +294,12 @@ fun AboutMeSection() {
                     text = prefix,
                     modifier = Modifier
                         .fontSize(if (breakpoint > Breakpoint.LG) 1.4.cssRem else if (breakpoint > Breakpoint.MD) 1.25.cssRem else 1.15.cssRem)
-                        .color(CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor))
+                        .color(
+                            CustomColor(
+                                lightColor = Theme.LightFontColor,
+                                darkColor = Theme.DarkFontColor
+                            )
+                        )
                         .fontWeight(FontWeight.SemiBold)
                 )
                 SpanText(

@@ -72,7 +72,12 @@ fun ServiceCard(
                 text = service.title,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .color(CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor))
+                    .color(
+                        CustomColor(
+                            lightColor = Theme.LightFontColor,
+                            darkColor = Theme.DarkFontColor
+                        )
+                    )
                     .fontFamily(Res.Font.FONT_FAMILY_HEADING)
                     .fontSize(1.35.cssRem)
                     .fontWeight(FontWeight.Bold)
@@ -95,11 +100,16 @@ fun ServiceCard(
                 attrs = Modifier
                     .fillMaxWidth()
                     .margin(topBottom = 10.px)
-                    .border(color = colorMode.toPalette().border, style = LineStyle.Solid, width = 1.px)
+                    .border(
+                        color = colorMode.toPalette().border,
+                        style = LineStyle.Solid,
+                        width = 1.px
+                    )
                     .toAttrs()
             )
             Column(
-                modifier = Modifier.fillMaxWidth().padding(leftRight = 4.px, topBottom = 6.px).gap(8.px)
+                modifier = Modifier.fillMaxWidth().padding(leftRight = 4.px, topBottom = 6.px)
+                    .gap(8.px)
             ) {
                 service.features.forEach { feature ->
                     Row(
@@ -116,7 +126,12 @@ fun ServiceCard(
                         SpanText(
                             text = feature,
                             modifier = Modifier
-                                .color(CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor))
+                                .color(
+                                    CustomColor(
+                                        lightColor = Theme.LightFontColor,
+                                        darkColor = Theme.DarkFontColor
+                                    )
+                                )
                                 .fontSize(0.88.cssRem)
                                 .lineHeight(1.5)
                         )
@@ -127,7 +142,11 @@ fun ServiceCard(
                 attrs = Modifier
                     .fillMaxWidth()
                     .margin(topBottom = 12.px)
-                    .border(color = colorMode.toPalette().border, style = LineStyle.Solid, width = 1.px)
+                    .border(
+                        color = colorMode.toPalette().border,
+                        style = LineStyle.Solid,
+                        width = 1.px
+                    )
                     .toAttrs()
             )
         }

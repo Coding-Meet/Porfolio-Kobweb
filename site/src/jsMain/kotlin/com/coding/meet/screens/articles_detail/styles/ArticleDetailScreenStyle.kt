@@ -2,6 +2,8 @@ package com.coding.meet.screens.articles_detail.styles
 
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
+import com.coding.meet.util.glassSubtle
+import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.BoxSizing
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontStyle
@@ -54,9 +56,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.modifiers.whiteSpace
 import com.varabyte.kobweb.compose.ui.modifiers.wordBreak
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.base
-import com.varabyte.kobweb.silk.style.selectors.active
-import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -68,10 +67,7 @@ import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.css.s
-import com.coding.meet.util.select
-import com.coding.meet.util.glassSubtle
 
 val ArticleContentStyle = CssStyle {
     val codeBgColor = when (colorMode) {

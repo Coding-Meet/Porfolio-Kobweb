@@ -4,22 +4,13 @@ import com.coding.meet.util.Theme
 import com.coding.meet.util.customColor
 import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.AlignItems
-import com.varabyte.kobweb.compose.css.BackgroundPosition
-import com.varabyte.kobweb.compose.css.BackgroundSize
-import com.varabyte.kobweb.compose.css.CSSPosition
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.JustifyContent
 import com.varabyte.kobweb.compose.css.Overflow
-import com.varabyte.kobweb.compose.css.TextTransform
 import com.varabyte.kobweb.compose.css.Transition
-import com.varabyte.kobweb.compose.css.TransitionTimingFunction
-import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.alignItems
-import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
-import com.varabyte.kobweb.compose.ui.modifiers.backgroundImage
 import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.bottom
@@ -37,7 +28,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.letterSpacing
 import com.varabyte.kobweb.compose.ui.modifiers.overflow
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.position
-import com.varabyte.kobweb.compose.ui.modifiers.textTransform
 import com.varabyte.kobweb.compose.ui.modifiers.top
 import com.varabyte.kobweb.compose.ui.modifiers.transform
 import com.varabyte.kobweb.compose.ui.modifiers.transition
@@ -49,18 +39,12 @@ import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.theme.colors.palette.border
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import org.jetbrains.compose.web.css.AnimationTimingFunction
-import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.Position
-import org.jetbrains.compose.web.css.deg
-import org.jetbrains.compose.web.css.em
 import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
-import org.jetbrains.compose.web.css.s
-import com.coding.meet.util.select
 
 
 val ImageSliderContainerStyle = CssStyle {

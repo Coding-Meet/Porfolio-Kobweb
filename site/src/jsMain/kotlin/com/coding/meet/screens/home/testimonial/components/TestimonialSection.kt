@@ -12,6 +12,7 @@ import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
 import com.coding.meet.util.TestimonialData.testimonials
 import com.coding.meet.util.Theme
+import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -46,9 +47,7 @@ import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.Button
-import com.coding.meet.util.select
 
 @Composable
 fun TestimonialSection() {

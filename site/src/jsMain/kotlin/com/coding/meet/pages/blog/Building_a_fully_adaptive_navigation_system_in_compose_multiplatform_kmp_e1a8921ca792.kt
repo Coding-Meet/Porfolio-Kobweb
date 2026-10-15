@@ -14,7 +14,7 @@ fun Building_a_fully_adaptive_navigation_system_in_compose_multiplatform_kmp_e1a
     val article = remember {
         ArticleData.articles.find { it.id == "building-a-fully-adaptive-navigation-system-in-compose-multiplatform-kmp-e1a8921ca792" }
     }
-    
+
     if (article != null) {
         ArticleDetail(article = article, context = context)
     }

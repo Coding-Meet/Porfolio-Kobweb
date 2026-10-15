@@ -1,7 +1,8 @@
 package com.coding.meet.common.components.custom_dialog
 
 import com.coding.meet.util.Theme
-import com.coding.meet.util.customColor
+import com.coding.meet.util.glassSubtle
+import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.autoLength
 import com.varabyte.kobweb.compose.css.functions.blur
@@ -30,9 +31,6 @@ import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
-import com.coding.meet.util.select
-import com.coding.meet.util.glassSubtle
 
 val dialogEntranceAnimation = Keyframes {
     from {

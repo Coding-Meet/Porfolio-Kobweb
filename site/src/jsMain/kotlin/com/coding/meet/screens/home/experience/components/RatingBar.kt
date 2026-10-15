@@ -13,9 +13,11 @@ import org.jetbrains.compose.web.css.px
 
 @Composable
 fun RatingBar(modifier: Modifier = Modifier, rating: Double = 5.0) {
-    Row(modifier = modifier,
+    Row(
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center) {
+        horizontalArrangement = Arrangement.Center
+    ) {
         repeat(rating.toInt()) {
             Image(
                 modifier = Modifier

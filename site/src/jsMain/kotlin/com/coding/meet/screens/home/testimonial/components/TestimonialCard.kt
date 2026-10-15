@@ -16,7 +16,6 @@ import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.color
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.flexGrow
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
@@ -87,7 +86,10 @@ fun TestimonialCard(
                 modifier = Modifier
                     .fillMaxWidth()
                     .color(
-                        CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor)
+                        CustomColor(
+                            lightColor = Theme.LightFontColor,
+                            darkColor = Theme.DarkFontColor
+                        )
                     )
                     .fontSize(0.92.cssRem)
                     .textAlign(TextAlign.Start)
@@ -115,7 +117,12 @@ fun TestimonialCard(
             SpanText(
                 text = testimonial.country,
                 modifier = Modifier
-                    .color(CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor))
+                    .color(
+                        CustomColor(
+                            lightColor = Theme.LightFontColor,
+                            darkColor = Theme.DarkFontColor
+                        )
+                    )
                     .fontSize(0.85.cssRem)
                     .fontWeight(FontWeight.SemiBold)
             )

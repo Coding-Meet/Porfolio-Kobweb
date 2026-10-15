@@ -22,9 +22,9 @@ import com.varabyte.kobweb.compose.ui.modifiers.content
 import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
+import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
-import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.letterSpacing
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.padding
@@ -40,16 +40,13 @@ import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.theme.colors.palette.border
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import org.jetbrains.compose.web.css.AnimationTimingFunction
-import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.deg
 import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.css.s
-import com.coding.meet.util.select
 
 val ProjectStyle = CssStyle {
     base {
@@ -102,7 +99,12 @@ val rotateAnimation = CssStyle {
             .border {
                 width(4.px)
                 style(LineStyle.Solid)
-                color(Theme.Primary.color, Theme.Transparent.color, colorMode.toPalette().border, Theme.Primary.color)
+                color(
+                    Theme.Primary.color,
+                    Theme.Transparent.color,
+                    colorMode.toPalette().border,
+                    Theme.Primary.color
+                )
             }
             .animation(
                 LdsDualRing.toAnimation(

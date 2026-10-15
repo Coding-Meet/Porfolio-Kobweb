@@ -14,7 +14,7 @@ fun Efficient_logging_in_kotlin_with_proguard_optimization_452bdac5c016(context:
     val article = remember {
         ArticleData.articles.find { it.id == "efficient-logging-in-kotlin-with-proguard-optimization-452bdac5c016" }
     }
-    
+
     if (article != null) {
         ArticleDetail(article = article, context = context)
     }

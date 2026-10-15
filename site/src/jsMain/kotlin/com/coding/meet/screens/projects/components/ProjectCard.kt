@@ -12,6 +12,7 @@ import com.coding.meet.screens.projects.styles.ProjectStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
+import com.coding.meet.util.glassSubtle
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -57,11 +58,8 @@ import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
-import org.jetbrains.compose.web.dom.Hr
-import com.coding.meet.util.glassSubtle
 
 @Composable
 fun ProjectCard(
@@ -99,7 +97,12 @@ fun ProjectCard(
                 text = project.title,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .color(CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor))
+                    .color(
+                        CustomColor(
+                            lightColor = Theme.LightFontColor,
+                            darkColor = Theme.DarkFontColor
+                        )
+                    )
                     .fontFamily(Res.Font.FONT_FAMILY_HEADING)
                     .fontSize(1.3.cssRem)
                     .fontWeight(FontWeight.Bold)

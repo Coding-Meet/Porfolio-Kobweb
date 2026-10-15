@@ -14,7 +14,7 @@ fun How_to_implement_shaders_in_compose_multiplatform_android_ios_desktop_web_c8
     val article = remember {
         ArticleData.articles.find { it.id == "how-to-implement-shaders-in-compose-multiplatform-android-ios-desktop-web-c86a36dd9666" }
     }
-    
+
     if (article != null) {
         ArticleDetail(article = article, context = context)
     }

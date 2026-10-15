@@ -2,6 +2,7 @@ package com.coding.meet.common.components.footer
 
 import com.coding.meet.util.Theme
 import com.coding.meet.util.customColor
+import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -17,11 +18,9 @@ import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
 import com.varabyte.kobweb.compose.ui.modifiers.padding
-import com.varabyte.kobweb.compose.ui.modifiers.scale
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.transform
 import com.varabyte.kobweb.compose.ui.modifiers.transition
-import com.varabyte.kobweb.compose.ui.modifiers.translateY
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
@@ -36,8 +35,6 @@ import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
-import com.coding.meet.util.select
 
 val FooterStyle = CssStyle {
     base {

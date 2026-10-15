@@ -18,17 +18,12 @@ import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
 import com.varabyte.kobweb.compose.ui.modifiers.opacity
 import com.varabyte.kobweb.compose.ui.modifiers.scale
-import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.transform
 import com.varabyte.kobweb.compose.ui.modifiers.transition
-import com.varabyte.kobweb.compose.ui.modifiers.translateY
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.animation.Keyframes
-import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.selectors.hover
-import com.varabyte.kobweb.silk.theme.colors.palette.border
-import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.AnimationTimingFunction
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -38,9 +33,7 @@ import org.jetbrains.compose.web.css.deg
 import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.css.s
-import com.coding.meet.util.select
 
 val WaveHandAnimation = Keyframes {
     0.percent { Modifier.transform { rotate(0.deg) } }
@@ -184,8 +177,8 @@ val SocialImageStyle = CssStyle {
     }
     hover {
         Modifier
-            .transform { 
-                scale(1.15) 
+            .transform {
+                scale(1.15)
                 translateY((-3).px)
             }
     }

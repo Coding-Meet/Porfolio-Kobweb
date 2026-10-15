@@ -28,7 +28,6 @@ import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
 
 val formStyle = CssStyle {
     val commonFormInputFormTextAreaModifier = Modifier

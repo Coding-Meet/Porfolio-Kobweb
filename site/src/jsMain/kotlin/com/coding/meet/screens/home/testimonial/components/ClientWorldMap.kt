@@ -10,6 +10,8 @@ import androidx.compose.runtime.setValue
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
+import com.coding.meet.util.glassSubtle
+import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.Overflow
@@ -19,7 +21,6 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
@@ -51,13 +52,10 @@ import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.Div
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.HTMLScriptElement
 import kotlin.js.json
-import com.coding.meet.util.select
-import com.coding.meet.util.glassSubtle
 
 data class ClientGeoCountry(
     val country: String,
@@ -260,7 +258,8 @@ fun ClientWorldMap(
     LaunchedEffect(colorMode) {
         ensureMapLibreLoaded {
             val maplibregl = window.asDynamic().maplibregl ?: return@ensureMapLibreLoaded
-            val mapElement = document.getElementById("client-openfreemap") ?: return@ensureMapLibreLoaded
+            val mapElement =
+                document.getElementById("client-openfreemap") ?: return@ensureMapLibreLoaded
 
             // OpenFreeMap styles: dark for dark mode, positron for light mode
             val styleUrl = if (colorMode.isDark) {
@@ -277,7 +276,8 @@ fun ClientWorldMap(
             if (existingMap != null) {
                 try {
                     existingMap.setStyle(styleUrl)
-                } catch (_: Throwable) {}
+                } catch (_: Throwable) {
+                }
                 return@ensureMapLibreLoaded
             }
 
@@ -303,7 +303,8 @@ fun ClientWorldMap(
             map.addControl(navControl, "top-right")
 
             // Add attribution
-            val attrControl = js("new maplibregl.AttributionControl({ compact: true, customAttribution: '<a href=\"https://openfreemap.org\" target=\"_blank\">OpenFreeMap</a> &copy; <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">OpenStreetMap</a>' })")
+            val attrControl =
+                js("new maplibregl.AttributionControl({ compact: true, customAttribution: '<a href=\"https://openfreemap.org\" target=\"_blank\">OpenFreeMap</a> &copy; <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">OpenStreetMap</a>' })")
             map.addControl(attrControl, "bottom-right")
 
             map.on("load", {
@@ -334,14 +335,16 @@ fun ClientWorldMap(
                     """.trimIndent()
 
                     // focusAfterOpen: false and autoPan: false prevent the browser from scrolling/jumping
-                    val popup = js("""
+                    val popup = js(
+                        """
                         new maplibregl.Popup({
                             offset: 20,
                             closeButton: true,
                             focusAfterOpen: false,
                             autoPan: false
                         })
-                    """).setHTML(popupHtml)
+                    """
+                    ).setHTML(popupHtml)
 
                     val marker = js("new maplibregl.Marker({ element: el })")
                         .setLngLat(arrayOf(client.lng, client.lat))
@@ -368,7 +371,8 @@ fun ClientWorldMap(
         val map = mapInstance
         if (map != null) {
             // Update marker styles: highlight selected hero pin and set distinct unselected neutral color on others
-            js("""
+            js(
+                """
                 for (var key in markersMap) {
                     var m = markersMap[key];
                     if (m) {
@@ -397,34 +401,41 @@ fun ClientWorldMap(
                         }
                     }
                 }
-            """)
+            """
+            )
 
             if (selectedCountry != null) {
                 val target = ClientGeoCountriesList.find { it.country == selectedCountry }
                 if (target != null) {
-                    map.flyTo(json(
-                        "center" to arrayOf(target.lng, target.lat),
-                        "zoom" to 4.2,
-                        "speed" to 1.4,
-                        "essential" to true
-                    ))
+                    map.flyTo(
+                        json(
+                            "center" to arrayOf(target.lng, target.lat),
+                            "zoom" to 4.2,
+                            "speed" to 1.4,
+                            "essential" to true
+                        )
+                    )
                     val marker = markersMap[selectedCountry]
-                    js("""
+                    js(
+                        """
                         if (marker) {
                             var p = marker.getPopup();
                             if (p && !p.isOpen()) {
                                 marker.togglePopup();
                             }
                         }
-                    """)
+                    """
+                    )
                 }
             } else {
-                map.flyTo(json(
-                    "center" to arrayOf(12.0, 24.0),
-                    "zoom" to 1.6,
-                    "speed" to 1.2,
-                    "essential" to true
-                ))
+                map.flyTo(
+                    json(
+                        "center" to arrayOf(12.0, 24.0),
+                        "zoom" to 1.6,
+                        "speed" to 1.2,
+                        "essential" to true
+                    )
+                )
             }
         }
     }
@@ -433,7 +444,8 @@ fun ClientWorldMap(
         onDispose {
             try {
                 mapInstance?.remove()
-            } catch (_: Throwable) {}
+            } catch (_: Throwable) {
+            }
             mapInstance = null
         }
     }
@@ -585,7 +597,10 @@ fun ClientWorldMap(
                         .fontSize(0.76.cssRem)
                         .fontWeight(if (isAll) FontWeight.Bold else FontWeight.Medium)
                         .color(
-                            if (isAll) Theme.White.rgb else CustomColor(Theme.LightFontColor, Theme.DarkFontColor)
+                            if (isAll) Theme.White.rgb else CustomColor(
+                                Theme.LightFontColor,
+                                Theme.DarkFontColor
+                            )
                         )
                 )
             }

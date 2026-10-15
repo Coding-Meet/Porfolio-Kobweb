@@ -32,7 +32,11 @@ data class Experience(
             val startMonth = monthMap[startParts.getOrNull(0)] ?: 0
             val startYear = startParts.getOrNull(1)?.toIntOrNull() ?: 2023
 
-            val (endYear, endMonth) = if (endDate == null || endDate.equals("Present", ignoreCase = true)) {
+            val (endYear, endMonth) = if (endDate == null || endDate.equals(
+                    "Present",
+                    ignoreCase = true
+                )
+            ) {
                 val now = Date()
                 Pair(now.getFullYear(), now.getMonth())
             } else {

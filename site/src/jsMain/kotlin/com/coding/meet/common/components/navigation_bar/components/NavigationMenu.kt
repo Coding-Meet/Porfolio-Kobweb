@@ -26,7 +26,6 @@ import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
 
 @Composable
 fun NavigationMenu(

@@ -17,8 +17,8 @@ object Res {
         const val PREVIOUS = "<"
         const val SEND_MESSAGE = "Send Message"
         const val SEE_ALL_REVIEW = "See All Reviews"
-        const val PLAY_STORE =  "Play Store"
-        const val LIVE =  "LIVE"
+        const val PLAY_STORE = "Play Store"
+        const val LIVE = "LIVE"
         const val CONTACT_ME = "Contact Me"
         const val SAVED_THEME = "theme"
     }

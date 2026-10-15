@@ -6,6 +6,8 @@ import com.coding.meet.models.Experience
 import com.coding.meet.screens.home.experience.styles.experienceCardStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Theme
+import com.coding.meet.util.glassSubtle
+import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -32,9 +34,6 @@ import org.jetbrains.compose.web.css.FlexWrap
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
-import com.coding.meet.util.select
-import com.coding.meet.util.glassSubtle
 
 @Composable
 fun ExperienceCard(
@@ -52,14 +51,20 @@ fun ExperienceCard(
     ) {
         // Title and Date Row
         Row(
-            modifier = Modifier.fillMaxWidth().flexWrap(FlexWrap.Wrap).gap(8.px).padding(bottom = 6.px),
+            modifier = Modifier.fillMaxWidth().flexWrap(FlexWrap.Wrap).gap(8.px)
+                .padding(bottom = 6.px),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             SpanText(
                 text = experience.title,
                 modifier = Modifier
-                    .color(CustomColor(lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor))
+                    .color(
+                        CustomColor(
+                            lightColor = Theme.LightFontColor,
+                            darkColor = Theme.DarkFontColor
+                        )
+                    )
                     .fontSize(1.2.cssRem)
                     .fontWeight(FontWeight.Bold)
             )
@@ -88,14 +93,20 @@ fun ExperienceCard(
                     modifier = Modifier
                         .fontSize(0.85.cssRem)
                         .fontWeight(FontWeight.Medium)
-                        .color(if (isPresent) Theme.Primary.color else CustomColor(Theme.DarkGray, Theme.Muted))
+                        .color(
+                            if (isPresent) Theme.Primary.color else CustomColor(
+                                Theme.DarkGray,
+                                Theme.Muted
+                            )
+                        )
                 )
             }
         }
 
         // Company & Type & Location
         Row(
-            modifier = Modifier.fillMaxWidth().flexWrap(FlexWrap.Wrap).gap(12.px).padding(bottom = 10.px),
+            modifier = Modifier.fillMaxWidth().flexWrap(FlexWrap.Wrap).gap(12.px)
+                .padding(bottom = 10.px),
             verticalAlignment = Alignment.CenterVertically
         ) {
             SpanText(

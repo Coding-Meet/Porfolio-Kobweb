@@ -14,6 +14,8 @@ import com.coding.meet.screens.articles_detail.styles.ArticleContentStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
+import com.coding.meet.util.glassSubtle
+import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -22,7 +24,6 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
@@ -64,7 +65,6 @@ import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.Div
 import org.w3c.dom.HTMLAnchorElement
 import org.w3c.dom.HTMLButtonElement
@@ -72,8 +72,6 @@ import org.w3c.dom.HTMLElement
 import org.w3c.dom.HTMLIFrameElement
 import org.w3c.dom.HTMLSpanElement
 import org.w3c.dom.get
-import com.coding.meet.util.select
-import com.coding.meet.util.glassSubtle
 
 @Composable
 fun ArticleContent(
@@ -122,7 +120,10 @@ fun ArticleContent(
                     },
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                FaArrowLeft(modifier = Modifier.margin(right = 8.px).fontSize(0.9.cssRem).color(Theme.Primary.color))
+                FaArrowLeft(
+                    modifier = Modifier.margin(right = 8.px).fontSize(0.9.cssRem)
+                        .color(Theme.Primary.color)
+                )
                 SpanText(
                     text = "Back to Blog",
                     modifier = Modifier
