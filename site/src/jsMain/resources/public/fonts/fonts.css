@@ -1,6 +1,63 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap");
 @import url("https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css");
 
+/* ==========================================================================
+   Centralized Design System CSS Variables
+   ========================================================================== */
+:root {
+  /* Brand / Primary */
+  --color-primary: #10B981;
+  --color-primary-dark: #059669;
+  --color-primary-light: #34D399;
+  --color-primary-ring-bg: rgba(16, 185, 129, 0.03);
+  --color-primary-subtle: rgba(16, 185, 129, 0.1);
+  --color-primary-soft: rgba(16, 185, 129, 0.25);
+  --color-primary-medium: rgba(16, 185, 129, 0.45);
+  --color-primary-dot-glow: rgba(16, 185, 129, 0.7);
+  --color-primary-strong: rgba(16, 185, 129, 0.8);
+  --color-primary-glow: rgba(16, 185, 129, 0.9);
+
+  /* Neutrals & Surfaces */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-dark-bg: #0b0f19;
+  --color-dark-surface: #0f172a;
+  --color-dark-pin: #1e293b;
+  --color-dark-pin-unselected: #334155;
+  --color-dark-pin-hover: #475569;
+  --color-light-bg: #f1f5f9;
+  --color-light-border: #e2e8f0;
+  --color-light-border-subtle: #cbd5e1;
+
+  /* Typography & Muted Colors */
+  --color-font-light: #0f172a;
+  --color-font-dark: #f8fafc;
+  --color-muted: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-scrollbar: rgba(156, 163, 175, 0.4);
+  --color-scrollbar-hover: rgba(156, 163, 175, 0.7);
+
+  /* Links & Accents */
+  --color-sky: #38bdf8;
+  --color-sky-dark: #0284c7;
+
+  /* Glass, Overlays & Shadows */
+  --color-glass-white-subtle: rgba(255, 255, 255, 0.08);
+  --color-glass-white-soft: rgba(255, 255, 255, 0.1);
+  --color-glass-white-border: rgba(255, 255, 255, 0.14);
+  --color-glass-white-card: rgba(255, 255, 255, 0.9);
+  --color-glass-black-subtle: rgba(0, 0, 0, 0.04);
+  --color-glass-black-soft: rgba(0, 0, 0, 0.08);
+  --color-glass-black-medium: rgba(0, 0, 0, 0.12);
+  --color-shadow-dark: rgba(0, 0, 0, 0.6);
+  --color-shadow-pin: rgba(0, 0, 0, 0.45);
+  --color-shadow-pin-unselected: rgba(0, 0, 0, 0.35);
+  --color-shadow-pin-hover: rgba(0, 0, 0, 0.4);
+  --color-shadow-light: rgba(0, 0, 0, 0.12);
+  --color-dark-ctrl-attrib: rgba(15, 23, 42, 0.85);
+}
+
 *, *::before, *::after {
   -webkit-tap-highlight-color: transparent;
 }
@@ -14,7 +71,7 @@ html, body {
 }
 
 ::selection {
-  background-color: rgba(16, 185, 129, 0.25);
+  background-color: var(--color-primary-soft);
   color: inherit;
 }
 
@@ -29,12 +86,12 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(156, 163, 175, 0.4);
+  background: var(--color-scrollbar);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(156, 163, 175, 0.7);
+  background: var(--color-scrollbar-hover);
 }
 
 /* MapLibre & OpenFreeMap custom map styling */
@@ -58,22 +115,22 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #1e293b;
-  color: white;
+  background: var(--color-dark-pin);
+  color: var(--color-white);
   width: 32px;
   height: 32px;
   border-radius: 50%;
   font-size: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
-  border: 2px solid #10B981;
+  box-shadow: 0 4px 12px var(--color-shadow-pin);
+  border: 2px solid var(--color-primary);
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   position: relative;
 }
 
 #client-openfreemap[data-theme="light"] .client-marker-pin {
-  background: #ffffff;
-  border: 2px solid #10B981;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  background: var(--color-white);
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 4px 10px var(--color-shadow-light);
 }
 
 .client-marker-pin:hover {
@@ -82,25 +139,25 @@ html, body {
 
 /* Selected Hero Pin (Active Highlighted Country) */
 .client-marker-pin.is-selected {
-  background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
-  border: 3px solid #ffffff !important;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+  border: 3px solid var(--color-white) !important;
   transform: scale(1.38) !important;
-  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.45), 0 8px 25px rgba(16, 185, 129, 0.9) !important;
+  box-shadow: 0 0 0 4px var(--color-primary-medium), 0 8px 25px var(--color-primary-glow) !important;
 }
 
 /* Unselected Pins (Clear, Visible Neutral Color - NOT Hidden, NO Green) */
 .client-marker-pin.is-unselected {
-  background: #334155 !important;
-  border: 2px solid #64748b !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+  background: var(--color-dark-pin-unselected) !important;
+  border: 2px solid var(--color-slate-500) !important;
+  box-shadow: 0 2px 8px var(--color-shadow-pin-unselected) !important;
   transform: scale(0.92) !important;
   opacity: 0.88 !important;
 }
 
 #client-openfreemap[data-theme="light"] .client-marker-pin.is-unselected {
-  background: #f1f5f9 !important;
-  border: 2px solid #cbd5e1 !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+  background: var(--color-light-bg) !important;
+  border: 2px solid var(--color-light-border-subtle) !important;
+  box-shadow: 0 2px 6px var(--color-glass-black-soft) !important;
 }
 
 .client-marker-pin.is-unselected .client-marker-pulse {
@@ -111,14 +168,14 @@ html, body {
 .client-marker-pin.is-unselected:hover {
   transform: scale(1.15) !important;
   opacity: 1 !important;
-  background: #475569 !important;
-  border-color: #94a3b8 !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  background: var(--color-dark-pin-hover) !important;
+  border-color: var(--color-muted) !important;
+  box-shadow: 0 4px 12px var(--color-shadow-pin-hover) !important;
 }
 
 #client-openfreemap[data-theme="light"] .client-marker-pin.is-unselected:hover {
-  background: #e2e8f0 !important;
-  border-color: #94a3b8 !important;
+  background: var(--color-light-border) !important;
+  border-color: var(--color-muted) !important;
 }
 
 /* Marker Pulse Ring */
@@ -127,14 +184,14 @@ html, body {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: rgba(16, 185, 129, 0.3);
+  background: var(--color-primary-soft);
   animation: markerPulse 2.8s infinite ease-out;
   pointer-events: none;
 }
 
 .client-marker-pin.is-selected .client-marker-pulse {
   display: block !important;
-  background: rgba(16, 185, 129, 0.8) !important;
+  background: var(--color-primary-strong) !important;
   animation: markerHeroPulse 1.8s infinite ease-out !important;
 }
 
@@ -198,109 +255,109 @@ html, body {
 /* Dark Theme Map Styling */
 #client-openfreemap[data-theme="dark"],
 .dark #client-openfreemap {
-  background-color: #0b0f19 !important;
+  background-color: var(--color-dark-bg) !important;
 }
 
 #client-openfreemap[data-theme="dark"] .maplibregl-popup-content {
-  background: #0f172a !important;
-  color: #f8fafc !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6) !important;
+  background: var(--color-dark-surface) !important;
+  color: var(--color-font-dark) !important;
+  border: 1px solid var(--color-glass-white-border) !important;
+  box-shadow: 0 14px 35px var(--color-shadow-dark) !important;
 }
 #client-openfreemap[data-theme="dark"] .client-popup-title {
-  color: #f8fafc;
+  color: var(--color-font-dark);
 }
 #client-openfreemap[data-theme="dark"] .client-popup-stats {
-  color: #10B981;
+  color: var(--color-primary);
 }
 #client-openfreemap[data-theme="dark"] .client-popup-quote {
-  color: #94A3B8;
+  color: var(--color-muted);
 }
 #client-openfreemap[data-theme="dark"] .maplibregl-popup-close-button {
-  color: #94a3b8 !important;
+  color: var(--color-muted) !important;
 }
 #client-openfreemap[data-theme="dark"] .maplibregl-popup-close-button:hover {
-  color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.1) !important;
+  color: var(--color-white) !important;
+  background: var(--color-glass-white-soft) !important;
 }
 #client-openfreemap[data-theme="dark"] .maplibregl-popup-anchor-top .maplibregl-popup-tip {
-  border-bottom-color: #0f172a !important;
+  border-bottom-color: var(--color-dark-surface) !important;
 }
 #client-openfreemap[data-theme="dark"] .maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
-  border-top-color: #0f172a !important;
+  border-top-color: var(--color-dark-surface) !important;
 }
 #client-openfreemap[data-theme="dark"] .maplibregl-popup-anchor-left .maplibregl-popup-tip {
-  border-right-color: #0f172a !important;
+  border-right-color: var(--color-dark-surface) !important;
 }
 #client-openfreemap[data-theme="dark"] .maplibregl-popup-anchor-right .maplibregl-popup-tip {
-  border-left-color: #0f172a !important;
+  border-left-color: var(--color-dark-surface) !important;
 }
 #client-openfreemap[data-theme="dark"] .maplibregl-ctrl-group {
-  background: #0f172a !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+  background: var(--color-dark-surface) !important;
+  border: 1px solid var(--color-glass-white-border) !important;
+  box-shadow: 0 4px 14px var(--color-shadow-pin-hover) !important;
 }
 #client-openfreemap[data-theme="dark"] .maplibregl-ctrl-group button {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-bottom: 1px solid var(--color-glass-white-subtle) !important;
 }
 #client-openfreemap[data-theme="dark"] .maplibregl-ctrl-icon {
   filter: invert(1) brightness(1.2) !important;
 }
 #client-openfreemap[data-theme="dark"] .maplibregl-ctrl-group button:hover {
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: var(--color-glass-white-subtle) !important;
 }
 #client-openfreemap[data-theme="dark"] .maplibregl-ctrl-attrib {
-  background: rgba(15, 23, 42, 0.85) !important;
-  color: #94a3b8 !important;
+  background: var(--color-dark-ctrl-attrib) !important;
+  color: var(--color-muted) !important;
 }
 #client-openfreemap[data-theme="dark"] .maplibregl-ctrl-attrib a {
-  color: #38bdf8 !important;
+  color: var(--color-sky) !important;
 }
 
 /* Light Theme Map Styling */
 #client-openfreemap[data-theme="light"],
 .light #client-openfreemap {
-  background-color: #f1f5f9 !important;
+  background-color: var(--color-light-bg) !important;
 }
 
 #client-openfreemap[data-theme="light"] .maplibregl-popup-content {
-  background: #ffffff !important;
-  color: #0f172a !important;
-  border: 1px solid rgba(0, 0, 0, 0.09) !important;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12) !important;
+  background: var(--color-white) !important;
+  color: var(--color-font-light) !important;
+  border: 1px solid var(--color-glass-black-soft) !important;
+  box-shadow: 0 12px 30px var(--color-shadow-light) !important;
 }
 #client-openfreemap[data-theme="light"] .client-popup-title {
-  color: #0f172a;
+  color: var(--color-font-light);
 }
 #client-openfreemap[data-theme="light"] .client-popup-stats {
-  color: #059669;
+  color: var(--color-primary-dark);
 }
 #client-openfreemap[data-theme="light"] .client-popup-quote {
-  color: #475569;
+  color: var(--color-slate-600);
 }
 #client-openfreemap[data-theme="light"] .maplibregl-popup-close-button {
-  color: #64748b !important;
+  color: var(--color-slate-500) !important;
 }
 #client-openfreemap[data-theme="light"] .maplibregl-popup-close-button:hover {
-  color: #0f172a !important;
-  background: rgba(0, 0, 0, 0.05) !important;
+  color: var(--color-font-light) !important;
+  background: var(--color-glass-black-subtle) !important;
 }
 #client-openfreemap[data-theme="light"] .maplibregl-popup-anchor-top .maplibregl-popup-tip {
-  border-bottom-color: #ffffff !important;
+  border-bottom-color: var(--color-white) !important;
 }
 #client-openfreemap[data-theme="light"] .maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
-  border-top-color: #ffffff !important;
+  border-top-color: var(--color-white) !important;
 }
 #client-openfreemap[data-theme="light"] .maplibregl-popup-anchor-left .maplibregl-popup-tip {
-  border-right-color: #ffffff !important;
+  border-right-color: var(--color-white) !important;
 }
 #client-openfreemap[data-theme="light"] .maplibregl-popup-anchor-right .maplibregl-popup-tip {
-  border-left-color: #ffffff !important;
+  border-left-color: var(--color-white) !important;
 }
 #client-openfreemap[data-theme="light"] .maplibregl-ctrl-group {
-  background: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  background: var(--color-white) !important;
+  border: 1px solid var(--color-glass-black-soft) !important;
+  box-shadow: 0 4px 12px var(--color-glass-black-soft) !important;
 }
 #client-openfreemap[data-theme="light"] .maplibregl-ctrl-group button {
   border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
@@ -309,14 +366,14 @@ html, body {
   filter: none !important;
 }
 #client-openfreemap[data-theme="light"] .maplibregl-ctrl-group button:hover {
-  background: rgba(0, 0, 0, 0.04) !important;
+  background: var(--color-glass-black-subtle) !important;
 }
 #client-openfreemap[data-theme="light"] .maplibregl-ctrl-attrib {
-  background: rgba(255, 255, 255, 0.9) !important;
-  color: #64748b !important;
+  background: var(--color-glass-white-card) !important;
+  color: var(--color-slate-500) !important;
 }
 #client-openfreemap[data-theme="light"] .maplibregl-ctrl-attrib a {
-  color: #0284c7 !important;
+  color: var(--color-sky-dark) !important;
 }
 
 /* ==========================================================================
@@ -346,13 +403,13 @@ html, body {
     left: -3px;
     width: 6px;
     height: 6px;
-    background-color: #10B981;
+    background-color: var(--color-primary);
     border-radius: 50%;
     pointer-events: none;
     z-index: 999999;
     opacity: 0;
     transition: opacity 0.2s ease;
-    box-shadow: 0 0 8px rgba(16, 185, 129, 0.7);
+    box-shadow: 0 0 8px var(--color-primary-dot-glow);
     will-change: transform;
   }
 
@@ -362,8 +419,8 @@ html, body {
     left: -16px;
     width: 32px;
     height: 32px;
-    border: 1.5px solid rgba(16, 185, 129, 0.45);
-    background-color: rgba(16, 185, 129, 0.03);
+    border: 1.5px solid var(--color-primary-medium);
+    background-color: var(--color-primary-ring-bg);
     border-radius: 50%;
     pointer-events: none;
     z-index: 999998;
@@ -384,9 +441,9 @@ html, body {
     height: 48px;
     top: -24px;
     left: -24px;
-    border-color: #10B981;
-    background-color: rgba(16, 185, 129, 0.1);
-    box-shadow: 0 0 16px rgba(16, 185, 129, 0.25);
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-subtle);
+    box-shadow: 0 0 16px var(--color-primary-soft);
   }
 
   /* Click / Active state */
@@ -395,8 +452,8 @@ html, body {
     height: 24px;
     top: -12px;
     left: -12px;
-    border-color: #059669;
-    background-color: rgba(16, 185, 129, 0.25);
+    border-color: var(--color-primary-dark);
+    background-color: var(--color-primary-soft);
   }
 
   /* Hidden in text input mode */
