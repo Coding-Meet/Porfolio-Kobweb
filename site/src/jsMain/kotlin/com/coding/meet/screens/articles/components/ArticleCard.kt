@@ -37,10 +37,14 @@ import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.coding.meet.util.glassSubtle
+import com.varabyte.kobweb.compose.ui.modifiers.height
+import com.varabyte.kobweb.silk.components.icons.fa.FaArrowRight
 import com.varabyte.kobweb.silk.components.icons.fa.FaBookOpen
 import com.varabyte.kobweb.silk.components.icons.fa.FaChalkboardUser
 import com.varabyte.kobweb.silk.components.icons.fa.FaEye
 import com.varabyte.kobweb.silk.components.icons.fa.FaHandsClapping
+import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
@@ -155,16 +159,48 @@ fun ArticleCard(article: Article, onClick: (() -> Unit)? = null) {
             article.presentations?.let { StatItem(it) { FaChalkboardUser() } }
         }
 
-        // Date and Read Time
-        SpanText(
-            text = "${article.pubDate} • ${article.readTime}",
+        // Divider
+        Div(
+            attrs = Modifier
+                .fillMaxWidth()
+                .height(1.px)
+                .margin(top = 10.px, bottom = 10.px)
+                .backgroundColor(colorMode.glassSubtle)
+                .toAttrs()
+        )
+
+        // Date and Read Article CTA
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 6.px, leftRight = 4.px)
-                .color(CustomColor(lightColor = Theme.DarkGray, darkColor = Theme.Muted))
-                .fontSize(0.82.cssRem)
-                .textAlign(TextAlign.Start)
-        )
+                .padding(leftRight = 4.px),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            SpanText(
+                text = "${article.pubDate} • ${article.readTime}",
+                modifier = Modifier
+                    .color(CustomColor(lightColor = Theme.DarkGray, darkColor = Theme.Muted))
+                    .fontSize(0.82.cssRem)
+            )
+
+            Row(
+                modifier = Modifier.gap(6.px),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                SpanText(
+                    text = "Read Article",
+                    modifier = Modifier
+                        .color(Theme.Primary.color)
+                        .fontSize(0.85.cssRem)
+                        .fontWeight(FontWeight.Bold)
+                )
+                FaArrowRight(
+                    size = IconSize.SM,
+                    modifier = Modifier.color(Theme.Primary.color)
+                )
+            }
+        }
     }
 }
 

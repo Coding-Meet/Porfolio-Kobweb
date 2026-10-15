@@ -58,7 +58,23 @@
       if (!target) return;
 
       // Check if hovering over clickable elements
-      const clickableAncestor = target.closest('a, button, [role="button"], input[type="submit"], input[type="button"], .client-marker-pin, [data-cursor-hover], select, [onclick], .clickable');
+      let clickableAncestor = target.closest('a, button, [role="button"], input[type="submit"], input[type="button"], .client-marker-pin, [data-cursor-hover], select, [onclick], .clickable');
+      if (!clickableAncestor) {
+        let el = target;
+        while (el && el !== document.body) {
+          if (el.style && (el.style.cursor === 'pointer' || el.style.cursor.indexOf('pointer') !== -1)) {
+            clickableAncestor = el;
+            break;
+          }
+          try {
+            if (window.getComputedStyle(el).cursor === 'pointer') {
+              clickableAncestor = el;
+              break;
+            }
+          } catch (_) {}
+          el = el.parentElement;
+        }
+      }
       const isClickable = Boolean(clickableAncestor);
 
       // Check text mode: inputs, textareas, readable text elements (p, h1-h6, code, article)

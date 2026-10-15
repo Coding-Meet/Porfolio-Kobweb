@@ -41,6 +41,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.components.icons.fa.FaEye
 import com.varabyte.kobweb.silk.components.icons.fa.FaGithub
 import com.varabyte.kobweb.silk.components.icons.fa.FaGooglePlay
 import com.varabyte.kobweb.silk.components.icons.fa.FaLink
@@ -186,9 +187,29 @@ fun ProjectCard(
                         .justifyContent(JustifyContent.Center),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    Button(
+                        attrs = MainButtonStyle.toAttrs {
+                            onClick {
+                                it.stopPropagation()
+                                onClick()
+                            }
+                        }
+                    ) {
+                        FaEye(
+                            size = IconSize.LG,
+                            modifier = Modifier
+                        )
+                        SpanText(
+                            modifier = Modifier
+                                .fontSize(0.85.cssRem)
+                                .fontWeight(FontWeight.Bold)
+                                .padding(left = 8.px),
+                            text = "View Details",
+                        )
+                    }
                     if (project.appStoreUrl != null) {
                         Button(
-                            attrs = MainButtonStyle.toAttrs {
+                            attrs = SecondaryButtonStyle.toAttrs {
                                 onClick {
                                     it.stopPropagation()
                                     window.open(project.appStoreUrl)
@@ -232,7 +253,7 @@ fun ProjectCard(
                     }
                     if (project.websiteUrl != null) {
                         Button(
-                            attrs = MainButtonStyle.toAttrs {
+                            attrs = SecondaryButtonStyle.toAttrs {
                                 onClick {
                                     it.stopPropagation()
                                     window.open(project.websiteUrl)
