@@ -35,6 +35,9 @@ import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
+import com.coding.meet.util.Theme
+import com.coding.meet.util.backgroundRgba
+import com.coding.meet.util.glassSubtle
 
 val NavBarStyle = CssStyle {
     base {
@@ -43,10 +46,10 @@ val NavBarStyle = CssStyle {
             .position(Position.Sticky)
             .top(0.px)
             .zIndex(1000)
-            .backgroundColor(colorMode.toPalette().background.toRgb().copyf(alpha = 0.82f))
+            .backgroundColor(colorMode.backgroundRgba(0.82))
             .backdropFilter(saturate(180.percent), blur(16.px))
             .borderBottom(1.px, LineStyle.Solid, colorMode.toPalette().border)
-            .boxShadow(0.px, 1.px, 12.px, null, rgba(0, 0, 0, 0.04))
+            .boxShadow(0.px, 1.px, 12.px, null, Theme.Black.subtle)
     }
 }
 
@@ -68,7 +71,7 @@ val NavigationItemStyle = CssStyle {
     hover {
         Modifier
             .backgroundColor(
-                if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(255, 255, 255, 0.08)
+                colorMode.glassSubtle
             )
     }
 }
@@ -110,6 +113,6 @@ val HeaderButtonStyle = CssStyle {
     hover {
         Modifier
             .scale(1.08)
-            .boxShadow(0.px, 4.px, 12.px, null, rgba(16, 185, 129, 0.2))
+            .boxShadow(0.px, 4.px, 12.px, null, Theme.Primary.soft)
     }
 }

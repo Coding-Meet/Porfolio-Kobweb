@@ -59,6 +59,7 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.css.s
+import com.coding.meet.util.select
 
 
 val ImageSliderContainerStyle = CssStyle {
@@ -68,7 +69,7 @@ val ImageSliderContainerStyle = CssStyle {
             .width(100.percent)
             .overflow(Overflow.Hidden)
             .borderRadius(8.px)
-            .boxShadow(0.px, 4.px, 8.px, 0.px, rgba(0, 0, 0, 0.1))
+            .boxShadow(0.px, 4.px, 8.px, 0.px, Theme.Black.subtle)
     }
 }
 
@@ -98,7 +99,7 @@ val IndicatorStyle = CssStyle {
             .width(12.px)
             .height(12.px)
             .borderRadius(50.percent)
-            .backgroundColor(Color.lightgray)
+            .backgroundColor(Theme.LightGray.color)
             .cursor(Cursor.Pointer)
             .transition(Transition.of("background-color", 300.ms))
     }
@@ -119,7 +120,7 @@ val ControlButtonStyle = CssStyle {
             .position(Position.Absolute)
             .top(50.percent)
             .transform { translateY((-50).percent) }
-            .backgroundColor(rgba(0, 0, 0, 0.5))
+            .backgroundColor(Theme.Black.strong)
             .color(Theme.White.color)
             .padding(8.px, 12.px)
             .borderRadius(4.px)
@@ -135,11 +136,11 @@ val MainButtonStyle = CssStyle {
             .alignItems(AlignItems.Center)
             .justifyContent(JustifyContent.Center)
             .backgroundColor(Theme.Primary.color)
-            .color(Colors.White)
+            .color(Theme.White.rgb)
             .border(0.px)
             .padding(10.px, 22.px)
             .borderRadius(9999.px)
-            .boxShadow(0.px, 4.px, 14.px, null, rgba(16, 185, 129, 0.35))
+            .boxShadow(0.px, 4.px, 14.px, null, Theme.Primary.medium)
             .transition(Transition.all(200.ms, AnimationTimingFunction.EaseInOut))
             .fontWeight(600)
             .cursor(Cursor.Pointer)
@@ -149,7 +150,7 @@ val MainButtonStyle = CssStyle {
     hover {
         Modifier
             .transform { translateY((-2).px) }
-            .boxShadow(0.px, 8.px, 20.px, null, rgba(16, 185, 129, 0.5))
+            .boxShadow(0.px, 8.px, 20.px, null, Theme.Primary.strong)
     }
     active {
         Modifier
@@ -164,7 +165,7 @@ val SecondaryButtonStyle = CssStyle {
             .alignItems(AlignItems.Center)
             .justifyContent(JustifyContent.Center)
             .backgroundColor(
-                if (colorMode.isLight) Theme.White.color else rgba(255, 255, 255, 0.07)
+                colorMode.select(Theme.White.color, Theme.White.subtle)
             )
             .color(
                 customColor(
@@ -176,14 +177,14 @@ val SecondaryButtonStyle = CssStyle {
             .border(
                 1.px,
                 LineStyle.Solid,
-                if (colorMode.isLight) colorMode.toPalette().border else rgba(255, 255, 255, 0.12)
+                if (colorMode.isLight) colorMode.toPalette().border else Theme.White.soft
             )
             .boxShadow(
                 0.px,
                 2.px,
                 6.px,
                 null,
-                if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(0, 0, 0, 0.2)
+                colorMode.select(Theme.Black.subtle, Theme.Black.soft)
             )
             .styleModifier {
                 property("backdrop-filter", "blur(8px)")
@@ -201,7 +202,7 @@ val SecondaryButtonStyle = CssStyle {
         Modifier
             .transform { translateY((-2).px) }
             .backgroundColor(
-                if (colorMode.isLight) Theme.White.color else rgba(255, 255, 255, 0.12)
+                colorMode.select(Theme.White.color, Theme.White.soft)
             )
             .border(1.px, LineStyle.Solid, Theme.Primary.color)
             .boxShadow(
@@ -209,7 +210,7 @@ val SecondaryButtonStyle = CssStyle {
                 4.px,
                 14.px,
                 null,
-                if (colorMode.isLight) rgba(16, 185, 129, 0.15) else rgba(16, 185, 129, 0.25)
+                colorMode.select(Theme.Primary.soft, Theme.Primary.medium)
             )
     }
     active {

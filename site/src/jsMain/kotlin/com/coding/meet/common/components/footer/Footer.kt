@@ -50,6 +50,7 @@ import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Img
+import com.coding.meet.util.select
 
 @Composable
 fun Footer() {
@@ -144,7 +145,7 @@ private fun Copyright() {
             text = Res.Strings.COPYRIGHT_TEXT
         )
         Image(
-            src = if (colorMode.isLight) Res.Image.COPYRIGHT_LIGHT else Res.Image.COPYRIGHT_DARK,
+            src = colorMode.select(Res.Image.COPYRIGHT_LIGHT, Res.Image.COPYRIGHT_DARK),
             alt = "Copyright",
             modifier = Modifier
                 .size(14.px)

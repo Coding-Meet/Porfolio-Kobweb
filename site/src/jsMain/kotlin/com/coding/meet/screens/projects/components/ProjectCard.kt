@@ -61,6 +61,7 @@ import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Hr
+import com.coding.meet.util.glassSubtle
 
 @Composable
 fun ProjectCard(
@@ -149,7 +150,7 @@ fun ProjectCard(
                     modifier = Modifier
                         .color(CustomColor(Theme.DarkGray, Theme.Muted))
                         .backgroundColor(
-                            if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(255, 255, 255, 0.07)
+                            colorMode.glassSubtle
                         )
                         .border(1.px, LineStyle.Solid, colorMode.toPalette().border)
                         .borderRadius(9999.px)
@@ -169,7 +170,7 @@ fun ProjectCard(
                         .height(1.px)
                         .margin(topBottom = 12.px)
                         .backgroundColor(
-                            if (colorMode.isLight) rgba(0, 0, 0, 0.08) else rgba(255, 255, 255, 0.08)
+                            colorMode.glassSubtle
                         )
                         .toAttrs()
                 )

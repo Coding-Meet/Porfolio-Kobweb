@@ -83,6 +83,7 @@ import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.css.s
 import org.jetbrains.compose.web.dom.Button
+import com.coding.meet.util.select
 
 @Composable
 fun AboutMeSection() {
@@ -167,7 +168,7 @@ fun AboutMeSection() {
                         .top(avatarRadius.px)
                         .styleModifier {
                             property("transform", "translate(-50%, -50%)")
-                            property("border", "1.5px dashed ${if (colorMode.isLight) "rgba(16, 185, 129, 0.28)" else "rgba(16, 185, 129, 0.35)"}")
+                            property("border", "1.5px dashed ${Theme.Primary.medium}")
                             property("border-top-color", "transparent")
                         }
                         .borderRadius(50.percent)
@@ -183,7 +184,7 @@ fun AboutMeSection() {
                         .border(
                             3.px,
                             LineStyle.Solid,
-                            if (colorMode.isLight) rgba(16, 185, 129, 0.4) else rgba(16, 185, 129, 0.6)
+                            colorMode.select(Theme.Primary.medium, Theme.Primary.strong)
                         ),
                     src = Res.Image.PROFILE,
                     alt = "Meet - Profile",
@@ -211,12 +212,12 @@ fun AboutMeSection() {
                     .padding(leftRight = 14.px, topBottom = 6.px)
                     .margin(bottom = 12.px)
                     .backgroundColor(
-                        if (colorMode.isLight) rgba(16, 185, 129, 0.08) else rgba(16, 185, 129, 0.15)
+                        colorMode.select(Theme.Primary.subtle, Theme.Primary.soft)
                     )
                     .border(
                         1.px,
                         LineStyle.Solid,
-                        if (colorMode.isLight) rgba(16, 185, 129, 0.25) else rgba(16, 185, 129, 0.35)
+                        Theme.Primary.medium
                     )
                     .borderRadius(9999.px),
                 verticalAlignment = Alignment.CenterVertically
@@ -233,7 +234,7 @@ fun AboutMeSection() {
                                 timingFunction = AnimationTimingFunction.EaseInOut
                             )
                         )
-                        .boxShadow(0.px, 0.px, 8.px, null, rgba(16, 185, 129, 0.8))
+                        .boxShadow(0.px, 0.px, 8.px, null, Theme.Primary.strong)
                         .margin(right = 8.px)
                 )
                 SpanText(

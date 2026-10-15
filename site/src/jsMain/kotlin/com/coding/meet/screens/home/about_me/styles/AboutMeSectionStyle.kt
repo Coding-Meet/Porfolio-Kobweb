@@ -1,6 +1,8 @@
 package com.coding.meet.screens.home.about_me.styles
 
 import com.coding.meet.util.Theme
+import com.coding.meet.util.glassBorder
+import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.AnimationIterationCount
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.Transition
@@ -38,6 +40,7 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.css.s
+import com.coding.meet.util.select
 
 val WaveHandAnimation = Keyframes {
     0.percent { Modifier.transform { rotate(0.deg) } }
@@ -80,7 +83,7 @@ val WavingHandStyle = CssStyle {
 val ProfileImageStyle = CssStyle {
     base {
         Modifier
-            .boxShadow(0.px, 20.px, 40.px, (-12).px, rgba(16, 185, 129, 0.28))
+            .boxShadow(0.px, 20.px, 40.px, (-12).px, Theme.Primary.medium)
             .transition(
                 Transition.all(
                     duration = 350.ms,
@@ -91,7 +94,7 @@ val ProfileImageStyle = CssStyle {
     hover {
         Modifier
             .transform { scale(1.03) }
-            .boxShadow(0.px, 25.px, 50.px, (-10).px, rgba(16, 185, 129, 0.42))
+            .boxShadow(0.px, 25.px, 50.px, (-10).px, Theme.Primary.medium)
     }
 }
 
@@ -125,17 +128,17 @@ val SocialIconButtonStyle = CssStyle {
             .border(
                 1.px,
                 LineStyle.Solid,
-                if (colorMode.isLight) colorMode.toPalette().border else rgba(255, 255, 255, 0.12)
+                colorMode.glassBorder
             )
             .backgroundColor(
-                if (colorMode.isLight) Theme.White.color else rgba(255, 255, 255, 0.07)
+                colorMode.select(Theme.White.color, Theme.White.subtle)
             )
             .boxShadow(
                 0.px,
                 2.px,
                 8.px,
                 null,
-                if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(0, 0, 0, 0.25)
+                colorMode.select(Theme.Black.subtle, Theme.Black.medium)
             )
             .styleModifier {
                 property("backdrop-filter", "blur(8px)")
@@ -158,14 +161,14 @@ val SocialIconButtonStyle = CssStyle {
                 translateY((-3).px)
             }
             .backgroundColor(
-                if (colorMode.isLight) rgba(16, 185, 129, 0.12) else rgba(16, 185, 129, 0.22)
+                Theme.Primary.soft
             )
             .border(
                 1.px,
                 LineStyle.Solid,
-                rgba(16, 185, 129, 0.6)
+                Theme.Primary.strong
             )
-            .boxShadow(0.px, 6.px, 16.px, null, rgba(16, 185, 129, 0.3))
+            .boxShadow(0.px, 6.px, 16.px, null, Theme.Primary.medium)
     }
 }
 

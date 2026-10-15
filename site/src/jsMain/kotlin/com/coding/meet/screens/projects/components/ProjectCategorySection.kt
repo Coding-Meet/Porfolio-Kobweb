@@ -58,9 +58,9 @@ fun ProjectCategorySection(
                     .then(
                         if (isSelected) Modifier
                             .backgroundColor(Theme.Primary.color)
-                            .color(Colors.White)
+                            .color(Theme.White.rgb)
                             .border(1.px, LineStyle.Solid, Theme.Primary.color)
-                            .boxShadow(0.px, 4.px, 14.px, null, rgba(16, 185, 129, 0.4))
+                            .boxShadow(0.px, 4.px, 14.px, null, Theme.Primary.medium)
                             .fontWeight(FontWeight.SemiBold)
                         else Modifier
                     )

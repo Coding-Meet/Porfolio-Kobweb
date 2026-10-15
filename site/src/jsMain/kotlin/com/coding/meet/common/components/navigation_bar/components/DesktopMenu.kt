@@ -10,6 +10,7 @@ import com.coding.meet.common.components.navigation_bar.styles.NavBarStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
+import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -102,7 +103,7 @@ fun DesktopMenu(
                             darkColor = Theme.DarkCardBackGroundColor
                         )
                     ),
-                tooltipText = if (colorMode.isLight) "Switch to Dark Mode" else "Switch to Light Mode",
+                tooltipText = colorMode.select("Switch to Dark Mode", "Switch to Light Mode"),
                 onClick = {
                     colorMode = colorMode.opposite
                     localStorage.setItem(Res.Strings.SAVED_THEME, colorMode.name)

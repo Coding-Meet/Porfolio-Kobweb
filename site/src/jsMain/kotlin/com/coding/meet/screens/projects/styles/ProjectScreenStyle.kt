@@ -2,6 +2,7 @@ package com.coding.meet.screens.projects.styles
 
 import com.coding.meet.util.Theme
 import com.coding.meet.util.customColor
+import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.css.AnimationIterationCount
 import com.varabyte.kobweb.compose.css.BoxSizing
@@ -48,6 +49,7 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.css.s
+import com.coding.meet.util.select
 
 val ProjectStyle = CssStyle {
     base {
@@ -65,7 +67,7 @@ val ProjectStyle = CssStyle {
                 style = LineStyle.Solid,
                 width = 1.px
             )
-            .boxShadow(0.px, 2.px, 14.px, null, rgba(0, 0, 0, 0.04))
+            .boxShadow(0.px, 2.px, 14.px, null, Theme.Black.subtle)
             .transition(
                 Transition.all(
                     duration = 250.ms,
@@ -78,11 +80,11 @@ val ProjectStyle = CssStyle {
         Modifier
             .transform { translateY((-6).px) }
             .border(
-                color = if (colorMode.isLight) rgba(16, 185, 129, 0.5) else rgba(16, 185, 129, 0.7),
+                color = Theme.Primary.strong,
                 style = LineStyle.Solid,
                 width = 1.px
             )
-            .boxShadow(0.px, 18.px, 36.px, (-10).px, rgba(16, 185, 129, 0.18))
+            .boxShadow(0.px, 18.px, 36.px, (-10).px, Theme.Primary.soft)
     }
 }
 
@@ -100,7 +102,7 @@ val rotateAnimation = CssStyle {
             .border {
                 width(4.px)
                 style(LineStyle.Solid)
-                color(Theme.Primary.color, Color.transparent, colorMode.toPalette().border, Theme.Primary.color)
+                color(Theme.Primary.color, Theme.Transparent.color, colorMode.toPalette().border, Theme.Primary.color)
             }
             .animation(
                 LdsDualRing.toAnimation(
@@ -130,7 +132,7 @@ val CategoryButtonStyle = CssStyle {
             .justifyContent(JustifyContent.Center)
             .gap(7.px)
             .backgroundColor(
-                if (colorMode.isLight) Theme.White.color else rgba(255, 255, 255, 0.07)
+                colorMode.select(Theme.White.color, Theme.White.subtle)
             )
             .color(
                 customColor(
@@ -142,14 +144,14 @@ val CategoryButtonStyle = CssStyle {
             .border(
                 1.px,
                 LineStyle.Solid,
-                if (colorMode.isLight) colorMode.toPalette().border else rgba(255, 255, 255, 0.10)
+                colorMode.select(colorMode.toPalette().border, Theme.White.subtle)
             )
             .boxShadow(
                 0.px,
                 2.px,
                 6.px,
                 null,
-                if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(0, 0, 0, 0.2)
+                colorMode.select(Theme.Black.subtle, Theme.Black.soft)
             )
             .styleModifier {
                 property("backdrop-filter", "blur(8px)")
@@ -167,7 +169,7 @@ val CategoryButtonStyle = CssStyle {
         Modifier
             .transform { translateY((-2).px) }
             .backgroundColor(
-                if (colorMode.isLight) Theme.White.color else rgba(255, 255, 255, 0.12)
+                colorMode.select(Theme.White.color, Theme.White.soft)
             )
             .border(1.px, LineStyle.Solid, Theme.Primary.color)
             .boxShadow(
@@ -175,7 +177,7 @@ val CategoryButtonStyle = CssStyle {
                 4.px,
                 12.px,
                 null,
-                if (colorMode.isLight) rgba(16, 185, 129, 0.15) else rgba(16, 185, 129, 0.25)
+                colorMode.select(Theme.Primary.soft, Theme.Primary.medium)
             )
     }
     active {

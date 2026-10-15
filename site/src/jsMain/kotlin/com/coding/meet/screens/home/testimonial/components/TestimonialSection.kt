@@ -48,6 +48,7 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.Button
+import com.coding.meet.util.select
 
 @Composable
 fun TestimonialSection() {
@@ -105,12 +106,12 @@ fun TestimonialSection() {
             .margin(top = 36.px, bottom = 12.px)
             .padding(leftRight = 14.px, topBottom = 6.px)
             .backgroundColor(
-                if (colorMode.isLight) rgba(16, 185, 129, 0.08) else rgba(16, 185, 129, 0.15)
+                colorMode.select(Theme.Primary.subtle, Theme.Primary.soft)
             )
             .border(
                 1.px,
                 LineStyle.Solid,
-                if (colorMode.isLight) rgba(16, 185, 129, 0.25) else rgba(16, 185, 129, 0.35)
+                Theme.Primary.medium
             )
             .borderRadius(9999.px),
         verticalAlignment = Alignment.CenterVertically
@@ -120,7 +121,7 @@ fun TestimonialSection() {
                 .size(7.px)
                 .borderRadius(50.percent)
                 .backgroundColor(Theme.Primary.color)
-                .boxShadow(0.px, 0.px, 8.px, null, rgba(16, 185, 129, 0.8))
+                .boxShadow(0.px, 0.px, 8.px, null, Theme.Primary.strong)
                 .margin(right = 8.px)
         )
         SpanText(

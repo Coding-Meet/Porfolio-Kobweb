@@ -95,11 +95,11 @@ fun initColorMode(initSilkContext: InitSilkContext) {
     initSilkContext.apply {
         theme.palettes.light.background = Theme.LightBackGroundColor.rgb
         theme.palettes.light.color = Theme.LightFontColor.rgb
-        theme.palettes.light.border = com.varabyte.kobweb.compose.ui.graphics.Color.rgb(226, 232, 240)
+        theme.palettes.light.border = Theme.LightBorder.rgb
 
-        theme.palettes.dark.background = com.varabyte.kobweb.compose.ui.graphics.Color.rgb(11, 15, 25)
+        theme.palettes.dark.background = Theme.DarkBackground.rgb
         theme.palettes.dark.color = Theme.DarkFontColor.rgb
-        theme.palettes.dark.border = com.varabyte.kobweb.compose.ui.graphics.Color.rgb(30, 41, 59)
+        theme.palettes.dark.border = Theme.DarkBorder.rgb
     }
 }
 

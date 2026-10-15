@@ -63,6 +63,8 @@ import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Iframe
 import org.jetbrains.compose.web.dom.Li
 import org.jetbrains.compose.web.dom.Ul
+import com.coding.meet.util.select
+import com.coding.meet.util.glassSubtle
 
 @Composable
 fun ColumnScope.ProjectDialog(
@@ -101,7 +103,7 @@ fun ColumnScope.ProjectDialog(
                 .borderRadius(50.percent)
                 .cursor(Cursor.Pointer)
                 .backgroundColor(
-                    if (colorMode.isLight) rgba(0, 0, 0, 0.05) else rgba(255, 255, 255, 0.08)
+                    colorMode.glassSubtle
                 )
                 .onClick { onDismiss() },
             contentAlignment = Alignment.Center
@@ -252,12 +254,12 @@ fun ColumnScope.ProjectDialog(
                     .padding(14.px, 18.px)
                     .borderRadius(12.px)
                     .backgroundColor(
-                        if (colorMode.isLight) rgba(16, 185, 129, 0.08) else rgba(16, 185, 129, 0.15)
+                        colorMode.select(Theme.Primary.subtle, Theme.Primary.soft)
                     )
                     .border(
                         1.px,
                         LineStyle.Solid,
-                        if (colorMode.isLight) rgba(16, 185, 129, 0.3) else rgba(16, 185, 129, 0.4)
+                        Theme.Primary.medium
                     )
                     .toAttrs()
             ) {
@@ -398,7 +400,7 @@ fun DialogDivider(colorMode: ColorMode) {
             .height(1.px)
             .margin(topBottom = 16.px)
             .backgroundColor(
-                if (colorMode.isLight) rgba(0, 0, 0, 0.08) else rgba(255, 255, 255, 0.08)
+                colorMode.glassSubtle
             )
             .toAttrs()
     )
@@ -415,14 +417,14 @@ fun ProjectChip(text: String, isTechnology: Boolean = true, colorMode: ColorMode
             .borderRadius(9999.px)
             .backgroundColor(
                 if (isTechnology) {
-                    if (colorMode.isLight) rgba(16, 185, 129, 0.1) else rgba(16, 185, 129, 0.18)
+                    colorMode.select(Theme.Primary.subtle, Theme.Primary.soft)
                 } else {
-                    if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(255, 255, 255, 0.08)
+                    colorMode.glassSubtle
                 }
             )
             .color(
                 if (isTechnology) {
-                    if (colorMode.isLight) Theme.Primary.color else rgba(52, 211, 153, 1f)
+                    colorMode.select(Theme.Primary.color, Theme.PrimaryLight.color)
                 } else {
                     CustomColor(Theme.LightFontColor, Theme.DarkFontColor)
                 }
@@ -431,9 +433,9 @@ fun ProjectChip(text: String, isTechnology: Boolean = true, colorMode: ColorMode
                 1.px,
                 LineStyle.Solid,
                 if (isTechnology) {
-                    if (colorMode.isLight) rgba(16, 185, 129, 0.25) else rgba(16, 185, 129, 0.35)
+                    Theme.Primary.medium
                 } else {
-                    if (colorMode.isLight) rgba(0, 0, 0, 0.08) else rgba(255, 255, 255, 0.12)
+                    colorMode.select(Theme.Black.subtle, Theme.White.soft)
                 }
             )
     )

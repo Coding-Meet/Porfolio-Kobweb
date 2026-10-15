@@ -52,7 +52,7 @@ fun LoaderScreen(colorMode: ColorMode) {
             .zIndex(9999)
             .backgroundColor(
                 if (colorMode.isDark) {
-                    Color.rgb(11, 15, 25)
+                    Theme.DarkBackground.rgb
                 } else {
                     Theme.LightBackGroundColor.rgb
                 }

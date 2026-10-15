@@ -37,6 +37,7 @@ import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
+import com.coding.meet.util.select
 
 val FooterStyle = CssStyle {
     base {
@@ -80,17 +81,17 @@ val FooterSocialButtonStyle = CssStyle {
             .border(
                 1.px,
                 LineStyle.Solid,
-                if (colorMode.isLight) colorMode.toPalette().border else rgba(255, 255, 255, 0.12)
+                colorMode.select(colorMode.toPalette().border, Theme.White.soft)
             )
             .backgroundColor(
-                if (colorMode.isLight) Theme.White.color else rgba(255, 255, 255, 0.07)
+                colorMode.select(Theme.White.color, Theme.White.subtle)
             )
             .boxShadow(
                 0.px,
                 2.px,
                 6.px,
                 null,
-                if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(0, 0, 0, 0.25)
+                colorMode.select(Theme.Black.subtle, Theme.Black.medium)
             )
             .styleModifier {
                 property("backdrop-filter", "blur(8px)")
@@ -113,13 +114,13 @@ val FooterSocialButtonStyle = CssStyle {
                 translateY((-2).px)
             }
             .backgroundColor(
-                if (colorMode.isLight) rgba(16, 185, 129, 0.12) else rgba(16, 185, 129, 0.22)
+                Theme.Primary.soft
             )
             .border(
                 1.px,
                 LineStyle.Solid,
-                rgba(16, 185, 129, 0.6)
+                Theme.Primary.strong
             )
-            .boxShadow(0.px, 4.px, 12.px, null, rgba(16, 185, 129, 0.28))
+            .boxShadow(0.px, 4.px, 12.px, null, Theme.Primary.medium)
     }
 }

@@ -55,6 +55,8 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.css.vh
+import com.coding.meet.util.select
+import com.coding.meet.util.glassSubtle
 
 @Composable
 fun MobileSideMenu(
@@ -90,7 +92,7 @@ fun MobileSideMenu(
             .left(0.px)
             .zIndex(2000)
             .opacity(opacity)
-            .backgroundColor(rgba(0, 0, 0, 0.55))
+            .backgroundColor(Theme.Black.strong)
             .styleModifier {
                 property("backdrop-filter", "blur(4px)")
                 property("-webkit-backdrop-filter", "blur(4px)")
@@ -129,10 +131,10 @@ fun MobileSideMenu(
                     0.px,
                     24.px,
                     null,
-                    if (colorMode.isLight) rgba(0, 0, 0, 0.12) else rgba(0, 0, 0, 0.6)
+                    colorMode.select(Theme.Black.soft, Theme.Black.strong)
                 )
                 .styleModifier {
-                    property("border-right", "1px solid ${if (colorMode.isLight) "rgba(0, 0, 0, 0.08)" else "rgba(255, 255, 255, 0.10)"}")
+                    property("border-right", "1px solid ${colorMode.glassSubtle}")
                 }
                 .borderRadius(topRight = 20.px, bottomRight = 20.px)
                 .translateX(tx = translateX)

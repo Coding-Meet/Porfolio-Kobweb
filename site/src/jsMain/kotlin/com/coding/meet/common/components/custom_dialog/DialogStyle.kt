@@ -31,6 +31,8 @@ import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
+import com.coding.meet.util.select
+import com.coding.meet.util.glassSubtle
 
 val dialogEntranceAnimation = Keyframes {
     from {
@@ -55,7 +57,7 @@ val DialogStyle = CssStyle.base {
         .left(0.px)
         .top(0.px)
         .overflow(Overflow.Auto)
-        .backgroundColor(rgba(0, 0, 0, 0.60f))
+        .backgroundColor(Theme.Black.strong)
         .backdropFilter(blur(12.px))
         .fillMaxSize()
         .padding(topBottom = 28.px)
@@ -67,7 +69,7 @@ val DialogContentStyle = CssStyle.base {
         .padding(26.px)
         .borderRadius(22.px)
         .border(
-            color = if (colorMode.isLight) rgba(0, 0, 0, 0.08) else rgba(255, 255, 255, 0.10),
+            color = colorMode.glassSubtle,
             style = LineStyle.Solid,
             width = 1.px
         )
@@ -75,15 +77,15 @@ val DialogContentStyle = CssStyle.base {
             property(
                 "box-shadow",
                 if (colorMode.isLight) {
-                    "0 24px 60px rgba(0, 0, 0, 0.12), 0 0 32px rgba(16, 185, 129, 0.08)"
+                    "0 24px 60px ${Theme.Black.soft}, 0 0 32px ${Theme.Primary.subtle}"
                 } else {
-                    "0 28px 70px rgba(0, 0, 0, 0.65), 0 0 40px rgba(16, 185, 129, 0.14)"
+                    "0 28px 70px ${Theme.Black.strong}, 0 0 40px ${Theme.Primary.soft}"
                 }
             )
             property("backdrop-filter", "blur(20px)")
             property("-webkit-backdrop-filter", "blur(20px)")
         }
         .backgroundColor(
-            if (colorMode.isLight) rgba(255, 255, 255, 0.96) else rgba(17, 24, 39, 0.94)
+            colorMode.select(Theme.White.strong, Theme.DarkCardBackGroundColor.strong)
         )
 }

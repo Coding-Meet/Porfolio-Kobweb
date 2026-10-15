@@ -33,6 +33,8 @@ import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
+import com.coding.meet.util.select
+import com.coding.meet.util.glassSubtle
 
 @Composable
 fun ExperienceCard(
@@ -67,15 +69,15 @@ fun ExperienceCard(
                 modifier = Modifier
                     .backgroundColor(
                         if (isPresent) {
-                            if (colorMode.isLight) rgba(16, 185, 129, 0.1) else rgba(16, 185, 129, 0.18)
+                            colorMode.select(Theme.Primary.subtle, Theme.Primary.soft)
                         } else {
-                            if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(255, 255, 255, 0.06)
+                            colorMode.glassSubtle
                         }
                     )
                     .border(
                         1.px,
                         LineStyle.Solid,
-                        if (isPresent) rgba(16, 185, 129, 0.3) else rgba(156, 163, 175, 0.2)
+                        if (isPresent) Theme.Primary.medium else Theme.Muted.soft
                     )
                     .borderRadius(9999.px)
                     .padding(leftRight = 12.px, topBottom = 4.px)

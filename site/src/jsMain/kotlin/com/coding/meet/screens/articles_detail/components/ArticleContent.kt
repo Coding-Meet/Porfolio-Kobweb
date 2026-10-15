@@ -72,6 +72,8 @@ import org.w3c.dom.HTMLElement
 import org.w3c.dom.HTMLIFrameElement
 import org.w3c.dom.HTMLSpanElement
 import org.w3c.dom.get
+import com.coding.meet.util.select
+import com.coding.meet.util.glassSubtle
 
 @Composable
 fun ArticleContent(
@@ -103,10 +105,10 @@ fun ArticleContent(
                     .border(
                         1.px,
                         LineStyle.Solid,
-                        if (colorMode.isLight) rgba(0, 0, 0, 0.08) else rgba(255, 255, 255, 0.12)
+                        colorMode.select(Theme.Black.subtle, Theme.White.soft)
                     )
                     .backgroundColor(
-                        if (colorMode.isLight) rgba(0, 0, 0, 0.03) else rgba(255, 255, 255, 0.05)
+                        colorMode.glassSubtle
                     )
                     .cursor(Cursor.Pointer)
                     .onClick {
@@ -181,12 +183,12 @@ fun ArticleContent(
                         modifier = Modifier
                             .margin(right = 6.px)
                             .fontSize(0.85.cssRem)
-                            .color(Colors.White)
+                            .color(Theme.White.rgb)
                     )
                     SpanText(
                         text = if (isCopied) "Copied!" else "Copy Link",
                         modifier = Modifier
-                            .color(Colors.White)
+                            .color(Theme.White.rgb)
                             .fontSize(0.85.cssRem)
                             .fontWeight(FontWeight.SemiBold)
                     )

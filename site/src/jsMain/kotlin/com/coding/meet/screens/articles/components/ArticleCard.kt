@@ -54,6 +54,7 @@ import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.Div
+import com.coding.meet.util.glassSubtle
 
 @Composable
 fun ArticleCard(article: Article, onClick: (() -> Unit)? = null) {
@@ -124,7 +125,7 @@ fun ArticleCard(article: Article, onClick: (() -> Unit)? = null) {
                     modifier = Modifier
                         .color(CustomColor(Theme.DarkGray, Theme.Muted))
                         .backgroundColor(
-                            if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(255, 255, 255, 0.07)
+                            colorMode.glassSubtle
                         )
                         .border(1.px, LineStyle.Solid, colorMode.toPalette().border)
                         .borderRadius(9999.px)

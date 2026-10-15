@@ -46,6 +46,7 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.Hr
+import com.coding.meet.util.glassSubtle
 
 
 @Composable
@@ -94,7 +95,7 @@ fun ColumnScope.TestimonialDialog(
                 .borderRadius(50.percent)
                 .cursor(Cursor.Pointer)
                 .backgroundColor(
-                    if (colorMode.isLight) rgba(0, 0, 0, 0.05) else rgba(255, 255, 255, 0.08)
+                    colorMode.glassSubtle
                 )
                 .onClick { onDismiss() },
             contentAlignment = Alignment.Center

@@ -62,7 +62,7 @@ fun NavigationMenu(
                         .size(width = if (isSelected) 16.px else 0.px, height = 2.px)
                         .backgroundColor(Theme.Primary.color)
                         .borderRadius(r = 9999.px)
-                        .boxShadow(0.px, 0.px, 6.px, null, rgba(16, 185, 129, 0.5))
+                        .boxShadow(0.px, 0.px, 6.px, null, Theme.Primary.strong)
                         .visibility(if (isSelected) Visibility.Visible else Visibility.Hidden)
                 )
             }

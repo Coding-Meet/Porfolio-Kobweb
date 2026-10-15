@@ -56,6 +56,8 @@ import org.jetbrains.compose.web.dom.Div
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.HTMLScriptElement
 import kotlin.js.json
+import com.coding.meet.util.select
+import com.coding.meet.util.glassSubtle
 
 data class ClientGeoCountry(
     val country: String,
@@ -441,18 +443,18 @@ fun ClientWorldMap(
             .fillMaxWidth()
             .margin(top = 10.px, bottom = 24.px)
             .backgroundColor(
-                if (colorMode.isLight) rgba(255, 255, 255, 0.7) else rgba(15, 23, 42, 0.6)
+                colorMode.select(Theme.White.strong, Theme.DarkSurface.strong)
             )
             .border(
                 1.px,
                 LineStyle.Solid,
-                if (colorMode.isLight) rgba(0, 0, 0, 0.08) else rgba(255, 255, 255, 0.08)
+                colorMode.glassSubtle
             )
             .borderRadius(20.px)
             .padding(all = 20.px)
             .boxShadow(
                 0.px, 10.px, 30.px, 0.px,
-                if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(0, 0, 0, 0.25)
+                colorMode.select(Theme.Black.subtle, Theme.Black.medium)
             )
     ) {
         // Map Top Bar
@@ -499,12 +501,12 @@ fun ClientWorldMap(
                     Box(
                         modifier = Modifier
                             .backgroundColor(
-                                if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(255, 255, 255, 0.06)
+                                colorMode.glassSubtle
                             )
                             .border(
                                 1.px,
                                 LineStyle.Solid,
-                                if (colorMode.isLight) rgba(0, 0, 0, 0.08) else rgba(255, 255, 255, 0.1)
+                                colorMode.glassSubtle
                             )
                             .borderRadius(9999.px)
                             .padding(leftRight = 10.px, topBottom = 4.px)
@@ -534,7 +536,7 @@ fun ClientWorldMap(
                 .border(
                     1.px,
                     LineStyle.Solid,
-                    if (colorMode.isLight) rgba(226, 232, 240, 0.8) else rgba(30, 41, 59, 0.6)
+                    colorMode.select(Theme.LightBorder.strong, Theme.DarkBorder.strong)
                 )
         ) {
             Div(
@@ -565,13 +567,13 @@ fun ClientWorldMap(
                     .cursor(Cursor.Pointer)
                     .backgroundColor(
                         if (isAll) Theme.Primary.color
-                        else (if (colorMode.isLight) rgba(0, 0, 0, 0.04) else rgba(255, 255, 255, 0.06))
+                        else (colorMode.glassSubtle)
                     )
                     .border(
                         1.px,
                         LineStyle.Solid,
                         if (isAll) Theme.Primary.color
-                        else (if (colorMode.isLight) rgba(0, 0, 0, 0.08) else rgba(255, 255, 255, 0.08))
+                        else (colorMode.glassSubtle)
                     )
                     .borderRadius(9999.px)
                     .padding(leftRight = 10.px, topBottom = 4.px)
@@ -583,7 +585,7 @@ fun ClientWorldMap(
                         .fontSize(0.76.cssRem)
                         .fontWeight(if (isAll) FontWeight.Bold else FontWeight.Medium)
                         .color(
-                            if (isAll) Colors.White else CustomColor(Theme.LightFontColor, Theme.DarkFontColor)
+                            if (isAll) Theme.White.rgb else CustomColor(Theme.LightFontColor, Theme.DarkFontColor)
                         )
                 )
             }
@@ -596,13 +598,13 @@ fun ClientWorldMap(
                         .cursor(Cursor.Pointer)
                         .backgroundColor(
                             if (isSelected) Theme.Primary.color
-                            else (if (colorMode.isLight) rgba(0, 0, 0, 0.03) else rgba(255, 255, 255, 0.04))
+                            else (colorMode.glassSubtle)
                         )
                         .border(
                             1.px,
                             LineStyle.Solid,
                             if (isSelected) Theme.Primary.color
-                            else (if (colorMode.isLight) rgba(0, 0, 0, 0.06) else rgba(255, 255, 255, 0.06))
+                            else (colorMode.glassSubtle)
                         )
                         .borderRadius(9999.px)
                         .padding(leftRight = 9.px, topBottom = 4.px)
@@ -616,7 +618,7 @@ fun ClientWorldMap(
                             .fontSize(0.75.cssRem)
                             .fontWeight(if (isSelected) FontWeight.Bold else FontWeight.Normal)
                             .color(
-                                if (isSelected) Colors.White
+                                if (isSelected) Theme.White.rgb
                                 else CustomColor(Theme.LightFontColor, Theme.DarkFontColor)
                             )
                     )
@@ -631,12 +633,12 @@ fun ClientWorldMap(
                     .fillMaxWidth()
                     .margin(top = 10.px)
                     .backgroundColor(
-                        if (colorMode.isLight) rgba(16, 185, 129, 0.08) else rgba(16, 185, 129, 0.12)
+                        colorMode.select(Theme.Primary.subtle, Theme.Primary.soft)
                     )
                     .border(
                         1.px,
                         LineStyle.Solid,
-                        rgba(16, 185, 129, 0.25)
+                        Theme.Primary.medium
                     )
                     .borderRadius(12.px)
                     .padding(all = 12.px)
@@ -683,7 +685,7 @@ fun ClientWorldMap(
                     Box(
                         modifier = Modifier
                             .cursor(Cursor.Pointer)
-                            .backgroundColor(rgba(16, 185, 129, 0.15))
+                            .backgroundColor(Theme.Primary.soft)
                             .borderRadius(8.px)
                             .padding(leftRight = 10.px, topBottom = 4.px)
                             .onClick { onSelectCountry(null) }

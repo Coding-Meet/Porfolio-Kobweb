@@ -32,7 +32,7 @@ val experienceCardStyle = CssStyle {
             )
             .borderRadius(16.px)
             .border(1.px, LineStyle.Solid, colorMode.toPalette().border)
-            .boxShadow(0.px, 2.px, 12.px, null, rgba(0, 0, 0, 0.04))
+            .boxShadow(0.px, 2.px, 12.px, null, Theme.Black.subtle)
             .transition(
                 Transition.all(
                     duration = 250.ms,
@@ -47,8 +47,8 @@ val experienceCardStyle = CssStyle {
             .border(
                 1.px,
                 LineStyle.Solid,
-                if (colorMode.isLight) rgba(16, 185, 129, 0.5) else rgba(16, 185, 129, 0.7)
+                Theme.Primary.strong
             )
-            .boxShadow(0.px, 14.px, 32.px, (-8).px, rgba(16, 185, 129, 0.16))
+            .boxShadow(0.px, 14.px, 32.px, (-8).px, Theme.Primary.soft)
     }
 }

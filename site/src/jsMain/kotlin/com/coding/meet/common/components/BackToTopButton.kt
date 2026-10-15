@@ -57,7 +57,7 @@ fun BackToTopButton() {
             .backgroundColor(Theme.Primary.color)
             .cursor(Cursor.Pointer)
             .borderRadius(50.percent)
-            .boxShadow(0.px, 6.px, 20.px, null, org.jetbrains.compose.web.css.rgba(16, 185, 129, 0.45))
+            .boxShadow(0.px, 6.px, 20.px, null, Theme.Primary.strong)
             .border(0.px),
         onClick = {
             window.scrollTo(
@@ -69,7 +69,7 @@ fun BackToTopButton() {
         }
     ) {
         FaArrowUp(
-            modifier = Modifier.color(Colors.White),
+            modifier = Modifier.color(Theme.White.rgb),
             size = IconSize.LG
         )
     }

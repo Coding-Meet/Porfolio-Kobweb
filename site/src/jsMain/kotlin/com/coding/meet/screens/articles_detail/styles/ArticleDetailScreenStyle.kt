@@ -16,8 +16,6 @@ import com.varabyte.kobweb.compose.css.WhiteSpace
 import com.varabyte.kobweb.compose.css.WordBreak
 import com.varabyte.kobweb.compose.css.autoLength
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Color.Companion.rgb
-import com.varabyte.kobweb.compose.ui.graphics.Colors.Transparent
 import com.varabyte.kobweb.compose.ui.modifiers.alignItems
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.border
@@ -72,15 +70,17 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.css.s
+import com.coding.meet.util.select
+import com.coding.meet.util.glassSubtle
 
 val ArticleContentStyle = CssStyle {
     val codeBgColor = when (colorMode) {
-        ColorMode.LIGHT -> rgba(16, 185, 129, 0.1)
-        ColorMode.DARK -> rgba(16, 185, 129, 0.18)
+        ColorMode.LIGHT -> Theme.Primary.subtle
+        ColorMode.DARK -> Theme.Primary.soft
     }
     val codeTextColor = when (colorMode) {
-        ColorMode.LIGHT -> rgb(5, 150, 105)
-        ColorMode.DARK -> rgb(52, 211, 153)
+        ColorMode.LIGHT -> Theme.PrimaryDark.color
+        ColorMode.DARK -> Theme.PrimaryLight.color
     }
 
     val sharedModifier6 = Modifier
@@ -89,7 +89,7 @@ val ArticleContentStyle = CssStyle {
         .margin(bottom = 1.5.cssRem)
         .padding(left = 1.5.cssRem)
 
-    val commentColor = Modifier.color(rgb(0x858585))
+    val commentColor = Modifier.color(Theme.CodeComment.color)
 
     val sharedModifier2 = Modifier
         .fontWeight(800)
@@ -180,7 +180,7 @@ val ArticleContentStyle = CssStyle {
             .maxWidth(100.percent)
             .height(autoLength)
             .borderRadius(14.px)
-            .boxShadow(0.px, 4.px, 20.px, null, rgba(0, 0, 0, 0.15))
+            .boxShadow(0.px, 4.px, 20.px, null, Theme.Black.soft)
     }
 
     cssRule(" ul") {
@@ -221,24 +221,24 @@ val ArticleContentStyle = CssStyle {
 
     cssRule(" pre") {
         Modifier
-            .backgroundColor(rgb(0x1e1e1e))
-            .color(rgb(0xd4d4d4))
+            .backgroundColor(Theme.CodeBackground.color)
+            .color(Theme.CodeText.color)
             .padding(top = 2.8.cssRem, leftRight = 1.5.cssRem, bottom = 1.5.cssRem)
             .borderRadius(14.px)
             .overflow { x(Overflow.Auto) }
             .margin(0.px)
             .fontFamily("Fira Code", "Courier New", "monospace")
-            .boxShadow(0.px, 6.px, 25.px, null, rgba(0, 0, 0, 0.35))
+            .boxShadow(0.px, 6.px, 25.px, null, Theme.Black.medium)
             .maxWidth(100.percent)
             .boxSizing(BoxSizing.BorderBox)
-            .border(1.px, LineStyle.Solid, rgba(255, 255, 255, 0.1))
+            .border(1.px, LineStyle.Solid, Theme.White.subtle)
     }
 
     cssRule(" pre code") {
         Modifier
-            .backgroundColor(Transparent)
+            .backgroundColor(Theme.Transparent.color)
             .padding(0.px)
-            .color(rgb(0x9cdcfe))
+            .color(Theme.CodeAccent.color)
             .fontSize(0.9.cssRem)
             .whiteSpace(WhiteSpace.Pre)
             .overflowWrap(OverflowWrap.Normal)
@@ -257,9 +257,9 @@ val ArticleContentStyle = CssStyle {
             .position(Position.Absolute)
             .top(12.px)
             .right(12.px)
-            .backgroundColor(rgba(255, 255, 255, 0.08))
-            .color(rgb(0xcccccc))
-            .border(1.px, LineStyle.Solid, rgba(255, 255, 255, 0.15))
+            .backgroundColor(Theme.White.subtle)
+            .color(Theme.CodeMuted.color)
+            .border(1.px, LineStyle.Solid, Theme.White.soft)
             .padding(leftRight = 12.px, topBottom = 6.px)
             .borderRadius(6.px)
             .cursor(Cursor.Pointer)
@@ -272,7 +272,7 @@ val ArticleContentStyle = CssStyle {
     cssRule(" .copy-button:hover") {
         Modifier
             .backgroundColor(Theme.Primary.color)
-            .color(rgb(255, 255, 255))
+            .color(Theme.White.color)
             .border(1.px, LineStyle.Solid, Theme.Primary.color)
     }
 
@@ -289,7 +289,7 @@ val ArticleContentStyle = CssStyle {
             .maxWidth(100.percent)
             .borderRadius(14.px)
             .margin(topBottom = 2.cssRem)
-            .boxShadow(0.px, 6.px, 25.px, null, rgba(0, 0, 0, 0.25))
+            .boxShadow(0.px, 6.px, 25.px, null, Theme.Black.medium)
             .padding(bottom = 56.25.percent)
     }
 
@@ -309,8 +309,8 @@ val ArticleContentStyle = CssStyle {
             .flexDirection(FlexDirection.Column)
             .margin(topBottom = 1.4.cssRem)
             .padding(leftRight = 16.px, topBottom = 12.px)
-            .backgroundColor(if (colorMode.isLight) rgba(0, 0, 0, 0.03) else rgba(255, 255, 255, 0.04))
-            .border(1.px, LineStyle.Solid, if (colorMode.isLight) rgba(0, 0, 0, 0.08) else rgba(255, 255, 255, 0.1))
+            .backgroundColor(colorMode.glassSubtle)
+            .border(1.px, LineStyle.Solid, colorMode.glassSubtle)
             .borderRadius(12.px)
             .textDecorationLine(TextDecorationLine.None)
             .transition(Transition.of("all", 0.2.s, TransitionTimingFunction.Ease))
@@ -319,7 +319,7 @@ val ArticleContentStyle = CssStyle {
 
     cssRule(" .link-preview:hover") {
         Modifier
-            .backgroundColor(if (colorMode.isLight) rgba(16, 185, 129, 0.06) else rgba(16, 185, 129, 0.1))
+            .backgroundColor(Theme.Primary.subtle)
             .border(1.px, LineStyle.Solid, Theme.Primary.color)
     }
 
@@ -334,7 +334,7 @@ val ArticleContentStyle = CssStyle {
     cssRule(" .link-preview-url") {
         Modifier
             .fontSize(0.85.cssRem)
-            .color(if (colorMode.isLight) rgb(100, 116, 139) else rgb(148, 163, 184))
+            .color(colorMode.select(Theme.DarkGray.color, Theme.Muted.color))
             .wordBreak(WordBreak.BreakAll)
     }
 

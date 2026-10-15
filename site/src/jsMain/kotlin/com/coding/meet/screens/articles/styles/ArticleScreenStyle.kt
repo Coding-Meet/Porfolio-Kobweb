@@ -36,7 +36,7 @@ val ArticleStyle = CssStyle {
                 style = LineStyle.Solid,
                 width = 1.px
             )
-            .boxShadow(0.px, 2.px, 14.px, null, rgba(0, 0, 0, 0.04))
+            .boxShadow(0.px, 2.px, 14.px, null, Theme.Black.subtle)
             .transition(
                 Transition.all(
                     duration = 250.ms,
@@ -49,10 +49,10 @@ val ArticleStyle = CssStyle {
         Modifier
             .transform { translateY((-6).px) }
             .border(
-                color = if (colorMode.isLight) rgba(16, 185, 129, 0.5) else rgba(16, 185, 129, 0.7),
+                color = Theme.Primary.strong,
                 style = LineStyle.Solid,
                 width = 1.px
             )
-            .boxShadow(0.px, 18.px, 36.px, (-10).px, rgba(16, 185, 129, 0.16))
+            .boxShadow(0.px, 18.px, 36.px, (-10).px, Theme.Primary.soft)
     }
 }

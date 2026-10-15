@@ -76,13 +76,13 @@ val formStyle = CssStyle {
         Modifier
             .outline(0.px)
             .border(1.px, LineStyle.Solid, Theme.Primary.color)
-            .boxShadow(0.px, 0.px, 0.px, 3.px, rgba(16, 185, 129, 0.2))
+            .boxShadow(0.px, 0.px, 0.px, 3.px, Theme.Primary.soft)
     }
     cssRule(" textarea:focus") {
         Modifier
             .outline(0.px)
             .border(1.px, LineStyle.Solid, Theme.Primary.color)
-            .boxShadow(0.px, 0.px, 0.px, 3.px, rgba(16, 185, 129, 0.2))
+            .boxShadow(0.px, 0.px, 0.px, 3.px, Theme.Primary.soft)
     }
     cssRule(" input::placeholder") {
         Modifier
