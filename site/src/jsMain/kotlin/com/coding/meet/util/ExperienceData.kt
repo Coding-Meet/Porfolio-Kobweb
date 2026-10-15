@@ -38,7 +38,7 @@ object ExperienceData {
             startDate = "Dec 2022",
             endDate = "Jun 2023",
             duration = "7 mos",
-            location = "📍 Surat, Gujarat, India · On-site",
+            location = "🌍 Surat, Gujarat, India · On-site",
             description = "Worked on multiple Android projects, including a Multifactor Authenticator app, Trivia app, Daily Affirmation app, and party games like Truth & Dare and Never Have I Ever, gaining hands-on experience in Kotlin development."
         ),
         Experience(
@@ -48,7 +48,7 @@ object ExperienceData {
             startDate = "May 2022",
             endDate = "Aug 2022",
             duration = "4 mos",
-            location = "📍 Surat, Gujarat, India",
+            location = "🌍 Surat, Gujarat, India",
             description = "Contributed to a live health and fitness app project, enhancing Android development skills with Kotlin and practical exposure to real-world app development."
         )
     )

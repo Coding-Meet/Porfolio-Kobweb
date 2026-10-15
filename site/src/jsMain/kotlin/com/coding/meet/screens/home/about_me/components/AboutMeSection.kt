@@ -157,20 +157,91 @@ fun AboutMeSection() {
                     .position(Position.Relative),
                 contentAlignment = Alignment.TopCenter
             ) {
-                // Decorative semi-circular dashed orbit track
+                // Decorative semi-circular dashed orbit track with bidirectional traveling dashes and brush fade (75% circular coverage)
+                val reachAbove = (orbitRadius * 72) / 100
+                val trackWidth = (orbitRadius * 2 + 40).px
+                val trackHeight = (reachAbove + orbitRadius + 20).px
+                val orbitColor = if (colorMode.isLight) Theme.Primary.strong else Theme.Primary.color
+
                 Box(
                     modifier = Modifier
                         .position(Position.Absolute)
-                        .size((orbitRadius * 2).px)
                         .left(50.percent)
-                        .top(avatarRadius.px)
+                        .top((avatarRadius - reachAbove).px)
+                        .size(width = trackWidth, height = trackHeight)
                         .styleModifier {
-                            property("transform", "translate(-50%, -50%)")
-                            property("border", "1.5px dashed ${Theme.Primary.medium}")
-                            property("border-top-color", "transparent")
+                            property("transform", "translateX(-50%)")
+                            property("overflow", "hidden")
+                            property("pointer-events", "none")
+                            property("z-index", "0")
+                            property("animation", "orbitTrackPulse 3.5s ease-in-out infinite")
+                            // Brush fade: solid at bottom center, gradually dimming towards the 75% top ends
+                            property(
+                                "-webkit-mask-image",
+                                "linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0.75) 75%, rgba(0,0,0,0.18) 98%)"
+                            )
+                            property(
+                                "mask-image",
+                                "linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0.75) 75%, rgba(0,0,0,0.18) 98%)"
+                            )
                         }
-                        .borderRadius(50.percent)
-                )
+                ) {
+                    // Left half: dashes travel upward from bottom center to left-top (reaching 75% height)
+                    Box(
+                        modifier = Modifier
+                            .position(Position.Absolute)
+                            .left(0.px)
+                            .top(0.px)
+                            .width(50.percent)
+                            .height(100.percent)
+                            .styleModifier {
+                                property("overflow", "hidden")
+                                property("animation", "arcEntranceLeft 0.85s cubic-bezier(0.25, 1, 0.5, 1) 0.18s both")
+                            }
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .position(Position.Absolute)
+                                .size((orbitRadius * 2).px)
+                                .borderRadius(50.percent)
+                                .styleModifier {
+                                    property("left", "calc(100% - ${orbitRadius}px)")
+                                    property("top", "${reachAbove - orbitRadius}px")
+                                    property("border", "2px dashed $orbitColor")
+                                    property("transform-origin", "center center")
+                                    property("animation", "orbitTrackRotateLeft 18s linear infinite")
+                                }
+                        )
+                    }
+
+                    // Right half: dashes travel upward from bottom center to right-top (reaching 75% height)
+                    Box(
+                        modifier = Modifier
+                            .position(Position.Absolute)
+                            .left(50.percent)
+                            .top(0.px)
+                            .width(50.percent)
+                            .height(100.percent)
+                            .styleModifier {
+                                property("overflow", "hidden")
+                                property("animation", "arcEntranceRight 0.85s cubic-bezier(0.25, 1, 0.5, 1) 0.18s both")
+                            }
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .position(Position.Absolute)
+                                .size((orbitRadius * 2).px)
+                                .borderRadius(50.percent)
+                                .styleModifier {
+                                    property("left", "-${orbitRadius}px")
+                                    property("top", "${reachAbove - orbitRadius}px")
+                                    property("border", "2px dashed $orbitColor")
+                                    property("transform-origin", "center center")
+                                    property("animation", "orbitTrackRotateRight 18s linear infinite")
+                                }
+                        )
+                    }
+                }
 
                 // Profile Image
                 Image(
