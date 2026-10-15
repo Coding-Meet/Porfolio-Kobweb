@@ -8,7 +8,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
-import com.coding.meet.util.customColor
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
@@ -16,7 +15,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
-import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.web.ExperimentalComposeWebApi
 import org.jetbrains.compose.web.css.backgroundColor
@@ -42,7 +40,6 @@ fun ImageSliderWithDot(
 ) {
     var currentIndex by remember(imageList) { mutableStateOf(0) }
     val lastIndex = imageList.size - 1
-    val colorMode by ColorMode.currentState
 
     // Auto-Play Logic
     LaunchedEffect(autoPlay, currentIndex, imageList) {
@@ -86,13 +83,9 @@ fun ImageSliderWithDot(
                             currentIndex = index
                         }.toAttrs {
                             if (index == currentIndex) style {
-                                backgroundColor(
-                                    customColor(
-                                        colorMode = colorMode,
-                                        lightColor = Theme.LightFontColor,
-                                        darkColor = Theme.DarkFontColor
-                                    )
-                                )
+                                backgroundColor(Theme.Primary.color)
+                                property("width", "24px")
+                                property("border-radius", "6px")
                             }
                         }
                     )

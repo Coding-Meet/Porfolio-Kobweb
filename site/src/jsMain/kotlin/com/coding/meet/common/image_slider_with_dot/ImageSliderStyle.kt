@@ -2,6 +2,7 @@ package com.coding.meet.common.image_slider_with_dot
 
 import com.coding.meet.util.Theme
 import com.coding.meet.util.customColor
+import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.css.BackgroundPosition
 import com.varabyte.kobweb.compose.css.BackgroundSize
@@ -85,32 +86,38 @@ val IndicatorsStyle = CssStyle {
     base {
         Modifier
             .position(Position.Absolute)
-            .bottom(10.px)
+            .bottom(12.px)
             .left(50.percent)
             .transform { translateX((-50).percent) }
             .display(DisplayStyle.Flex)
+            .alignItems(AlignItems.Center)
             .gap(8.px)
+            .padding(6.px, 10.px)
+            .borderRadius(9999.px)
+            .backgroundColor(
+                colorMode.select(Theme.White.strong, Theme.Black.soft)
+            )
+            .styleModifier {
+                property("backdrop-filter", "blur(8px)")
+                property("-webkit-backdrop-filter", "blur(8px)")
+            }
     }
 }
 
 val IndicatorStyle = CssStyle {
     base {
         Modifier
-            .width(12.px)
-            .height(12.px)
+            .width(10.px)
+            .height(10.px)
             .borderRadius(50.percent)
-            .backgroundColor(Theme.LightGray.color)
+            .backgroundColor(
+                colorMode.select(Theme.Black.soft, Theme.White.medium)
+            )
             .cursor(Cursor.Pointer)
-            .transition(Transition.of("background-color", 300.ms))
+            .transition(Transition.all(300.ms, AnimationTimingFunction.EaseInOut))
     }
     hover {
-        Modifier.backgroundColor(
-            customColor(
-                colorMode = colorMode,
-                lightColor = Theme.LightFontColor,
-                darkColor = Theme.DarkFontColor
-            )
-        )
+        Modifier.backgroundColor(Theme.Primary.soft)
     }
 }
 
