@@ -42,7 +42,7 @@ import kotlin.js.json
 @App
 @Composable
 fun AppEntry(content: @Composable () -> Unit) {
-    var colorMode by ColorMode.currentState
+    val colorMode by ColorMode.currentState
 
     LaunchedEffect(Unit) {
         initWebMCP()
@@ -50,8 +50,7 @@ fun AppEntry(content: @Composable () -> Unit) {
     }
 
     LaunchedEffect(colorMode) {
-        val savedTheme = localStorage.getItem(Res.Strings.SAVED_THEME) ?: ColorMode.LIGHT.name
-        colorMode = ColorMode.valueOf(savedTheme)
+        localStorage.setItem(Res.Strings.SAVED_THEME, colorMode.name)
     }
 
     // console.log(articleSiteMap.joinToString("\n"))
@@ -94,6 +93,14 @@ fun AppEntry(content: @Composable () -> Unit) {
 @InitSilk
 fun initColorMode(initSilkContext: InitSilkContext) {
     initSilkContext.apply {
+        val savedTheme = localStorage.getItem(Res.Strings.SAVED_THEME)
+        if (savedTheme != null) {
+            try {
+                config.initialColorMode = ColorMode.valueOf(savedTheme)
+            } catch (_: Exception) {
+            }
+        }
+
         theme.palettes.light.background = Theme.LightBackGroundColor.rgb
         theme.palettes.light.color = Theme.LightFontColor.rgb
         theme.palettes.light.border = Theme.LightBorder.rgb
