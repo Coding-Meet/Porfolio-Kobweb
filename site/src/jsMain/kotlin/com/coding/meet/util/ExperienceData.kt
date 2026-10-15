@@ -11,7 +11,7 @@ object ExperienceData {
             startDate = "Jun 2023",
             endDate = "Present",
             location = "🌍 Remote",
-            description = "Delivered 45+ Android projects globally with $4,000+ earnings and a 4.9★ rating. Specialized in Kotlin, Jetpack Compose, and building scalable, production-ready applications."
+            description = "Delivered 70+ client projects globally, earning $9K+ with a 4.9★ rating. Specialized in Kotlin, Java, Android development, Jetpack Compose, Kotlin Multiplatform (KMP), and Compose Multiplatform (CMP), building scalable, production-ready applications."
         ),
         Experience(
             title = "🎥 Content Creator",
@@ -20,7 +20,7 @@ object ExperienceData {
             startDate = "Apr 2023",
             endDate = "Present",
             location = "🌍 India · Remote",
-            description = "Created 440+ tutorials on Android development, Kotlin, Jetpack Compose, and KMP. Built a growing developer community with 4.4K+ subscribers."
+            description = "Created 450+ video tutorials on Android development, Kotlin, Jetpack Compose, Kotlin Multiplatform (KMP), and Compose Multiplatform (CMP). Built a growing developer community with 4.4K+ subscribers."
         ),
         Experience(
             title = "✍️ Technical Writer",
@@ -29,7 +29,7 @@ object ExperienceData {
             startDate = "Sep 2024",
             endDate = "Present",
             location = "🌍 India · Remote",
-            description = "Published 10+ in-depth articles on Android, Kotlin Multiplatform, and Compose Multiplatform, reaching thousands of developers with practical insights."
+            description = "Published 10+ in-depth technical articles covering Android development, Kotlin Multiplatform (KMP), and Compose Multiplatform (CMP), sharing practical implementation insights with developers."
         ),
         Experience(
             title = "🛠️ Android Development Intern",

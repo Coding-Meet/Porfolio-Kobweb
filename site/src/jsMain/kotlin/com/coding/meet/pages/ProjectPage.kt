@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.coding.meet.common.components.custom_dialog.CustomDialog
+import com.coding.meet.common.components.custom_dialog.resetDialogScroll
 import com.coding.meet.common.components.footer.Footer
 import com.coding.meet.common.page_layout.PageLayout
 import com.coding.meet.common.page_layout.fadeInUpPageAnimation
@@ -90,54 +91,73 @@ fun ProjectPage() {
                     val model = window.document.getElementById(dialogId)
                     val modal = model?.asDynamic()
                     if (it.target == modal) {
-                        isShowDialog = !isShowDialog
-                        openProject = null
-                        currentProjectIndex = null
+                        isShowDialog = false
+                    }
+                })
+                window.addEventListener("keydown", {
+                    val keyboardEvent = it.asDynamic()
+                    if (keyboardEvent.key == "Escape") {
+                        isShowDialog = false
                     }
                 })
             }
-            LaunchedEffect(isShowDialog) {
+            LaunchedEffect(isShowDialog, openProject) {
                 val model = window.document.getElementById(dialogId)
                 val modal = model?.asDynamic()
                 val body = window.document.body?.asDynamic()
 
                 if (isShowDialog) {
                     modal?.style?.display = "block"
+                    resetDialogScroll(dialogId)
                     body?.style?.setProperty("overflow", "hidden") // Disable scrolling
                 } else {
                     modal?.style?.display = "none"
+                    resetDialogScroll(dialogId)
                     body?.style?.removeProperty("overflow") // Restore default scrolling
                 }
             }
 
-            openProject?.let { currentProject ->
+            val activeProject =
+                openProject ?: filteredProjects.firstOrNull() ?: projects.firstOrNull()
+            if (activeProject != null) {
                 CustomDialog(
                     modifier = Modifier.fillMaxWidth(
-                        if (breakpoint > Breakpoint.MD) 60.percent else 90.percent
+                        if (breakpoint > Breakpoint.MD) 65.percent else 92.percent
                     ),
                     dialogId = dialogId,
+                    resetKey = openProject?.title,
                 ) {
                     ProjectDialog(
-                        project = currentProject,
+                        project = activeProject,
+                        isNextPreviousBtnShow = filteredProjects.size > 1,
                         onDismiss = {
                             isShowDialog = false
-                            openProject = null
-                        }, onPrevious = {
-                            if (currentProjectIndex != null) {
-                                if (currentProjectIndex!! > 0) {
-                                    currentProjectIndex = currentProjectIndex!! - 1
-                                    openProject = filteredProjects[currentProjectIndex!!]
-                                }
+                        },
+                        onPrevious = {
+                            if (filteredProjects.isNotEmpty()) {
+                                val prevIdx =
+                                    if (currentProjectIndex == null || currentProjectIndex!! <= 0) {
+                                        filteredProjects.size - 1
+                                    } else {
+                                        currentProjectIndex!! - 1
+                                    }
+                                currentProjectIndex = prevIdx
+                                openProject = filteredProjects[prevIdx]
+                                resetDialogScroll(dialogId)
                             }
-
-                        }, onNext = {
-                            if (currentProjectIndex != null) {
-                                if (currentProjectIndex!! < filteredProjects.size - 1) {
-                                    currentProjectIndex = currentProjectIndex!! + 1
-                                    openProject = filteredProjects[currentProjectIndex!!]
-                                }
+                        },
+                        onNext = {
+                            if (filteredProjects.isNotEmpty()) {
+                                val nextIdx =
+                                    if (currentProjectIndex == null || currentProjectIndex!! >= filteredProjects.size - 1) {
+                                        0
+                                    } else {
+                                        currentProjectIndex!! + 1
+                                    }
+                                currentProjectIndex = nextIdx
+                                openProject = filteredProjects[nextIdx]
+                                resetDialogScroll(dialogId)
                             }
-
                         }
                     )
                 }
@@ -170,6 +190,7 @@ fun ProjectPage() {
                             openProject = project
                             currentProjectIndex = index
                             isShowDialog = true
+                            resetDialogScroll(dialogId)
                         }
                     }
                 }

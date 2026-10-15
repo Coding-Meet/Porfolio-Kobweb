@@ -2,20 +2,15 @@ package com.coding.meet.common.image_slider_with_dot
 
 import com.coding.meet.util.Theme
 import com.coding.meet.util.customColor
-import com.varabyte.kobweb.compose.css.BackgroundPosition
-import com.varabyte.kobweb.compose.css.BackgroundSize
-import com.varabyte.kobweb.compose.css.CSSPosition
+import com.coding.meet.util.select
+import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.css.Cursor
+import com.varabyte.kobweb.compose.css.JustifyContent
 import com.varabyte.kobweb.compose.css.Overflow
-import com.varabyte.kobweb.compose.css.TextTransform
 import com.varabyte.kobweb.compose.css.Transition
-import com.varabyte.kobweb.compose.css.TransitionTimingFunction
-import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Colors
-import com.varabyte.kobweb.compose.ui.modifiers.background
+import com.varabyte.kobweb.compose.ui.modifiers.alignItems
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
-import com.varabyte.kobweb.compose.ui.modifiers.backgroundImage
 import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.bottom
@@ -27,31 +22,29 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.height
+import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
 import com.varabyte.kobweb.compose.ui.modifiers.left
 import com.varabyte.kobweb.compose.ui.modifiers.letterSpacing
 import com.varabyte.kobweb.compose.ui.modifiers.overflow
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.position
-import com.varabyte.kobweb.compose.ui.modifiers.textTransform
 import com.varabyte.kobweb.compose.ui.modifiers.top
 import com.varabyte.kobweb.compose.ui.modifiers.transform
 import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.modifiers.width
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.active
 import com.varabyte.kobweb.silk.style.selectors.hover
+import com.varabyte.kobweb.silk.theme.colors.palette.border
+import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import org.jetbrains.compose.web.css.AnimationTimingFunction
-import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.Position
-import org.jetbrains.compose.web.css.deg
-import org.jetbrains.compose.web.css.em
 import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
-import org.jetbrains.compose.web.css.s
 
 
 val ImageSliderContainerStyle = CssStyle {
@@ -61,7 +54,7 @@ val ImageSliderContainerStyle = CssStyle {
             .width(100.percent)
             .overflow(Overflow.Hidden)
             .borderRadius(8.px)
-            .boxShadow(0.px, 4.px, 8.px, 0.px, rgba(0, 0, 0, 0.1))
+            .boxShadow(0.px, 4.px, 8.px, 0.px, Theme.Black.subtle)
     }
 }
 
@@ -77,32 +70,38 @@ val IndicatorsStyle = CssStyle {
     base {
         Modifier
             .position(Position.Absolute)
-            .bottom(10.px)
+            .bottom(12.px)
             .left(50.percent)
             .transform { translateX((-50).percent) }
             .display(DisplayStyle.Flex)
+            .alignItems(AlignItems.Center)
             .gap(8.px)
+            .padding(6.px, 10.px)
+            .borderRadius(9999.px)
+            .backgroundColor(
+                colorMode.select(Theme.White.strong, Theme.Black.soft)
+            )
+            .styleModifier {
+                property("backdrop-filter", "blur(8px)")
+                property("-webkit-backdrop-filter", "blur(8px)")
+            }
     }
 }
 
 val IndicatorStyle = CssStyle {
     base {
         Modifier
-            .width(12.px)
-            .height(12.px)
+            .width(10.px)
+            .height(10.px)
             .borderRadius(50.percent)
-            .backgroundColor(Color.lightgray)
+            .backgroundColor(
+                colorMode.select(Theme.Black.soft, Theme.White.medium)
+            )
             .cursor(Cursor.Pointer)
-            .transition(Transition.of("background-color", 300.ms))
+            .transition(Transition.all(300.ms, AnimationTimingFunction.EaseInOut))
     }
     hover {
-        Modifier.backgroundColor(
-            customColor(
-                colorMode = colorMode,
-                lightColor = Theme.LightFontColor,
-                darkColor = Theme.DarkFontColor
-            )
-        )
+        Modifier.backgroundColor(Theme.Primary.soft)
     }
 }
 
@@ -112,7 +111,7 @@ val ControlButtonStyle = CssStyle {
             .position(Position.Absolute)
             .top(50.percent)
             .transform { translateY((-50).percent) }
-            .backgroundColor(rgba(0, 0, 0, 0.5))
+            .backgroundColor(Theme.Black.strong)
             .color(Theme.White.color)
             .padding(8.px, 12.px)
             .borderRadius(4.px)
@@ -122,56 +121,91 @@ val ControlButtonStyle = CssStyle {
 }
 
 val MainButtonStyle = CssStyle {
-    val backgroundColor = customColor(
-        colorMode = colorMode,
-        lightColor = Theme.LightFontColor,
-        darkColor = Theme.DarkFontColor
-    )
-    val textColor = customColor(
-        colorMode = colorMode,
-        lightColor = Theme.DarkFontColor,
-        darkColor = Theme.LightFontColor
-    )
     base {
         Modifier
-            .background {
-                size(BackgroundSize.of(220.percent))
-            }
-            .boxShadow(0.px, 0.2.em, 0.3.em, null, rgba(0, 0, 0, 0.15f))
-            .color(backgroundColor)
-            .backgroundColor(Colors.Transparent)
-            .background {
-                position(BackgroundPosition.of(CSSPosition(100.percent)))
-            }
-            .border(3.px, LineStyle.Solid, backgroundColor)
-            .textTransform(TextTransform.Uppercase)
-            .padding(8.px, 16.px)
-            .borderRadius(3.px)
-            .transition(Transition.of("all", 0.2.s, TransitionTimingFunction.EaseOut))
-            .fontWeight(900)
+            .display(DisplayStyle.Flex)
+            .alignItems(AlignItems.Center)
+            .justifyContent(JustifyContent.Center)
+            .backgroundColor(Theme.Primary.color)
+            .color(Theme.White.rgb)
+            .border(0.px)
+            .padding(10.px, 22.px)
+            .borderRadius(9999.px)
+            .boxShadow(0.px, 4.px, 14.px, null, Theme.Primary.medium)
+            .transition(Transition.all(200.ms, AnimationTimingFunction.EaseInOut))
+            .fontWeight(600)
             .cursor(Cursor.Pointer)
-            .letterSpacing(2.px)
-            .backgroundImage(
-                linearGradient(110.deg) {
-                    add(backgroundColor, 0.percent)
-                    add(backgroundColor, 50.percent)
-                    add(Colors.Transparent, 50.percent)
-                    add(Colors.Transparent, 100.percent)
-                }
-            )
+            .letterSpacing(0.4.px)
             .fontSize(14.px)
     }
     hover {
         Modifier
             .transform { translateY((-2).px) }
-            .boxShadow(0.px, 0.px, 0.3.em, null, rgba(0, 0, 0, 0.25f))
-            .background {
-                position(BackgroundPosition.of(CSSPosition(0.px)))
-            }
-            .color(textColor)
+            .boxShadow(0.px, 8.px, 20.px, null, Theme.Primary.strong)
     }
     active {
         Modifier
-            .transform { translateY((-1).px) }
+            .transform { translateY(0.px) }
+    }
+}
+
+val SecondaryButtonStyle = CssStyle {
+    base {
+        Modifier
+            .display(DisplayStyle.Flex)
+            .alignItems(AlignItems.Center)
+            .justifyContent(JustifyContent.Center)
+            .backgroundColor(
+                colorMode.select(Theme.White.color, Theme.White.subtle)
+            )
+            .color(
+                customColor(
+                    colorMode = colorMode,
+                    lightColor = Theme.LightFontColor,
+                    darkColor = Theme.DarkFontColor
+                )
+            )
+            .border(
+                1.px,
+                LineStyle.Solid,
+                if (colorMode.isLight) colorMode.toPalette().border else Theme.White.soft
+            )
+            .boxShadow(
+                0.px,
+                2.px,
+                6.px,
+                null,
+                colorMode.select(Theme.Black.subtle, Theme.Black.soft)
+            )
+            .styleModifier {
+                property("backdrop-filter", "blur(8px)")
+                property("-webkit-backdrop-filter", "blur(8px)")
+            }
+            .padding(10.px, 22.px)
+            .borderRadius(9999.px)
+            .transition(Transition.all(200.ms, AnimationTimingFunction.EaseInOut))
+            .fontWeight(600)
+            .cursor(Cursor.Pointer)
+            .letterSpacing(0.4.px)
+            .fontSize(14.px)
+    }
+    hover {
+        Modifier
+            .transform { translateY((-2).px) }
+            .backgroundColor(
+                colorMode.select(Theme.White.color, Theme.White.soft)
+            )
+            .border(1.px, LineStyle.Solid, Theme.Primary.color)
+            .boxShadow(
+                0.px,
+                4.px,
+                14.px,
+                null,
+                colorMode.select(Theme.Primary.soft, Theme.Primary.medium)
+            )
+    }
+    active {
+        Modifier
+            .transform { translateY(0.px) }
     }
 }

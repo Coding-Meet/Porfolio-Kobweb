@@ -14,13 +14,20 @@ import com.coding.meet.models.Section
 import com.coding.meet.util.AppInfo
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.display
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.flexDirection
+import com.varabyte.kobweb.compose.ui.modifiers.flexGrow
+import com.varabyte.kobweb.compose.ui.modifiers.minHeight
+import com.varabyte.kobweb.compose.ui.modifiers.position
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.document
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexDirection
+import org.jetbrains.compose.web.css.Position
+import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.dom.Div
 
 @Composable
@@ -29,6 +36,7 @@ fun PageLayout(
     content: @Composable () -> Unit,
 ) {
     var menuOpened by remember { mutableStateOf(false) }
+    val colorMode by ColorMode.currentState
     val selectedSectionId by remember(
         window.location
     ) {
@@ -45,17 +53,36 @@ fun PageLayout(
     }
     Div(
         attrs = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
+            .minHeight(100.vh)
+            .position(Position.Relative)
+            .styleModifier {
+                property("isolation", "isolate")
+            }
             .display(DisplayStyle.Flex)
             .flexDirection(FlexDirection.Column).toAttrs()
     ) {
+        AmbientAuroraBackground(
+            colorMode = colorMode,
+            zIndex = -1
+        )
+
         DesktopMenu(
             selectedSectionId = selectedSectionId,
             onMenuClicked = {
                 menuOpened = true
             }
         )
-        content()
+        Div(
+            attrs = Modifier
+                .fillMaxWidth()
+                .flexGrow(1)
+                .display(DisplayStyle.Flex)
+                .flexDirection(FlexDirection.Column)
+                .toAttrs()
+        ) {
+            content()
+        }
         BackToTopButton()
         if (menuOpened) {
             MobileSideMenu(

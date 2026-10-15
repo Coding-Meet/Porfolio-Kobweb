@@ -3,83 +3,129 @@ package com.coding.meet.screens.home.testimonial.components
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import com.coding.meet.util.CustomColor
+import com.coding.meet.util.Res
 import com.coding.meet.util.TestimonialData.testimonials
 import com.coding.meet.util.Theme
+import com.coding.meet.util.glassSubtle
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
-import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.ColumnScope
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.border
+import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.overflow
+import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.CloseIcon
+import com.varabyte.kobweb.silk.components.layout.SimpleGrid
+import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.border
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Hr
 
 
 @Composable
 fun ColumnScope.TestimonialDialog(
+    selectedCountry: String? = null,
     onDismiss: () -> Unit,
 ) {
     val colorMode by ColorMode.currentState
-
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
-            SpanText(
-                text = "\uD83C\uDF1F All Testimonials",
-                modifier = Modifier.color(
-                    CustomColor(
-                        lightColor = Theme.LightFontColor, darkColor = Theme.DarkFontColor
-                    )
-                ).fontSize(1.8.cssRem).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
-            )
-        }
-        CloseIcon(
-            modifier = Modifier
-                .size(20.px)
-                .cursor(Cursor.Pointer)
-                .onClick {
-                    onDismiss()
-                },
-        )
+    val displayList = if (selectedCountry != null) {
+        testimonials.filter { it.country == selectedCountry }
+    } else {
+        testimonials
     }
-    Hr(
-        attrs = Modifier.fillMaxWidth().margin(bottom = 20.px).border(
-            color = colorMode.toPalette().border, style = LineStyle.Solid, width = 2.px
-        ).toAttrs()
-    )
-    Column(
+
+    // Dialog Header with balanced spacing and centered title
+    Row(
         modifier = Modifier
             .fillMaxWidth()
-            .overflow(Overflow.Auto),
-        verticalArrangement = Arrangement.spacedBy(20.px)
+            .padding(bottom = 14.px),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        testimonials.forEach { testimonial ->
-            TestimonialCard(testimonial)
+        // Left spacer to perfectly balance the close button and keep title centered
+        Box(modifier = Modifier.size(36.px))
+
+        SpanText(
+            text = if (selectedCountry != null) "🌟 Reviews from $selectedCountry (${displayList.size})"
+            else "🌟 All Testimonials (${displayList.size})",
+            modifier = Modifier
+                .weight(1f)
+                .color(
+                    CustomColor(
+                        lightColor = Theme.LightFontColor,
+                        darkColor = Theme.DarkFontColor
+                    )
+                )
+                .fontFamily(Res.Font.FONT_FAMILY_HEADING)
+                .fontSize(1.6.cssRem)
+                .fontWeight(FontWeight.Bold)
+                .textAlign(TextAlign.Center)
+        )
+
+        Box(
+            modifier = Modifier
+                .size(36.px)
+                .borderRadius(50.percent)
+                .cursor(Cursor.Pointer)
+                .backgroundColor(
+                    colorMode.glassSubtle
+                )
+                .onClick { onDismiss() },
+            contentAlignment = Alignment.Center
+        ) {
+            CloseIcon(
+                modifier = Modifier.size(16.px)
+            )
+        }
+    }
+
+    Hr(
+        attrs = Modifier
+            .fillMaxWidth()
+            .margin(top = 0.px, bottom = 22.px)
+            .border(
+                color = colorMode.toPalette().border,
+                style = LineStyle.Solid,
+                width = 1.px
+            )
+            .toAttrs()
+    )
+    SimpleGrid(
+        numColumns = numColumns(base = 1, md = 1),
+        modifier = Modifier
+            .fillMaxWidth()
+            .overflow(Overflow.Auto)
+            .padding(top = 4.px)
+    ) {
+        displayList.forEach { testimonial ->
+            Box(modifier = Modifier.fillMaxWidth().padding(6.px)) {
+                TestimonialCard(testimonial)
+            }
         }
     }
 }

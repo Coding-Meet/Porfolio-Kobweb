@@ -40,7 +40,7 @@ fun FormInput() {
     var message by remember { mutableStateOf("") }
 
     Column(
-        formStyle.toModifier().padding(top = 10.px)
+        formStyle.toModifier().fillMaxWidth().padding(top = 10.px)
     ) {
         SimpleGrid(
             numColumns = numColumns(base = 1, sm = 1, md = 2, lg = 2, xl = 2),
@@ -68,6 +68,7 @@ fun FormInput() {
         TextArea {
             id("message")
             attr("required", "")
+            attr("rows", "5")
             placeholder("Message")
             onInput { event -> message = event.value }
         }

@@ -9,10 +9,10 @@ import androidx.compose.runtime.setValue
 import com.coding.meet.data.response.medium.Medium
 import com.coding.meet.util.ArticleData.articles
 import com.coding.meet.util.ExternalConfig.MEDIUM_BASE_URL
+import com.coding.meet.util.MediumContent
+import com.varabyte.kobweb.browser.http.FetchDefaults
 import com.varabyte.kobweb.browser.http.http
 import kotlinx.browser.window
-
-import com.coding.meet.util.MediumContent
 
 @Composable
 fun MediumDummyArticleData(): Medium? {
@@ -43,7 +43,13 @@ fun MediumArticleData(): Medium? {
 
     LaunchedEffect(Unit) {
         try {
-            val response = window.http.tryGet(MEDIUM_BASE_URL)?.decodeToString()
+            val response = window.http.tryGetBytes(
+                MEDIUM_BASE_URL,
+                FetchDefaults.Headers,
+                FetchDefaults.Redirect,
+                null
+            )
+                ?.decodeToString()
             response?.let {
                 val myMedium = json.decodeFromString<Medium>(response)
 

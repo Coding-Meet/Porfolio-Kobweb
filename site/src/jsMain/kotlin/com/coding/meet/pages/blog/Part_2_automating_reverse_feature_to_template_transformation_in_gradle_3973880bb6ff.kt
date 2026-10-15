@@ -14,7 +14,7 @@ fun Part_2_automating_reverse_feature_to_template_transformation_in_gradle_39738
     val article = remember {
         ArticleData.articles.find { it.id == "part-2-automating-reverse-feature-to-template-transformation-in-gradle-3973880bb6ff" }
     }
-    
+
     if (article != null) {
         ArticleDetail(article = article, context = context)
     }

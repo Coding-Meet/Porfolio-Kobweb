@@ -14,7 +14,7 @@ fun How_to_integrate_viewmodel_in_kotlin_multiplatform_with_koin_1a1134530215(co
     val article = remember {
         ArticleData.articles.find { it.id == "how-to-integrate-viewmodel-in-kotlin-multiplatform-with-koin-1a1134530215" }
     }
-    
+
     if (article != null) {
         ArticleDetail(article = article, context = context)
     }

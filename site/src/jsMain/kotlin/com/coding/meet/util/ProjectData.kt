@@ -47,14 +47,14 @@ object ProjectData {
             ),
             githubUrl = "https://github.com/Coding-Meet/News-KMP-App",
             imageUrls = listOf(
-                "/project/news_kmp_app/news_app_banner.png",
-                "/project/news_kmp_app/news_app_img_1.png",
-                "/project/news_kmp_app/news_app_img_2.png",
-                "/project/news_kmp_app/news_app_img_3.png",
-                "/project/news_kmp_app/news_app_img_4.png",
-                "/project/news_kmp_app/news_app_img_5.png",
-                "/project/news_kmp_app/news_app_img_6.png",
-                "/project/news_kmp_app/news_app_img_7.png",
+                "/project/news_kmp_app/news_app_banner.webp",
+                "/project/news_kmp_app/news_app_img_1.webp",
+                "/project/news_kmp_app/news_app_img_2.webp",
+                "/project/news_kmp_app/news_app_img_3.webp",
+                "/project/news_kmp_app/news_app_img_4.webp",
+                "/project/news_kmp_app/news_app_img_5.webp",
+                "/project/news_kmp_app/news_app_img_6.webp",
+                "/project/news_kmp_app/news_app_img_7.webp",
             ),
             platform = listOf("Android", "iOS", "Windows", "macOS", "Linux"),
             youtubeVideoLink = "https://www.youtube.com/embed/Dq1jcsVQmtY",
@@ -71,18 +71,25 @@ object ProjectData {
         ),
         Project(
             title = "DevAnalyzer",
-            shortDescription = "A powerful desktop tool to analyze, clean, and optimize your Android & Kotlin development environment.",
-            longDescription = "DevAnalyzer is a cross-platform desktop application built with Kotlin Multiplatform and Compose Multiplatform. It helps developers analyze project structure, manage build artifacts, and monitor storage usage across SDKs, IDEs, and Gradle environments. Designed for modern development workflows, DevAnalyzer provides a unified interface to understand and optimize your entire development ecosystem.",
+            shortDescription = "A cross-platform desktop tool to analyze Gradle and Kotlin Multiplatform projects, clean build folders, manage SDK resources, and optimize development environments.",
+            longDescription = "DevAnalyzer is a cross-platform desktop application built with Compose Multiplatform and Kotlin Multiplatform (KMP) to help Android and Kotlin Multiplatform developers understand, optimize, and maintain their development environment. It provides project analysis across Android, iOS, JVM, JS, Wasm, and Server targets, safe build folder cleanup, workspace resource analysis, and detailed storage insights across Android SDKs, Gradle caches, Kotlin/Native toolchains, JDKs, AVDs, and IDE data. With smart path discovery, custom toolchain configuration, privacy controls, and GitHub release update checks, DevAnalyzer helps developers manage their development ecosystem efficiently.",
             features = listOf(
-                "Analyze Gradle modules, plugins, dependencies, and build configurations",
-                "Inspect project metadata (AGP, SDK versions, NDK, CMake, multi-module setup)",
-                "Preview project and Gradle files inside the app",
-                "Scan and clean build folders across all modules",
-                "Real-time storage analysis for SDK, IDE, Gradle, and libraries",
-                "Selective deletion with advanced filtering and batch operations",
-                "Track recoverable disk space before cleanup",
-                "Custom path configuration for SDK, Gradle, Kotlin Native, and IDE",
-                "Crash logging and error tracking support"
+                "Analyze Gradle modules, plugins, dependencies, and configurations across Android, iOS, JVM, JS, Wasm, and Server targets",
+                "Inspect project metadata, including Kotlin, AGP, Gradle, SDK, NDK, and CMake versions",
+                "Browse Kotlin, Java, XML, Gradle scripts, and Version Catalog libraries inside the app",
+                "Scan module build folders, calculate folder sizes, and safely delete selected build directories in batches",
+                "Analyze multiple workspace directories to identify active and potentially unused development resources",
+                "Cross-reference Android SDK Platforms, Build Tools, Sources, NDK, CMake, and Gradle resources with projects",
+                "Identify potentially unused Kotlin/Native toolchains, Gradle caches, JDKs, Android System Images, and AVDs",
+                "Analyze storage usage across Android SDKs, Gradle caches, Kotlin/Native toolchains, JDKs, AVDs, and IDE data",
+                "Track storage scan progress with elapsed timers and support custom JDK and IDE locations",
+                "Discover JDK, Android SDK, and IDE installations, including custom locations",
+                "Configure and validate custom SDK, Gradle, Kotlin/Native, JDK, Android Studio, and IntelliJ IDEA paths",
+                "Manage privacy controls for local crash logging, anonymous crash reporting, and usage analytics",
+                "Process project and filesystem analysis locally without uploading source code, project names, or file paths",
+                "Collect optional anonymous usage analytics without user identification or personal information",
+                "Rate the app, suggest features, and report issues through the in-app feedback dialog",
+                "Check GitHub releases on startup and display release notes inside the app"
             ),
             technologies = listOf(
                 "Kotlin",
@@ -108,19 +115,83 @@ object ProjectData {
             platform = listOf("Desktop", "Windows", "macOS", "Linux"),
             topics = listOf(
                 "Developer Tools",
+                "Android Development",
                 "Kotlin Multiplatform",
                 "Compose Multiplatform",
                 "Gradle",
                 "Project Analysis",
-                "Storage Optimization"
+                "Workspace Analysis",
+                "Storage Analysis",
+                "SDK Management",
+                "Development Environment Optimization"
             ),
             stargazersCount = 88,
             categories = listOf(ProjectCategory.KMP, ProjectCategory.DESKTOP),
-            youtubeVideoLink = "https://www.youtube.com/embed/c3t1SIKSBBk",
+            youtubeVideoLink = "https://www.youtube.com/embed/U7UPpqcjdLA",
             imageUrls = listOf(
-                "/project/dev_analyzer/dev_analyzer_banner.png"
+                "/project/dev_analyzer/dev_analyzer_banner.webp",
+                "/project/dev_analyzer/img_0_project_overview_tab.webp",
+                "/project/dev_analyzer/img_0_setting_all_section_like_scan_location_jdk_version.webp",
+                "/project/dev_analyzer/img_0_storage_overview_tab.webp",
+                "/project/dev_analyzer/img_0_workspace_all_project_with_all_resources_tab.webp",
+                "/project/dev_analyzer/img_1_project_modules_tab.webp",
             ),
             websiteUrl = "https://coding-meet.github.io/DevAnalyzer/",
+        ),
+        Project(
+            title = "Pepper Robot AI Assistant",
+            shortDescription = "An Android tablet app for SoftBank Pepper robots featuring voice-based AI conversations powered by Google Gemini.",
+            longDescription = "Pepper Robot AI Assistant is an Android tablet application built for the SoftBank Pepper robot, combining Pepper's native QiSDK with Google's Gemini AI to deliver interactive speech-to-speech conversations. It captures free-form voice input, generates contextual AI responses, and speaks them back through Pepper's native Text-to-Speech engine. The app features a premium split-screen dashboard with chat history, animated interaction states, and Start, Stop, and Reset controls. GPS-based location context enables locally relevant recommendations, while an emulator testing mode supports UI, animation, and AI integration testing without physical robot hardware.",
+            features = listOf(
+                "Capture free-form speech using custom QiChat wildcard rules",
+                "Integrate Google Gemini AI for real-time conversational responses",
+                "Convert AI responses into spoken output using Pepper's native Text-to-Speech engine",
+                "Prevent recursive microphone input with processing state management",
+                "Display chat history with user and Pepper-themed message bubbles",
+                "Provide a split-screen tablet interface with a chat panel and interaction dashboard",
+                "Visualize Ready, Listening, Thinking, and Speaking states with animations",
+                "Control robot interactions using Start, Stop, and Reset actions",
+                "Retrieve GPS coordinates and reverse-geocode location context for relevant AI recommendations",
+                "Test UI, animations, location context, and Gemini responses in emulator mode without physical robot hardware",
+                "Integrate Firebase Crashlytics for crash reporting and diagnostics"
+            ),
+            technologies = listOf(
+                "Kotlin",
+                "Android",
+                "QiSDK",
+                "Google Gemini AI",
+                "Jetpack Compose",
+                "MVVM Architecture"
+            ),
+            libraries = listOf(
+                "QiSDK",
+                "QiSDK Design",
+                "OkHttp",
+                "Retrofit",
+                "Google Play Services Location",
+                "kotlinx.serialization",
+                "Firebase Crashlytics",
+                "Timber"
+            ),
+            platform = listOf("Android", "Pepper Robot", "Android Tablet"),
+            topics = listOf(
+                "Android Development",
+                "Robotics",
+                "SoftBank Pepper",
+                "QiSDK",
+                "Google Gemini AI",
+                "Voice Assistant",
+                "Speech-to-Speech",
+                "Conversational AI",
+                "GPS Integration",
+                "Firebase Crashlytics"
+            ),
+            stargazersCount = 0,
+            categories = listOf(ProjectCategory.ANDROID),
+            youtubeVideoLink = "https://www.youtube.com/embed/9R6y0NyqYF8",
+            imageUrls = listOf(
+                "/project/pepper-robot-app/pepper-Robot-Meets-Gemini-AI.webp",
+            ),
         ),
         Project(
             title = "Gemini AI Kotlin Multiplatform App",
@@ -159,10 +230,10 @@ object ProjectData {
             githubUrl = "https://github.com/Coding-Meet/Gemini-AI-KMP-App",
             websiteUrl = "https://coding-meet.github.io/Gemini-AI-KMP-App/",
             imageUrls = listOf(
-                "/project/gemini_ai_kmp_app/gemini_app_banner.png",
-                "/project/gemini_ai_kmp_app/gemini_app_img_1.png",
-                "/project/gemini_ai_kmp_app/gemini_app_img_2.png",
-                "/project/gemini_ai_kmp_app/gemini_app_img_3.png"
+                "/project/gemini_ai_kmp_app/gemini_app_banner.webp",
+                "/project/gemini_ai_kmp_app/gemini_app_img_1.webp",
+                "/project/gemini_ai_kmp_app/gemini_app_img_2.webp",
+                "/project/gemini_ai_kmp_app/gemini_app_img_3.webp"
             ),
             platform = listOf("Android", "iOS", "Windows", "macOS", "Linux", "Web"),
             youtubeVideoLink = "https://www.youtube.com/embed/YhWhR6IVs_Y",
@@ -223,7 +294,7 @@ object ProjectData {
             stargazersCount = 64,
             categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP),
             imageUrls = listOf(
-                "/project/pokemon_cmp/pokemon_cmp_banner_1.png"
+                "/project/pokemon_cmp/pokemon_cmp_banner_1.webp"
             )
         ),
         Project(
@@ -267,7 +338,7 @@ object ProjectData {
             categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP),
             youtubeVideoLink = "https://www.youtube.com/embed/SzuDWWdEkqE",
             imageUrls = listOf(
-                "/articles/tts_highlighting.png"
+                "/articles/tts_highlighting.webp"
             )
         ),
         Project(
@@ -310,7 +381,7 @@ object ProjectData {
             youtubeVideoLink = "https://www.youtube.com/embed/SKgjtKWt4VQ",
             websiteUrl = "https://github.com/Coding-Meet/Git-Backup-Hub/releases",
             imageUrls = listOf(
-                "/project/git_backup_hub/git_backup_hub_banner.png"
+                "/project/git_backup_hub/git_backup_hub_banner.webp"
             )
         ),
         Project(
@@ -353,7 +424,7 @@ object ProjectData {
             categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP, ProjectCategory.WEB),
             youtubeVideoLink = "https://www.youtube.com/embed/zIDrScVQjhg",
             imageUrls = listOf(
-                "/articles/shader-cmp.png"
+                "/articles/shader-cmp.webp"
             )
         ),
         Project(
@@ -374,15 +445,15 @@ object ProjectData {
             technologies = listOf("Firebase Hosting"),
             libraries = listOf("Kotlin", "Kobweb", "Compose HTML", "Jetpack Compose"),
             imageUrls = listOf(
-                "/project/coding_meet_website/kobweb_banner.png",
-                "/project/coding_meet_website/kobweb_img_1.png",
-                "/project/coding_meet_website/kobweb_img_2.png",
-                "/project/coding_meet_website/kobweb_img_3.png",
-                "/project/coding_meet_website/kobweb_img_4.png",
-                "/project/coding_meet_website/kobweb_img_5.png",
-                "/project/coding_meet_website/kobweb_img_6.png",
-                "/project/coding_meet_website/kobweb_img_7.png",
-                "/project/coding_meet_website/kobweb_img_8.png",
+                "/project/coding_meet_website/kobweb_banner.webp",
+                "/project/coding_meet_website/kobweb_img_1.webp",
+                "/project/coding_meet_website/kobweb_img_2.webp",
+                "/project/coding_meet_website/kobweb_img_3.webp",
+                "/project/coding_meet_website/kobweb_img_4.webp",
+                "/project/coding_meet_website/kobweb_img_5.webp",
+                "/project/coding_meet_website/kobweb_img_6.webp",
+                "/project/coding_meet_website/kobweb_img_7.webp",
+                "/project/coding_meet_website/kobweb_img_8.webp",
             ),
             platform = listOf("Web"),
             stargazersCount = 20,
@@ -394,9 +465,9 @@ object ProjectData {
             longDescription = "String Translator Desktop App is a powerful desktop application built with Jetpack Compose, aiming to streamline the translation of strings for developers. It empowers users to seamlessly translate multiple strings into various languages, thereby optimizing the localization process.",
             githubUrl = "https://github.com/Coding-Meet/String-Translator-Desktop-App",
             imageUrls = listOf(
-                "/project/string_translator_desktop_app/string_translator_desktop_app_banner.png",
-                "/project/string_translator_desktop_app/string_translator_desktop_app_img_1.png",
-                "/project/string_translator_desktop_app/string_translator_desktop_app_img_2.png"
+                "/project/string_translator_desktop_app/string_translator_desktop_app_banner.webp",
+                "/project/string_translator_desktop_app/string_translator_desktop_app_img_1.webp",
+                "/project/string_translator_desktop_app/string_translator_desktop_app_img_2.webp"
             ),
             features = listOf(
                 "Bulk Translation: Translate multiple strings at once to target languages.",
@@ -463,9 +534,9 @@ object ProjectData {
                 "AndroidX SplashScreen"
             ),
             imageUrls = listOf(
-                "/project/custom_lcd_app/custom_lcd_app_banner.png",
-                "/project/custom_lcd_app/custom_lcd_app_img_1.png",
-                "/project/custom_lcd_app/custom_lcd_app_img_2.png"
+                "/project/custom_lcd_app/custom_lcd_app_banner.webp",
+                "/project/custom_lcd_app/custom_lcd_app_img_1.webp",
+                "/project/custom_lcd_app/custom_lcd_app_img_2.webp"
             ),
             platform = listOf("Android"),
             categories = listOf(ProjectCategory.ANDROID, ProjectCategory.IOT)
@@ -504,10 +575,10 @@ object ProjectData {
                 "Markdown"
             ),
             imageUrls = listOf(
-                "/project/third_eye/third_eye_banner.png",
-                "/project/third_eye/third_eye_img_1.png",
-                "/project/third_eye/third_eye_img_2.png",
-                "/project/third_eye/third_eye_img_3.png",
+                "/project/third_eye/third_eye_banner.webp",
+                "/project/third_eye/third_eye_img_1.webp",
+                "/project/third_eye/third_eye_img_2.webp",
+                "/project/third_eye/third_eye_img_3.webp",
             ),
             platform = listOf("Android"),
             topics = listOf(
@@ -549,11 +620,11 @@ object ProjectData {
             githubUrl = null,
             youtubeVideoLink = "https://user-images.githubusercontent.com/71074485/203806866-debcef11-a8d1-4f91-99f3-f76b0423aba3.mp4",
             imageUrls = listOf(
-                "/project/home_automation_app/home_automation_app_banner_1.png",
-                "/project/home_automation_app/home_automation_app_banner_2.png",
-                "/project/home_automation_app/home_automation_app_banner_3.png",
-                "/project/home_automation_app/home_automation_app_img_1.png",
-                "/project/home_automation_app/home_automation_app_img_2.png",
+                "/project/home_automation_app/home_automation_app_banner_1.webp",
+                "/project/home_automation_app/home_automation_app_banner_2.webp",
+                "/project/home_automation_app/home_automation_app_banner_3.webp",
+                "/project/home_automation_app/home_automation_app_img_1.webp",
+                "/project/home_automation_app/home_automation_app_img_2.webp",
             ),
             platform = listOf("Android"),
             topics = listOf("Home Automation", "IoT", "Arduino", "Smart Home"),
@@ -576,7 +647,7 @@ object ProjectData {
             ),
             libraries = listOf("Wire.h", "LiquidCrystal.h", "PWM Control Library"),
             imageUrls = listOf(
-                "/project/electric_vehicle/electric_vehicle_img_1.png",
+                "/project/electric_vehicle/electric_vehicle_img_1.webp",
             ),
             platform = listOf("Arduino"),
             topics = listOf("IoT", "Automation", "Electric Vehicles", "Motor Control"),
@@ -589,7 +660,7 @@ object ProjectData {
             technologies = listOf("Kotlin", "Selenium", "Apache POI", "ChromeDriver"),
             libraries = listOf("Selenium WebDriver", "Apache POI"),
             imageUrls = listOf(
-                "/project/quill_bot_web/quill_bot_web_banner.png",
+                "/project/quill_bot_web/quill_bot_web_banner.webp",
             ),
             platform = listOf("Web"),
             features = listOf(
@@ -632,9 +703,9 @@ object ProjectData {
                 "Encrypted SharedPreferences"
             ),
             imageUrls = listOf(
-                "/project/chatgpt_app/chatgpt_app_banner.png",
-                "/project/chatgpt_app/chatgpt_app_img_1.png",
-                "/project/chatgpt_app/chatgpt_app_img_2.png",
+                "/project/chatgpt_app/chatgpt_app_banner.webp",
+                "/project/chatgpt_app/chatgpt_app_img_1.webp",
+                "/project/chatgpt_app/chatgpt_app_img_2.webp",
             ),
             platform = listOf("Android"),
             topics = listOf(
@@ -667,9 +738,9 @@ object ProjectData {
                 "Glide"
             ),
             imageUrls = listOf(
-                "/project/multi_factor_authenticator_app/multi_factor_authenticator_app_banner.png",
-                "/project/multi_factor_authenticator_app/multi_factor_authenticator_app_img_1.png",
-                "/project/multi_factor_authenticator_app/multi_factor_authenticator_app_img_2.png",
+                "/project/multi_factor_authenticator_app/multi_factor_authenticator_app_banner.webp",
+                "/project/multi_factor_authenticator_app/multi_factor_authenticator_app_img_1.webp",
+                "/project/multi_factor_authenticator_app/multi_factor_authenticator_app_img_2.webp",
             ),
             platform = listOf("Android"),
             topics = listOf("Security", "Two-Factor Authentication", "Privacy"),
@@ -700,11 +771,11 @@ object ProjectData {
                 "MultiWaveHeader"
             ),
             imageUrls = listOf(
-                "/project/daily_affirmations_app/daily_affirmations_app_banner.png",
-                "/project/daily_affirmations_app/daily_affirmations_app_img_1.png",
-                "/project/daily_affirmations_app/daily_affirmations_app_img_2.png",
-                "/project/daily_affirmations_app/daily_affirmations_app_img_3.png",
-                "/project/daily_affirmations_app/daily_affirmations_app_img_4.png",
+                "/project/daily_affirmations_app/daily_affirmations_app_banner.webp",
+                "/project/daily_affirmations_app/daily_affirmations_app_img_1.webp",
+                "/project/daily_affirmations_app/daily_affirmations_app_img_2.webp",
+                "/project/daily_affirmations_app/daily_affirmations_app_img_3.webp",
+                "/project/daily_affirmations_app/daily_affirmations_app_img_4.webp",
             ),
             platform = listOf("Android"),
             topics = listOf("Motivation", "Well-being", "Productivity"),
@@ -733,8 +804,8 @@ object ProjectData {
                 "Shared Preferences"
             ),
             imageUrls = listOf(
-                "/project/doc_scanner_app/doc_scanner_app_banner.png",
-                "/project/doc_scanner_app/doc_scanner_app_img_1.png",
+                "/project/doc_scanner_app/doc_scanner_app_banner.webp",
+                "/project/doc_scanner_app/doc_scanner_app_img_1.webp",
             ),
             platform = listOf("Android"),
             topics = listOf(
@@ -771,11 +842,11 @@ object ProjectData {
                 "Core SplashScreen"
             ),
             imageUrls = listOf(
-                "/project/math_workout_app/math_workout_app_banner.png",
-                "/project/math_workout_app/math_workout_app_img_1.png",
-                "/project/math_workout_app/math_workout_app_img_2.png",
-                "/project/math_workout_app/math_workout_app_img_3.png",
-                "/project/math_workout_app/math_workout_app_img_4.png",
+                "/project/math_workout_app/math_workout_app_banner.webp",
+                "/project/math_workout_app/math_workout_app_img_1.webp",
+                "/project/math_workout_app/math_workout_app_img_2.webp",
+                "/project/math_workout_app/math_workout_app_img_3.webp",
+                "/project/math_workout_app/math_workout_app_img_4.webp",
             ),
             platform = listOf("Android"),
             topics = listOf("Math", "Education", "Brain Training"),
@@ -798,10 +869,10 @@ object ProjectData {
                 "Material Design"
             ),
             imageUrls = listOf(
-                "/project/bluetooth_control_app/bluetooth_app_banner.png",
-                "/project/bluetooth_control_app/bluetooth_app_img_1.png",
-                "/project/bluetooth_control_app/bluetooth_app_img_2.png",
-                "/project/bluetooth_control_app/bluetooth_app_img_3.png",
+                "/project/bluetooth_control_app/bluetooth_app_banner.webp",
+                "/project/bluetooth_control_app/bluetooth_app_img_1.webp",
+                "/project/bluetooth_control_app/bluetooth_app_img_2.webp",
+                "/project/bluetooth_control_app/bluetooth_app_img_3.webp",
             ),
             platform = listOf("Android"),
             topics = listOf("Bluetooth Communication", "Arduino", "IoT", "Home Automation"),
@@ -832,10 +903,10 @@ object ProjectData {
                 "AndroidX Core Splash Screen"
             ),
             imageUrls = listOf(
-                "/project/truth_and_dare/truth_and_dare_app_banner.png",
-                "/project/truth_and_dare/truth_and_dare_img_1.png",
-                "/project/truth_and_dare/truth_and_dare_img_2.png",
-                "/project/truth_and_dare/truth_and_dare_img_3.png"
+                "/project/truth_and_dare/truth_and_dare_app_banner.webp",
+                "/project/truth_and_dare/truth_and_dare_img_1.webp",
+                "/project/truth_and_dare/truth_and_dare_img_2.webp",
+                "/project/truth_and_dare/truth_and_dare_img_3.webp"
             ),
             platform = listOf("Android"),
             topics = listOf(
@@ -875,11 +946,11 @@ object ProjectData {
                 "Razorpay Checkout"
             ),
             imageUrls = listOf(
-                "/project/meet_my_show_app/meet_my_show_app_banner.png",
-                "/project/meet_my_show_app/meet_my_show_img_1.png",
-                "/project/meet_my_show_app/meet_my_show_img_2.png",
-                "/project/meet_my_show_app/meet_my_show_img_3.png",
-                "/project/meet_my_show_app/meet_my_show_img_4.png"
+                "/project/meet_my_show_app/meet_my_show_app_banner.webp",
+                "/project/meet_my_show_app/meet_my_show_img_1.webp",
+                "/project/meet_my_show_app/meet_my_show_img_2.webp",
+                "/project/meet_my_show_app/meet_my_show_img_3.webp",
+                "/project/meet_my_show_app/meet_my_show_img_4.webp"
             ),
             platform = listOf("Android"),
             topics = listOf("Entertainment", "Booking System", "Movie Ticketing"),
@@ -905,7 +976,7 @@ object ProjectData {
             ),
             libraries = listOf("Wire.h", "LiquidCrystal.h"),
             imageUrls = listOf(
-                "/project/dual_axis_solar_tracking_system/dual_axis_solar_tracker_img_1.png"
+                "/project/dual_axis_solar_tracking_system/dual_axis_solar_tracker_img_1.webp"
             ),
             platform = listOf("Arduino"),
             topics = listOf("IoT", "Automation", "Renewable Energy", "Smart Agriculture"),
@@ -931,14 +1002,68 @@ object ProjectData {
             ),
             libraries = listOf("Wire.h", "LiquidCrystal_I2C.h", "DHT.h"),
             imageUrls = listOf(
-                "/project/smart_irrigation_system/smart_irrigation_system_banner.png",
-                "/project/smart_irrigation_system/smart_irrigation_system_img_1.png",
+                "/project/smart_irrigation_system/smart_irrigation_system_banner.webp",
+                "/project/smart_irrigation_system/smart_irrigation_system_img_1.webp",
             ),
             platform = listOf("Arduino"),
             topics = listOf("IoT", "Automation", "Smart Agriculture", "Environmental Monitoring"),
             categories = listOf(ProjectCategory.IOT)
         ),
-
+        Project(
+            title = "Android Addict",
+            shortDescription = "A React-based website providing Android component code for developers.",
+            longDescription = "Android Addict is a React-based website designed to help Android developers by providing ready-to-use Android component code. It serves as a valuable resource for developers seeking efficient solutions and code snippets to improve their Android projects.",
+            features = listOf(
+                "Collection of Android component code",
+                "User-friendly interface for easy navigation",
+                "Code snippets for common Android features",
+            ),
+            technologies = listOf("React", "JavaScript", "CSS", "HTML"),
+            libraries = listOf(
+                "React",
+                "React Router",
+                "Material UI"
+            ),
+            imageUrls = listOf(
+                "/project/android_addict_website/android_addict_website_banner.webp"
+            ),
+            platform = listOf("Web"),
+            topics = listOf("Android Development", "Web Development", "Code Snippets"),
+            categories = listOf(ProjectCategory.WEB, ProjectCategory.ANDROID)
+        ),
+        Project(
+            title = "Gamer's Arena",
+            shortDescription = "An Android app for hosting and joining gaming tournaments with chat and profile management features.",
+            longDescription = "Gamer's Arena is a feature-rich Android application that allows admins to organize gaming tournaments, set schedules, prizes, and declare winners. Users can join tournaments, view participant details, chat with other players, and manage their profiles. The app aims to provide a genuine and transparent platform for gamers to showcase their skills and win rewards.",
+            features = listOf(
+                "Admin can create and manage tournaments",
+                "Users can join tournaments and view details",
+                "Chat functionality for player interaction",
+                "Profile management for both users and admins",
+                "Room ID and password management for secure entry",
+                "Tournament result declaration by admins"
+            ),
+            technologies = listOf("Kotlin", "Android Studio", "XML"),
+            libraries = listOf(
+                "Firebase Firestore",
+                "Firebase Authentication",
+                "Firebase Database",
+                "Firebase Storage",
+                "Glide",
+                "Material Design"
+            ),
+            imageUrls = listOf(
+                "/project/gamers_arena_app/gamers_area_img_1.webp",
+                "/project/gamers_arena_app/gamers_area_img_2.webp",
+                "/project/gamers_arena_app/gamers_area_img_3.webp",
+                "/project/gamers_arena_app/gamers_area_img_4.webp",
+                "/project/gamers_arena_app/gamers_area_img_5.webp",
+                "/project/gamers_arena_app/gamers_area_img_6.webp",
+            ),
+            platform = listOf("Android"),
+            topics = listOf("Gaming", "Tournament Management", "Chat System"),
+            categories = listOf(ProjectCategory.ANDROID)
+        ),
         Project(
             title = "TODO / Note App",
             shortDescription = "A complete TODO/Note app built with MVVM and Room, covering all core Android concepts through a step-by-step tutorial series.",
@@ -1048,7 +1173,7 @@ object ProjectData {
                 "ViewBinding"
             ),
             githubUrl = "https://github.com/Coding-Meet/Math-Quiz-App",
-            youtubeVideoLink= "https://www.youtube.com/embed/videoseries?list=PLlSuJy9SfzvHpc1-IcBTbZnyeBoVCynPE",
+            youtubeVideoLink = "https://www.youtube.com/embed/videoseries?list=PLlSuJy9SfzvHpc1-IcBTbZnyeBoVCynPE",
             websiteUrl = "https://youtube.com/playlist?list=PLlSuJy9SfzvHpc1-IcBTbZnyeBoVCynPE&si=BAMF8pBR1Aw7l1SQ",
             platform = listOf("Android"),
             topics = listOf(
@@ -1060,61 +1185,6 @@ object ProjectData {
                 "NDK Security"
             ),
             stargazersCount = 18,
-            categories = listOf(ProjectCategory.ANDROID)
-        ),
-        Project(
-            title = "Android Addict",
-            shortDescription = "A React-based website providing Android component code for developers.",
-            longDescription = "Android Addict is a React-based website designed to help Android developers by providing ready-to-use Android component code. It serves as a valuable resource for developers seeking efficient solutions and code snippets to improve their Android projects.",
-            features = listOf(
-                "Collection of Android component code",
-                "User-friendly interface for easy navigation",
-                "Code snippets for common Android features",
-            ),
-            technologies = listOf("React", "JavaScript", "CSS", "HTML"),
-            libraries = listOf(
-                "React",
-                "React Router",
-                "Material UI"
-            ),
-            imageUrls = listOf(
-                "/project/android_addict_website/android_addict_website_banner.png"
-            ),
-            platform = listOf("Web"),
-            topics = listOf("Android Development", "Web Development", "Code Snippets"),
-            categories = listOf(ProjectCategory.WEB, ProjectCategory.ANDROID)
-        ),
-        Project(
-            title = "Gamer's Arena",
-            shortDescription = "An Android app for hosting and joining gaming tournaments with chat and profile management features.",
-            longDescription = "Gamer's Arena is a feature-rich Android application that allows admins to organize gaming tournaments, set schedules, prizes, and declare winners. Users can join tournaments, view participant details, chat with other players, and manage their profiles. The app aims to provide a genuine and transparent platform for gamers to showcase their skills and win rewards.",
-            features = listOf(
-                "Admin can create and manage tournaments",
-                "Users can join tournaments and view details",
-                "Chat functionality for player interaction",
-                "Profile management for both users and admins",
-                "Room ID and password management for secure entry",
-                "Tournament result declaration by admins"
-            ),
-            technologies = listOf("Kotlin", "Android Studio", "XML"),
-            libraries = listOf(
-                "Firebase Firestore",
-                "Firebase Authentication",
-                "Firebase Database",
-                "Firebase Storage",
-                "Glide",
-                "Material Design"
-            ),
-            imageUrls = listOf(
-                "/project/gamers_arena_app/gamers_area_img_1.png",
-                "/project/gamers_arena_app/gamers_area_img_2.png",
-                "/project/gamers_arena_app/gamers_area_img_3.png",
-                "/project/gamers_arena_app/gamers_area_img_4.png",
-                "/project/gamers_arena_app/gamers_area_img_5.png",
-                "/project/gamers_arena_app/gamers_area_img_6.png",
-            ),
-            platform = listOf("Android"),
-            topics = listOf("Gaming", "Tournament Management", "Chat System"),
             categories = listOf(ProjectCategory.ANDROID)
         )
     )

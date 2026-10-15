@@ -3,63 +3,79 @@ package com.coding.meet.screens.projects.components
 import androidx.compose.runtime.Composable
 import com.coding.meet.models.ProjectCategory
 import com.coding.meet.screens.projects.styles.CategoryButtonStyle
-import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Theme
-import com.varabyte.kobweb.compose.css.BackgroundPosition
-import com.varabyte.kobweb.compose.css.CSSPosition
+import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.background
+import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
+import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.flexWrap
+import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
+import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.components.icons.fa.FaAndroid
+import com.varabyte.kobweb.silk.components.icons.fa.FaBorderAll
+import com.varabyte.kobweb.silk.components.icons.fa.FaDesktop
+import com.varabyte.kobweb.silk.components.icons.fa.FaGlobe
+import com.varabyte.kobweb.silk.components.icons.fa.FaLayerGroup
+import com.varabyte.kobweb.silk.components.icons.fa.FaMicrochip
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexWrap
 import org.jetbrains.compose.web.css.JustifyContent
-import org.jetbrains.compose.web.css.em
+import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
 
 @Composable
 fun ProjectCategorySection(
-    selectedCategory : ProjectCategory,
-    onCategorySelected : (ProjectCategory) -> Unit
-){
+    selectedCategory: ProjectCategory,
+    onCategorySelected: (ProjectCategory) -> Unit
+) {
     Div(
-        attrs = Modifier.fillMaxWidth().display(value = DisplayStyle.Flex)
+        attrs = Modifier
+            .fillMaxWidth()
+            .display(DisplayStyle.Flex)
             .flexWrap(FlexWrap.Wrap)
-            .margin(top = 10.px).justifyContent(JustifyContent.Center).toAttrs()
+            .gap(10.px)
+            .margin(top = 24.px, bottom = 20.px)
+            .justifyContent(JustifyContent.Center)
+            .toAttrs()
     ) {
         ProjectCategory.entries.forEach { projectCategory ->
+            val isSelected = projectCategory == selectedCategory
             Button(
-                attrs = CategoryButtonStyle.toModifier().then(
-                    if (projectCategory == selectedCategory) Modifier
-                        .boxShadow(0.px, 0.px, 0.3.em, null, rgba(0, 0, 0, 0.25f))
-                        .background {
-                            position(BackgroundPosition.of(CSSPosition(0.px)))
-                        }
-                        .color(
-                            CustomColor(
-                                lightColor = Theme.DarkFontColor,
-                                darkColor = Theme.LightFontColor
-                            )
-                        )
-                    else Modifier
-                )
-                    .margin(10.px).toAttrs {
+                attrs = CategoryButtonStyle.toModifier()
+                    .then(
+                        if (isSelected) Modifier
+                            .backgroundColor(Theme.Primary.color)
+                            .color(Theme.White.rgb)
+                            .border(1.px, LineStyle.Solid, Theme.Primary.color)
+                            .boxShadow(0.px, 4.px, 14.px, null, Theme.Primary.medium)
+                            .fontWeight(FontWeight.SemiBold)
+                        else Modifier
+                    )
+                    .toAttrs {
                         onClick {
                             onCategorySelected(projectCategory)
                         }
                     }
             ) {
+                when (projectCategory) {
+                    ProjectCategory.ALL -> FaBorderAll()
+                    ProjectCategory.ANDROID -> FaAndroid()
+                    ProjectCategory.KMP -> FaLayerGroup()
+                    ProjectCategory.IOT -> FaMicrochip()
+                    ProjectCategory.DESKTOP -> FaDesktop()
+                    ProjectCategory.WEB -> FaGlobe()
+                }
                 SpanText(
                     text = projectCategory.title,
                 )

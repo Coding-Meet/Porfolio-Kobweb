@@ -14,7 +14,7 @@ fun Full_guide_how_to_form_validation_with_jetpack_compose_01e0464ae884(context:
     val article = remember {
         ArticleData.articles.find { it.id == "full-guide-how-to-form-validation-with-jetpack-compose-01e0464ae884" }
     }
-    
+
     if (article != null) {
         ArticleDetail(article = article, context = context)
     }

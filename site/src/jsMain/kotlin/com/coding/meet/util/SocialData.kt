@@ -52,11 +52,5 @@ object SocialData {
             link = "https://www.telegram.me/Meetb26",
             lightImage = "/social/telegram.svg"
         ),
-        Social(
-            title = "Buy Me Coffee",
-            link = "https://www.buymeacoffee.com/CodingMeet",
-            lightImage = "/social/buy_me_coffee.svg",
-            darkImage = "/social/buy_me_coffee_dark_mode.svg"
-        ),
     )
 }

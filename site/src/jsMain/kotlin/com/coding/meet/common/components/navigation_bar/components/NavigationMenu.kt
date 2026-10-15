@@ -14,9 +14,11 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
+import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
+import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.visibility
 import com.varabyte.kobweb.navigation.OpenLinkStrategy
@@ -25,12 +27,12 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.px
 
-
 @Composable
 fun NavigationMenu(
     selectedSectionId: String,
 ) {
     Section.entries.forEach { section ->
+        val isSelected = selectedSectionId == section.path
         Link(
             modifier = NavigationItemStyle.toModifier(),
             path = section.path,
@@ -42,10 +44,12 @@ fun NavigationMenu(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 SpanText(
-                    section.title.uppercase(),
-                    modifier = Modifier.fontWeight(if (selectedSectionId == section.path) FontWeight.Bold else FontWeight.Normal)
+                    section.title,
+                    modifier = Modifier
+                        .fontWeight(if (isSelected) FontWeight.SemiBold else FontWeight.Medium)
                         .color(
-                            CustomColor(
+                            if (isSelected) Theme.Primary.color
+                            else CustomColor(
                                 lightColor = Theme.LightFontColor,
                                 darkColor = Theme.DarkFontColor
                             )
@@ -53,15 +57,12 @@ fun NavigationMenu(
                 )
                 Box(
                     modifier = Modifier
-                        .size(width = 20.px, height = 10.px)
-                        .backgroundColor(
-                            CustomColor(
-                                lightColor = Theme.LightFontColor,
-                                darkColor = Theme.DarkFontColor
-                            )
-                        )
-                        .borderRadius(r = 10.px)
-                        .visibility(if (selectedSectionId == section.path) Visibility.Visible else Visibility.Hidden)
+                        .margin(top = 4.px)
+                        .size(width = if (isSelected) 16.px else 0.px, height = 2.px)
+                        .backgroundColor(Theme.Primary.color)
+                        .borderRadius(r = 9999.px)
+                        .boxShadow(0.px, 0.px, 6.px, null, Theme.Primary.strong)
+                        .visibility(if (isSelected) Visibility.Visible else Visibility.Hidden)
                 )
             }
         }

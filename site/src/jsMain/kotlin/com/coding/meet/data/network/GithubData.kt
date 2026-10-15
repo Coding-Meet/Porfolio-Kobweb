@@ -7,6 +7,7 @@ import com.coding.meet.data.response.github.Github
 import com.coding.meet.models.Project
 import com.coding.meet.util.ExternalConfig.GITHUB_BASE_URL
 import com.coding.meet.util.ExternalConfig.TOTAL_PAGE
+import com.varabyte.kobweb.browser.http.FetchDefaults
 import com.varabyte.kobweb.browser.http.http
 import com.varabyte.kobweb.browser.storage.LongStorageKey
 import com.varabyte.kobweb.browser.storage.StringStorageKey
@@ -51,9 +52,13 @@ fun GithubStargazersCountData(projectsState: MutableState<MutableList<Project>>)
             val allRepos = mutableListOf<RepoStars>()
 
             repeat(TOTAL_PAGE) { page ->
-                val response = window.http.tryGet(
-                    "$GITHUB_BASE_URL?page=${page + 1}&per_page=100"
-                )?.decodeToString()
+                val response = window.http.tryGetBytes(
+                    "$GITHUB_BASE_URL?page=${page + 1}&per_page=100",
+                    FetchDefaults.Headers,
+                    FetchDefaults.Redirect,
+                    null
+                )
+                    ?.decodeToString()
 
                 response?.let {
                     val githubRepos = json.decodeFromString<ArrayList<Github>>(response)
