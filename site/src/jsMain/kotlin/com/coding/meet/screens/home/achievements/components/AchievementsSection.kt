@@ -1,19 +1,27 @@
 package com.coding.meet.screens.home.achievements.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import com.coding.meet.util.AchievementData.achievements
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
+import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
+import com.varabyte.kobweb.compose.foundation.layout.Row
+import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
+import com.varabyte.kobweb.compose.ui.modifiers.border
+import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
+import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
@@ -21,6 +29,8 @@ import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import com.varabyte.kobweb.silk.theme.colors.ColorMode
+import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
@@ -28,12 +38,32 @@ import org.jetbrains.compose.web.css.px
 @Composable
 fun AchievementsSection() {
     val breakpoint = rememberBreakpoint()
+    val colorMode by ColorMode.currentState
+
+    // Section Pill Badge
+    Row(
+        modifier = Modifier
+            .padding(leftRight = 14.px, topBottom = 6.px)
+            .margin(top = 40.px, bottom = 10.px)
+            .backgroundColor(colorMode.select(Theme.Primary.subtle, Theme.Primary.soft))
+            .border(1.px, LineStyle.Solid, Theme.Primary.medium)
+            .borderRadius(9999.px),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        SpanText(
+            text = "⚡ Proven Track Record",
+            modifier = Modifier
+                .fontSize(0.85.cssRem)
+                .fontWeight(FontWeight.SemiBold)
+                .color(Theme.Primary.color)
+        )
+    }
 
     SpanText(
         text = "🏆 Key Milestones & Achievements",
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 36.px, bottom = 6.px, leftRight = 10.px)
+            .padding(top = 0.px, bottom = 6.px, leftRight = 10.px)
             .color(
                 CustomColor(
                     lightColor = Theme.LightFontColor,

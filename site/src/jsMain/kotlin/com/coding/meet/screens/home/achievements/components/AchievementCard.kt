@@ -42,7 +42,8 @@ fun AchievementCard(achievement: Achievement) {
     val colorMode by ColorMode.currentState
     Link(
         path = achievement.link,
-        modifier = Modifier.textDecorationLine(TextDecorationLine.None),
+        modifier = Modifier
+            .textDecorationLine(TextDecorationLine.None),
         openExternalLinksStrategy = if (achievement.link == contactMePath) OpenLinkStrategy.IN_PLACE else OpenLinkStrategy.IN_NEW_TAB
     ) {
         Row(
@@ -53,9 +54,7 @@ fun AchievementCard(achievement: Achievement) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
-                modifier = Modifier
-                    .size(48.px)
-                    .padding(8.px),
+                modifier = Modifier.padding(leftRight = 8.px),
                 contentAlignment = Alignment.Center
             ) {
                 Img(
@@ -74,7 +73,7 @@ fun AchievementCard(achievement: Achievement) {
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .padding(leftRight = 14.px)
+                    .padding(left = 16.px)
             ) {
                 SpanText(
                     text = achievement.title,
@@ -88,12 +87,13 @@ fun AchievementCard(achievement: Achievement) {
                         )
                         .fontSize(1.05.cssRem)
                         .fontWeight(FontWeight.SemiBold)
+                        .lineHeight(1.3)
                 )
                 SpanText(
                     text = achievement.subtitle,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 4.px)
+                        .padding(top = 5.px)
                         .color(
                             CustomColor(
                                 lightColor = Theme.DarkGray,
@@ -101,7 +101,7 @@ fun AchievementCard(achievement: Achievement) {
                             )
                         )
                         .fontSize(0.9.cssRem)
-                        .lineHeight(1.5)
+                        .lineHeight(1.55)
                 )
             }
         }
