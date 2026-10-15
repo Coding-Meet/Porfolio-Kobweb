@@ -485,25 +485,49 @@ html, body {
    - Hidden on touch / mobile devices
    ========================================================================== */
 @media (hover: hover) and (pointer: fine) {
-  body, select {
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor select {
     cursor: none !important;
   }
 
   /* Readable text elements get natural native text cursor */
-  p, h1, h2, h3, h4, h5, h6, li, blockquote, pre, code, input, textarea, [data-cursor-text] {
+  html.has-custom-cursor p,
+  html.has-custom-cursor h1,
+  html.has-custom-cursor h2,
+  html.has-custom-cursor h3,
+  html.has-custom-cursor h4,
+  html.has-custom-cursor h5,
+  html.has-custom-cursor h6,
+  html.has-custom-cursor li,
+  html.has-custom-cursor blockquote,
+  html.has-custom-cursor pre,
+  html.has-custom-cursor code,
+  html.has-custom-cursor input,
+  html.has-custom-cursor textarea,
+  html.has-custom-cursor [data-cursor-text] {
     cursor: text !important;
   }
 
   /* Interactive elements ALWAYS override and keep custom cursor (never text cursor) */
-  a, a *,
-  button, button *,
-  [role="button"], [role="button"] *,
-  nav, nav *,
-  header, header *,
-  .clickable, .clickable *,
-  .client-marker-pin, .client-marker-pin *,
-  [style*="cursor: pointer"], [style*="cursor: pointer"] *,
-  [style*="cursor:pointer"], [style*="cursor:pointer"] * {
+  html.has-custom-cursor a,
+  html.has-custom-cursor a *,
+  html.has-custom-cursor button,
+  html.has-custom-cursor button *,
+  html.has-custom-cursor [role="button"],
+  html.has-custom-cursor [role="button"] *,
+  html.has-custom-cursor nav,
+  html.has-custom-cursor nav *,
+  html.has-custom-cursor header,
+  html.has-custom-cursor header *,
+  html.has-custom-cursor .clickable,
+  html.has-custom-cursor .clickable *,
+  html.has-custom-cursor .client-marker-pin,
+  html.has-custom-cursor .client-marker-pin *,
+  html.has-custom-cursor [style*="cursor: pointer"],
+  html.has-custom-cursor [style*="cursor: pointer"] *,
+  html.has-custom-cursor [style*="cursor:pointer"],
+  html.has-custom-cursor [style*="cursor:pointer"] * {
     cursor: none !important;
   }
 

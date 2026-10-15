@@ -84,6 +84,6 @@ val DialogContentStyle = CssStyle.base {
             property("-webkit-backdrop-filter", "blur(20px)")
         }
         .backgroundColor(
-            colorMode.select(Theme.White.strong, Theme.DarkCardBackGroundColor.strong)
+            colorMode.select(Theme.White.color, Theme.DarkCardBackGroundColor.color)
         )
 }

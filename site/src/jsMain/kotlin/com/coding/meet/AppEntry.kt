@@ -169,12 +169,9 @@ private fun initWebMCP() {
 
 private fun initCustomCursor() {
     try {
-        if (document.getElementById("custom-cursor-dot") != null) return
-        val existingScript = document.querySelector("script[src*='cursor.js']")
-        if (existingScript == null) {
-            val script = document.createElement("script") as HTMLScriptElement
-            script.src = "/js/cursor.js"
-            document.body?.appendChild(script)
+        val win = window.asDynamic()
+        if (win.initCustomCursor != undefined) {
+            win.initCustomCursor()
         }
     } catch (_: Exception) {
     }
