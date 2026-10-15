@@ -85,6 +85,49 @@ val ProjectStyle = CssStyle {
     }
 }
 
+val ViewDetailsButtonStyle = CssStyle {
+    base {
+        Modifier
+            .display(DisplayStyle.Flex)
+            .alignItems(AlignItems.Center)
+            .justifyContent(JustifyContent.Center)
+            .gap(6.px)
+            .backgroundColor(Theme.Primary.color)
+            .color(Theme.White.color)
+            .border(0.px)
+            .boxShadow(
+                0.px,
+                4.px,
+                14.px,
+                null,
+                Theme.Primary.medium
+            )
+            .padding(10.px, 20.px)
+            .borderRadius(9999.px)
+            .transition(Transition.all(200.ms, AnimationTimingFunction.EaseInOut))
+            .fontWeight(600)
+            .cursor(Cursor.Pointer)
+            .letterSpacing(0.4.px)
+            .fontSize(14.px)
+    }
+    hover {
+        Modifier
+            .transform { translateY((-2).px) }
+            .backgroundColor(Theme.PrimaryDark.color)
+            .color(Theme.White.color)
+            .boxShadow(
+                0.px,
+                6.px,
+                20.px,
+                null,
+                Theme.Primary.strong
+            )
+    }
+    active {
+        Modifier.transform { translateY(0.px) }
+    }
+}
+
 val rotateAnimation = CssStyle {
     val sharedModifier0 = Modifier.boxSizing(BoxSizing.BorderBox)
     base {

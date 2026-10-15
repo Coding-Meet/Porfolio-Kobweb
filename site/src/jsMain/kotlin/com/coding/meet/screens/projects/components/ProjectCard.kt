@@ -5,10 +5,10 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import com.coding.meet.common.image_slider_with_dot.ImageSliderWithDot
-import com.coding.meet.common.image_slider_with_dot.MainButtonStyle
 import com.coding.meet.common.image_slider_with_dot.SecondaryButtonStyle
 import com.coding.meet.models.Project
 import com.coding.meet.screens.projects.styles.ProjectStyle
+import com.coding.meet.screens.projects.styles.ViewDetailsButtonStyle
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
@@ -41,7 +41,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.components.icons.fa.FaEye
+import com.varabyte.kobweb.silk.components.icons.fa.FaArrowRight
 import com.varabyte.kobweb.silk.components.icons.fa.FaGithub
 import com.varabyte.kobweb.silk.components.icons.fa.FaGooglePlay
 import com.varabyte.kobweb.silk.components.icons.fa.FaLink
@@ -165,37 +165,59 @@ fun ProjectCard(
             }
         }
 
-        // Action links
-        if (project.appStoreUrl != null || project.githubUrl != null || project.websiteUrl != null) {
-            Column(Modifier.fillMaxWidth()) {
-                Div(
-                    attrs = Modifier
-                        .fillMaxWidth()
-                        .height(1.px)
-                        .margin(topBottom = 12.px)
-                        .backgroundColor(
-                            colorMode.glassSubtle
-                        )
-                        .toAttrs()
-                )
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .display(DisplayStyle.Flex)
-                        .flexWrap(FlexWrap.Wrap)
-                        .gap(8.px)
-                        .justifyContent(JustifyContent.Center),
-                    verticalAlignment = Alignment.CenterVertically
+        // Action links & View Details CTA
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Div(
+                attrs = Modifier
+                    .fillMaxWidth()
+                    .height(1.px)
+                    .margin(top = 4.px, bottom = 12.px)
+                    .backgroundColor(colorMode.glassSubtle)
+                    .toAttrs()
+            )
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .display(DisplayStyle.Flex)
+                    .flexWrap(FlexWrap.Wrap)
+                    .gap(8.px)
+                    .justifyContent(JustifyContent.Center),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Button(
+                    attrs = ViewDetailsButtonStyle.toAttrs {
+                        onClick {
+                            it.stopPropagation()
+                            onClick()
+                        }
+                    }
                 ) {
+                    SpanText(
+                        modifier = Modifier
+                            .fontSize(0.85.cssRem)
+                            .fontWeight(FontWeight.Bold),
+                        text = "View Details",
+                    )
+                    FaArrowRight(
+                        size = IconSize.SM,
+                        modifier = Modifier.padding(left = 6.px)
+                    )
+                }
+
+                if (project.appStoreUrl != null) {
                     Button(
-                        attrs = MainButtonStyle.toAttrs {
+                        attrs = SecondaryButtonStyle.toAttrs {
                             onClick {
                                 it.stopPropagation()
-                                onClick()
+                                window.open(project.appStoreUrl)
                             }
                         }
                     ) {
-                        FaEye(
+                        FaGooglePlay(
                             size = IconSize.LG,
                             modifier = Modifier
                         )
@@ -204,74 +226,52 @@ fun ProjectCard(
                                 .fontSize(0.85.cssRem)
                                 .fontWeight(FontWeight.Bold)
                                 .padding(left = 8.px),
-                            text = "View Details",
+                            text = Res.Strings.PLAY_STORE,
                         )
                     }
-                    if (project.appStoreUrl != null) {
-                        Button(
-                            attrs = SecondaryButtonStyle.toAttrs {
-                                onClick {
-                                    it.stopPropagation()
-                                    window.open(project.appStoreUrl)
-                                }
+                }
+                if (project.githubUrl != null) {
+                    Button(
+                        attrs = SecondaryButtonStyle.toAttrs {
+                            onClick {
+                                it.stopPropagation()
+                                window.open(project.githubUrl)
                             }
-                        ) {
-                            FaGooglePlay(
-                                size = IconSize.LG,
-                                modifier = Modifier
-                            )
-                            SpanText(
-                                modifier = Modifier
-                                    .fontSize(0.85.cssRem)
-                                    .fontWeight(FontWeight.Bold)
-                                    .padding(left = 8.px),
-                                text = Res.Strings.PLAY_STORE,
-                            )
                         }
+                    ) {
+                        FaGithub(
+                            size = IconSize.LG,
+                            modifier = Modifier
+                        )
+                        SpanText(
+                            modifier = Modifier
+                                .fontSize(0.85.cssRem)
+                                .fontWeight(FontWeight.Bold)
+                                .padding(left = 8.px),
+                            text = if (project.stargazersCount > 0) "GitHub (${project.stargazersCount}★)" else "GitHub",
+                        )
                     }
-                    if (project.githubUrl != null) {
-                        Button(
-                            attrs = SecondaryButtonStyle.toAttrs {
-                                onClick {
-                                    it.stopPropagation()
-                                    window.open(project.githubUrl)
-                                }
+                }
+                if (project.websiteUrl != null) {
+                    Button(
+                        attrs = SecondaryButtonStyle.toAttrs {
+                            onClick {
+                                it.stopPropagation()
+                                window.open(project.websiteUrl)
                             }
-                        ) {
-                            FaGithub(
-                                size = IconSize.LG,
-                                modifier = Modifier
-                            )
-                            SpanText(
-                                modifier = Modifier
-                                    .fontSize(0.85.cssRem)
-                                    .fontWeight(FontWeight.Bold)
-                                    .padding(left = 8.px),
-                                text = if (project.stargazersCount > 0) "GitHub (${project.stargazersCount}★)" else "GitHub",
-                            )
                         }
-                    }
-                    if (project.websiteUrl != null) {
-                        Button(
-                            attrs = SecondaryButtonStyle.toAttrs {
-                                onClick {
-                                    it.stopPropagation()
-                                    window.open(project.websiteUrl)
-                                }
-                            }
-                        ) {
-                            FaLink(
-                                size = IconSize.LG,
-                                modifier = Modifier
-                            )
-                            SpanText(
-                                modifier = Modifier
-                                    .fontSize(0.85.cssRem)
-                                    .fontWeight(FontWeight.Bold)
-                                    .padding(left = 8.px),
-                                text = Res.Strings.LIVE,
-                            )
-                        }
+                    ) {
+                        FaLink(
+                            size = IconSize.LG,
+                            modifier = Modifier
+                        )
+                        SpanText(
+                            modifier = Modifier
+                                .fontSize(0.85.cssRem)
+                                .fontWeight(FontWeight.Bold)
+                                .padding(left = 8.px),
+                            text = Res.Strings.LIVE,
+                        )
                     }
                 }
             }
