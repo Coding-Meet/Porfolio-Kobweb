@@ -1,9 +1,14 @@
 package com.coding.meet.screens.loader
 
 import com.varabyte.kobweb.compose.css.AnimationIterationCount
+import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.animation
 import com.varabyte.kobweb.compose.ui.modifiers.display
+import com.varabyte.kobweb.compose.ui.modifiers.fontSize
+import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
+import com.varabyte.kobweb.compose.ui.modifiers.letterSpacing
+import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.opacity
 import com.varabyte.kobweb.compose.ui.modifiers.transform
 import com.varabyte.kobweb.compose.ui.modifiers.translateY
@@ -113,5 +118,24 @@ val NamasteEmojiStyle = CssStyle {
                     timingFunction = AnimationTimingFunction.EaseInOut
                 )
             )
+    }
+}
+
+val GreetingTextStyle = CssStyle {
+    base {
+        Modifier
+            .display(DisplayStyle.InlineBlock)
+            .margin(top = 8.px)
+            .fontSize(32.px)
+            .fontWeight(FontWeight.Bold)
+            .letterSpacing(0.5.px)
+            .styleModifier {
+                property("background", "linear-gradient(135deg, #10B981 0%, #2DD4BF 100%)")
+                property("-webkit-background-clip", "text")
+                property("background-clip", "text")
+                property("-webkit-text-fill-color", "transparent")
+                property("color", "transparent")
+                property("filter", "drop-shadow(0 2px 14px rgba(16, 185, 129, 0.25))")
+            }
     }
 }

@@ -110,18 +110,8 @@ fun LoaderScreen(colorMode: ColorMode) {
 
             SpanText(
                 text = GREETINGS[greetingIndex],
-                modifier = Modifier
-                    .margin(top = 8.px)
-                    .fontSize(30.px)
+                modifier = GreetingTextStyle.toModifier()
                     .fontFamily(Res.Font.FONT_FAMILY_HEADING)
-                    .fontWeight(FontWeight.Bold)
-                    .color(
-                        customColor(
-                            colorMode = colorMode,
-                            lightColor = Theme.LightFontColor,
-                            darkColor = Theme.DarkFontColor
-                        )
-                    )
             )
 
             SpanText(
