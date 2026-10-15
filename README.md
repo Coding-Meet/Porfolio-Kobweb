@@ -1,6 +1,6 @@
 # 🚀 Coding Meet Kobweb
 
-<img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_banner.png" alt="banner">
+<img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_banner.webp" alt="banner">
 
 **Coding Meet Kobweb** is my personal portfolio website built using **Kobweb**. It showcases my projects, services, blog articles, and achievements with smooth animations and an interactive UI.
 
@@ -66,28 +66,28 @@ cd site && kobweb export --layout static && cd .. && ./gradlew --no-configuratio
 
 <table>
   <tr>
-    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_1.png" alt="win"></td>
+    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_1.webp" alt="win"></td>
       </tr>
   <tr>
-    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_2.png" alt="win"></td>
+    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_2.webp" alt="win"></td>
   </tr>
   <tr>
-    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_3.png" alt="win"></td>
+    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_3.webp" alt="win"></td>
       </tr>
   <tr>
-    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_4.png" alt="win"></td>
+    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_4.webp" alt="win"></td>
   </tr>
   <tr>
-    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_5.png" alt="win"></td>
+    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_5.webp" alt="win"></td>
       </tr>
   <tr>
-    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_6.png" alt="win"></td>
+    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_6.webp" alt="win"></td>
   </tr>
   <tr>
-    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_7.png" alt="win"></td>
+    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_7.webp" alt="win"></td>
       </tr>
   <tr>
-    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_8.png" alt="win"></td>
+    <td><img src="site/src/jsMain/resources/public/project/coding_meet_website/kobweb_img_8.webp" alt="win"></td>
   </tr>
 
 </table>
