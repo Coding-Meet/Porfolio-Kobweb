@@ -207,6 +207,108 @@ html, body {
   100% { transform: scale(2.6); opacity: 0; }
 }
 
+/* Arc Social Bar Animations */
+@keyframes arcFanOut {
+  0% {
+    transform: translate(var(--fan-dx, 0px), var(--fan-dy, 0px)) scale(0.2);
+    opacity: 0;
+  }
+  70% {
+    transform: translate(calc(var(--fan-dx, 0px) * -0.06), calc(var(--fan-dy, 0px) * -0.06)) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes arcFloatWave {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Arc Orbit Line Animations: Traveling Dashes + Breathing Glow */
+@keyframes orbitTrackRotateLeft {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitTrackRotateRight {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes orbitTrackPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px var(--color-primary-soft));
+    opacity: 0.8;
+  }
+  50% {
+    filter: drop-shadow(0 0 14px var(--color-primary-glow));
+    opacity: 1;
+  }
+}
+
+/* Arc Entrance Drawing Animations (Synchronized with Social Bar Fan-Out) */
+@keyframes arcEntranceLeft {
+  0% {
+    -webkit-clip-path: polygon(100% 0%, 100% 100%, 100% 100%, 100% 0%);
+    clip-path: polygon(100% 0%, 100% 100%, 100% 100%, 100% 0%);
+    opacity: 0;
+  }
+  30% {
+    -webkit-clip-path: polygon(100% 0%, 100% 100%, 50% 100%, 100% 0%);
+    clip-path: polygon(100% 0%, 100% 100%, 50% 100%, 100% 0%);
+    opacity: 0.7;
+  }
+  70% {
+    -webkit-clip-path: polygon(100% 0%, 100% 100%, -20% 100%, -20% 50%, 100% 0%);
+    clip-path: polygon(100% 0%, 100% 100%, -20% 100%, -20% 50%, 100% 0%);
+    opacity: 1;
+  }
+  100% {
+    -webkit-clip-path: polygon(100% 0%, 100% 100%, -20% 100%, -20% -20%, 100% -20%);
+    clip-path: polygon(100% 0%, 100% 100%, -20% 100%, -20% -20%, 100% -20%);
+    opacity: 1;
+  }
+}
+
+@keyframes arcEntranceRight {
+  0% {
+    -webkit-clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%);
+    clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%);
+    opacity: 0;
+  }
+  30% {
+    -webkit-clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 0% 0%);
+    clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 0% 0%);
+    opacity: 0.7;
+  }
+  70% {
+    -webkit-clip-path: polygon(0% 0%, 0% 100%, 120% 100%, 120% 50%, 0% 0%);
+    clip-path: polygon(0% 0%, 0% 100%, 120% 100%, 120% 50%, 0% 0%);
+    opacity: 1;
+  }
+  100% {
+    -webkit-clip-path: polygon(0% 0%, 0% 100%, 120% 100%, 120% -20%, 0% -20%);
+    clip-path: polygon(0% 0%, 0% 100%, 120% 100%, 120% -20%, 0% -20%);
+    opacity: 1;
+  }
+}
+
 /* Ensure Popups always sit in front of all markers */
 .maplibregl-popup {
   z-index: 25 !important;
