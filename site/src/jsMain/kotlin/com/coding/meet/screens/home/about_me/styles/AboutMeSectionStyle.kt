@@ -1,6 +1,7 @@
 package com.coding.meet.screens.home.about_me.styles
 
 import com.coding.meet.util.Theme
+import com.coding.meet.util.cardBg
 import com.coding.meet.util.glassBorder
 import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.AnimationIterationCount
@@ -134,7 +135,7 @@ val SocialIconButtonStyle = CssStyle {
                 colorMode.glassBorder
             )
             .backgroundColor(
-                colorMode.select(Theme.White.color, Theme.White.subtle)
+                colorMode.cardBg
             )
             .boxShadow(
                 0.px,
@@ -144,6 +145,8 @@ val SocialIconButtonStyle = CssStyle {
                 colorMode.select(Theme.Black.subtle, Theme.Black.medium)
             )
             .styleModifier {
+                property("position", "relative")
+                property("z-index", "20")
                 property("backdrop-filter", "blur(8px)")
                 property("-webkit-backdrop-filter", "blur(8px)")
                 property("touch-action", "manipulation")
@@ -151,7 +154,13 @@ val SocialIconButtonStyle = CssStyle {
                 property("flex-shrink", "0")
             }
             .transition(
-                Transition.all(
+                Transition.of(
+                    property = "transform",
+                    duration = 200.ms,
+                    timingFunction = AnimationTimingFunction.cubicBezier(0.16, 1.0, 0.3, 1.0)
+                ),
+                Transition.of(
+                    property = "box-shadow",
                     duration = 200.ms,
                     timingFunction = AnimationTimingFunction.cubicBezier(0.16, 1.0, 0.3, 1.0)
                 )

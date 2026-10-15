@@ -54,7 +54,7 @@ fun SocialBar(
                 .top(avatarRadius.px)
                 .styleModifier {
                     property("transform", "translate(calc(-50% + ${x}px), calc(-50% + ${y}px))")
-                    property("z-index", "10")
+                    property("z-index", "20")
                 }
         ) {
             Box(

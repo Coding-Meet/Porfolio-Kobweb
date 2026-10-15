@@ -170,6 +170,8 @@ fun AboutMeSection() {
                             property("border", "2px dashed $orbitColor")
                             property("border-top-color", "transparent")
                             property("filter", "drop-shadow(0 0 6px ${Theme.Primary.soft})")
+                            property("z-index", "0")
+                            property("pointer-events", "none")
                         }
                         .borderRadius(50.percent)
                 )
