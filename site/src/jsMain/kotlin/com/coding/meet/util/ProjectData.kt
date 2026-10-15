@@ -47,14 +47,14 @@ object ProjectData {
             ),
             githubUrl = "https://github.com/Coding-Meet/News-KMP-App",
             imageUrls = listOf(
-                "/project/news_kmp_app/news_app_banner.png",
-                "/project/news_kmp_app/news_app_img_1.png",
-                "/project/news_kmp_app/news_app_img_2.png",
-                "/project/news_kmp_app/news_app_img_3.png",
-                "/project/news_kmp_app/news_app_img_4.png",
-                "/project/news_kmp_app/news_app_img_5.png",
-                "/project/news_kmp_app/news_app_img_6.png",
-                "/project/news_kmp_app/news_app_img_7.png",
+                "/project/news_kmp_app/news_app_banner.webp",
+                "/project/news_kmp_app/news_app_img_1.webp",
+                "/project/news_kmp_app/news_app_img_2.webp",
+                "/project/news_kmp_app/news_app_img_3.webp",
+                "/project/news_kmp_app/news_app_img_4.webp",
+                "/project/news_kmp_app/news_app_img_5.webp",
+                "/project/news_kmp_app/news_app_img_6.webp",
+                "/project/news_kmp_app/news_app_img_7.webp",
             ),
             platform = listOf("Android", "iOS", "Windows", "macOS", "Linux"),
             youtubeVideoLink = "https://www.youtube.com/embed/Dq1jcsVQmtY",
@@ -129,12 +129,12 @@ object ProjectData {
             categories = listOf(ProjectCategory.KMP, ProjectCategory.DESKTOP),
             youtubeVideoLink = "https://www.youtube.com/embed/U7UPpqcjdLA",
             imageUrls = listOf(
-                "/project/dev_analyzer/dev_analyzer_banner.png",
-                "/project/dev_analyzer/img_0_project_overview_tab.png",
-                "/project/dev_analyzer/img_0_setting_all_section_like_scan_location_jdk_version.png",
-                "/project/dev_analyzer/img_0_storage_overview_tab.png",
-                "/project/dev_analyzer/img_0_workspace_all_project_with_all_resources_tab.png",
-                "/project/dev_analyzer/img_1_project_modules_tab.png",
+                "/project/dev_analyzer/dev_analyzer_banner.webp",
+                "/project/dev_analyzer/img_0_project_overview_tab.webp",
+                "/project/dev_analyzer/img_0_setting_all_section_like_scan_location_jdk_version.webp",
+                "/project/dev_analyzer/img_0_storage_overview_tab.webp",
+                "/project/dev_analyzer/img_0_workspace_all_project_with_all_resources_tab.webp",
+                "/project/dev_analyzer/img_1_project_modules_tab.webp",
             ),
             websiteUrl = "https://coding-meet.github.io/DevAnalyzer/",
         ),
@@ -190,7 +190,7 @@ object ProjectData {
             categories = listOf(ProjectCategory.ANDROID),
             youtubeVideoLink = "https://www.youtube.com/embed/9R6y0NyqYF8",
             imageUrls = listOf(
-                "/project/pepper-robot-app/pepper-Robot-Meets-Gemini-AI.png",
+                "/project/pepper-robot-app/pepper-Robot-Meets-Gemini-AI.webp",
             ),
         ),
         Project(
@@ -230,10 +230,10 @@ object ProjectData {
             githubUrl = "https://github.com/Coding-Meet/Gemini-AI-KMP-App",
             websiteUrl = "https://coding-meet.github.io/Gemini-AI-KMP-App/",
             imageUrls = listOf(
-                "/project/gemini_ai_kmp_app/gemini_app_banner.png",
-                "/project/gemini_ai_kmp_app/gemini_app_img_1.png",
-                "/project/gemini_ai_kmp_app/gemini_app_img_2.png",
-                "/project/gemini_ai_kmp_app/gemini_app_img_3.png"
+                "/project/gemini_ai_kmp_app/gemini_app_banner.webp",
+                "/project/gemini_ai_kmp_app/gemini_app_img_1.webp",
+                "/project/gemini_ai_kmp_app/gemini_app_img_2.webp",
+                "/project/gemini_ai_kmp_app/gemini_app_img_3.webp"
             ),
             platform = listOf("Android", "iOS", "Windows", "macOS", "Linux", "Web"),
             youtubeVideoLink = "https://www.youtube.com/embed/YhWhR6IVs_Y",
@@ -294,7 +294,7 @@ object ProjectData {
             stargazersCount = 64,
             categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP),
             imageUrls = listOf(
-                "/project/pokemon_cmp/pokemon_cmp_banner_1.png"
+                "/project/pokemon_cmp/pokemon_cmp_banner_1.webp"
             )
         ),
         Project(
@@ -338,7 +338,7 @@ object ProjectData {
             categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP),
             youtubeVideoLink = "https://www.youtube.com/embed/SzuDWWdEkqE",
             imageUrls = listOf(
-                "/articles/tts_highlighting.png"
+                "/articles/tts_highlighting.webp"
             )
         ),
         Project(
@@ -381,7 +381,7 @@ object ProjectData {
             youtubeVideoLink = "https://www.youtube.com/embed/SKgjtKWt4VQ",
             websiteUrl = "https://github.com/Coding-Meet/Git-Backup-Hub/releases",
             imageUrls = listOf(
-                "/project/git_backup_hub/git_backup_hub_banner.png"
+                "/project/git_backup_hub/git_backup_hub_banner.webp"
             )
         ),
         Project(
@@ -424,7 +424,7 @@ object ProjectData {
             categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP, ProjectCategory.WEB),
             youtubeVideoLink = "https://www.youtube.com/embed/zIDrScVQjhg",
             imageUrls = listOf(
-                "/articles/shader-cmp.png"
+                "/articles/shader-cmp.webp"
             )
         ),
         Project(
@@ -445,15 +445,15 @@ object ProjectData {
             technologies = listOf("Firebase Hosting"),
             libraries = listOf("Kotlin", "Kobweb", "Compose HTML", "Jetpack Compose"),
             imageUrls = listOf(
-                "/project/coding_meet_website/kobweb_banner.png",
-                "/project/coding_meet_website/kobweb_img_1.png",
-                "/project/coding_meet_website/kobweb_img_2.png",
-                "/project/coding_meet_website/kobweb_img_3.png",
-                "/project/coding_meet_website/kobweb_img_4.png",
-                "/project/coding_meet_website/kobweb_img_5.png",
-                "/project/coding_meet_website/kobweb_img_6.png",
-                "/project/coding_meet_website/kobweb_img_7.png",
-                "/project/coding_meet_website/kobweb_img_8.png",
+                "/project/coding_meet_website/kobweb_banner.webp",
+                "/project/coding_meet_website/kobweb_img_1.webp",
+                "/project/coding_meet_website/kobweb_img_2.webp",
+                "/project/coding_meet_website/kobweb_img_3.webp",
+                "/project/coding_meet_website/kobweb_img_4.webp",
+                "/project/coding_meet_website/kobweb_img_5.webp",
+                "/project/coding_meet_website/kobweb_img_6.webp",
+                "/project/coding_meet_website/kobweb_img_7.webp",
+                "/project/coding_meet_website/kobweb_img_8.webp",
             ),
             platform = listOf("Web"),
             stargazersCount = 20,
@@ -465,9 +465,9 @@ object ProjectData {
             longDescription = "String Translator Desktop App is a powerful desktop application built with Jetpack Compose, aiming to streamline the translation of strings for developers. It empowers users to seamlessly translate multiple strings into various languages, thereby optimizing the localization process.",
             githubUrl = "https://github.com/Coding-Meet/String-Translator-Desktop-App",
             imageUrls = listOf(
-                "/project/string_translator_desktop_app/string_translator_desktop_app_banner.png",
-                "/project/string_translator_desktop_app/string_translator_desktop_app_img_1.png",
-                "/project/string_translator_desktop_app/string_translator_desktop_app_img_2.png"
+                "/project/string_translator_desktop_app/string_translator_desktop_app_banner.webp",
+                "/project/string_translator_desktop_app/string_translator_desktop_app_img_1.webp",
+                "/project/string_translator_desktop_app/string_translator_desktop_app_img_2.webp"
             ),
             features = listOf(
                 "Bulk Translation: Translate multiple strings at once to target languages.",
@@ -534,9 +534,9 @@ object ProjectData {
                 "AndroidX SplashScreen"
             ),
             imageUrls = listOf(
-                "/project/custom_lcd_app/custom_lcd_app_banner.png",
-                "/project/custom_lcd_app/custom_lcd_app_img_1.png",
-                "/project/custom_lcd_app/custom_lcd_app_img_2.png"
+                "/project/custom_lcd_app/custom_lcd_app_banner.webp",
+                "/project/custom_lcd_app/custom_lcd_app_img_1.webp",
+                "/project/custom_lcd_app/custom_lcd_app_img_2.webp"
             ),
             platform = listOf("Android"),
             categories = listOf(ProjectCategory.ANDROID, ProjectCategory.IOT)
@@ -575,10 +575,10 @@ object ProjectData {
                 "Markdown"
             ),
             imageUrls = listOf(
-                "/project/third_eye/third_eye_banner.png",
-                "/project/third_eye/third_eye_img_1.png",
-                "/project/third_eye/third_eye_img_2.png",
-                "/project/third_eye/third_eye_img_3.png",
+                "/project/third_eye/third_eye_banner.webp",
+                "/project/third_eye/third_eye_img_1.webp",
+                "/project/third_eye/third_eye_img_2.webp",
+                "/project/third_eye/third_eye_img_3.webp",
             ),
             platform = listOf("Android"),
             topics = listOf(
@@ -620,11 +620,11 @@ object ProjectData {
             githubUrl = null,
             youtubeVideoLink = "https://user-images.githubusercontent.com/71074485/203806866-debcef11-a8d1-4f91-99f3-f76b0423aba3.mp4",
             imageUrls = listOf(
-                "/project/home_automation_app/home_automation_app_banner_1.png",
-                "/project/home_automation_app/home_automation_app_banner_2.png",
-                "/project/home_automation_app/home_automation_app_banner_3.png",
-                "/project/home_automation_app/home_automation_app_img_1.png",
-                "/project/home_automation_app/home_automation_app_img_2.png",
+                "/project/home_automation_app/home_automation_app_banner_1.webp",
+                "/project/home_automation_app/home_automation_app_banner_2.webp",
+                "/project/home_automation_app/home_automation_app_banner_3.webp",
+                "/project/home_automation_app/home_automation_app_img_1.webp",
+                "/project/home_automation_app/home_automation_app_img_2.webp",
             ),
             platform = listOf("Android"),
             topics = listOf("Home Automation", "IoT", "Arduino", "Smart Home"),
@@ -647,7 +647,7 @@ object ProjectData {
             ),
             libraries = listOf("Wire.h", "LiquidCrystal.h", "PWM Control Library"),
             imageUrls = listOf(
-                "/project/electric_vehicle/electric_vehicle_img_1.png",
+                "/project/electric_vehicle/electric_vehicle_img_1.webp",
             ),
             platform = listOf("Arduino"),
             topics = listOf("IoT", "Automation", "Electric Vehicles", "Motor Control"),
@@ -660,7 +660,7 @@ object ProjectData {
             technologies = listOf("Kotlin", "Selenium", "Apache POI", "ChromeDriver"),
             libraries = listOf("Selenium WebDriver", "Apache POI"),
             imageUrls = listOf(
-                "/project/quill_bot_web/quill_bot_web_banner.png",
+                "/project/quill_bot_web/quill_bot_web_banner.webp",
             ),
             platform = listOf("Web"),
             features = listOf(
@@ -703,9 +703,9 @@ object ProjectData {
                 "Encrypted SharedPreferences"
             ),
             imageUrls = listOf(
-                "/project/chatgpt_app/chatgpt_app_banner.png",
-                "/project/chatgpt_app/chatgpt_app_img_1.png",
-                "/project/chatgpt_app/chatgpt_app_img_2.png",
+                "/project/chatgpt_app/chatgpt_app_banner.webp",
+                "/project/chatgpt_app/chatgpt_app_img_1.webp",
+                "/project/chatgpt_app/chatgpt_app_img_2.webp",
             ),
             platform = listOf("Android"),
             topics = listOf(
@@ -738,9 +738,9 @@ object ProjectData {
                 "Glide"
             ),
             imageUrls = listOf(
-                "/project/multi_factor_authenticator_app/multi_factor_authenticator_app_banner.png",
-                "/project/multi_factor_authenticator_app/multi_factor_authenticator_app_img_1.png",
-                "/project/multi_factor_authenticator_app/multi_factor_authenticator_app_img_2.png",
+                "/project/multi_factor_authenticator_app/multi_factor_authenticator_app_banner.webp",
+                "/project/multi_factor_authenticator_app/multi_factor_authenticator_app_img_1.webp",
+                "/project/multi_factor_authenticator_app/multi_factor_authenticator_app_img_2.webp",
             ),
             platform = listOf("Android"),
             topics = listOf("Security", "Two-Factor Authentication", "Privacy"),
@@ -771,11 +771,11 @@ object ProjectData {
                 "MultiWaveHeader"
             ),
             imageUrls = listOf(
-                "/project/daily_affirmations_app/daily_affirmations_app_banner.png",
-                "/project/daily_affirmations_app/daily_affirmations_app_img_1.png",
-                "/project/daily_affirmations_app/daily_affirmations_app_img_2.png",
-                "/project/daily_affirmations_app/daily_affirmations_app_img_3.png",
-                "/project/daily_affirmations_app/daily_affirmations_app_img_4.png",
+                "/project/daily_affirmations_app/daily_affirmations_app_banner.webp",
+                "/project/daily_affirmations_app/daily_affirmations_app_img_1.webp",
+                "/project/daily_affirmations_app/daily_affirmations_app_img_2.webp",
+                "/project/daily_affirmations_app/daily_affirmations_app_img_3.webp",
+                "/project/daily_affirmations_app/daily_affirmations_app_img_4.webp",
             ),
             platform = listOf("Android"),
             topics = listOf("Motivation", "Well-being", "Productivity"),
@@ -804,8 +804,8 @@ object ProjectData {
                 "Shared Preferences"
             ),
             imageUrls = listOf(
-                "/project/doc_scanner_app/doc_scanner_app_banner.png",
-                "/project/doc_scanner_app/doc_scanner_app_img_1.png",
+                "/project/doc_scanner_app/doc_scanner_app_banner.webp",
+                "/project/doc_scanner_app/doc_scanner_app_img_1.webp",
             ),
             platform = listOf("Android"),
             topics = listOf(
@@ -842,11 +842,11 @@ object ProjectData {
                 "Core SplashScreen"
             ),
             imageUrls = listOf(
-                "/project/math_workout_app/math_workout_app_banner.png",
-                "/project/math_workout_app/math_workout_app_img_1.png",
-                "/project/math_workout_app/math_workout_app_img_2.png",
-                "/project/math_workout_app/math_workout_app_img_3.png",
-                "/project/math_workout_app/math_workout_app_img_4.png",
+                "/project/math_workout_app/math_workout_app_banner.webp",
+                "/project/math_workout_app/math_workout_app_img_1.webp",
+                "/project/math_workout_app/math_workout_app_img_2.webp",
+                "/project/math_workout_app/math_workout_app_img_3.webp",
+                "/project/math_workout_app/math_workout_app_img_4.webp",
             ),
             platform = listOf("Android"),
             topics = listOf("Math", "Education", "Brain Training"),
@@ -869,10 +869,10 @@ object ProjectData {
                 "Material Design"
             ),
             imageUrls = listOf(
-                "/project/bluetooth_control_app/bluetooth_app_banner.png",
-                "/project/bluetooth_control_app/bluetooth_app_img_1.png",
-                "/project/bluetooth_control_app/bluetooth_app_img_2.png",
-                "/project/bluetooth_control_app/bluetooth_app_img_3.png",
+                "/project/bluetooth_control_app/bluetooth_app_banner.webp",
+                "/project/bluetooth_control_app/bluetooth_app_img_1.webp",
+                "/project/bluetooth_control_app/bluetooth_app_img_2.webp",
+                "/project/bluetooth_control_app/bluetooth_app_img_3.webp",
             ),
             platform = listOf("Android"),
             topics = listOf("Bluetooth Communication", "Arduino", "IoT", "Home Automation"),
@@ -903,10 +903,10 @@ object ProjectData {
                 "AndroidX Core Splash Screen"
             ),
             imageUrls = listOf(
-                "/project/truth_and_dare/truth_and_dare_app_banner.png",
-                "/project/truth_and_dare/truth_and_dare_img_1.png",
-                "/project/truth_and_dare/truth_and_dare_img_2.png",
-                "/project/truth_and_dare/truth_and_dare_img_3.png"
+                "/project/truth_and_dare/truth_and_dare_app_banner.webp",
+                "/project/truth_and_dare/truth_and_dare_img_1.webp",
+                "/project/truth_and_dare/truth_and_dare_img_2.webp",
+                "/project/truth_and_dare/truth_and_dare_img_3.webp"
             ),
             platform = listOf("Android"),
             topics = listOf(
@@ -946,11 +946,11 @@ object ProjectData {
                 "Razorpay Checkout"
             ),
             imageUrls = listOf(
-                "/project/meet_my_show_app/meet_my_show_app_banner.png",
-                "/project/meet_my_show_app/meet_my_show_img_1.png",
-                "/project/meet_my_show_app/meet_my_show_img_2.png",
-                "/project/meet_my_show_app/meet_my_show_img_3.png",
-                "/project/meet_my_show_app/meet_my_show_img_4.png"
+                "/project/meet_my_show_app/meet_my_show_app_banner.webp",
+                "/project/meet_my_show_app/meet_my_show_img_1.webp",
+                "/project/meet_my_show_app/meet_my_show_img_2.webp",
+                "/project/meet_my_show_app/meet_my_show_img_3.webp",
+                "/project/meet_my_show_app/meet_my_show_img_4.webp"
             ),
             platform = listOf("Android"),
             topics = listOf("Entertainment", "Booking System", "Movie Ticketing"),
@@ -976,7 +976,7 @@ object ProjectData {
             ),
             libraries = listOf("Wire.h", "LiquidCrystal.h"),
             imageUrls = listOf(
-                "/project/dual_axis_solar_tracking_system/dual_axis_solar_tracker_img_1.png"
+                "/project/dual_axis_solar_tracking_system/dual_axis_solar_tracker_img_1.webp"
             ),
             platform = listOf("Arduino"),
             topics = listOf("IoT", "Automation", "Renewable Energy", "Smart Agriculture"),
@@ -1002,8 +1002,8 @@ object ProjectData {
             ),
             libraries = listOf("Wire.h", "LiquidCrystal_I2C.h", "DHT.h"),
             imageUrls = listOf(
-                "/project/smart_irrigation_system/smart_irrigation_system_banner.png",
-                "/project/smart_irrigation_system/smart_irrigation_system_img_1.png",
+                "/project/smart_irrigation_system/smart_irrigation_system_banner.webp",
+                "/project/smart_irrigation_system/smart_irrigation_system_img_1.webp",
             ),
             platform = listOf("Arduino"),
             topics = listOf("IoT", "Automation", "Smart Agriculture", "Environmental Monitoring"),
@@ -1025,7 +1025,7 @@ object ProjectData {
                 "Material UI"
             ),
             imageUrls = listOf(
-                "/project/android_addict_website/android_addict_website_banner.png"
+                "/project/android_addict_website/android_addict_website_banner.webp"
             ),
             platform = listOf("Web"),
             topics = listOf("Android Development", "Web Development", "Code Snippets"),
@@ -1053,12 +1053,12 @@ object ProjectData {
                 "Material Design"
             ),
             imageUrls = listOf(
-                "/project/gamers_arena_app/gamers_area_img_1.png",
-                "/project/gamers_arena_app/gamers_area_img_2.png",
-                "/project/gamers_arena_app/gamers_area_img_3.png",
-                "/project/gamers_arena_app/gamers_area_img_4.png",
-                "/project/gamers_arena_app/gamers_area_img_5.png",
-                "/project/gamers_arena_app/gamers_area_img_6.png",
+                "/project/gamers_arena_app/gamers_area_img_1.webp",
+                "/project/gamers_arena_app/gamers_area_img_2.webp",
+                "/project/gamers_arena_app/gamers_area_img_3.webp",
+                "/project/gamers_arena_app/gamers_area_img_4.webp",
+                "/project/gamers_arena_app/gamers_area_img_5.webp",
+                "/project/gamers_arena_app/gamers_area_img_6.webp",
             ),
             platform = listOf("Android"),
             topics = listOf("Gaming", "Tournament Management", "Chat System"),

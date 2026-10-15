@@ -22,9 +22,9 @@ object ServiceData {
                 "Play Store production release ready"
             ),
             imageUrls = listOf(
-                "/services/custom-android-app/[14-52-39_28-06-26]-variant_2_custom_android_app.png",
-                "/services/custom-android-app/[14-52-43_28-06-26]-variant_3_custom_android_app.png",
-                "/services/custom-android-app/[15-01-37_28-06-26]-variant_2_custom_android_app.png"
+                "/services/custom-android-app/[14-52-39_28-06-26]-variant_2_custom_android_app.webp",
+                "/services/custom-android-app/[14-52-43_28-06-26]-variant_3_custom_android_app.webp",
+                "/services/custom-android-app/[15-01-37_28-06-26]-variant_2_custom_android_app.webp"
             ),
         ),
 
@@ -44,9 +44,9 @@ object ServiceData {
                 "Resolve compatibility issues across Android versions"
             ),
             imageUrls = listOf(
-                "/services/fix_android_bugs/[18-24-42_28-06-26]-variant_1_fix_android_bugs.png",
-                "/services/fix_android_bugs/[18-24-44_28-06-26]-variant_2_fix_android_bugs.png",
-                "/services/fix_android_bugs/[18-24-48_28-06-26]-variant_3_fix_android_bugs.png"
+                "/services/fix_android_bugs/[18-24-42_28-06-26]-variant_1_fix_android_bugs.webp",
+                "/services/fix_android_bugs/[18-24-44_28-06-26]-variant_2_fix_android_bugs.webp",
+                "/services/fix_android_bugs/[18-24-48_28-06-26]-variant_3_fix_android_bugs.webp"
             ),
         ),
 
@@ -62,9 +62,9 @@ object ServiceData {
                 "Custom UI components, design systems, and canvas drawing"
             ),
             imageUrls = listOf(
-                "/services/kotlin_jetpack_compose/[15-44-20_28-06-26]-variant_1_kotlin_jetpack_compose.png",
-                "/services/kotlin_jetpack_compose/[15-44-23_28-06-26]-variant_2_kotlin_jetpack_compose.png",
-                "/services/kotlin_jetpack_compose/[15-50-56_28-06-26]-variant_3_kotlin_jetpack_compose.png"
+                "/services/kotlin_jetpack_compose/[15-44-20_28-06-26]-variant_1_kotlin_jetpack_compose.webp",
+                "/services/kotlin_jetpack_compose/[15-44-23_28-06-26]-variant_2_kotlin_jetpack_compose.webp",
+                "/services/kotlin_jetpack_compose/[15-50-56_28-06-26]-variant_3_kotlin_jetpack_compose.webp"
             ),
         ),
 
@@ -80,9 +80,9 @@ object ServiceData {
                 "Cost-effective & faster time to market for cross-platform apps"
             ),
             imageUrls = listOf(
-                "/services/kotlin_multiplatform_cmp/[15-41-03_30-06-26]-variant_1_kotlin_multiplatform_cmp.png",
-                "/services/kotlin_multiplatform_cmp/[15-41-06_30-06-26]-variant_2_kotlin_multiplatform_cmp.png",
-                "/services/kotlin_multiplatform_cmp/[15-41-10_30-06-26]-variant_3_kotlin_multiplatform_cmp.png"
+                "/services/kotlin_multiplatform_cmp/[15-41-03_30-06-26]-variant_1_kotlin_multiplatform_cmp.webp",
+                "/services/kotlin_multiplatform_cmp/[15-41-06_30-06-26]-variant_2_kotlin_multiplatform_cmp.webp",
+                "/services/kotlin_multiplatform_cmp/[15-41-10_30-06-26]-variant_3_kotlin_multiplatform_cmp.webp"
             ),
         ),
 
@@ -97,9 +97,9 @@ object ServiceData {
                 "iOS App Store release preparation & TestFlight deployment"
             ),
             imageUrls = listOf(
-                "/services/native_ios_swift/[16-54-40_30-06-26]-variant_1_native_ios_swift.png",
-                "/services/native_ios_swift/[16-54-43_30-06-26]-variant_2_native_ios_swift.png",
-                "/services/native_ios_swift/[16-54-46_30-06-26]-variant_3_native_ios_swift.png"
+                "/services/native_ios_swift/[16-54-40_30-06-26]-variant_1_native_ios_swift.webp",
+                "/services/native_ios_swift/[16-54-43_30-06-26]-variant_2_native_ios_swift.webp",
+                "/services/native_ios_swift/[16-54-46_30-06-26]-variant_3_native_ios_swift.webp"
             ),
         )
     )
