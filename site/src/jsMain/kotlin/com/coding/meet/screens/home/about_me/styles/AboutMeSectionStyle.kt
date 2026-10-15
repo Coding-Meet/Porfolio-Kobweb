@@ -77,6 +77,16 @@ val ProfileImageStyle = CssStyle {
     base {
         Modifier
             .boxShadow(0.px, 20.px, 40.px, (-12).px, Theme.Primary.medium)
+            .styleModifier {
+                property(
+                    "background",
+                    if (colorMode.isLight) {
+                        "radial-gradient(circle at 50% 45%, rgba(16, 185, 129, 0.16) 0%, rgba(240, 245, 243, 0.95) 100%)"
+                    } else {
+                        "radial-gradient(circle at 50% 45%, rgba(16, 185, 129, 0.22) 0%, rgba(15, 23, 42, 0.95) 100%)"
+                    }
+                )
+            }
             .transition(
                 Transition.all(
                     duration = 350.ms,

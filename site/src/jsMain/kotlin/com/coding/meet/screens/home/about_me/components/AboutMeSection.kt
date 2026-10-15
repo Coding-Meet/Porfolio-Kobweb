@@ -165,9 +165,11 @@ fun AboutMeSection() {
                         .left(50.percent)
                         .top(avatarRadius.px)
                         .styleModifier {
+                            val orbitColor = if (colorMode.isLight) Theme.Primary.strong else Theme.Primary.color
                             property("transform", "translate(-50%, -50%)")
-                            property("border", "1.5px dashed ${Theme.Primary.medium}")
+                            property("border", "2px dashed $orbitColor")
                             property("border-top-color", "transparent")
+                            property("filter", "drop-shadow(0 0 6px ${Theme.Primary.soft})")
                         }
                         .borderRadius(50.percent)
                 )
