@@ -387,22 +387,21 @@ html, body {
     cursor: none !important;
   }
 
-  /* Readable text elements get natural native text cursor (unless inside interactive card or button) */
-  p:not(.clickable *, [style*="cursor: pointer"] *, [style*="cursor:pointer"] *),
-  h1:not(.clickable *, [style*="cursor: pointer"] *, [style*="cursor:pointer"] *),
-  h2:not(.clickable *, [style*="cursor: pointer"] *, [style*="cursor:pointer"] *),
-  h3:not(.clickable *, [style*="cursor: pointer"] *, [style*="cursor:pointer"] *),
-  h4:not(.clickable *, [style*="cursor: pointer"] *, [style*="cursor:pointer"] *),
-  h5:not(.clickable *, [style*="cursor: pointer"] *, [style*="cursor:pointer"] *),
-  h6:not(.clickable *, [style*="cursor: pointer"] *, [style*="cursor:pointer"] *),
-  span:not(.clickable *, [style*="cursor: pointer"] *, [style*="cursor:pointer"] *),
-  li:not(.clickable *, [style*="cursor: pointer"] *, [style*="cursor:pointer"] *),
-  blockquote, pre, code, input, textarea, [data-cursor-text] {
+  /* Readable text elements get natural native text cursor */
+  p, h1, h2, h3, h4, h5, h6, li, blockquote, pre, code, input, textarea, [data-cursor-text] {
     cursor: text !important;
   }
 
-  /* Interactive elements keep custom cursor */
-  a, a *, button, button *, [role="button"], [role="button"] *, .clickable, .clickable *, .client-marker-pin, [style*="cursor: pointer"], [style*="cursor: pointer"] *, [style*="cursor:pointer"], [style*="cursor:pointer"] * {
+  /* Interactive elements ALWAYS override and keep custom cursor (never text cursor) */
+  a, a *,
+  button, button *,
+  [role="button"], [role="button"] *,
+  nav, nav *,
+  header, header *,
+  .clickable, .clickable *,
+  .client-marker-pin, .client-marker-pin *,
+  [style*="cursor: pointer"], [style*="cursor: pointer"] *,
+  [style*="cursor:pointer"], [style*="cursor:pointer"] * {
     cursor: none !important;
   }
 
