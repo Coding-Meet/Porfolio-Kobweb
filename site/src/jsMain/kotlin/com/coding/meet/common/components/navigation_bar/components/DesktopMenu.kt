@@ -61,10 +61,7 @@ fun DesktopMenu(
                     modifier = HeaderButtonStyle.toModifier()
                         .size(42.px)
                         .backgroundColor(
-                            CustomColor(
-                                lightColor = Theme.LightGray,
-                                darkColor = Theme.DarkCardBackGroundColor
-                            )
+                            colorMode.select(Theme.Black.subtle, Theme.White.subtle)
                         ),
                     onClick = {
                         onMenuClicked()
@@ -101,10 +98,7 @@ fun DesktopMenu(
                 modifier = HeaderButtonStyle.toModifier()
                     .size(42.px)
                     .backgroundColor(
-                        CustomColor(
-                            lightColor = Theme.LightGray,
-                            darkColor = Theme.DarkCardBackGroundColor
-                        )
+                        colorMode.select(Theme.Black.subtle, Theme.White.subtle)
                     ),
                 tooltipText = colorMode.select("Switch to Dark Mode", "Switch to Light Mode"),
                 onClick = {
