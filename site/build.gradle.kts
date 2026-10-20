@@ -38,6 +38,19 @@ kobweb {
                 "Meet is an Android and Kotlin Multiplatform developer specializing in Kotlin, Java, Jetpack Compose, and Compose Multiplatform. Explore projects, tutorials, and freelance app development services."
             )
             head.add {
+                // Anti-flicker theme script: immediately restores saved color mode before DOM paint
+                script {
+                    unsafe {
+                        +"""
+                        {
+                            const storedColor = localStorage.getItem('theme');
+                            const desiredColor = storedColor ? `silk-${'$'}{storedColor.toLowerCase()}` : 'silk-dark';
+                            const oppositeColor = desiredColor === 'silk-dark' ? 'silk-light' : 'silk-dark';
+                            document.documentElement.classList.replace(oppositeColor, desiredColor);
+                        }
+                        """.trimIndent()
+                    }
+                }
                 script {
                     async = true
                     src = "https://www.googletagmanager.com/gtag/js?id=$trackingId"

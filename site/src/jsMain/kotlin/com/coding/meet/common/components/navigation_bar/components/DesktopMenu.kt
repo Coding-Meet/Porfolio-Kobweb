@@ -36,6 +36,8 @@ import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.localStorage
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
+import com.varabyte.kobweb.compose.ui.modifiers.display
+import org.jetbrains.compose.web.css.DisplayStyle
 
 @Composable
 fun DesktopMenu(
@@ -73,9 +75,15 @@ fun DesktopMenu(
                 }
             }
 
-            Link(path = "/", openInternalLinksStrategy = OpenLinkStrategy.IN_PLACE) {
+            Link(
+                path = "/",
+                openInternalLinksStrategy = OpenLinkStrategy.IN_PLACE,
+                modifier = Modifier.display(DisplayStyle.Flex).align(Alignment.CenterVertically)
+            ) {
                 Image(
-                    modifier = LogoStyle.toModifier().height(36.px).cursor(Cursor.Pointer),
+                    modifier = LogoStyle.toModifier()
+                        .height(if (breakpoint > Breakpoint.MD) 40.px else 36.px)
+                        .cursor(Cursor.Pointer),
                     src = when (colorMode) {
                         ColorMode.LIGHT -> Res.Image.LOGO_LIGHT
                         ColorMode.DARK -> Res.Image.LOGO_DARK

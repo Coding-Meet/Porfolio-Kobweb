@@ -68,6 +68,11 @@ html, body {
   padding: 0;
   scroll-behavior: smooth;
   font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-wrap: break-word;
+}
+
+img, picture, video, canvas, svg {
+  max-width: 100%;
 }
 
 ::selection {

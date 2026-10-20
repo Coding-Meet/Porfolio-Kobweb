@@ -154,7 +154,7 @@ fun MobileSideMenu(
             ) {
                 CloseIcon(
                     modifier = Modifier
-                        .size(16.px)
+                        .size(20.px)
                         .cursor(Cursor.Pointer)
                         .margin(right = 16.px)
                         .onClick {
@@ -167,7 +167,7 @@ fun MobileSideMenu(
                         },
                 )
                 Image(
-                    modifier = Modifier.height(32.px).cursor(Cursor.Pointer),
+                    modifier = Modifier.height(36.px).cursor(Cursor.Pointer),
                     src = when (colorMode) {
                         ColorMode.LIGHT -> Res.Image.LOGO_LIGHT
                         ColorMode.DARK -> Res.Image.LOGO_DARK
