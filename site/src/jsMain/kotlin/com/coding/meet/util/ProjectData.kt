@@ -7,67 +7,71 @@ object ProjectData {
     val projects = mutableListOf(
         Project(
             title = "News Kotlin Multiplatform App",
-            shortDescription = "A Kotlin Compose Multiplatform news app for Android, iOS, Windows, macOS, and Linux.",
-            longDescription = "The News KMP App is a Kotlin Compose Multiplatform (KMP) project designed to deliver a consistent news reading experience across multiple platforms, including Android, iOS, Windows, macOS, and Linux. This project leverages Kotlin's multiplatform capabilities to share code and logic while using Compose for UI, ensuring a seamless and native experience on each platform.",
+            shortDescription = "A production-grade Kotlin Multiplatform & Compose Multiplatform news app with Clean Architecture & MVI across Android, iOS, macOS, Windows, and Linux.",
+            longDescription = "News KMP App is a production-grade, open-source Kotlin Multiplatform (KMP) and Compose Multiplatform application providing a cohesive, native news-reading experience across Android, iOS, macOS, Windows, and Linux. Built with AGP 9.1, Kotlin 2.4, and Compose Multiplatform 1.12, the project adopts a decoupled multi-module Clean Architecture with the MVI (Model-View-Intent) pattern. It features top headlines across 7 dynamic channels, debounced search, Room Multiplatform offline bookmark persistence, dynamic Material 3 theming (OLED Dark / Light / System Default), adaptive navigation suites (Bottom Bar & Navigation Drawer), and hardware-accelerated 60/120 FPS rendering powered by Skiko.",
             features = listOf(
-                "Stay updated with the day's top headlines.",
-                "Get in-depth insights into your favorite news articles.",
-                "Find news articles tailored to your interests.",
-                "Bookmark articles for offline reading.",
-                "Seamless operation on Android, iOS, Windows, macOS, and Linux.",
-                "Declarative UI with Jetpack Compose for shared components.",
-                "Material Design and Material Design 3 support.",
-                "Type-safe navigation using Jetpack Compose Navigation.",
-                "MVVM Architecture with ViewModel for UI-related data.",
-                "Robust networking with Ktor for HTTP client-server communication.",
-                "Efficient image loading using Coil.",
-                "Local data storage with Room for all platforms.",
-                "Key-value pair storage using DataStore.",
-                "Build configuration management with BuildKonfig."
+                "Cross-platform native support: Android, iOS, macOS, Windows, and Linux",
+                "Clean Architecture + MVI pattern with unidirectional State, Intent, and Effect flows",
+                "Top news headlines across 7 curated channels (Business, Tech, Sports, Science, Health, Entertainment, General)",
+                "Immersive article reader with rich typography, hero imagery, publisher badges, and web links",
+                "Instant debounced search across global news sources with zero latency",
+                "100% offline reading with Room Multiplatform SQLite database persistence",
+                "Dynamic Material 3 theming with OLED Dark, Light, and System Default modes via DataStore",
+                "Adaptive Navigation Suite: dynamic bottom navigation on phones (<840dp) and permanent drawer on desktop (≥840dp)",
+                "Hardware-accelerated 60/120 FPS scrolling powered by Skiko and Compose Multiplatform",
+                "Asynchronous image loading and memory caching powered by Coil 3",
+                "Type-safe navigation routing and high-performance JSON serialization"
             ),
             technologies = listOf(
                 "Kotlin",
-                "Jetpack Compose",
                 "Kotlin Multiplatform",
-                "MVVM Architecture",
+                "Compose Multiplatform",
+                "Clean Architecture",
+                "MVI Architecture",
+                "Material 3",
                 "Room Database",
                 "DataStore",
-                "Ktor"
+                "Ktor",
+                "Koin"
             ),
             libraries = listOf(
+                "Compose Multiplatform",
+                "Ktor Client",
+                "Room Multiplatform",
+                "AndroidX DataStore",
+                "Koin",
+                "Coil 3",
+                "kotlinx.serialization",
+                "Material Icons Extended",
                 "BuildKonfig",
-                "Ktor",
-                "Kermit",
-                "Room",
-                "DataStore",
-                "Navigation",
-                "kotlinx.coroutines",
-                "Common ViewModel",
-                "kotlinx.serialization"
+                "Kermit"
             ),
             githubUrl = "https://github.com/Coding-Meet/News-KMP-App",
             imageUrls = listOf(
-                "/project/news_kmp_app/news_app_banner.webp",
-                "/project/news_kmp_app/news_app_img_1.webp",
-                "/project/news_kmp_app/news_app_img_2.webp",
-                "/project/news_kmp_app/news_app_img_3.webp",
-                "/project/news_kmp_app/news_app_img_4.webp",
-                "/project/news_kmp_app/news_app_img_5.webp",
-                "/project/news_kmp_app/news_app_img_6.webp",
-                "/project/news_kmp_app/news_app_img_7.webp",
+                "/projects/news-kmp-app/01_hero_showcase.webp",
+                "/projects/news-kmp-app/02_headlines_categories.webp",
+                "/projects/news-kmp-app/03_article_detail.webp",
+                "/projects/news-kmp-app/04_search_bookmarks.webp",
+                "/projects/news-kmp-app/05_desktop_experience.webp",
+                "/projects/news-kmp-app/06_theme_light_dark.webp",
+                "/projects/news-kmp-app/07_grand_showcase.webp"
             ),
-            platform = listOf("Android", "iOS", "Windows", "macOS", "Linux"),
+            platform = listOf("Android", "iOS", "macOS", "Windows", "Linux"),
             youtubeVideoLink = "https://www.youtube.com/embed/Dq1jcsVQmtY",
             topics = listOf(
-                "News",
                 "Kotlin Multiplatform",
-                "Jetpack Compose",
-                "Networking",
-                "Local Storage",
-                "MVVM Architecture"
+                "Compose Multiplatform",
+                "Clean Architecture",
+                "MVI Architecture",
+                "News App",
+                "Material 3",
+                "Room Database",
+                "Ktor",
+                "Offline Support",
+                "Adaptive UI"
             ),
-            stargazersCount = 205,
-            categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP)
+            stargazersCount = 215,
+            categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP, ProjectCategory.DESKTOP)
         ),
         Project(
             title = "DevAnalyzer",
@@ -129,12 +133,13 @@ object ProjectData {
             categories = listOf(ProjectCategory.KMP, ProjectCategory.DESKTOP),
             youtubeVideoLink = "https://www.youtube.com/embed/U7UPpqcjdLA",
             imageUrls = listOf(
-                "/project/dev_analyzer/dev_analyzer_banner.webp",
-                "/project/dev_analyzer/img_0_project_overview_tab.webp",
-                "/project/dev_analyzer/img_0_setting_all_section_like_scan_location_jdk_version.webp",
-                "/project/dev_analyzer/img_0_storage_overview_tab.webp",
-                "/project/dev_analyzer/img_0_workspace_all_project_with_all_resources_tab.webp",
-                "/project/dev_analyzer/img_1_project_modules_tab.webp",
+                "/projects/dev-analyzer/01_hero_showcase.webp",
+                "/projects/dev-analyzer/02_project_analyzer.webp",
+                "/projects/dev-analyzer/03_storage_analyzer.webp",
+                "/projects/dev-analyzer/04_workspace_analyzer.webp",
+                "/projects/dev-analyzer/05_clean_build_recovery.webp",
+                "/projects/dev-analyzer/06_settings_diagnostics.webp",
+                "/projects/dev-analyzer/07_grand_showcase.webp"
             ),
             websiteUrl = "https://coding-meet.github.io/DevAnalyzer/",
         ),
@@ -190,79 +195,100 @@ object ProjectData {
             categories = listOf(ProjectCategory.ANDROID),
             youtubeVideoLink = "https://www.youtube.com/embed/9R6y0NyqYF8",
             imageUrls = listOf(
-                "/project/pepper-robot-app/pepper-Robot-Meets-Gemini-AI.webp",
+                "/projects/pepper-app/01_hero_showcase.webp",
+                "/projects/pepper-app/02_speech_to_speech_pipeline.webp",
+                "/projects/pepper-app/03_interaction_lifecycle_dashboard.webp",
+                "/projects/pepper-app/04_split_screen_conversational_ux.webp",
+                "/projects/pepper-app/05_location_context_diagnostics.webp",
+                "/projects/pepper-app/06_grand_showcase.webp"
             ),
         ),
         Project(
             title = "Gemini AI Kotlin Multiplatform App",
-            shortDescription = "A KMP app enabling AI-powered conversations across Android, iOS, Desktop, and Web.",
-            longDescription = "The Gemini AI KMP App is a Kotlin Compose Multiplatform project designed to target Android, iOS, Windows, macOS, Linux, and Web platforms. This application allows users to extract information from text and images in a conversational format. Additionally, it enables chat storage using SQLDelight and KStore, and facilitates changing the Gemini API key.",
+            shortDescription = "A production-ready Kotlin Multiplatform & Compose Multiplatform AI chat app powered by Gemini 3.8 Flash & Gemini 4 Argon across Android, iOS, Desktop, and Web (Wasm).",
+            longDescription = "Gemini AI KMP App is a production-ready, open-source Kotlin Multiplatform (KMP) and Compose Multiplatform application targeting Android, iOS, Desktop (macOS, Windows, Linux), and Web (Wasm). Powered by Google's latest Gemini AI models (including Gemini 3.8 Flash and Gemini 4 Argon), the app delivers intelligent multimodal conversations supporting rich text prompts and image attachments. Built with Clean Architecture and the MVI pattern, it features live model discovery (/v1beta/models), token and context limit badges, local SQLite conversation persistence with SQLDelight (SQL.js on Web), encrypted runtime API key management with Multiplatform Settings, dynamic Material 3 theming (Dark / Light / System Default), adaptive navigation suites, cross-platform vertical scrollbars, and native file/image picking via FileKit.",
             features = listOf(
-                "Engage in conversations from any device, including smartphones, tablets, desktops, and web browsers.",
-                "Extract information from text and images in a conversational format.",
-                "Store chats group-wise using SQLDelight and KStore.",
-                "Easily change the Gemini API key.",
-                "Clean and simple UI with animations."
+                "Multiplatform support across 6 targets: Android, iOS, macOS, Windows, Linux, and Web (Wasm)",
+                "Multimodal conversational AI supporting rich text prompts and multiplatform image attachments",
+                "Powered by the latest Gemini models: gemini-3.8-flash, gemini-4-argon, and gemini-3.6-flash",
+                "Live model discovery with token and context limit badges (Recommended, Thinking, Fast & Lite)",
+                "Clean Architecture + MVI pattern with unidirectional State, Intent, and Effect flows",
+                "Local chat persistence using SQLDelight (SQLite on mobile/desktop, SQL.js on Web)",
+                "Dynamic Material 3 UI with Adaptive Navigation Suite (Phones, Foldables, Tablets, Desktops)",
+                "Reactive theme management with Dark, Light, and System Default modes",
+                "Custom cross-platform vertical scrollbars with reverse-layout sync for chat messages",
+                "Runtime API key configuration with mask/reveal toggle and secure key-value persistence via Multiplatform Settings",
+                "Native cross-platform image and file picking powered by FileKit"
             ),
             technologies = listOf(
                 "Kotlin",
+                "Kotlin Multiplatform",
+                "Compose Multiplatform",
                 "Clean Architecture",
-                "Jetpack Compose for UI development",
-                "Koin for Dependency Injection",
+                "MVI Architecture",
+                "Material 3",
+                "Generative AI",
                 "SQLDelight",
-                "KStore",
-                "Generative AI"
+                "Multiplatform Settings",
+                "Wasm"
             ),
             libraries = listOf(
-                "BuildKonfig",
-                "Koin",
-                "Ktor",
-                "Kermit",
-                "ViewModel",
-                "Compose Multiplatform File Picker",
-                "Multiplatform Settings",
+                "Compose Multiplatform",
+                "Ktor Client",
                 "SQLDelight",
-                "KStore",
-                "kotlinx.coroutines",
+                "Multiplatform Settings",
+                "Koin",
+                "FileKit",
                 "kotlinx.serialization",
-                "kotlinx.datetime"
+                "kotlinx.coroutines",
+                "kotlinx.datetime",
+                "BuildKonfig",
+                "Kermit"
             ),
             githubUrl = "https://github.com/Coding-Meet/Gemini-AI-KMP-App",
             websiteUrl = "https://coding-meet.github.io/Gemini-AI-KMP-App/",
             imageUrls = listOf(
-                "/project/gemini_ai_kmp_app/gemini_app_banner.webp",
-                "/project/gemini_ai_kmp_app/gemini_app_img_1.webp",
-                "/project/gemini_ai_kmp_app/gemini_app_img_2.webp",
-                "/project/gemini_ai_kmp_app/gemini_app_img_3.webp"
+                "/projects/gemini-ai-kmp-app/01_hero_showcase.webp",
+                "/projects/gemini-ai-kmp-app/02_multimodal_vision.webp",
+                "/projects/gemini-ai-kmp-app/03_smart_chat.webp",
+                "/projects/gemini-ai-kmp-app/04_group_chats_persistence.webp",
+                "/projects/gemini-ai-kmp-app/05_desktop_experience.webp",
+                "/projects/gemini-ai-kmp-app/06_wasm_web_client.webp",
+                "/projects/gemini-ai-kmp-app/07_custom_api_key_settings.webp",
+                "/projects/gemini-ai-kmp-app/08_grand_showcase.webp"
             ),
-            platform = listOf("Android", "iOS", "Windows", "macOS", "Linux", "Web"),
+            platform = listOf("Android", "iOS", "macOS", "Windows", "Linux", "Web"),
             youtubeVideoLink = "https://www.youtube.com/embed/YhWhR6IVs_Y",
             topics = listOf(
                 "AI",
+                "Gemini AI",
                 "Kotlin Multiplatform",
-                "Jetpack Compose",
+                "Compose Multiplatform",
+                "MVI Architecture",
+                "Clean Architecture",
                 "Chatbot",
+                "Multimodal",
                 "SQLDelight",
-                "KStore"
+                "Wasm"
             ),
-            stargazersCount = 111,
-            categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP, ProjectCategory.WEB)
+            stargazersCount = 114,
+            categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP, ProjectCategory.WEB, ProjectCategory.DESKTOP)
         ),
         Project(
-            title = "Pokemon App - MVI Compose Multiplatform",
-            shortDescription = "A modern Pokemon app built with Compose Multiplatform using MVI architecture, featuring dynamic UI and cross-platform support.",
-            longDescription = "Pokemon App is a beautifully designed cross-platform application built using Kotlin Multiplatform and Compose Multiplatform. It demonstrates a scalable MVI architecture with type-safe navigation, dynamic theming, and smooth user experience across Android, iOS, and Desktop. The project showcases modern Android/KMP best practices, clean architecture, and reactive UI patterns.",
+            title = "Store App - MVI Compose Multiplatform Template",
+            shortDescription = "A modern E-Commerce app built with Compose Multiplatform featuring MVI architecture, type-safe navigation, and dynamic theming across Android, Desktop, and iOS.",
+            longDescription = "Store App is a beautiful, modern E-Commerce template application built using Compose Multiplatform with MVI architecture, type-safe navigation, and dynamic theming. It features a complete shopping experience with infinite scroll product catalog, instant debounced search & category filters, dynamic sorting, Room-persisted shopping cart with discount calculations, JWT authentication with DataStore token persistence, favorites/wishlist, and multiplatform support across Android, Desktop, and iOS powered by the DummyJSON API.",
             features = listOf(
-                "Cross-platform support: Android, iOS, Desktop",
-                "MVI architecture for predictable state management",
-                "Type-safe navigation using Kotlin Serialization",
-                "Material 3 UI with dynamic theming and dark mode",
-                "Browse Pokemon list with infinite scrolling",
-                "Detailed Pokemon view with stats, abilities, and types",
-                "Favorites management with offline support (Room)",
-                "Type-based UI theming for better UX",
-                "Smooth animations and micro-interactions",
-                "Optimized performance with lazy loading and caching"
+                "Multiplatform support: Android, Desktop, and iOS with shared business logic and UI",
+                "MVI architecture with clean unidirectional data flow (Intent -> ViewModel -> State & Effect)",
+                "Type-safe navigation using Kotlin Serialization with adaptive Bottom Bar & Navigation Rail",
+                "Material 3 design with dynamic theming (Dark / Light / System) & Android 12+ Dynamic Colors",
+                "Product catalog with infinite scroll pagination, pull-to-refresh, and shimmer loading",
+                "Instant debounced search, category pill filters, and sorting by Price & Rating",
+                "Persistent shopping cart & favorites using Room Multiplatform database with SQLite",
+                "User authentication & profile management with DataStore JWT token persistence",
+                "Rich product details view with image carousel, specs, reviews, and stock status",
+                "Optimized performance with Coil3 caching, Room query flows, and lazy composables"
             ),
             technologies = listOf(
                 "Kotlin",
@@ -270,31 +296,42 @@ object ProjectData {
                 "Compose Multiplatform",
                 "MVI Architecture",
                 "Clean Architecture",
-                "StateFlow"
+                "StateFlow",
+                "SharedFlow"
             ),
             libraries = listOf(
                 "Ktor",
-                "Room",
-                "DataStore",
+                "Room Multiplatform",
+                "DataStore Preferences",
                 "Koin",
                 "Coil3",
                 "kotlinx.serialization",
-                "Navigation"
+                "Navigation Compose",
+                "Material 3"
             ),
             githubUrl = "https://github.com/Coding-Meet/CMP-MVI-Template",
-            platform = listOf("Android", "iOS", "Desktop"),
+            platform = listOf("Android", "Desktop", "iOS"),
             topics = listOf(
                 "Kotlin Multiplatform",
                 "Compose Multiplatform",
                 "MVI Architecture",
-                "Pokemon App",
-                "Dynamic Theming",
-                "Offline Support"
+                "E-Commerce",
+                "Store App",
+                "Clean Architecture",
+                "Room Database",
+                "Material 3",
+                "Dynamic Theming"
             ),
             stargazersCount = 64,
             categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP),
             imageUrls = listOf(
-                "/project/pokemon_cmp/pokemon_cmp_banner_1.webp"
+                "/projects/cmp-mvi-template/01_hero_showcase.webp",
+                "/projects/cmp-mvi-template/02_catalog_and_search.webp",
+                "/projects/cmp-mvi-template/03_product_detail.webp",
+                "/projects/cmp-mvi-template/04_cart_and_checkout.webp",
+                "/projects/cmp-mvi-template/05_adaptive_desktop.webp",
+                "/projects/cmp-mvi-template/06_theme_light_dark.webp",
+                "/projects/cmp-mvi-template/07_grand_showcase.webp"
             )
         ),
         Project(
@@ -338,7 +375,11 @@ object ProjectData {
             categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP),
             youtubeVideoLink = "https://www.youtube.com/embed/SzuDWWdEkqE",
             imageUrls = listOf(
-                "/articles/tts_highlighting.webp"
+                "/projects/text-to-speech-app/01_hero_showcase.webp",
+                "/projects/text-to-speech-app/02_synchronized_speech_highlighting.webp",
+                "/projects/text-to-speech-app/03_sample_texts_and_input.webp",
+                "/projects/text-to-speech-app/04_cross_platform_architecture.webp",
+                "/projects/text-to-speech-app/05_grand_showcase.webp"
             )
         ),
         Project(
@@ -381,7 +422,12 @@ object ProjectData {
             youtubeVideoLink = "https://www.youtube.com/embed/SKgjtKWt4VQ",
             websiteUrl = "https://github.com/Coding-Meet/Git-Backup-Hub/releases",
             imageUrls = listOf(
-                "/project/git_backup_hub/git_backup_hub_banner.webp"
+                "/projects/git-backup-hub/01_hero_showcase.webp",
+                "/projects/git-backup-hub/02_repository_discovery.webp",
+                "/projects/git-backup-hub/03_clone_progress_tracking.webp",
+                "/projects/git-backup-hub/04_backup_completion.webp",
+                "/projects/git-backup-hub/05_light_and_dark_theming.webp",
+                "/projects/git-backup-hub/06_grand_showcase.webp"
             )
         ),
         Project(
@@ -445,15 +491,15 @@ object ProjectData {
             technologies = listOf("Firebase Hosting"),
             libraries = listOf("Kotlin", "Kobweb", "Compose HTML", "Jetpack Compose"),
             imageUrls = listOf(
-                "/project/coding_meet_website/kobweb_banner.webp",
-                "/project/coding_meet_website/kobweb_img_1.webp",
-                "/project/coding_meet_website/kobweb_img_2.webp",
-                "/project/coding_meet_website/kobweb_img_3.webp",
-                "/project/coding_meet_website/kobweb_img_4.webp",
-                "/project/coding_meet_website/kobweb_img_5.webp",
-                "/project/coding_meet_website/kobweb_img_6.webp",
-                "/project/coding_meet_website/kobweb_img_7.webp",
-                "/project/coding_meet_website/kobweb_img_8.webp",
+                "/projects/coding_meet_website/kobweb_banner.webp",
+                "/projects/coding_meet_website/kobweb_img_1.webp",
+                "/projects/coding_meet_website/kobweb_img_2.webp",
+                "/projects/coding_meet_website/kobweb_img_3.webp",
+                "/projects/coding_meet_website/kobweb_img_4.webp",
+                "/projects/coding_meet_website/kobweb_img_5.webp",
+                "/projects/coding_meet_website/kobweb_img_6.webp",
+                "/projects/coding_meet_website/kobweb_img_7.webp",
+                "/projects/coding_meet_website/kobweb_img_8.webp"
             ),
             platform = listOf("Web"),
             stargazersCount = 20,
@@ -465,9 +511,12 @@ object ProjectData {
             longDescription = "String Translator Desktop App is a powerful desktop application built with Jetpack Compose, aiming to streamline the translation of strings for developers. It empowers users to seamlessly translate multiple strings into various languages, thereby optimizing the localization process.",
             githubUrl = "https://github.com/Coding-Meet/String-Translator-Desktop-App",
             imageUrls = listOf(
-                "/project/string_translator_desktop_app/string_translator_desktop_app_banner.webp",
-                "/project/string_translator_desktop_app/string_translator_desktop_app_img_1.webp",
-                "/project/string_translator_desktop_app/string_translator_desktop_app_img_2.webp"
+                "/projects/string-translator-desktop-app/01_hero_showcase.webp",
+                "/projects/string-translator-desktop-app/02_source_xml_input.webp",
+                "/projects/string-translator-desktop-app/03_language_selection.webp",
+                "/projects/string-translator-desktop-app/04_batch_translation_progress.webp",
+                "/projects/string-translator-desktop-app/05_android_studio_export.webp",
+                "/projects/string-translator-desktop-app/06_grand_showcase.webp"
             ),
             features = listOf(
                 "Bulk Translation: Translate multiple strings at once to target languages.",
@@ -534,9 +583,13 @@ object ProjectData {
                 "AndroidX SplashScreen"
             ),
             imageUrls = listOf(
-                "/project/custom_lcd_app/custom_lcd_app_banner.webp",
-                "/project/custom_lcd_app/custom_lcd_app_img_1.webp",
-                "/project/custom_lcd_app/custom_lcd_app_img_2.webp"
+                "/projects/custom-LCD-pattern-generator/01_hero_showcase.webp",
+                "/projects/custom-LCD-pattern-generator/02_16x2_canvas.webp",
+                "/projects/custom-LCD-pattern-generator/03_20x4_canvas.webp",
+                "/projects/custom-LCD-pattern-generator/04_pixel_editor.webp",
+                "/projects/custom-LCD-pattern-generator/05_code_generation.webp",
+                "/projects/custom-LCD-pattern-generator/06_export_and_library.webp",
+                "/projects/custom-LCD-pattern-generator/07_grand_showcase.webp"
             ),
             platform = listOf("Android"),
             categories = listOf(ProjectCategory.ANDROID, ProjectCategory.IOT)
@@ -575,10 +628,13 @@ object ProjectData {
                 "Markdown"
             ),
             imageUrls = listOf(
-                "/project/third_eye/third_eye_banner.webp",
-                "/project/third_eye/third_eye_img_1.webp",
-                "/project/third_eye/third_eye_img_2.webp",
-                "/project/third_eye/third_eye_img_3.webp",
+                "/projects/third-eye/01_hero_showcase.webp",
+                "/projects/third-eye/02_gesture_navigation.webp",
+                "/projects/third-eye/03_multimodal_perception.webp",
+                "/projects/third-eye/04_scene_description.webp",
+                "/projects/third-eye/05_image_to_text_ocr.webp",
+                "/projects/third-eye/06_voice_dialogs.webp",
+                "/projects/third-eye/07_grand_showcase.webp"
             ),
             platform = listOf("Android"),
             topics = listOf(
@@ -620,11 +676,12 @@ object ProjectData {
             githubUrl = null,
             youtubeVideoLink = "https://user-images.githubusercontent.com/71074485/203806866-debcef11-a8d1-4f91-99f3-f76b0423aba3.mp4",
             imageUrls = listOf(
-                "/project/home_automation_app/home_automation_app_banner_1.webp",
-                "/project/home_automation_app/home_automation_app_banner_2.webp",
-                "/project/home_automation_app/home_automation_app_banner_3.webp",
-                "/project/home_automation_app/home_automation_app_img_1.webp",
-                "/project/home_automation_app/home_automation_app_img_2.webp",
+                "/projects/home-automation-app/01_hero_showcase.webp",
+                "/projects/home-automation-app/02_appliance_dashboard_dual_state.webp",
+                "/projects/home-automation-app/03_hardware_testbed_ac_relays.webp",
+                "/projects/home-automation-app/04_wifi_esp8266_provisioning.webp",
+                "/projects/home-automation-app/05_firebase_auth_ir_control.webp",
+                "/projects/home-automation-app/06_grand_showcase.webp"
             ),
             platform = listOf("Android"),
             topics = listOf("Home Automation", "IoT", "Arduino", "Smart Home"),
@@ -647,7 +704,11 @@ object ProjectData {
             ),
             libraries = listOf("Wire.h", "LiquidCrystal.h", "PWM Control Library"),
             imageUrls = listOf(
-                "/project/electric_vehicle/electric_vehicle_img_1.webp",
+                "/projects/electric-vehicle/01_hero_showcase.webp",
+                "/projects/electric-vehicle/02_motor_and_chassis_drive.webp",
+                "/projects/electric-vehicle/03_arduino_spwm_inverter_bench.webp",
+                "/projects/electric-vehicle/04_cockpit_dashboard_controls.webp",
+                "/projects/electric-vehicle/05_grand_showcase.webp"
             ),
             platform = listOf("Arduino"),
             topics = listOf("IoT", "Automation", "Electric Vehicles", "Motor Control"),
@@ -660,7 +721,7 @@ object ProjectData {
             technologies = listOf("Kotlin", "Selenium", "Apache POI", "ChromeDriver"),
             libraries = listOf("Selenium WebDriver", "Apache POI"),
             imageUrls = listOf(
-                "/project/quill_bot_web/quill_bot_web_banner.webp",
+                "/projects/quill_bot_web/quill_bot_web_banner.webp"
             ),
             platform = listOf("Web"),
             features = listOf(
@@ -703,9 +764,13 @@ object ProjectData {
                 "Encrypted SharedPreferences"
             ),
             imageUrls = listOf(
-                "/project/chatgpt_app/chatgpt_app_banner.webp",
-                "/project/chatgpt_app/chatgpt_app_img_1.webp",
-                "/project/chatgpt_app/chatgpt_app_img_2.webp",
+                "/projects/chatgpt-app/01_hero_showcase.webp",
+                "/projects/chatgpt-app/02_persona_robots.webp",
+                "/projects/chatgpt-app/03_chat_and_markdown.webp",
+                "/projects/chatgpt-app/04_dalle_image_gen.webp",
+                "/projects/chatgpt-app/05_voice_and_actions.webp",
+                "/projects/chatgpt-app/06_room_and_security.webp",
+                "/projects/chatgpt-app/07_grand_showcase.webp"
             ),
             platform = listOf("Android"),
             topics = listOf(
@@ -738,9 +803,12 @@ object ProjectData {
                 "Glide"
             ),
             imageUrls = listOf(
-                "/project/multi_factor_authenticator_app/multi_factor_authenticator_app_banner.webp",
-                "/project/multi_factor_authenticator_app/multi_factor_authenticator_app_img_1.webp",
-                "/project/multi_factor_authenticator_app/multi_factor_authenticator_app_img_2.webp",
+                "/projects/multi-factor-authenticator-app/01_hero_showcase.webp",
+                "/projects/multi-factor-authenticator-app/02_qr_scanner.webp",
+                "/projects/multi-factor-authenticator-app/03_time_based_codes.webp",
+                "/projects/multi-factor-authenticator-app/04_manual_key_entry.webp",
+                "/projects/multi-factor-authenticator-app/05_offline_privacy.webp",
+                "/projects/multi-factor-authenticator-app/06_production_overview.webp"
             ),
             platform = listOf("Android"),
             topics = listOf("Security", "Two-Factor Authentication", "Privacy"),
@@ -771,11 +839,13 @@ object ProjectData {
                 "MultiWaveHeader"
             ),
             imageUrls = listOf(
-                "/project/daily_affirmations_app/daily_affirmations_app_banner.webp",
-                "/project/daily_affirmations_app/daily_affirmations_app_img_1.webp",
-                "/project/daily_affirmations_app/daily_affirmations_app_img_2.webp",
-                "/project/daily_affirmations_app/daily_affirmations_app_img_3.webp",
-                "/project/daily_affirmations_app/daily_affirmations_app_img_4.webp",
+                "/projects/daily-affirmation-app/01_hero_showcase.webp",
+                "/projects/daily-affirmation-app/02_lock_screen_and_widget.webp",
+                "/projects/daily-affirmation-app/03_curated_categories.webp",
+                "/projects/daily-affirmation-app/04_live_wallpaper_studio.webp",
+                "/projects/daily-affirmation-app/05_typography_and_customizer.webp",
+                "/projects/daily-affirmation-app/06_personal_quotes_and_export.webp",
+                "/projects/daily-affirmation-app/07_showcase_overview.webp"
             ),
             platform = listOf("Android"),
             topics = listOf("Motivation", "Well-being", "Productivity"),
@@ -804,8 +874,12 @@ object ProjectData {
                 "Shared Preferences"
             ),
             imageUrls = listOf(
-                "/project/doc_scanner_app/doc_scanner_app_banner.webp",
-                "/project/doc_scanner_app/doc_scanner_app_img_1.webp",
+                "/projects/doc-scanner-app/01_hero_showcase.webp",
+                "/projects/doc-scanner-app/02_mlkit_scanner.webp",
+                "/projects/doc-scanner-app/03_room_persistence.webp",
+                "/projects/doc-scanner-app/04_light_and_dark_theme.webp",
+                "/projects/doc-scanner-app/05_document_management.webp",
+                "/projects/doc-scanner-app/06_grand_showcase.webp"
             ),
             platform = listOf("Android"),
             topics = listOf(
@@ -842,11 +916,14 @@ object ProjectData {
                 "Core SplashScreen"
             ),
             imageUrls = listOf(
-                "/project/math_workout_app/math_workout_app_banner.webp",
-                "/project/math_workout_app/math_workout_app_img_1.webp",
-                "/project/math_workout_app/math_workout_app_img_2.webp",
-                "/project/math_workout_app/math_workout_app_img_3.webp",
-                "/project/math_workout_app/math_workout_app_img_4.webp",
+                "/projects/math-workout-app/01_hero_showcase.webp",
+                "/projects/math-workout-app/02_game_modes.webp",
+                "/projects/math-workout-app/03_speed_quizzes.webp",
+                "/projects/math-workout-app/04_logic_puzzles.webp",
+                "/projects/math-workout-app/05_true_false_number_grid.webp",
+                "/projects/math-workout-app/06_dual_player_battle.webp",
+                "/projects/math-workout-app/07_table_practice_customization.webp",
+                "/projects/math-workout-app/08_grand_showcase.webp"
             ),
             platform = listOf("Android"),
             topics = listOf("Math", "Education", "Brain Training"),
@@ -869,10 +946,11 @@ object ProjectData {
                 "Material Design"
             ),
             imageUrls = listOf(
-                "/project/bluetooth_control_app/bluetooth_app_banner.webp",
-                "/project/bluetooth_control_app/bluetooth_app_img_1.webp",
-                "/project/bluetooth_control_app/bluetooth_app_img_2.webp",
-                "/project/bluetooth_control_app/bluetooth_app_img_3.webp",
+                "/projects/bluetooth-arduino-communication-app/01_hero_showcase.webp",
+                "/projects/bluetooth-arduino-communication-app/02_device_discovery_pairing.webp",
+                "/projects/bluetooth-arduino-communication-app/03_serial_terminal_monitor.webp",
+                "/projects/bluetooth-arduino-communication-app/04_interactive_commands.webp",
+                "/projects/bluetooth-arduino-communication-app/05_grand_showcase.webp"
             ),
             platform = listOf("Android"),
             topics = listOf("Bluetooth Communication", "Arduino", "IoT", "Home Automation"),
@@ -903,10 +981,13 @@ object ProjectData {
                 "AndroidX Core Splash Screen"
             ),
             imageUrls = listOf(
-                "/project/truth_and_dare/truth_and_dare_app_banner.webp",
-                "/project/truth_and_dare/truth_and_dare_img_1.webp",
-                "/project/truth_and_dare/truth_and_dare_img_2.webp",
-                "/project/truth_and_dare/truth_and_dare_img_3.webp"
+                "/projects/truth-dare-app/01_hero_showcase.webp",
+                "/projects/truth-dare-app/02_game_packs_and_levels.webp",
+                "/projects/truth-dare-app/03_group_and_couple_modes.webp",
+                "/projects/truth-dare-app/04_swipeable_card_stack.webp",
+                "/projects/truth-dare-app/05_multilingual_support.webp",
+                "/projects/truth-dare-app/06_rules_and_customization.webp",
+                "/projects/truth-dare-app/07_grand_showcase.webp"
             ),
             platform = listOf("Android"),
             topics = listOf(
@@ -946,11 +1027,13 @@ object ProjectData {
                 "Razorpay Checkout"
             ),
             imageUrls = listOf(
-                "/project/meet_my_show_app/meet_my_show_app_banner.webp",
-                "/project/meet_my_show_app/meet_my_show_img_1.webp",
-                "/project/meet_my_show_app/meet_my_show_img_2.webp",
-                "/project/meet_my_show_app/meet_my_show_img_3.webp",
-                "/project/meet_my_show_app/meet_my_show_img_4.webp"
+                "/projects/meetmyshow/01_hero_showcase.webp",
+                "/projects/meetmyshow/02_auth_and_onboarding.webp",
+                "/projects/meetmyshow/03_movie_discovery.webp",
+                "/projects/meetmyshow/04_cinema_and_showtimes.webp",
+                "/projects/meetmyshow/05_seat_and_pricing.webp",
+                "/projects/meetmyshow/06_razorpay_payments.webp",
+                "/projects/meetmyshow/07_grand_showcase.webp"
             ),
             platform = listOf("Android"),
             topics = listOf("Entertainment", "Booking System", "Movie Ticketing"),
@@ -976,7 +1059,11 @@ object ProjectData {
             ),
             libraries = listOf("Wire.h", "LiquidCrystal.h"),
             imageUrls = listOf(
-                "/project/dual_axis_solar_tracking_system/dual_axis_solar_tracker_img_1.webp"
+                "/projects/dual-axis-solar-tracker/01_hero_showcase.webp",
+                "/projects/dual-axis-solar-tracker/02_sun_tracking_logic.webp",
+                "/projects/dual-axis-solar-tracker/03_lcd_power_telemetry.webp",
+                "/projects/dual-axis-solar-tracker/04_relay_load_distribution.webp",
+                "/projects/dual-axis-solar-tracker/05_grand_showcase.webp"
             ),
             platform = listOf("Arduino"),
             topics = listOf("IoT", "Automation", "Renewable Energy", "Smart Agriculture"),
@@ -1002,8 +1089,11 @@ object ProjectData {
             ),
             libraries = listOf("Wire.h", "LiquidCrystal_I2C.h", "DHT.h"),
             imageUrls = listOf(
-                "/project/smart_irrigation_system/smart_irrigation_system_banner.webp",
-                "/project/smart_irrigation_system/smart_irrigation_system_img_1.webp",
+                "/projects/smart-irrigation-system/01_hero_showcase.webp",
+                "/projects/smart-irrigation-system/02_soil_moisture_logic.webp",
+                "/projects/smart-irrigation-system/03_submersible_pump_reservoir.webp",
+                "/projects/smart-irrigation-system/04_circuit_architecture.webp",
+                "/projects/smart-irrigation-system/05_grand_showcase.webp"
             ),
             platform = listOf("Arduino"),
             topics = listOf("IoT", "Automation", "Smart Agriculture", "Environmental Monitoring"),
@@ -1025,7 +1115,7 @@ object ProjectData {
                 "Material UI"
             ),
             imageUrls = listOf(
-                "/project/android_addict_website/android_addict_website_banner.webp"
+                "/projects/android_addict_website/android_addict_website_banner.webp"
             ),
             platform = listOf("Web"),
             topics = listOf("Android Development", "Web Development", "Code Snippets"),
@@ -1053,12 +1143,13 @@ object ProjectData {
                 "Material Design"
             ),
             imageUrls = listOf(
-                "/project/gamers_arena_app/gamers_area_img_1.webp",
-                "/project/gamers_arena_app/gamers_area_img_2.webp",
-                "/project/gamers_arena_app/gamers_area_img_3.webp",
-                "/project/gamers_arena_app/gamers_area_img_4.webp",
-                "/project/gamers_arena_app/gamers_area_img_5.webp",
-                "/project/gamers_arena_app/gamers_area_img_6.webp",
+                "/projects/gamers-arena-app/01_hero_showcase.webp",
+                "/projects/gamers-arena-app/02_tournament_hub.webp",
+                "/projects/gamers-arena-app/03_custom_lobby_credentials.webp",
+                "/projects/gamers-arena-app/04_leaderboard_and_wallet.webp",
+                "/projects/gamers-arena-app/05_player_chat_community.webp",
+                "/projects/gamers-arena-app/06_admin_control_center.webp",
+                "/projects/gamers-arena-app/07_grand_showcase.webp"
             ),
             platform = listOf("Android"),
             topics = listOf("Gaming", "Tournament Management", "Chat System"),
@@ -1104,7 +1195,15 @@ object ProjectData {
                 "Android Tutorials"
             ),
             stargazersCount = 20,
-            categories = listOf(ProjectCategory.ANDROID)
+            categories = listOf(ProjectCategory.ANDROID),
+            imageUrls = listOf(
+                "/projects/todo-app/01_hero_showcase.webp",
+                "/projects/todo-app/02_task_crud_dialogs.webp",
+                "/projects/todo-app/03_recyclerview_listadapter.webp",
+                "/projects/todo-app/04_live_search_filter.webp",
+                "/projects/todo-app/05_sorting_and_restore.webp",
+                "/projects/todo-app/06_grand_showcase.webp"
+            )
         ),
         Project(
             title = "Camera App",
@@ -1143,7 +1242,15 @@ object ProjectData {
             ),
             stargazersCount = 28,
             websiteUrl = "https://youtube.com/playlist?list=PLlSuJy9SfzvGEeoalzMz-VA5ohI0LzSKH&si=JahooX-lqG2T42OP",
-            categories = listOf(ProjectCategory.ANDROID)
+            categories = listOf(ProjectCategory.ANDROID),
+            imageUrls = listOf(
+                "/projects/camera-app/01_hero_showcase.webp",
+                "/projects/camera-app/02_aspect_ratio_16_9_toggle.webp",
+                "/projects/camera-app/03_tap_to_focus_metering.webp",
+                "/projects/camera-app/04_pinch_to_zoom_slider.webp",
+                "/projects/camera-app/05_video_recording_timer.webp",
+                "/projects/camera-app/06_grand_showcase.webp"
+            )
         ),
         Project(
             title = "Math Quiz App",
@@ -1185,7 +1292,15 @@ object ProjectData {
                 "NDK Security"
             ),
             stargazersCount = 18,
-            categories = listOf(ProjectCategory.ANDROID)
+            categories = listOf(ProjectCategory.ANDROID),
+            imageUrls = listOf(
+                "/projects/math-quiz-app/01_hero_showcase.webp",
+                "/projects/math-quiz-app/02_level_progression.webp",
+                "/projects/math-quiz-app/03_countdown_timer.webp",
+                "/projects/math-quiz-app/04_lifeline_powerup.webp",
+                "/projects/math-quiz-app/05_results_and_security.webp",
+                "/projects/math-quiz-app/06_grand_showcase.webp"
+            )
         )
     )
 }

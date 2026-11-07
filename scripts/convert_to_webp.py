@@ -30,7 +30,7 @@ SRC_DIR = os.path.join(PROJECT_ROOT, "site")
 CODE_EXTENSIONS = {".kt", ".kts", ".html", ".css", ".js", ".json", ".yaml", ".yml", ".md"}
 
 # Folders to optimize (skipping favicon icons which require legacy PNG format)
-TARGET_FOLDERS = ["project", "services", "articles", "blog"]
+TARGET_FOLDERS = ["projects", "project", "services", "articles", "blog"]
 
 
 def find_convertible_images(min_size_kb=50):
