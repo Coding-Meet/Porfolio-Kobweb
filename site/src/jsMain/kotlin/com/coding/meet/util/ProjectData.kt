@@ -74,6 +74,74 @@ object ProjectData {
             categories = listOf(ProjectCategory.ANDROID, ProjectCategory.KMP, ProjectCategory.DESKTOP)
         ),
         Project(
+            title = "What!Event",
+            shortDescription = "A native Android event discovery app for UK house music events featuring Google Maps clustering, Room persistence, WorkManager reminders, and Gemini AI summaries.",
+            longDescription = "What!Event is a native Android application developed as an international university client capstone project for discovering house music events across the UK. Built with modern Android architecture and Jetpack Compose Material 3, the app enables users to explore live event feeds, discover venues on an interactive Google Map with marker clustering, save favorites locally with Room persistence, schedule background event reminders with WorkManager, and generate instant event summaries using Google Gemini via the Firebase AI SDK. It also provides deep Android system integration with the native ShareSheet, an external-facing saved-events ContentProvider, and direct event submissions to Firebase Realtime Database.",
+            features = listOf(
+                "Event feed: Browse event cards with comprehensive details including DJ lineup, venue, date, and genre information",
+                "Instant search: Find house music events quickly by event title, performing artist, venue, or UK city",
+                "Advanced filters: Narrow the feed by city, date, and time of day (afternoon, evening, night)",
+                "Interactive Google Maps: Explore event markers across England with dynamic clustering and bottom-sheet preview cards",
+                "Location integration: Optional GPS location access to locate your position relative to nearby events",
+                "Event details view: Comprehensive screen with full lineup, descriptions, schedule, venue directions, and ticket links",
+                "Room saved events: Store favorite events locally on-device with swipe-to-delete and instant undo actions",
+                "WorkManager reminders: Schedule timely background event reminders (24 hours before, 2 hours before, or same day)",
+                "Firebase AI summary: Generate smart, concise event summaries powered by Google Gemini with graceful fallback",
+                "Android ShareSheet & external links: Share event details directly, navigate venues in Google Maps, and open official ticket URLs",
+                "Custom ContentProvider: Exposes saved-event data through 'content://com.what.event.provider/saved_events' with CRUD support",
+                "Add event submission: Integrated form allowing verified event submissions to Firebase Realtime Database"
+            ),
+            technologies = listOf(
+                "Kotlin",
+                "Jetpack Compose",
+                "Material 3",
+                "Clean Architecture",
+                "Room Database",
+                "Firebase Realtime Database",
+                "Firebase AI (Gemini)",
+                "Google Maps",
+                "WorkManager",
+                "ContentProvider"
+            ),
+            libraries = listOf(
+                "Jetpack Compose",
+                "Navigation Compose",
+                "Room",
+                "Firebase AI SDK",
+                "Firebase Realtime Database",
+                "Google Maps Compose",
+                "Maps Compose Utils",
+                "Google Play Services Location",
+                "WorkManager",
+                "Coil",
+                "Kotlin Coroutines",
+                "StateFlow"
+            ),
+            platform = listOf("Android"),
+            categories = listOf(ProjectCategory.ANDROID),
+            topics = listOf(
+                "Android",
+                "Jetpack Compose",
+                "Material 3",
+                "Google Maps",
+                "Gemini AI",
+                "Firebase",
+                "Room Database",
+                "WorkManager",
+                "Event Discovery",
+                "Music App",
+                "ContentProvider"
+            ),
+            imageUrls = listOf(
+                "/projects/what-event/01_hero_showcase.webp",
+                "/projects/what-event/02_discovery_and_filtering.webp",
+                "/projects/what-event/03_event_details_and_ai.webp",
+                "/projects/what-event/04_interactive_map_clusters.webp",
+                "/projects/what-event/05_favorites_and_reminders.webp",
+                "/projects/what-event/06_grand_showcase.webp"
+            )
+        ),
+        Project(
             title = "DevAnalyzer",
             shortDescription = "A cross-platform desktop tool to analyze Gradle and Kotlin Multiplatform projects, clean build folders, manage SDK resources, and optimize development environments.",
             longDescription = "DevAnalyzer is a cross-platform desktop application built with Compose Multiplatform and Kotlin Multiplatform (KMP) to help Android and Kotlin Multiplatform developers understand, optimize, and maintain their development environment. It provides project analysis across Android, iOS, JVM, JS, Wasm, and Server targets, safe build folder cleanup, workspace resource analysis, and detailed storage insights across Android SDKs, Gradle caches, Kotlin/Native toolchains, JDKs, AVDs, and IDE data. With smart path discovery, custom toolchain configuration, privacy controls, and GitHub release update checks, DevAnalyzer helps developers manage their development ecosystem efficiently.",

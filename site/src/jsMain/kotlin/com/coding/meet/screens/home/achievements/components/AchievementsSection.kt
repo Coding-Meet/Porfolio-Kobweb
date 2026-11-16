@@ -20,6 +20,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
+import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.padding
@@ -96,6 +97,7 @@ fun AchievementsSection() {
         numColumns = numColumns(base = 1, sm = 1, md = 2, lg = 2, xl = 2),
         modifier = Modifier
             .fillMaxWidth(if (breakpoint > Breakpoint.MD) 75.percent else 92.percent)
+            .gap(10.px)
             .padding(bottom = 20.px)
     ) {
         achievements.forEach { achievement ->

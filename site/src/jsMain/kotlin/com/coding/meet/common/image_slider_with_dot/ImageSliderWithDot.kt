@@ -8,8 +8,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.coding.meet.util.Res
 import com.coding.meet.util.Theme
+import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
+import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -36,7 +38,8 @@ fun ImageSliderWithDot(
     showControls: Boolean = true,
     showIndicators: Boolean = true,
     autoPlay: Boolean = true,
-    interval: Int = 3000
+    interval: Int = 3000,
+    onImageClick: ((Int) -> Unit)? = null
 ) {
     var currentIndex by remember(imageList) { mutableStateOf(0) }
     val lastIndex = imageList.size - 1
@@ -58,18 +61,29 @@ fun ImageSliderWithDot(
                 }
             }
         ) {
-            imageList.forEach { image ->
+            imageList.forEachIndexed { index, image ->
 
                 Img(
                     src = image,
                     alt = "Project Image",
-                    attrs = Modifier.fillMaxSize().borderRadius(10.px).toAttrs {
-                        style {
-                            property("min-width", "100%")
-                            property("flex-shrink", "0")
-                            property("object-fit", "cover")
+                    attrs = Modifier
+                        .fillMaxSize()
+                        .borderRadius(10.px)
+                        .then(
+                            if (onImageClick != null) {
+                                Modifier.cursor(Cursor.Pointer).onClick {
+                                    onImageClick(currentIndex)
+                                }
+                            } else Modifier
+                        )
+                        .toAttrs {
+                            style {
+                                property("min-width", "100%")
+                                property("flex-shrink", "0")
+                                property("object-fit", "cover")
+                                property("aspect-ratio", "16 / 9")
+                            }
                         }
-                    }
                 )
 
             }

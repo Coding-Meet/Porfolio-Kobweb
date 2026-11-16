@@ -223,7 +223,8 @@ fun ProjectPage() {
                     .padding(topBottom = 6.px, leftRight = 16.px)
                     .borderRadius(9999.px)
                     .backgroundColor(colorMode.select(Theme.Primary.subtle, Theme.Primary.soft))
-                    .border(1.px, LineStyle.Solid, Theme.Primary.medium),
+                    .border(1.px, LineStyle.Solid, Theme.Primary.medium)
+                    .margin( left = 20.px, right = 20.px),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ) {

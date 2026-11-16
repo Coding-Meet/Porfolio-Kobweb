@@ -1,13 +1,22 @@
 package com.coding.meet.pages
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import com.coding.meet.common.components.custom_dialog.CustomDialog
+import com.coding.meet.common.components.custom_dialog.resetDialogScroll
 import com.coding.meet.common.components.footer.Footer
 import com.coding.meet.common.page_layout.PageLayout
 import com.coding.meet.common.page_layout.fadeInUpPageAnimation
 import com.coding.meet.models.Section
+import com.coding.meet.models.Service
 import com.coding.meet.models.servicePath
 import com.coding.meet.screens.service.components.FAQCard
 import com.coding.meet.screens.service.components.ServiceCard
+import com.coding.meet.screens.service.components.ServiceLightboxDialog
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.FAQData.faqs
 import com.coding.meet.util.Res
@@ -26,6 +35,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
+import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
@@ -36,6 +46,7 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import kotlinx.browser.window
 import org.jetbrains.compose.web.css.AnimationTimingFunction
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
@@ -46,6 +57,45 @@ import org.jetbrains.compose.web.css.s
 @Composable
 fun ServiceSection() {
     val breakpoint = rememberBreakpoint()
+    val isDesktop = breakpoint > Breakpoint.MD
+
+    var isShowLightbox by remember { mutableStateOf(false) }
+    val lightboxDialogId by remember { mutableStateOf("serviceLightboxDialog") }
+    var activeService by remember { mutableStateOf<Service?>(null) }
+    var activeImageIndex by remember { mutableStateOf(0) }
+
+    LaunchedEffect(Unit) {
+        window.addEventListener("click", {
+            val model = window.document.getElementById(lightboxDialogId)
+            val modal = model?.asDynamic()
+            if (it.target == modal) {
+                isShowLightbox = false
+            }
+        })
+        window.addEventListener("keydown", {
+            val keyboardEvent = it.asDynamic()
+            if (keyboardEvent.key == "Escape") {
+                isShowLightbox = false
+            }
+        })
+    }
+
+    LaunchedEffect(isShowLightbox, activeService) {
+        val model = window.document.getElementById(lightboxDialogId)
+        val modal = model?.asDynamic()
+        val body = window.document.body?.asDynamic()
+
+        if (isShowLightbox && activeService != null) {
+            modal?.style?.display = "block"
+            resetDialogScroll(lightboxDialogId)
+            body?.style?.setProperty("overflow", "hidden")
+        } else {
+            modal?.style?.display = "none"
+            resetDialogScroll(lightboxDialogId)
+            body?.style?.removeProperty("overflow")
+        }
+    }
+
     PageLayout(
         title = Section.SERVICE.title
     ) {
@@ -81,7 +131,7 @@ fun ServiceSection() {
             SpanText(
                 text = "From greenfield mobile apps and KMP cross-platform systems to performance audit & bug triage.",
                 modifier = Modifier
-                    .fillMaxWidth(if (breakpoint > Breakpoint.MD) 65.percent else 90.percent)
+                    .fillMaxWidth(if (isDesktop) 65.percent else 90.percent)
                     .padding(bottom = 28.px, leftRight = 20.px)
                     .color(
                         CustomColor(
@@ -94,14 +144,23 @@ fun ServiceSection() {
                     .textAlign(TextAlign.Center)
             )
 
-            SimpleGrid(
-                numColumns = numColumns(base = 1, sm = 1, md = 2, lg = 2, xl = 2),
+            // Horizontal Agency-Style Split Cards
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth(if (breakpoint > Breakpoint.MD) 75.percent else 92.percent)
+                    .fillMaxWidth(if (breakpoint > Breakpoint.LG) 85.percent else if (isDesktop) 88.percent else 94.percent)
                     .padding(bottom = 36.px)
+                    .gap(12.px),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 services.forEach { service ->
-                    ServiceCard(service)
+                    ServiceCard(
+                        service = service,
+                        onImageClick = { s, index ->
+                            activeService = s
+                            activeImageIndex = index
+                            isShowLightbox = true
+                        }
+                    )
                 }
             }
 
@@ -125,7 +184,7 @@ fun ServiceSection() {
             SpanText(
                 text = "Everything you need to know about working together, timelines, and deliverables.",
                 modifier = Modifier
-                    .fillMaxWidth(if (breakpoint > Breakpoint.MD) 65.percent else 90.percent)
+                    .fillMaxWidth(if (isDesktop) 65.percent else 90.percent)
                     .padding(bottom = 24.px, leftRight = 20.px)
                     .color(
                         CustomColor(
@@ -141,7 +200,7 @@ fun ServiceSection() {
             SimpleGrid(
                 numColumns = numColumns(base = 1, sm = 1, md = 1, lg = 1, xl = 1),
                 modifier = Modifier
-                    .fillMaxWidth(if (breakpoint > Breakpoint.MD) 75.percent else 92.percent)
+                    .fillMaxWidth(if (isDesktop) 82.percent else 92.percent)
                     .padding(bottom = 36.px)
             ) {
                 faqs.forEach { faq ->
@@ -150,6 +209,26 @@ fun ServiceSection() {
             }
 
             Footer()
+        }
+    }
+
+    // High-Resolution Lightbox Dialog
+    val currentActiveService = activeService ?: services.firstOrNull()
+    if (currentActiveService != null) {
+        CustomDialog(
+            modifier = Modifier.fillMaxWidth(
+                if (isDesktop) 72.percent else 95.percent
+            ),
+            dialogId = lightboxDialogId,
+            resetKey = activeService?.title
+        ) {
+            ServiceLightboxDialog(
+                service = currentActiveService,
+                initialIndex = activeImageIndex,
+                onDismiss = {
+                    isShowLightbox = false
+                }
+            )
         }
     }
 }

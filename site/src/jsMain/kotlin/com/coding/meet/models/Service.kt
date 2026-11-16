@@ -5,4 +5,5 @@ data class Service(
     val description: String,
     val features: List<String> = arrayListOf(),
     val imageUrls: List<String> = arrayListOf(),
+    val tags: List<String> = arrayListOf(),
 )

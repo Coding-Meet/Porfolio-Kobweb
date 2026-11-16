@@ -6,5 +6,7 @@ data class Achievement(
     val platform: String,
     val link: String,
     val lightImage: String,
-    val darkImage: String? = null
+    val darkImage: String? = null,
+    val metric: String = "",
+    val badges: List<String> = emptyList(),
 )
