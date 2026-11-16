@@ -1,69 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Core Pages -->
     <url>
         <loc>https://codingmeet.com/</loc>
-    </url>
-    <url>
-        <loc>https://codingmeet.com/blog</loc>
-    </url>
-    <url>
-        <loc>https://codingmeet.com/contact_me</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://codingmeet.com/projects</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://codingmeet.com/service</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/blog</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/contact_me</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/index.md</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
     </url>
 
+    <!-- Technical Blog Articles -->
     <url>
-        <loc>
-            https://codingmeet.com/blog/how-to-implement-shaders-in-compose-multiplatform-android-ios-desktop-web-c86a36dd9666
-        </loc>
+        <loc>https://codingmeet.com/blog/how-to-implement-shaders-in-compose-multiplatform-android-ios-desktop-web-c86a36dd9666</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/building-a-fully-adaptive-navigation-system-in-compose-multiplatform-kmp-e1a8921ca792
-        </loc>
+        <loc>https://codingmeet.com/blog/building-a-fully-adaptive-navigation-system-in-compose-multiplatform-kmp-e1a8921ca792</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/cross-platform-text-to-speech-with-real-time-highlighting-kotlin-multiplatform-swift-9a02fa667f6f
-        </loc>
+        <loc>https://codingmeet.com/blog/cross-platform-text-to-speech-with-real-time-highlighting-kotlin-multiplatform-swift-9a02fa667f6f</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/how-to-show-toasts-in-compose-multiplatform-android-ios-desktop-with-expect-actual-85c630d46d06
-        </loc>
+        <loc>https://codingmeet.com/blog/how-to-show-toasts-in-compose-multiplatform-android-ios-desktop-with-expect-actual-85c630d46d06</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/efficient-logging-in-kotlin-with-proguard-optimization-452bdac5c016
-        </loc>
+        <loc>https://codingmeet.com/blog/efficient-logging-in-kotlin-with-proguard-optimization-452bdac5c016</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/part-2-automating-reverse-feature-to-template-transformation-in-gradle-3973880bb6ff
-        </loc>
+        <loc>https://codingmeet.com/blog/part-2-automating-reverse-feature-to-template-transformation-in-gradle-3973880bb6ff</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/automate-android-feature-creation-with-gradle-cfd51373e167
-        </loc>
+        <loc>https://codingmeet.com/blog/automate-android-feature-creation-with-gradle-cfd51373e167</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/full-guide-how-to-form-validation-with-jetpack-compose-01e0464ae884
-        </loc>
+        <loc>https://codingmeet.com/blog/full-guide-how-to-form-validation-with-jetpack-compose-01e0464ae884</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/how-to-integrate-bottom-navigation-bar-for-compact-screens-and-a-navigation-rail-for-larger-screens-c7dc3baab0e7
-        </loc>
+        <loc>https://codingmeet.com/blog/how-to-integrate-bottom-navigation-bar-for-compact-screens-and-a-navigation-rail-for-larger-screens-c7dc3baab0e7</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/how-to-integrate-viewmodel-in-kotlin-multiplatform-with-koin-1a1134530215
-        </loc>
+        <loc>https://codingmeet.com/blog/how-to-integrate-viewmodel-in-kotlin-multiplatform-with-koin-1a1134530215</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
 </urlset>

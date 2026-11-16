@@ -4,20 +4,26 @@
     {
       "name": "Read Portfolio",
       "type": "informational",
-      "description": "Provides a comprehensive overview of the developer's portfolio, including projects, skills, and contact information.",
+      "description": "Provides a comprehensive overview of the developer's portfolio, including projects, skills, services, and contact information.",
       "url": "https://codingmeet.com/index.md"
     },
     {
-      "name": "Search Articles",
+      "name": "Browse Projects",
       "type": "informational",
-      "description": "Allows agents to discover and read blog articles related to Kotlin Multiplatform, Android, and Web development.",
-      "url": "https://codingmeet.com/blog"
+      "description": "Explores mobile, desktop, and multiplatform projects developed by Meet, with live demos, tech stack details, and GitHub repositories.",
+      "url": "https://codingmeet.com/projects"
     },
     {
       "name": "View Services",
       "type": "informational",
-      "description": "Explores the professional services offered, including mobile app development, bug fixing, and AI integration.",
+      "description": "Explores professional development services offered, including native Android, Jetpack Compose, Kotlin Multiplatform, and AI API integrations.",
       "url": "https://codingmeet.com/service"
+    },
+    {
+      "name": "Search Articles",
+      "type": "informational",
+      "description": "Allows agents to discover and read technical blog articles related to Kotlin Multiplatform, Jetpack Compose, Android, and Web development.",
+      "url": "https://codingmeet.com/blog"
     }
   ]
 }
