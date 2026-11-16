@@ -33,12 +33,14 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.gap
+import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.modifiers.textDecorationLine
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
@@ -72,6 +74,13 @@ fun ServiceCard(
         numColumns = numColumns(base = 1, sm = 1, md = 1, lg = 2, xl = 2),
         modifier = ServiceCardStyle.toModifier()
             .fillMaxWidth()
+            .then(
+                if (service.id.isNotEmpty()) {
+                    Modifier
+                        .id(service.id)
+                        .styleModifier { property("scroll-margin-top", "80px") }
+                } else Modifier
+            )
             .margin(bottom = 32.px)
             .padding(all = if (isDesktop) 28.px else 18.px)
             .gap(if (isDesktop) 28.px else 18.px)

@@ -8,6 +8,7 @@ object ServiceData {
 
         // 1. Custom Android App Development (Gig 03 & 08)
         Service(
+            id = "custom-android-app",
             title = "📱 Custom Android App Development",
             description = "Need a custom mobile app for Android? I build high-quality, scalable apps using Kotlin, Java, and modern Clean Architecture.",
             features = listOf(
@@ -42,6 +43,7 @@ object ServiceData {
 
         // 2. Fix Android Bugs, Crashes & Gradle (Gig 01)
         Service(
+            id = "fix-bugs",
             title = "🔧 Fix Bugs & Debug Android Apps",
             description = "Facing crashes, slow performance, or build issues? I debug root causes and fix your Android app professionally.",
             features = listOf(
@@ -77,6 +79,7 @@ object ServiceData {
 
         // 3. Upgrade Android SDK, Target API & Gradle Migration (Gig 02)
         Service(
+            id = "upgrade-sdk",
             title = "🚀 Upgrade Android SDK, Target API & Gradle",
             description = "Update your Android project for modern devices and Play Store requirements with zero regression.",
             features = listOf(
@@ -110,6 +113,7 @@ object ServiceData {
 
         // 4. Kotlin & Jetpack Compose UI (Gig 03 UI)
         Service(
+            id = "compose-ui",
             title = "🎨 Kotlin & Jetpack Compose UI",
             description = "Modernize your UI with Jetpack Compose. Dynamic, reactive, and responsive interfaces built with Material 3.",
             features = listOf(
@@ -141,6 +145,7 @@ object ServiceData {
 
         // 5. AI Chatbot & Custom AI API Integration (Gig 04)
         Service(
+            id = "ai-chatbot",
             title = "🤖 AI Chatbot & Custom AI API Integration",
             description = "Integrate smart AI chatbots and assistants into your mobile apps with streaming responses and clean UI.",
             features = listOf(
@@ -173,6 +178,7 @@ object ServiceData {
 
         // 6. Kotlin Multiplatform & Compose Multiplatform (Gig 05)
         Service(
+            id = "kmp-cmp",
             title = "⚡ Kotlin Multiplatform & Compose Multiplatform (KMP & CMP)",
             description = "Target Android, iOS, Desktop, and Web from a single codebase using Kotlin Multiplatform and Compose Multiplatform.",
             features = listOf(
@@ -204,6 +210,7 @@ object ServiceData {
 
         // 7. Desktop App Development with CMP (Gig 06)
         Service(
+            id = "desktop-app",
             title = "💻 Desktop App Development (macOS, Windows, Linux)",
             description = "Build fast, native-feeling desktop applications and dashboards using Compose Multiplatform and Kotlin.",
             features = listOf(
@@ -235,6 +242,7 @@ object ServiceData {
 
         // 8. Native iOS App Development (Swift & SwiftUI)
         Service(
+            id = "ios-app",
             title = "🍎 Native iOS App Development (Swift & SwiftUI)",
             description = "Build high-performance native iOS applications for iPhone and iPad using Swift, SwiftUI, and modern architecture.",
             features = listOf(
@@ -266,6 +274,7 @@ object ServiceData {
 
         // 9. Review, Fix & Refactor AI-Generated App Code (Gig 09)
         Service(
+            id = "ai-code-review",
             title = "🛡️ Review, Fix & Refactor AI-Generated App Code",
             description = "Built an app with ChatGPT, Cursor, or Claude? I audit, debug, secure, and refactor AI code into production software.",
             features = listOf(

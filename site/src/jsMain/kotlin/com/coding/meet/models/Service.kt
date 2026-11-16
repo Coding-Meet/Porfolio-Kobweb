@@ -1,6 +1,7 @@
 package com.coding.meet.models
 
 data class Service(
+    val id: String = "",
     val title: String,
     val description: String,
     val features: List<String> = arrayListOf(),

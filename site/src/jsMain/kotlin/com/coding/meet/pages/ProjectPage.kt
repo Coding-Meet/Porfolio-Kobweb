@@ -1,6 +1,7 @@
 package com.coding.meet.pages
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -108,21 +109,89 @@ fun ProjectPage() {
             var openProject by remember { mutableStateOf<Project?>(null) }
             var currentProjectIndex by remember { mutableStateOf<Int?>(null) }
 
-            LaunchedEffect(Unit) {
-                window.addEventListener("click", {
+            fun updateProjectUrl(project: Project?) {
+                if (project != null) {
+                    val newUrl = "$projectsPath?project=${project.slug}"
+                    if (window.location.search != "?project=${project.slug}") {
+                        window.history.replaceState(null, "", newUrl)
+                    }
+                } else {
+                    if (window.location.search.isNotEmpty() || window.location.hash.isNotEmpty()) {
+                        window.history.replaceState(null, "", projectsPath)
+                    }
+                }
+            }
+
+            fun extractTargetQuery(): String {
+                val search = window.location.search
+                if (search.isNotEmpty()) {
+                    val searchParams = js("new URLSearchParams(window.location.search)")
+                    val param = (searchParams.get("project") ?: searchParams.get("id")) as? String
+                    if (!param.isNullOrBlank()) {
+                        return param.trim()
+                    }
+                }
+                val hash = window.location.hash.removePrefix("#").trim()
+                if (hash.isNotEmpty()) {
+                    return hash
+                }
+                return ""
+            }
+
+            DisposableEffect(Unit) {
+                val clickListener: (dynamic) -> Unit = {
                     val model = window.document.getElementById(dialogId)
                     val modal = model?.asDynamic()
                     if (it.target == modal) {
                         isShowDialog = false
+                        updateProjectUrl(null)
                     }
-                })
-                window.addEventListener("keydown", {
+                }
+                val keydownListener: (dynamic) -> Unit = {
                     val keyboardEvent = it.asDynamic()
                     if (keyboardEvent.key == "Escape") {
                         isShowDialog = false
+                        updateProjectUrl(null)
                     }
-                })
+                }
+                val popstateListener: (dynamic) -> Unit = {
+                    val query = extractTargetQuery()
+                    if (query.isNotEmpty()) {
+                        val matchIndex = projectsState.value.indexOfFirst { it.matchesQuery(query) }
+                        if (matchIndex != -1) {
+                            openProject = projectsState.value[matchIndex]
+                            currentProjectIndex = matchIndex
+                            isShowDialog = true
+                        }
+                    } else {
+                        isShowDialog = false
+                    }
+                }
+
+                window.addEventListener("click", clickListener)
+                window.addEventListener("keydown", keydownListener)
+                window.addEventListener("popstate", popstateListener)
+
+                // Check URL parameter or hash on initial load
+                val initialQuery = extractTargetQuery()
+                if (initialQuery.isNotEmpty()) {
+                    val matchIndex = projectsState.value.indexOfFirst { it.matchesQuery(initialQuery) }
+                    if (matchIndex != -1) {
+                        val matched = projectsState.value[matchIndex]
+                        openProject = matched
+                        currentProjectIndex = matchIndex
+                        isShowDialog = true
+                        updateProjectUrl(matched)
+                    }
+                }
+
+                onDispose {
+                    window.removeEventListener("click", clickListener)
+                    window.removeEventListener("keydown", keydownListener)
+                    window.removeEventListener("popstate", popstateListener)
+                }
             }
+
             LaunchedEffect(isShowDialog, openProject) {
                 val model = window.document.getElementById(dialogId)
                 val modal = model?.asDynamic()
@@ -154,6 +223,7 @@ fun ProjectPage() {
                         isNextPreviousBtnShow = filteredProjects.size > 1,
                         onDismiss = {
                             isShowDialog = false
+                            updateProjectUrl(null)
                         },
                         onPrevious = {
                             if (filteredProjects.isNotEmpty()) {
@@ -165,6 +235,7 @@ fun ProjectPage() {
                                     }
                                 currentProjectIndex = prevIdx
                                 openProject = filteredProjects[prevIdx]
+                                updateProjectUrl(filteredProjects[prevIdx])
                                 resetDialogScroll(dialogId)
                             }
                         },
@@ -178,6 +249,7 @@ fun ProjectPage() {
                                     }
                                 currentProjectIndex = nextIdx
                                 openProject = filteredProjects[nextIdx]
+                                updateProjectUrl(filteredProjects[nextIdx])
                                 resetDialogScroll(dialogId)
                             }
                         }
@@ -266,6 +338,7 @@ fun ProjectPage() {
                             openProject = project
                             currentProjectIndex = index
                             isShowDialog = true
+                            updateProjectUrl(project)
                             resetDialogScroll(dialogId)
                         }
                     }
