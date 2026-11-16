@@ -10,13 +10,13 @@
     {
       "name": "Browse Projects",
       "type": "informational",
-      "description": "Explores mobile, desktop, and multiplatform projects developed by Meet, with live demos, tech stack details, and GitHub repositories.",
+      "description": "Explores 31+ mobile, desktop, and multiplatform projects developed by Meet, with direct deep linking (/projects/<slug>), live demos, tech stack details, and GitHub repositories.",
       "url": "https://codingmeet.com/projects"
     },
     {
       "name": "View Services",
       "type": "informational",
-      "description": "Explores professional development services offered, including native Android, Jetpack Compose, Kotlin Multiplatform, and AI API integrations.",
+      "description": "Explores 9 professional development services offered, with direct deep linking (/service/<id>), including native Android (SDK 35), Jetpack Compose, Kotlin Multiplatform, and AI API integrations.",
       "url": "https://codingmeet.com/service"
     },
     {

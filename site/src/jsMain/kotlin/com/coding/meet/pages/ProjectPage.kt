@@ -48,6 +48,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.core.PageContext
+import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.components.text.SpanText
@@ -68,7 +70,7 @@ import org.jetbrains.compose.web.dom.Div
 
 @Page(projectsPath)
 @Composable
-fun ProjectPage() {
+fun ProjectPage(context: PageContext = rememberPageContext()) {
     val breakpoint = rememberBreakpoint()
     val colorMode by ColorMode.currentState
     PageLayout(
@@ -111,18 +113,29 @@ fun ProjectPage() {
 
             fun updateProjectUrl(project: Project?) {
                 if (project != null) {
-                    val newUrl = "$projectsPath?project=${project.slug}"
-                    if (window.location.search != "?project=${project.slug}") {
+                    val newUrl = "$projectsPath/${project.slug}"
+                    if (window.location.pathname != newUrl) {
                         window.history.replaceState(null, "", newUrl)
                     }
                 } else {
-                    if (window.location.search.isNotEmpty() || window.location.hash.isNotEmpty()) {
+                    if (window.location.pathname != projectsPath || window.location.search.isNotEmpty() || window.location.hash.isNotEmpty()) {
                         window.history.replaceState(null, "", projectsPath)
                     }
                 }
             }
 
             fun extractTargetQuery(): String {
+                // 1. From Kobweb dynamic route context: /projects/{project}
+                val routeParam = context.route.params.get("project")?.trim() ?: ""
+                if (routeParam.isNotEmpty()) {
+                    return routeParam
+                }
+                // 2. From browser pathname: /projects/<slug>
+                val pathSlug = window.location.pathname.removePrefix("/projects").removePrefix("/").substringBefore("/").substringBefore("?").substringBefore("#").trim()
+                if (pathSlug.isNotEmpty()) {
+                    return pathSlug
+                }
+                // 3. From query parameter: ?project=... or ?id=...
                 val search = window.location.search
                 if (search.isNotEmpty()) {
                     val searchParams = js("new URLSearchParams(window.location.search)")
@@ -131,6 +144,7 @@ fun ProjectPage() {
                         return param.trim()
                     }
                 }
+                // 4. From hash anchor: #...
                 val hash = window.location.hash.removePrefix("#").trim()
                 if (hash.isNotEmpty()) {
                     return hash

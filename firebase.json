@@ -8,6 +8,16 @@
       "**/node_modules/**"
     ],
     "cleanUrls": true,
+    "rewrites": [
+      {
+        "source": "/projects/**",
+        "destination": "/projects.html"
+      },
+      {
+        "source": "/service/**",
+        "destination": "/service.html"
+      }
+    ],
     "headers": [
       {
         "source": "/",

@@ -43,6 +43,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.core.PageContext
+import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.components.text.SpanText
@@ -60,7 +62,7 @@ import org.w3c.dom.events.Event
 
 @Page(servicePath)
 @Composable
-fun ServiceSection() {
+fun ServiceSection(context: PageContext = rememberPageContext()) {
     val breakpoint = rememberBreakpoint()
     val isDesktop = breakpoint > Breakpoint.MD
 
@@ -70,8 +72,12 @@ fun ServiceSection() {
     var activeImageIndex by remember { mutableStateOf(0) }
 
     DisposableEffect(Unit) {
-        val initialHash = window.location.hash
-        var isAutoScrolling = initialHash.isNotEmpty()
+        val routeSlug = context.route.params.get("service")?.trim() ?: ""
+        val pathSlug = window.location.pathname.removePrefix("/service").removePrefix("/").substringBefore("/").substringBefore("?").substringBefore("#").trim()
+        val initialHash = window.location.hash.removePrefix("#").trim()
+        val initialTarget = if (routeSlug.isNotEmpty()) routeSlug else if (pathSlug.isNotEmpty()) pathSlug else initialHash
+
+        var isAutoScrolling = initialTarget.isNotEmpty()
         var currentSection = ""
         val serviceIds = listOf(
             "custom-android-app",
@@ -86,8 +92,8 @@ fun ServiceSection() {
             "faq"
         )
 
-        fun resolveTargetId(hash: String): String {
-            val clean = hash.removePrefix("#").trim().lowercase()
+        fun resolveTargetId(raw: String): String {
+            val clean = raw.removePrefix("#").trim().lowercase()
             if (clean.isEmpty()) return ""
 
             return when (clean) {
@@ -105,8 +111,8 @@ fun ServiceSection() {
             }
         }
 
-        fun scrollToTarget(hash: String, retryCount: Int = 0) {
-            val targetId = resolveTargetId(hash)
+        fun scrollToTarget(target: String, retryCount: Int = 0) {
+            val targetId = resolveTargetId(target)
             if (targetId.isEmpty()) {
                 isAutoScrolling = false
                 return
@@ -116,7 +122,7 @@ fun ServiceSection() {
             val offsetTop = (element.asDynamic()?.offsetTop as? Number)?.toDouble() ?: 0.0
 
             if ((element == null || (targetId != serviceIds.first() && offsetTop == 0.0)) && retryCount < 12) {
-                window.setTimeout({ scrollToTarget(hash, retryCount + 1) }, 100)
+                window.setTimeout({ scrollToTarget(target, retryCount + 1) }, 100)
                 return
             }
 
@@ -124,9 +130,9 @@ fun ServiceSection() {
                 isAutoScrolling = true
                 currentSection = targetId
 
-                val targetHash = "#$targetId"
-                if (window.location.hash != targetHash) {
-                    window.history.replaceState(null, "", targetHash)
+                val targetUrl = "/service/$targetId"
+                if (window.location.pathname != targetUrl) {
+                    window.history.replaceState(null, "", targetUrl)
                 }
 
                 val options = js("({ behavior: 'smooth', block: 'start' })")
@@ -140,9 +146,9 @@ fun ServiceSection() {
             }
         }
 
-        // Handle initial load if hash is present
-        if (initialHash.isNotEmpty()) {
-            window.setTimeout({ scrollToTarget(initialHash) }, 80)
+        // Handle initial load if target is present
+        if (initialTarget.isNotEmpty()) {
+            window.setTimeout({ scrollToTarget(initialTarget) }, 80)
         }
 
         // Handle dynamic hash changes in the URL
@@ -154,7 +160,17 @@ fun ServiceSection() {
         }
         window.addEventListener("hashchange", onHashChange)
 
-        // Scroll Spy: Update URL hash as user scrolls past each service card
+        // Handle popstate for back/forward navigation
+        val onPopState: (Event) -> Unit = {
+            val popSlug = window.location.pathname.removePrefix("/service").removePrefix("/").substringBefore("/").substringBefore("?").substringBefore("#").trim()
+            if (popSlug.isNotEmpty()) {
+                isAutoScrolling = true
+                scrollToTarget(popSlug)
+            }
+        }
+        window.addEventListener("popstate", onPopState)
+
+        // Scroll Spy: Update URL path as user scrolls past each service card
         val onScroll: (Event) -> Unit = {
             if (!isAutoScrolling) {
                 val scrollY = (window.asDynamic().pageYOffset as? Number)?.toDouble()
@@ -166,6 +182,8 @@ fun ServiceSection() {
 
                 val activeSection = if (isBottom) {
                     "faq"
+                } else if (scrollY < 80.0) {
+                    ""
                 } else {
                     var found = ""
                     val triggerLine = windowHeight * 0.35
@@ -180,11 +198,11 @@ fun ServiceSection() {
                     found
                 }
 
-                if (activeSection.isNotEmpty() && activeSection != currentSection) {
+                if (activeSection != currentSection) {
                     currentSection = activeSection
-                    val newHash = "#$activeSection"
-                    if (window.location.hash != newHash) {
-                        window.history.replaceState(null, "", newHash)
+                    val targetUrl = if (activeSection.isNotEmpty()) "/service/$activeSection" else "/service"
+                    if (window.location.pathname != targetUrl) {
+                        window.history.replaceState(null, "", targetUrl)
                     }
                 }
             }
@@ -193,6 +211,7 @@ fun ServiceSection() {
 
         onDispose {
             window.removeEventListener("hashchange", onHashChange)
+            window.removeEventListener("popstate", onPopState)
             window.removeEventListener("scroll", onScroll)
         }
     }
