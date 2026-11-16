@@ -18,8 +18,8 @@ object FAQData {
 
         // 3. Upgrade Target SDK & Gradle
         FAQ(
-            question = "Can you upgrade my app to the latest Android 15 (Target SDK 35) and Gradle version?",
-            answer = "Yes. I update apps to Target SDK 35 to comply with mandatory Google Play Console requirements. This includes upgrading Gradle, Android Gradle Plugin (AGP), migrating build scripts to Version Catalogs (libs.versions.toml), adapting to Android 15 behavior changes, and implementing Edge-to-Edge display and Predictive Back navigation."
+            question = "Can you upgrade my app to the latest Android 16 (Target SDK 36) and Gradle version?",
+            answer = "Yes. I update apps to Target SDK 36 to comply with mandatory Google Play Console requirements. This includes upgrading Gradle, Android Gradle Plugin (AGP), migrating build scripts to Version Catalogs (libs.versions.toml), adapting to Android 15 behavior changes, and implementing Edge-to-Edge display and Predictive Back navigation."
         ),
 
         // 4. Jetpack Compose & XML Migration
@@ -31,7 +31,7 @@ object FAQData {
         // 5. AI Chatbot & LLM Integration
         FAQ(
             question = "Which AI models can you integrate into my mobile or desktop app?",
-            answer = "I integrate Google Gemini (Flash & Pro), OpenAI (ChatGPT / GPT-4o), Claude, and DeepSeek APIs with real-time streaming responses, conversation history, multi-turn context, voice input/output (STT & TTS), document AI with RAG, and secure server-side or Keystore API key management."
+            answer = "I integrate Google Gemini (Flash & Pro), OpenAI (ChatGPT / GPT-5), Claude, and DeepSeek APIs with real-time streaming responses, conversation history, multi-turn context, voice input/output (STT & TTS), document AI with RAG, and secure server-side or Keystore API key management."
         ),
 
         // 6. Kotlin Multiplatform & Compose Multiplatform

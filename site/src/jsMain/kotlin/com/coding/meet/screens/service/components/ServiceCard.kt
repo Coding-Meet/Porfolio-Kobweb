@@ -152,7 +152,7 @@ fun ServiceCard(
         // Right Column: Service Details & Features Checklist
         Column(
             modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.SpaceBetween,
+            verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.Start
         ) {
             // Header: Title & Description
