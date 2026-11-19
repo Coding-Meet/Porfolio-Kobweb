@@ -1,7 +1,8 @@
 {
   "serverInfo": {
     "name": "Coding Meet Portfolio",
-    "version": "1.0.0"
+    "version": "1.2.0",
+    "description": "Developer portfolio MCP server providing machine-readable access to projects, services, and technical blog posts."
   },
   "capabilities": {
     "resources": {
@@ -9,7 +10,20 @@
         {
           "uri": "https://codingmeet.com/index.md",
           "name": "Portfolio Summary",
+          "description": "Full markdown overview of skills, projects, and contact info",
           "mimeType": "text/markdown"
+        },
+        {
+          "uri": "https://codingmeet.com/sitemap.xml",
+          "name": "Sitemap",
+          "description": "XML sitemap of all public pages, projects, services, and articles",
+          "mimeType": "application/xml"
+        },
+        {
+          "uri": "https://codingmeet.com/.well-known/agent-skills/index.json",
+          "name": "Agent Skills Catalog",
+          "description": "Machine-readable catalog of portfolio agent skills and endpoints",
+          "mimeType": "application/json"
         }
       ]
     }

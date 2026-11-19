@@ -2,43 +2,60 @@
 User-agent: *
 Allow: /
 
-# Important public pages
+# Important public pages & deep links
 Allow: /blog/
 Allow: /projects/
+Allow: /projects*
 Allow: /service/
-Allow: /contact_me/
+Allow: /service*
+Allow: /contact_me
+Allow: /index.md
+Allow: /.well-known/
 
-# Block unnecessary URLs
-Disallow: /search
-Disallow: /*?
+# Block private / internal directories
 Disallow: /admin/
 Disallow: /temp/
 Disallow: /private/
 
-# Optional crawl delay for non-Google bots
+# Crawl delay for generic bots
 Crawl-delay: 1
 
 # ========================================
-# Specific Search Engine Bots
+# Search Engine Crawlers
 # ========================================
 
-# Google
 User-agent: Googlebot
 Allow: /
 
-# Bing
 User-agent: Bingbot
 Allow: /
 
-# DuckDuckGo
 User-agent: DuckDuckBot
 Allow: /
 
-# Yahoo
+User-agent: Applebot
+Allow: /
+
 User-agent: Slurp
 Allow: /
 
+# ========================================
+# AI Search & Retrieval Crawlers
+# ========================================
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# ========================================
 # Social Media Preview Bots
+# ========================================
+
 User-agent: Twitterbot
 Allow: /
 
@@ -46,6 +63,12 @@ User-agent: facebookexternalhit
 Allow: /
 
 User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
 Allow: /
 
 # ========================================

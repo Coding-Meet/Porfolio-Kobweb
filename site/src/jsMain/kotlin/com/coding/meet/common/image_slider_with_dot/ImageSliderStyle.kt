@@ -55,6 +55,9 @@ val ImageSliderContainerStyle = CssStyle {
             .overflow(Overflow.Hidden)
             .borderRadius(8.px)
             .boxShadow(0.px, 4.px, 8.px, 0.px, Theme.Black.subtle)
+            .styleModifier {
+                property("aspect-ratio", "16 / 9")
+            }
     }
 }
 

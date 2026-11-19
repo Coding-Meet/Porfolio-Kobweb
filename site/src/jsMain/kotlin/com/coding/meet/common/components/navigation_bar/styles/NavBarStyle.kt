@@ -3,19 +3,20 @@ package com.coding.meet.common.components.navigation_bar.styles
 import com.coding.meet.util.Theme
 import com.coding.meet.util.backgroundRgba
 import com.coding.meet.util.glassSubtle
+import com.coding.meet.util.select
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.css.Transition
-import com.varabyte.kobweb.compose.css.functions.blur
-import com.varabyte.kobweb.compose.css.functions.saturate
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.backdropFilter
+import com.varabyte.kobweb.compose.ui.modifiers.alignItems
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.borderBottom
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
+import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
+import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
 import com.varabyte.kobweb.compose.ui.modifiers.letterSpacing
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.position
@@ -25,16 +26,17 @@ import com.varabyte.kobweb.compose.ui.modifiers.top
 import com.varabyte.kobweb.compose.ui.modifiers.transform
 import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.modifiers.zIndex
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.hover
-import com.varabyte.kobweb.silk.theme.colors.palette.border
-import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
+import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.AnimationTimingFunction
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.deg
 import org.jetbrains.compose.web.css.ms
-import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
 val NavBarStyle = CssStyle {
@@ -44,10 +46,13 @@ val NavBarStyle = CssStyle {
             .position(Position.Sticky)
             .top(0.px)
             .zIndex(1000)
-            .backgroundColor(colorMode.backgroundRgba(0.82))
-            .backdropFilter(saturate(180.percent), blur(16.px))
-            .borderBottom(1.px, LineStyle.Solid, colorMode.toPalette().border)
-            .boxShadow(0.px, 1.px, 12.px, null, Theme.Black.subtle)
+            .backgroundColor(colorMode.backgroundRgba(0.55))
+            .styleModifier {
+                property("backdrop-filter", "blur(20px) saturate(180%)")
+                property("-webkit-backdrop-filter", "blur(20px) saturate(180%)")
+            }
+            .borderBottom(1.px, LineStyle.Solid, colorMode.glassSubtle)
+            .boxShadow(0.px, 4.px, 20.px, null, colorMode.select(Theme.Black.subtle, Theme.Black.soft))
     }
 }
 
@@ -100,7 +105,11 @@ val HeaderButtonStyle = CssStyle {
     base {
         Modifier
             .borderRadius(9999.px)
-            .border(1.px, LineStyle.Solid, colorMode.toPalette().border)
+            .border(1.px, LineStyle.Solid, colorMode.glassSubtle)
+            .padding(0.px)
+            .display(DisplayStyle.Flex)
+            .justifyContent(JustifyContent.Center)
+            .alignItems(AlignItems.Center)
             .transition(
                 Transition.all(
                     duration = 200.ms,
@@ -111,6 +120,7 @@ val HeaderButtonStyle = CssStyle {
     hover {
         Modifier
             .scale(1.08)
-            .boxShadow(0.px, 4.px, 12.px, null, Theme.Primary.soft)
+            .border(1.px, LineStyle.Solid, Theme.Primary.color)
+            .boxShadow(0.px, 4.px, 14.px, null, Theme.Primary.soft)
     }
 }

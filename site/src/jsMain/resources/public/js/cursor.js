@@ -12,19 +12,36 @@
   }
 
   function initCursor() {
-    // Avoid double initialization
-    if (document.getElementById('custom-cursor-dot')) return;
+    // Prevent multiple initializations
+    if (window.__customCursorInitialized) return;
 
-    const dot = document.createElement('div');
-    dot.id = 'custom-cursor-dot';
-    dot.className = 'custom-cursor-dot';
+    if (!document.body) {
+      document.addEventListener('DOMContentLoaded', initCursor);
+      return;
+    }
 
-    const ring = document.createElement('div');
-    ring.id = 'custom-cursor-ring';
-    ring.className = 'custom-cursor-ring';
+    // Reuse existing DOM elements if prerendered, or create them
+    let dot = document.getElementById('custom-cursor-dot');
+    if (!dot) {
+      dot = document.createElement('div');
+      dot.id = 'custom-cursor-dot';
+      dot.className = 'custom-cursor-dot';
+      document.body.appendChild(dot);
+    }
 
-    document.body.appendChild(dot);
-    document.body.appendChild(ring);
+    let ring = document.getElementById('custom-cursor-ring');
+    if (!ring) {
+      ring = document.createElement('div');
+      ring.id = 'custom-cursor-ring';
+      ring.className = 'custom-cursor-ring';
+      document.body.appendChild(ring);
+    }
+
+    // Mark as initialized
+    window.__customCursorInitialized = true;
+
+    // Enable custom cursor styles only when JS cursor is active
+    document.documentElement.classList.add('has-custom-cursor');
 
     let mouseX = -100;
     let mouseY = -100;
@@ -129,7 +146,7 @@
       }
     }, { passive: true });
 
-    // Smooth RAF loop for the outer ring (high responsiveness ~0.35 factor: zero sluggish lag)
+    // Smooth RAF loop for the outer ring (high responsiveness ~0.38 factor: zero sluggish lag)
     function animateRing() {
       if (isVisible && !isTextMode) {
         const dx = mouseX - ringX;
@@ -168,6 +185,8 @@
       ring.style.opacity = '1';
     });
   }
+
+  window.initCustomCursor = initCursor;
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initCursor);

@@ -32,7 +32,11 @@ fun NavigationMenu(
     selectedSectionId: String,
 ) {
     Section.entries.forEach { section ->
-        val isSelected = selectedSectionId == section.path
+        val isSelected = if (section.path == Section.HOME.path) {
+            selectedSectionId == Section.HOME.path || selectedSectionId.isEmpty()
+        } else {
+            selectedSectionId.startsWith(section.path)
+        }
         Link(
             modifier = NavigationItemStyle.toModifier(),
             path = section.path,

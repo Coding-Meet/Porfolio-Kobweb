@@ -38,6 +38,19 @@ kobweb {
                 "Meet is an Android and Kotlin Multiplatform developer specializing in Kotlin, Java, Jetpack Compose, and Compose Multiplatform. Explore projects, tutorials, and freelance app development services."
             )
             head.add {
+                // Anti-flicker theme script: immediately restores saved color mode before DOM paint
+                script {
+                    unsafe {
+                        +"""
+                        {
+                            const storedColor = localStorage.getItem('theme');
+                            const desiredColor = storedColor ? `silk-${'$'}{storedColor.toLowerCase()}` : 'silk-dark';
+                            const oppositeColor = desiredColor === 'silk-dark' ? 'silk-light' : 'silk-dark';
+                            document.documentElement.classList.replace(oppositeColor, desiredColor);
+                        }
+                        """.trimIndent()
+                    }
+                }
                 script {
                     async = true
                     src = "https://www.googletagmanager.com/gtag/js?id=$trackingId"
@@ -281,6 +294,7 @@ tasks.register("fetchMediumContent") {
 tasks.register("applyBlogLinkPreviews") {
     description = "Injects Open Graph and Twitter meta tags into exported blog HTML files for link previews."
     notCompatibleWithConfigurationCache("This task patches exported HTML using script-local helpers.")
+    dependsOn("generateProjectAndServiceExportPages")
 
     val articleDataFile = layout.projectDirectory.file("src/jsMain/kotlin/com/coding/meet/util/ArticleData.kt")
     val exportedSiteDir = layout.projectDirectory.dir(".kobweb/site")
@@ -425,4 +439,166 @@ tasks.register("generateBlogKotlinPages") {
 
         println("✅ Blog Kotlin pages generated successfully!")
     }
+}
+
+tasks.register("generateProjectAndServiceKotlinPages") {
+    description = "Generates Kotlin @Page files for all projects and services based on sitemap.xml routes."
+
+    val sitemapFile = layout.projectDirectory.file("src/jsMain/resources/public/sitemap.xml")
+    val projectsOutputDir = layout.projectDirectory.dir("src/jsMain/kotlin/com/coding/meet/pages/projects")
+    val servicesOutputDir = layout.projectDirectory.dir("src/jsMain/kotlin/com/coding/meet/pages/services")
+
+    doLast {
+        val file = sitemapFile.asFile
+        val doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file)
+        val urls = doc.getElementsByTagName("loc")
+
+        val pOut = projectsOutputDir.asFile
+        val sOut = servicesOutputDir.asFile
+        pOut.mkdirs()
+        sOut.mkdirs()
+
+        var pCount = 0
+        var sCount = 0
+
+        for (i in 0 until urls.length) {
+            val url = urls.item(i).textContent.trim()
+            if (url.contains("/projects/")) {
+                val slug = url.substringAfter("/projects/").trim()
+                if (slug.isNotEmpty()) {
+                    val className = slug
+                        .replace("-", "_")
+                        .replace(Regex("[^a-zA-Z0-9_]"), "")
+                        .replaceFirstChar { it.uppercase() }
+
+                    val kotlinFile = File(pOut, "$className.kt")
+                    val content = """
+                        package com.coding.meet.pages.projects
+
+                        import androidx.compose.runtime.Composable
+                        import com.coding.meet.pages.ProjectPage
+                        import com.varabyte.kobweb.core.Page
+                        import com.varabyte.kobweb.core.PageContext
+
+                        @Page("/projects/$slug")
+                        @Composable
+                        fun $className(context: PageContext) {
+                            ProjectPage(context = context)
+                        }
+                    """.trimIndent()
+                    kotlinFile.writeText(content)
+                    pCount++
+                }
+            } else if (url.contains("/service/")) {
+                val id = url.substringAfter("/service/").trim()
+                if (id.isNotEmpty()) {
+                    val className = id
+                        .replace("-", "_")
+                        .replace(Regex("[^a-zA-Z0-9_]"), "")
+                        .replaceFirstChar { it.uppercase() }
+
+                    val kotlinFile = File(sOut, "$className.kt")
+                    val content = """
+                        package com.coding.meet.pages.services
+
+                        import androidx.compose.runtime.Composable
+                        import com.coding.meet.pages.ServiceSection
+                        import com.varabyte.kobweb.core.Page
+                        import com.varabyte.kobweb.core.PageContext
+
+                        @Page("/service/$id")
+                        @Composable
+                        fun $className(context: PageContext) {
+                            ServiceSection(context = context)
+                        }
+                    """.trimIndent()
+                    kotlinFile.writeText(content)
+                    sCount++
+                }
+            }
+        }
+        println("✅ Generated $pCount Kotlin project pages and $sCount Kotlin service pages!")
+    }
+}
+
+tasks.register("generateProjectAndServiceExportPages") {
+    description = "Generates static index.html pages for each project and service route in .kobweb/site to ensure clean URL support on Firebase Hosting."
+    notCompatibleWithConfigurationCache("Patches exported HTML files.")
+    val exportedSiteDir = layout.projectDirectory.dir(".kobweb/site")
+    val sitemapFile = layout.projectDirectory.file("src/jsMain/resources/public/sitemap.xml")
+
+    doLast {
+        val siteDir = exportedSiteDir.asFile
+        if (!siteDir.exists()) {
+            println("Export directory not found: ${'$'}{siteDir.absolutePath}")
+            return@doLast
+        }
+
+        val baseHtmlFile = File(siteDir, "index.html")
+        if (!baseHtmlFile.exists()) {
+            println("Base index.html not found!")
+            return@doLast
+        }
+
+        val baseHtml = baseHtmlFile.readText()
+
+        // 1. Create 404.html for SPA fallback
+        val notFoundFile = File(siteDir, "404.html")
+        notFoundFile.writeText(baseHtml)
+
+        // 2. Parse sitemap.xml for projects and services
+        val doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(sitemapFile.asFile)
+        val urls = doc.getElementsByTagName("loc")
+
+        var projectCount = 0
+        var serviceCount = 0
+
+        for (i in 0 until urls.length) {
+            val url = urls.item(i).textContent.trim()
+            if (url.contains("/projects/")) {
+                val slug = url.substringAfter("/projects/").trim()
+                if (slug.isNotEmpty()) {
+                    val targetDir = File(siteDir, "projects/$slug")
+                    targetDir.mkdirs()
+                    val targetHtml = File(targetDir, "index.html")
+                    val title = slug.split("-").joinToString(" ") { word -> word.replaceFirstChar { char -> char.uppercase() } } + " | Meet's Projects"
+                    val pageContent = baseHtml
+                        .replaceHtmlTitle(title)
+                        .replaceMetaTag("og:title", title)
+                        .replaceMetaTag("og:url", url)
+                    targetHtml.writeText(pageContent)
+                    projectCount++
+                }
+            } else if (url.contains("/service/")) {
+                val id = url.substringAfter("/service/").trim()
+                if (id.isNotEmpty()) {
+                    val targetDir = File(siteDir, "service/$id")
+                    targetDir.mkdirs()
+                    val targetHtml = File(targetDir, "index.html")
+                    val title = id.split("-").joinToString(" ") { word -> word.replaceFirstChar { char -> char.uppercase() } } + " | Meet's Services"
+                    val pageContent = baseHtml
+                        .replaceHtmlTitle(title)
+                        .replaceMetaTag("og:title", title)
+                        .replaceMetaTag("og:url", url)
+                    targetHtml.writeText(pageContent)
+                    serviceCount++
+                }
+            }
+        }
+
+        // Also ensure /projects/index.html and /service/index.html exist
+        val projectsDir = File(siteDir, "projects")
+        projectsDir.mkdirs()
+        File(projectsDir, "index.html").writeText(baseHtml)
+
+        val serviceDir = File(siteDir, "service")
+        serviceDir.mkdirs()
+        File(serviceDir, "index.html").writeText(baseHtml)
+
+        println("✅ Generated 404.html, ${'$'}projectCount project index.html files, and ${'$'}serviceCount service index.html files!")
+    }
+}
+
+tasks.matching { it.name.contains("kobwebExport", ignoreCase = true) }.configureEach {
+    finalizedBy("generateProjectAndServiceExportPages")
 }

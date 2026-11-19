@@ -1,69 +1,346 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Core Hub Pages -->
     <url>
         <loc>https://codingmeet.com/</loc>
-    </url>
-    <url>
-        <loc>https://codingmeet.com/blog</loc>
-    </url>
-    <url>
-        <loc>https://codingmeet.com/contact_me</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://codingmeet.com/projects</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://codingmeet.com/service</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/blog</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/contact_me</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/index.md</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
     </url>
 
+    <!-- Dedicated Service Landing Pages -->
     <url>
-        <loc>
-            https://codingmeet.com/blog/how-to-implement-shaders-in-compose-multiplatform-android-ios-desktop-web-c86a36dd9666
-        </loc>
+        <loc>https://codingmeet.com/service/custom-android-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/building-a-fully-adaptive-navigation-system-in-compose-multiplatform-kmp-e1a8921ca792
-        </loc>
+        <loc>https://codingmeet.com/service/fix-bugs</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/cross-platform-text-to-speech-with-real-time-highlighting-kotlin-multiplatform-swift-9a02fa667f6f
-        </loc>
+        <loc>https://codingmeet.com/service/upgrade-sdk</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/how-to-show-toasts-in-compose-multiplatform-android-ios-desktop-with-expect-actual-85c630d46d06
-        </loc>
+        <loc>https://codingmeet.com/service/compose-ui</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/efficient-logging-in-kotlin-with-proguard-optimization-452bdac5c016
-        </loc>
+        <loc>https://codingmeet.com/service/ai-chatbot</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/part-2-automating-reverse-feature-to-template-transformation-in-gradle-3973880bb6ff
-        </loc>
+        <loc>https://codingmeet.com/service/kmp-cmp</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/automate-android-feature-creation-with-gradle-cfd51373e167
-        </loc>
+        <loc>https://codingmeet.com/service/desktop-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/full-guide-how-to-form-validation-with-jetpack-compose-01e0464ae884
-        </loc>
+        <loc>https://codingmeet.com/service/ios-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/how-to-integrate-bottom-navigation-bar-for-compact-screens-and-a-navigation-rail-for-larger-screens-c7dc3baab0e7
-        </loc>
+        <loc>https://codingmeet.com/service/ai-code-review</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
+    <!-- Dedicated Project Showcase Pages -->
+    <url>
+        <loc>https://codingmeet.com/projects/what-event</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
     <url>
-        <loc>
-            https://codingmeet.com/blog/how-to-integrate-viewmodel-in-kotlin-multiplatform-with-koin-1a1134530215
-        </loc>
+        <loc>https://codingmeet.com/projects/news-kotlin-multiplatform-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/devanalyzer</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/pepper-robot-ai-assistant</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/gemini-ai-kotlin-multiplatform-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/store-app-mvi-compose-multiplatform-template</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/text-to-speech-with-real-time-highlighting</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/git-backup-hub</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/shader-compose-multiplatform-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/coding-meet-kobweb</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/string-translator-desktop-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/custom-lcd-pattern-generator</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/third-eye-ai-assistant-app-for-blind-people</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/home-automation-system</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/electric-vehicle</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/quillbot-web-scraper</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/chatgpt-android-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/multi-factor-authenticator-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/daily-affirmation-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/document-scanner-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/math-workout-brain-exercise</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/bluetooth-arduino-communication-android-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/truth-or-dare-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/meetmyshow</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/dual-axis-solar-tracking-system</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.65</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/smart-irrigation-system</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.65</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/android-addict</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/gamer-s-arena</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/todo-note-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/camera-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/projects/math-quiz-app</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Technical Blog Articles -->
+    <url>
+        <loc>https://codingmeet.com/blog/how-to-implement-shaders-in-compose-multiplatform-android-ios-desktop-web-c86a36dd9666</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/blog/building-a-fully-adaptive-navigation-system-in-compose-multiplatform-kmp-e1a8921ca792</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/blog/cross-platform-text-to-speech-with-real-time-highlighting-kotlin-multiplatform-swift-9a02fa667f6f</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/blog/how-to-show-toasts-in-compose-multiplatform-android-ios-desktop-with-expect-actual-85c630d46d06</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/blog/efficient-logging-in-kotlin-with-proguard-optimization-452bdac5c016</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/blog/part-2-automating-reverse-feature-to-template-transformation-in-gradle-3973880bb6ff</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/blog/automate-android-feature-creation-with-gradle-cfd51373e167</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/blog/full-guide-how-to-form-validation-with-jetpack-compose-01e0464ae884</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/blog/how-to-integrate-bottom-navigation-bar-for-compact-screens-and-a-navigation-rail-for-larger-screens-c7dc3baab0e7</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://codingmeet.com/blog/how-to-integrate-viewmodel-in-kotlin-multiplatform-with-koin-1a1134530215</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
     </url>
 </urlset>

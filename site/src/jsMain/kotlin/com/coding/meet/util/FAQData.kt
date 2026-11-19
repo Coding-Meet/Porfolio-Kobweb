@@ -4,49 +4,76 @@ import com.coding.meet.models.FAQ
 
 object FAQData {
     val faqs = listOf(
+        // 1. Custom Android App Development
         FAQ(
-            question = "What technologies do you use for Android app development?",
-            answer = "I use Kotlin, Java, Jetpack Compose, and Kotlin Multiplatform, along with MVVM, Clean Architecture, and various Android libraries."
+            question = "What architecture and tech stack do you use for custom Android app development?",
+            answer = "I build modern native Android apps using Kotlin, Jetpack Compose, and XML following Clean Architecture with MVVM / MVI patterns. I implement Dagger Hilt or Koin for Dependency Injection, Coroutines & Flow for reactive asynchronous data, Room DB for offline caching, and Retrofit or Ktor for network communication."
         ),
+
+        // 2. Fix Bugs & Debugging
         FAQ(
-            question = "Can you fix bugs in my existing Android app?",
-            answer = "Yes, I can debug and fix issues related to UI, crashes, Gradle, SDK updates, and general app performance."
+            question = "Can you fix crashes, ANRs, and build errors in my existing Android app?",
+            answer = "Yes. I diagnose root causes and resolve runtime crashes, NullPointerExceptions, ANRs (Application Not Responding), memory leaks, infinite Jetpack Compose recompositions, lifecycle state loss, and complex Gradle / Android Studio build failures."
         ),
+
+        // 3. Upgrade Target SDK & Gradle
         FAQ(
-            question = "Is source code required to fix bugs in the app?",
-            answer = "Yes, source code is required to diagnose and fix bugs in your application."
+            question = "Can you upgrade my app to the latest Android 16 (Target SDK 36) and Gradle version?",
+            answer = "Yes. I update apps to Target SDK 36 to comply with mandatory Google Play Console requirements. This includes upgrading Gradle, Android Gradle Plugin (AGP), migrating build scripts to Version Catalogs (libs.versions.toml), adapting to Android 15 behavior changes, and implementing Edge-to-Edge display and Predictive Back navigation."
         ),
+
+        // 4. Jetpack Compose & XML Migration
         FAQ(
-            question = "Can you upgrade my app to the latest Android version?",
-            answer = "Yes, I can update your app’s target SDK to Android 14 (API level 35) and make necessary code adjustments for compatibility."
+            question = "Can you migrate my existing XML-based Android app to Jetpack Compose?",
+            answer = "Yes! I can migrate your legacy XML layouts and custom views to Jetpack Compose using Material 3 and Material You dynamic theming. We can modernize screens incrementally without disrupting existing functionality, delivering smooth 60fps animations and responsive UI across phones, tablets, and foldables."
         ),
+
+        // 5. AI Chatbot & LLM Integration
         FAQ(
-            question = "Is source code required to update the app?",
-            answer = "Yes, source code is required to update the SDK and fix any compatibility issues in your application."
+            question = "Which AI models can you integrate into my mobile or desktop app?",
+            answer = "I integrate Google Gemini (Flash & Pro), OpenAI (ChatGPT / GPT-5), Claude, and DeepSeek APIs with real-time streaming responses, conversation history, multi-turn context, voice input/output (STT & TTS), document AI with RAG, and secure server-side or Keystore API key management."
         ),
+
+        // 6. Kotlin Multiplatform & Compose Multiplatform
         FAQ(
-            question = "Do you provide AI chatbot integration?",
-            answer = "Yes, I can integrate AI-powered chatbots using Google Gemini API and GPT-3 for intelligent conversations."
+            question = "Can you build a single app that runs on both Android and iOS with Kotlin Multiplatform (KMP)?",
+            answer = "Yes! Using Kotlin Multiplatform (KMP) and Compose Multiplatform (CMP), we share 100% of business logic, networking (Ktor), and database (Room KMP / SQLDelight), along with shared UI. This gives you 100% native performance on both Android and iOS while cutting development and maintenance costs in half."
         ),
+
+        // 7. Desktop App Development (CMP)
         FAQ(
-            question = "Do you provide Play Store upload support?",
-            answer = "Yes, I can fix Play Store upload issues, including APK problems and version compatibility errors."
+            question = "Can you develop desktop applications for macOS, Windows, and Linux?",
+            answer = "Yes. I build lightweight, high-performance desktop apps, internal utilities, and admin dashboards using Compose Multiplatform for Desktop. I handle native window controls, desktop lifecycle, local SQLite databases, and package production-ready installers (.dmg for macOS, .msi for Windows, and .deb for Linux)."
         ),
+
+        // 8. Native iOS Development
         FAQ(
-            question = "Can you integrate Firebase services into my app?",
-            answer = "Yes, I can integrate Firebase services such as Realtime Database, Firestore, Authentication, Push Notifications, and Crashlytics."
+            question = "Do you develop native iOS apps using Swift and SwiftUI?",
+            answer = "Yes. I develop native iOS applications using Swift, SwiftUI, and UIKit with MVVM and Clean Architecture. I handle URLSession/Alamofire networking, SwiftData and CoreData persistence, Sign in with Apple, Push Notifications, and App Store / TestFlight distribution."
         ),
+
+        // 9. Review & Fix AI-Generated Code
         FAQ(
-            question = "Do you work with third-party APIs?",
-            answer = "Yes, I can integrate third-party REST APIs to enhance your app’s functionality."
+            question = "I built an app using AI tools (ChatGPT, Cursor, Claude) but it has errors. Can you fix and refactor it?",
+            answer = "Yes. AI-generated code frequently suffers from unmanaged coroutine leaks, infinite recomposition loops, hardcoded secrets, and bloated single-file code. I audit every line, extract API keys into encrypted storage, refactor code into clean MVVM architecture, and make the app stable and production-ready."
         ),
+
+        // 10. Backend & Firebase Services
         FAQ(
-            question = "What do you need to get started?",
-            answer = "I need access to your app’s source code, preferably through a Git repository, along with the project requirements."
+            question = "Can you integrate Firebase or custom REST APIs into my app?",
+            answer = "Yes. I integrate Firebase services (Authentication, Cloud Firestore, Realtime Database, Cloud Messaging / FCM, Crashlytics, Remote Config) as well as custom third-party RESTful APIs, GraphQL, and payment gateways like Google Play Billing and Stripe."
         ),
+
+        // 11. App Store & Play Store Support
         FAQ(
-            question = "How long does it take to complete a project?",
-            answer = "The timeline depends on the complexity of the project. Simple fixes take a few hours, while full app development may take weeks or months."
+            question = "Do you provide Play Store and App Store publishing support?",
+            answer = "Yes. I generate release-ready signed App Bundles (.aab) and iOS archives (.ipa), configure R8 / ProGuard rules to optimize app size, and assist with store policy compliance, Data Safety declarations, and resolving app rejection issues."
+        ),
+
+        // 12. Getting Started & Timelines
+        FAQ(
+            question = "What do you need to get started, and how long does a project take?",
+            answer = "To get started, I need your project requirements, UI designs (Figma/mockups) if available, and repository access (GitHub/GitLab) or source code zip. Quick bug fixes and SDK upgrades usually take 24–48 hours, while full app developments take 2–6 weeks with milestone testing and post-launch support."
         )
     )
 }
