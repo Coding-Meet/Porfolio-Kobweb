@@ -21,6 +21,8 @@ import com.coding.meet.screens.projects.components.ProjectCard
 import com.coding.meet.screens.projects.components.ProjectCategorySection
 import com.coding.meet.screens.projects.components.ProjectDialog
 import com.coding.meet.screens.projects.styles.rotateAnimation
+import com.coding.meet.util.Analytics
+import com.coding.meet.util.AppInfo
 import com.coding.meet.util.CustomColor
 import com.coding.meet.util.ProjectData.projects
 import com.coding.meet.util.Res
@@ -58,6 +60,7 @@ import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
+import kotlinx.browser.document
 import kotlinx.browser.window
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.web.css.AnimationTimingFunction
@@ -67,6 +70,7 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.s
 import org.jetbrains.compose.web.dom.Div
+import org.w3c.dom.events.Event
 
 @Page(projectsPath)
 @Composable
@@ -117,10 +121,22 @@ fun ProjectPage(context: PageContext = rememberPageContext()) {
                     if (window.location.pathname != newUrl) {
                         window.history.replaceState(null, "", newUrl)
                     }
+                    val projectTitle = "${project.title} - Projects - ${AppInfo.WEBSITE_NAME}"
+                    document.title = projectTitle
+                    Analytics.trackPageView(
+                        title = projectTitle,
+                        path = newUrl
+                    )
                 } else {
                     if (window.location.pathname != projectsPath || window.location.search.isNotEmpty() || window.location.hash.isNotEmpty()) {
                         window.history.replaceState(null, "", projectsPath)
                     }
+                    val projectsTitle = "Projects - ${AppInfo.WEBSITE_NAME}"
+                    document.title = projectsTitle
+                    Analytics.trackPageView(
+                        title = projectsTitle,
+                        path = projectsPath
+                    )
                 }
             }
 
@@ -153,22 +169,21 @@ fun ProjectPage(context: PageContext = rememberPageContext()) {
             }
 
             DisposableEffect(Unit) {
-                val clickListener: (dynamic) -> Unit = {
+                val clickListener: (Event) -> Unit = { event ->
                     val model = window.document.getElementById(dialogId)
-                    val modal = model?.asDynamic()
-                    if (it.target == modal) {
+                    if (event.target == model) {
                         isShowDialog = false
                         updateProjectUrl(null)
                     }
                 }
-                val keydownListener: (dynamic) -> Unit = {
-                    val keyboardEvent = it.asDynamic()
+                val keydownListener: (Event) -> Unit = { event ->
+                    val keyboardEvent = event.asDynamic()
                     if (keyboardEvent.key == "Escape") {
                         isShowDialog = false
                         updateProjectUrl(null)
                     }
                 }
-                val popstateListener: (dynamic) -> Unit = {
+                val popstateListener: (Event) -> Unit = {
                     val query = extractTargetQuery()
                     if (query.isNotEmpty()) {
                         val matchIndex = projectsState.value.indexOfFirst { it.matchesQuery(query) }

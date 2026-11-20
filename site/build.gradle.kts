@@ -90,6 +90,9 @@ kobweb {
                 )
 
                 ogMeta("og:image", "https://codingmeet.com/preview_image.png")
+                ogMeta("og:image:width", "1200")
+                ogMeta("og:image:height", "630")
+                ogMeta("og:image:type", "image/png")
                 ogMeta("og:url", "https://codingmeet.com")
                 ogMeta("og:type", "website")
                 ogMeta("og:site_name", "Coding Meet")
@@ -328,29 +331,50 @@ tasks.register("applyBlogLinkPreviews") {
             "No blog previews found in ${articleDataFile.asFile.absolutePath}"
         }
 
-        previews.forEach { preview ->
-            val htmlFile = exportedSiteDir.file("blog/${preview.id}.html").asFile
-            if (!htmlFile.exists()) {
-                logger.warn("No exported HTML found for blog preview: ${preview.id}")
-                return@forEach
-            }
+        val baseHtmlFile = listOf(
+            exportedSiteDir.file("index.html").asFile,
+            exportedSiteDir.file("pages/index.html").asFile
+        ).firstOrNull { it.exists() }
+        val baseHtml = baseHtmlFile?.readText() ?: ""
 
+        previews.forEach { preview ->
             val pageUrl = "https://codingmeet.com/blog/${preview.id}"
             val pageTitle = "${preview.title} | Coding Meet"
-            val html = htmlFile.readText()
-                .replaceHtmlTitle(pageTitle)
-                .replaceDescriptionMeta(preview.description)
-                .replaceMetaTag("og:title", preview.title)
-                .replaceMetaTag("og:description", preview.description)
-                .replaceMetaTag("og:image", preview.image)
-                .replaceMetaTag("og:url", pageUrl)
-                .replaceMetaTag("og:type", "article")
-                .replaceMetaTag("twitter:card", "summary_large_image", attribute = "name")
-                .replaceMetaTag("twitter:title", preview.title, attribute = "name")
-                .replaceMetaTag("twitter:description", preview.description, attribute = "name")
-                .replaceMetaTag("twitter:image", preview.image, attribute = "name")
 
-            htmlFile.writeText(html)
+            val targetDirs = listOfNotNull(
+                exportedSiteDir.asFile,
+                if (exportedSiteDir.dir("pages").asFile.exists()) exportedSiteDir.dir("pages").asFile else null
+            )
+
+            targetDirs.forEach { dir ->
+                val htmlFile = File(dir, "blog/${preview.id}.html")
+                val srcHtml = if (htmlFile.exists()) htmlFile.readText() else baseHtml
+
+                if (srcHtml.isNotEmpty()) {
+                    val html = srcHtml
+                        .replaceHtmlTitle(pageTitle)
+                        .replaceDescriptionMeta(preview.description)
+                        .replaceMetaTag("og:title", preview.title)
+                        .replaceMetaTag("og:description", preview.description)
+                        .replaceMetaTag("og:image", preview.image)
+                        .replaceMetaTag("og:image:width", "1280")
+                        .replaceMetaTag("og:image:height", "720")
+                        .replaceMetaTag("og:image:type", if (preview.image.endsWith(".webp")) "image/webp" else "image/png")
+                        .replaceMetaTag("og:url", pageUrl)
+                        .replaceMetaTag("og:type", "article")
+                        .replaceMetaTag("twitter:card", "summary_large_image", attribute = "name")
+                        .replaceMetaTag("twitter:title", preview.title, attribute = "name")
+                        .replaceMetaTag("twitter:description", preview.description, attribute = "name")
+                        .replaceMetaTag("twitter:image", preview.image, attribute = "name")
+
+                    htmlFile.parentFile?.mkdirs()
+                    htmlFile.writeText(html)
+
+                    val blogDir = File(dir, "blog/${preview.id}")
+                    blogDir.mkdirs()
+                    File(blogDir, "index.html").writeText(html)
+                }
+            }
         }
 
         println("Applied blog link previews to ${previews.size} exported pages.")
@@ -524,8 +548,11 @@ tasks.register("generateProjectAndServiceKotlinPages") {
 tasks.register("generateProjectAndServiceExportPages") {
     description = "Generates static index.html pages for each project and service route in .kobweb/site to ensure clean URL support on Firebase Hosting."
     notCompatibleWithConfigurationCache("Patches exported HTML files.")
+    finalizedBy("applyBlogLinkPreviews")
     val exportedSiteDir = layout.projectDirectory.dir(".kobweb/site")
     val sitemapFile = layout.projectDirectory.file("src/jsMain/resources/public/sitemap.xml")
+    val projectDataFile = layout.projectDirectory.file("src/jsMain/kotlin/com/coding/meet/util/ProjectData.kt")
+    val serviceDataFile = layout.projectDirectory.file("src/jsMain/kotlin/com/coding/meet/util/ServiceData.kt")
 
     doLast {
         val siteDir = exportedSiteDir.asFile
@@ -534,17 +561,56 @@ tasks.register("generateProjectAndServiceExportPages") {
             return@doLast
         }
 
-        val baseHtmlFile = File(siteDir, "index.html")
-        if (!baseHtmlFile.exists()) {
+        val baseHtmlFile = listOf(
+            File(siteDir, "index.html"),
+            File(siteDir, "pages/index.html")
+        ).firstOrNull { it.exists() }
+
+        if (baseHtmlFile == null) {
             println("Base index.html not found!")
             return@doLast
         }
 
         val baseHtml = baseHtmlFile.readText()
 
+        val targetBaseDirs = listOfNotNull(
+            siteDir,
+            if (File(siteDir, "pages").exists()) File(siteDir, "pages") else null
+        )
+
         // 1. Create 404.html for SPA fallback
-        val notFoundFile = File(siteDir, "404.html")
-        notFoundFile.writeText(baseHtml)
+        targetBaseDirs.forEach { base ->
+            File(base, "404.html").writeText(baseHtml)
+        }
+
+        // Parse ProjectData.kt to map slug -> (title, desc, firstImg)
+        val projectMap = mutableMapOf<String, Triple<String, String, String>>()
+        if (projectDataFile.asFile.exists()) {
+            val pContent = projectDataFile.asFile.readText()
+            val pChunks = pContent.split("Project(").drop(1)
+            for (chunk in pChunks) {
+                val title = Regex("""title\s*=\s*"([^"]+)"""").find(chunk)?.groupValues?.get(1) ?: continue
+                val id = Regex("""id\s*=\s*"([^"]+)"""").find(chunk)?.groupValues?.get(1) ?: ""
+                val desc = Regex("""shortDescription\s*=\s*"([^"]+)"""").find(chunk)?.groupValues?.get(1) ?: ""
+                val firstImg = Regex("""imageUrls\s*=\s*listOf\([^"]*"([^"]+)"""").find(chunk)?.groupValues?.get(1) ?: "/preview_image.png"
+                val slug = if (id.isNotEmpty()) id else title.lowercase().replace(Regex("[^a-z0-9]+"), "-").trim('-')
+                projectMap[slug] = Triple(title, desc, firstImg)
+            }
+        }
+
+        // Parse ServiceData.kt to map id -> (title, desc, firstImg)
+        val serviceMap = mutableMapOf<String, Triple<String, String, String>>()
+        if (serviceDataFile.asFile.exists()) {
+            val sContent = serviceDataFile.asFile.readText()
+            val sChunks = sContent.split("Service(").drop(1)
+            for (chunk in sChunks) {
+                val title = Regex("""title\s*=\s*"([^"]+)"""").find(chunk)?.groupValues?.get(1) ?: continue
+                val id = Regex("""id\s*=\s*"([^"]+)"""").find(chunk)?.groupValues?.get(1) ?: continue
+                val desc = Regex("""description\s*=\s*"([^"]+)"""").find(chunk)?.groupValues?.get(1) ?: ""
+                val firstImg = Regex("""imageUrls\s*=\s*listOf\([^"]*"([^"]+)"""").find(chunk)?.groupValues?.get(1) ?: "/preview_image.png"
+                serviceMap[id] = Triple(title, desc, firstImg)
+            }
+        }
 
         // 2. Parse sitemap.xml for projects and services
         val doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(sitemapFile.asFile)
@@ -558,42 +624,137 @@ tasks.register("generateProjectAndServiceExportPages") {
             if (url.contains("/projects/")) {
                 val slug = url.substringAfter("/projects/").trim()
                 if (slug.isNotEmpty()) {
-                    val targetDir = File(siteDir, "projects/$slug")
-                    targetDir.mkdirs()
-                    val targetHtml = File(targetDir, "index.html")
-                    val title = slug.split("-").joinToString(" ") { word -> word.replaceFirstChar { char -> char.uppercase() } } + " | Meet's Projects"
+                    val pInfo = projectMap[slug]
+                    val projectTitle = pInfo?.first ?: slug.split("-").joinToString(" ") { word -> word.replaceFirstChar { char -> char.uppercase() } }
+                    val title = "$projectTitle | Meet's Projects"
+                    val desc = pInfo?.second?.ifEmpty { null }
+                        ?: "Explore $projectTitle - a featured mobile & multiplatform project by Meet, built with clean architecture, modern UI, and high performance."
+                    val firstImg = pInfo?.third ?: "/preview_image.png"
+                    val imgUrl = if (firstImg.startsWith("http")) firstImg else "https://codingmeet.com$firstImg"
+
                     val pageContent = baseHtml
                         .replaceHtmlTitle(title)
+                        .replaceDescriptionMeta(desc)
                         .replaceMetaTag("og:title", title)
+                        .replaceMetaTag("og:description", desc)
+                        .replaceMetaTag("og:image", imgUrl)
+                        .replaceMetaTag("og:image:width", "1280")
+                        .replaceMetaTag("og:image:height", "720")
+                        .replaceMetaTag("og:image:type", if (imgUrl.endsWith(".webp")) "image/webp" else "image/png")
                         .replaceMetaTag("og:url", url)
-                    targetHtml.writeText(pageContent)
+                        .replaceMetaTag("twitter:title", title, attribute = "name")
+                        .replaceMetaTag("twitter:description", desc, attribute = "name")
+                        .replaceMetaTag("twitter:image", imgUrl, attribute = "name")
+
+                    // Write to both projects/$slug.html (for cleanUrls) and projects/$slug/index.html (for directory routing)
+                    targetBaseDirs.forEach { base ->
+                        val targetHtmlFile = File(base, "projects/$slug.html")
+                        targetHtmlFile.parentFile?.mkdirs()
+                        targetHtmlFile.writeText(pageContent)
+
+                        val targetDir = File(base, "projects/$slug")
+                        targetDir.mkdirs()
+                        val targetHtml = File(targetDir, "index.html")
+                        targetHtml.writeText(pageContent)
+                    }
                     projectCount++
                 }
             } else if (url.contains("/service/")) {
                 val id = url.substringAfter("/service/").trim()
                 if (id.isNotEmpty()) {
-                    val targetDir = File(siteDir, "service/$id")
-                    targetDir.mkdirs()
-                    val targetHtml = File(targetDir, "index.html")
-                    val title = id.split("-").joinToString(" ") { word -> word.replaceFirstChar { char -> char.uppercase() } } + " | Meet's Services"
+                    val sInfo = serviceMap[id]
+                    val serviceTitle = sInfo?.first ?: id.split("-").joinToString(" ") { word -> word.replaceFirstChar { char -> char.uppercase() } }
+                    val title = "$serviceTitle | Meet's Services"
+                    val desc = sInfo?.second?.ifEmpty { null }
+                        ?: "Professional $serviceTitle development services by Meet. High quality native Android, Jetpack Compose, Kotlin Multiplatform, and full lifecycle engineering."
+                    val firstImg = sInfo?.third ?: "/preview_image.png"
+                    val imgUrl = if (firstImg.startsWith("http")) firstImg else "https://codingmeet.com$firstImg"
+
                     val pageContent = baseHtml
                         .replaceHtmlTitle(title)
+                        .replaceDescriptionMeta(desc)
                         .replaceMetaTag("og:title", title)
+                        .replaceMetaTag("og:description", desc)
+                        .replaceMetaTag("og:image", imgUrl)
+                        .replaceMetaTag("og:image:width", "1280")
+                        .replaceMetaTag("og:image:height", "720")
+                        .replaceMetaTag("og:image:type", if (imgUrl.endsWith(".webp")) "image/webp" else "image/png")
                         .replaceMetaTag("og:url", url)
-                    targetHtml.writeText(pageContent)
+                        .replaceMetaTag("twitter:title", title, attribute = "name")
+                        .replaceMetaTag("twitter:description", desc, attribute = "name")
+                        .replaceMetaTag("twitter:image", imgUrl, attribute = "name")
+
+                    // Write to both service/$id.html and service/$id/index.html
+                    targetBaseDirs.forEach { base ->
+                        val targetHtmlFile = File(base, "service/$id.html")
+                        targetHtmlFile.parentFile?.mkdirs()
+                        targetHtmlFile.writeText(pageContent)
+
+                        val targetDir = File(base, "service/$id")
+                        targetDir.mkdirs()
+                        val targetHtml = File(targetDir, "index.html")
+                        targetHtml.writeText(pageContent)
+                    }
                     serviceCount++
                 }
             }
         }
 
         // Also ensure /projects/index.html and /service/index.html exist
-        val projectsDir = File(siteDir, "projects")
-        projectsDir.mkdirs()
-        File(projectsDir, "index.html").writeText(baseHtml)
+        targetBaseDirs.forEach { base ->
+            val projectsDir = File(base, "projects")
+            projectsDir.mkdirs()
+            File(projectsDir, "index.html").writeText(baseHtml)
+
+            // Ensure EVERY subdirectory inside projects/ has a proper index.html with relevant project metadata
+            projectsDir.listFiles()?.filter { it.isDirectory }?.forEach { subDir ->
+                val idx = File(subDir, "index.html")
+                val matchingProject = projectMap.values.firstOrNull { it.third.startsWith("/projects/${subDir.name}/") }
+                if (matchingProject != null) {
+                    val pTitle = "${matchingProject.first} | Meet's Projects"
+                    val pDesc = matchingProject.second.ifEmpty { "Explore ${matchingProject.first} by Meet." }
+                    val pImg = if (matchingProject.third.startsWith("http")) matchingProject.third else "https://codingmeet.com${matchingProject.third}"
+                    val content = baseHtml
+                        .replaceHtmlTitle(pTitle)
+                        .replaceDescriptionMeta(pDesc)
+                        .replaceMetaTag("og:title", pTitle)
+                        .replaceMetaTag("og:description", pDesc)
+                        .replaceMetaTag("og:image", pImg)
+                        .replaceMetaTag("og:image:width", "1280")
+                        .replaceMetaTag("og:image:height", "720")
+                        .replaceMetaTag("og:image:type", if (pImg.endsWith(".webp")) "image/webp" else "image/png")
+                        .replaceMetaTag("og:url", "https://codingmeet.com/projects/${subDir.name}")
+                        .replaceMetaTag("twitter:title", pTitle, attribute = "name")
+                        .replaceMetaTag("twitter:description", pDesc, attribute = "name")
+                        .replaceMetaTag("twitter:image", pImg, attribute = "name")
+                    idx.writeText(content)
+                } else if (!idx.exists()) {
+                    idx.writeText(baseHtml)
+                }
+            }
+
+            val serviceDir = File(base, "service")
+            serviceDir.mkdirs()
+            File(serviceDir, "index.html").writeText(baseHtml)
+
+            serviceDir.listFiles()?.filter { it.isDirectory }?.forEach { subDir ->
+                val idx = File(subDir, "index.html")
+                if (!idx.exists()) {
+                    idx.writeText(baseHtml)
+                }
+            }
+        }
 
         val serviceDir = File(siteDir, "service")
         serviceDir.mkdirs()
         File(serviceDir, "index.html").writeText(baseHtml)
+
+        serviceDir.listFiles()?.filter { it.isDirectory }?.forEach { subDir ->
+            val idx = File(subDir, "index.html")
+            if (!idx.exists()) {
+                idx.writeText(baseHtml)
+            }
+        }
 
         println("✅ Generated 404.html, ${'$'}projectCount project index.html files, and ${'$'}serviceCount service index.html files!")
     }

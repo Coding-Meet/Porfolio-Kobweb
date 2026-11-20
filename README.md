@@ -138,11 +138,14 @@ Open [http://localhost:8080](http://localhost:8080) in your browser.
 ## 🚢 Deployment (Firebase Hosting)
 
 ```bash
-# 1. Build and export static site
+# 1. Build and export static site (automatically injects Open Graph preview tags for all projects, services & blogs)
 cd site && kobweb export --layout static
 
-# 2. Generate blog previews and deploy
-cd .. && ./gradlew --no-configuration-cache :site:applyBlogLinkPreviews && firebase deploy
+# 2. (Optional) Verify all 56 pages and preview images
+cd .. && python3 scripts/verify_images.py
+
+# 3. Deploy to Firebase Hosting
+firebase deploy
 ```
 
 ---

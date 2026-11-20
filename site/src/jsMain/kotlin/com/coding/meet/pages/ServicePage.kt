@@ -217,15 +217,14 @@ fun ServiceSection(context: PageContext = rememberPageContext()) {
     }
 
     LaunchedEffect(Unit) {
-        window.addEventListener("click", {
+        window.addEventListener("click", { event: Event ->
             val model = window.document.getElementById(lightboxDialogId)
-            val modal = model?.asDynamic()
-            if (it.target == modal) {
+            if (event.target == model) {
                 isShowLightbox = false
             }
         })
-        window.addEventListener("keydown", {
-            val keyboardEvent = it.asDynamic()
+        window.addEventListener("keydown", { event: Event ->
+            val keyboardEvent = event.asDynamic()
             if (keyboardEvent.key == "Escape") {
                 isShowLightbox = false
             }

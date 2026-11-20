@@ -11,6 +11,7 @@ import com.coding.meet.common.components.BackToTopButton
 import com.coding.meet.common.components.navigation_bar.components.DesktopMenu
 import com.coding.meet.common.components.navigation_bar.components.MobileSideMenu
 import com.coding.meet.models.Section
+import com.coding.meet.util.Analytics
 import com.coding.meet.util.AppInfo
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.display
@@ -48,8 +49,13 @@ fun PageLayout(
             }
         }
     }
-    LaunchedEffect(title) {
-        document.title = "${AppInfo.WEBSITE_NAME} - $title - My Portfolio"
+    LaunchedEffect(title, selectedSectionId) {
+        val pageTitle = "${AppInfo.WEBSITE_NAME} - $title - My Portfolio"
+        document.title = pageTitle
+        Analytics.trackPageView(
+            title = pageTitle,
+            path = selectedSectionId
+        )
     }
     Div(
         attrs = Modifier
